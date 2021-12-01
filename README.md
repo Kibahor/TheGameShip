@@ -4,8 +4,6 @@ TheGameShip : The unaccomplished version of a Good Game
 
 
 
-Contexte :
-
 	Shoot 'em Up : 		
 
 				TheGameShip : 
@@ -13,10 +11,10 @@ Contexte :
 
 
 Specs :
-	- Power Up
-	- Space and lagged
-	- Déplacement du "joueur" de gauche à droite
-	- 1280x720
+	- Power Up; 
+	- Space and lagged; 
+	- Déplacement du "joueur" de gauche à droite; 
+	- 1280x720; 
 	- level
 
 
