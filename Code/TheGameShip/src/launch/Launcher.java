@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Launcher extends Application {
+
     @Override
     public void start (Stage primaryStage) throws java.io.IOException {
         Parent racine = FXMLLoader.load(getClass().getResource("/FXML/Fenetre.fxml"));
@@ -15,6 +16,5 @@ public class Launcher extends Application {
         primaryStage.setScene(scene);
         primaryStage.setTitle("Awesome Window");
         primaryStage.show();
-
     }
 }
