@@ -7,8 +7,10 @@ import javafx.scene.control.Button;
 import javafx.scene.shape.Rectangle;
 
 public class Fenetre {
+
     @FXML
     private Button bouton1;
+
     @FXML
     private Rectangle rectangle1;
 
