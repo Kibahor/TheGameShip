@@ -4,3 +4,17 @@ Du coup j'ai :
 
 
 	- modifier l'arborescance du dépôt
+	- j'ai viré le PUTAIN de .gitignore qui cassait tout (0 config sur IDEA)
+	- j'ai commencé à faire le package entity
+
+
+Suggestions :
+
+	
+	- s'accorder sur le nom des variables (on a commencé en anglais donc ca serait cool de pas faire du fran-glais)
+	- faire une réu pour qu'on soit bien d'accord de ce qu'on fait et comment on le fait (dépôt, classes, ...)
+
+
+	On a 50000 classes qui pourraient être plus pack (genre le déplacement pk on a une classe à part alors que ca pourrait être une méthode de entity) (genre lifeDown & lifeUp c'est directement dans Entity..)
+
+

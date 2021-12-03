@@ -1,8 +1,5 @@
 # TheGameShip
 
-TheGameShip : The unaccomplished version of a Good Game
-
-
 
 	Shoot 'em Up : 		
 
@@ -11,11 +8,11 @@ TheGameShip : The unaccomplished version of a Good Game
 
 
 Specs :
-	- Power Up; 
-	- Space and lagged; 
-	- Déplacement du "joueur" de gauche à droite; 
-	- 1280x720; 
-	- level
+- Power Up
+- Space and lagged
+- Déplacement du "joueur" de gauche à droite
+- 1280x720
+- level
 
 
 Difficulté par rapport au nombre d'ennemie ou type d'ennemie
@@ -32,10 +29,10 @@ Le jeu se présentera sous forme de level où on affronte des vague d'ennemie av
 Le jeu est présenté non fini, les ennemis auront des sprites mélangés ou glitch (genre on affronte ennemiEffrayant.jpg), le fond du niveau peut parfois ne pas être corectement bouclé (ce qui donne du blanc ou des problèmes d'affichages, le fond peut devenir un BSoD :bangbang:)
 
 Premier niveau :
-	- normal mais un doute à la fin (tu vois un bug classique)
+- normal mais un doute à la fin (tu vois un bug classique)
 
 Deuxième niveau :
-	- Accumulation de bugs au fils de la partie (graduel)
+- Accumulation de bugs au fils de la partie (graduel)
 
 Trosième (et dernier) niveau :
-	- Buggé de partout, le boss final apparait sur sa fameuse musique légendaire.
+- Buggé de partout, le boss final apparait sur sa fameuse musique légendaire.

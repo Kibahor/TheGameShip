@@ -1,10 +1,10 @@
 package entity;
 
-import java.awt.font.ImageGraphicAttribute;
+//import java.awt.font.ImageGraphicAttribute;
 
 public class Entity {
 
-    private ImageGraphicAttribute sprite;
+    //private ImageGraphicAttribute sprite;
     private int X;
     private int Y;
     private float speed;
@@ -18,5 +18,13 @@ public class Entity {
 
     private void lifeUp(int lifeBonus) {
         life = life + lifeBonus;
+    }
+
+    private boolean isDead() {
+        return isDead;
+    }
+
+    private void applyPower(PowerUp power) {
+
     }
 }
