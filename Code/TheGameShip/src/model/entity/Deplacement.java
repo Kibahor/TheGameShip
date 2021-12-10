@@ -1,9 +1,9 @@
-package entity;
+package model.entity;
 
-public class Deplacement {
+public abstract class Deplacement {
 
     private Entity deplacementX(Entity entity, int X, int vitesse) {
-
+        return null;
     }
 
 }
