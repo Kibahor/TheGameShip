@@ -1,20 +1,32 @@
 
 
-Du coup j'ai : 
+Donc : !!!
+
+J'ai modifier le dépôt comme avant car Bouhours allait m'enculer.
+
+Il a prit mon PC pour tout remettre bien (j'avais raison sur où tu mets le .idea ...)
 
 
-	- modifier l'arborescance du dépôt
-	- j'ai viré le PUTAIN de .gitignore qui cassait tout (0 config sur IDEA)
-	- j'ai commencé à faire le package model.entity
+
+Du coup : TOUT FONCTIONNE, on touche rien à la structure du dépôt !!!
+
+PS : (je crois j'ai cassé "la config" pourrun en console) // je pense pas que ça soit long à refaire.
 
 
-Suggestions :
 
-	
-	- s'accorder sur le nom des variables (on a commencé en anglais donc ca serait cool de pas faire du fran-glais)
-	- faire une réu pour qu'on soit bien d'accord de ce qu'on fait et comment on le fait (dépôt, classes, ...)
+!!!!!!!!!!!! READ ME !!!!!!!!!!!!!!!!
 
-
-	On a 50000 classes qui pourraient être plus pack (genre le déplacement pk on a une classe à part alors que ca pourrait être une méthode de model.entity) (genre lifeDown & lifeUp c'est directement dans Entity..)
+Par pitier fautqu'on se fasse un call pour vraiment qu'on se mette d'accord et qu'on arrête de modifier le dépôt chaque semaine, on avance pas et c'est chiant! 
 
 
+
+-> Y avait encore un peu de français dans le diagramme et le code donc j'ai modif.
+-> J'ai rajouté des class du décorateur (faut qu'on discute pour le power up)
+-> J'ai passé X, Y et speed en float. (+ 2/3 autre trucs pas logique (j'ai edit le diagramme et le code))
+
+
+
+
+Suggestion :
+
+Segmenter le paquet "model.entity" qui va être big sa mère.

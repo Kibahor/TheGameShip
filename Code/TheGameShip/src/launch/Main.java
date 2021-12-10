@@ -8,7 +8,7 @@ public class Main {
         test.draw();
         System.out.println(test);
 
-        Entity simplelife=new hasLifeDecorator(test,10);
+        Entity simplelife=new HasLifeDecorator(test,10);
         simplelife.draw();
         System.out.println(simplelife);
     }

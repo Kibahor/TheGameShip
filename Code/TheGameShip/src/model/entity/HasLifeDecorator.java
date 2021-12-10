@@ -1,10 +1,10 @@
 package model.entity;
 
-public class hasLifeDecorator extends EntityDecorator{
+public class HasLifeDecorator extends EntityDecorator{
     int hp;
     boolean isDead;
 
-    public hasLifeDecorator(Entity entity,int hp) {
+    public HasLifeDecorator(Entity entity,int hp) {
         super(entity);
         this.hp=hp;
         this.isDead=false;
@@ -32,3 +32,4 @@ public class hasLifeDecorator extends EntityDecorator{
         isDead = dead;
     }
 }
+
