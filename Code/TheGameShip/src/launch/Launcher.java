@@ -13,8 +13,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Launcher extends Application {
-    public Launcher() {
-    }
 
     public void start(Stage primaryStage) throws IOException {
         Parent racine = (Parent)FXMLLoader.load(this.getClass().getResource("/FXML/Fenetre.fxml"));
