@@ -4,12 +4,16 @@ import java.net.*;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        Entity test=new SimpleEntity(new URI("file://test.jpg"),100,100,"Test","Joueur");
-        test.draw();
-        System.out.println(test);
+        Entity simpleEntity=new SimpleEntity(new URI("file://test.jpg"),100,100,"Test","Joueur");
+        printEntity(simpleEntity);
+        Entity hasLife=new HasLifeDecorator(simpleEntity,10);
+        printEntity(hasLife);
 
-        Entity simplelife=new HasLifeDecorator(test,10);
-        simplelife.draw();
-        System.out.println(simplelife);
+    }
+
+    public static void printEntity(Entity entity){
+        System.out.print("Entity : ");
+        entity.draw();
+        System.out.println(entity+"\n");
     }
 }

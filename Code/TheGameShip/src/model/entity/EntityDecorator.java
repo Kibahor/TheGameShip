@@ -10,4 +10,9 @@ public class EntityDecorator implements Entity {
     public void draw(){
         decoratedEntity.draw();
     }
+
+    @Override
+    public String toString() {
+        return decoratedEntity.toString();
+    }
 }

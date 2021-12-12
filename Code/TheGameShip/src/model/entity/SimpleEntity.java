@@ -6,27 +6,27 @@ import java.util.UUID;
 public class SimpleEntity implements Entity {
     private UUID id;
     private URI sprite;
-    private float X;
-    private float Y;
+    private float x;
+    private float y;
     private String nom;
     private String type;
 
     public SimpleEntity(URI sprite, float x, float y, String nom, String type) {
         this.id = UUID.randomUUID();
         this.sprite = sprite;
-        X = x;
-        Y = y;
+        this.x = x;
+        this.y = y;
         this.nom = nom;
         this.type = type;
     }
 
     @Override
     public String toString() {
-        return "Nom :"+nom+" ID :"+id.toString();
+        return "\nId : "+id.toString() + "\nNom : "+nom + "\nType : "+type + "\nSprite : "+sprite.toString() + "\nX : "+ x + "\nY : "+ y;
     }
 
     @Override
     public void draw() {
-        System.out.println("Entity: SimpleEntity\n");
+        System.out.print("SimpleEntity "); //DEBUG
     }
 }
