@@ -1,15 +1,17 @@
 package launch;
+import model.Boucle;
 import model.entity.*;
 import java.net.*;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
-public class Main {
-    public static void main(String[] args) throws Exception {
-        Entity simpleEntity=new SimpleEntity(new URI("file://test.jpg"),"Test","Joueur");
+
+public class Main
+{
+    public static void main(String[] args) throws Exception
+    {
+        Entity simpleEntity = new SimpleEntity(new URI("file://test.jpg"),"Test","Joueur");
         //printEntity(simpleEntity);
-        Entity decorate=new EntityDecorator(new HasLifeDecorator(new MovableDecorator(simpleEntity,5),10));
+        Entity decorate = new EntityDecorator(new HasLifeDecorator(new MovableDecorator(simpleEntity,5, 5),10));
         //printEntity(decorate);
         EntityManager manager=new EntityManager();
 
@@ -25,6 +27,10 @@ public class Main {
 
         //Le set ne doit posséder qu'un seul objet avec un unique id
         manager.listEntity();
+
+        // Création et lancement du beeper
+        Thread b = new Thread(new Boucle());
+        b.start();
     }
 
     public static void printEntity(Entity entity){

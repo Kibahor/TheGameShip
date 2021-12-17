@@ -17,7 +17,7 @@ public class SimpleEntity implements Entity {
         this.sprite = sprite;
         this.nom = nom;
         this.type = type;
-        this.hitbox_radius=10;
+        this.hitbox_radius = 10;
     }
 
     public SimpleEntity(URI sprite, String nom, String type, double x, double y, double hitbox_radius) {

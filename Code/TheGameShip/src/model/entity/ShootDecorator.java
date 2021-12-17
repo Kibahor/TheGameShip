@@ -18,6 +18,5 @@ public class ShootDecorator extends EntityDecorator{
     }
 
     public UUID getOwnerId() { return OwnerId; }
-
     public void setOwnerId() { this.OwnerId = OwnerId; }
 }

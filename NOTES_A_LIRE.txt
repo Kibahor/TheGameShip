@@ -1,32 +1,24 @@
 
-
-Donc : !!!
-
-J'ai modifier le dépôt comme avant car Bouhours allait m'enculer.
-
-Il a prit mon PC pour tout remettre bien (j'avais raison sur où tu mets le .idea ...)
+		## A lire !! ##
 
 
+-> J'ai :
 
-Du coup : TOUT FONCTIONNE, on touche rien à la structure du dépôt !!!
-
-PS : (je crois j'ai cassé "la config" pourrun en console) // je pense pas que ça soit long à refaire.
+- Ajouté les classes présentes sur le diagramme de classe (la mojorité sont vides ou incomplètes)
+- Corrigé 2/3 erreurs dans le diagramme de classe
+- Split speed en 2 (X et Y)
 
 
 
-!!!!!!!!!!!! READ ME !!!!!!!!!!!!!!!!
+-> Suggestions :
 
-Par pitier fautqu'on se fasse un call pour vraiment qu'on se mette d'accord et qu'on arrête de modifier le dépôt chaque semaine, on avance pas et c'est chiant! 
-
-
-
--> Y avait encore un peu de français dans le diagramme et le code donc j'ai modif.
--> J'ai rajouté des class du décorateur (faut qu'on discute pour le power up)
--> J'ai passé X, Y et speed en float. (+ 2/3 autre trucs pas logique (j'ai edit le diagramme et le code))
+- Pourquoi passer à Move une entité complète si on ne se sert que de X et Y ?
+- Faudra qu'on rediscute des interfaces.
 
 
 
+Trucs à faire (urgent) :
 
-Suggestion :
 
-Segmenter le paquet "model.entity" qui va être big sa mère.
+- Récupérer les input clavier
+- Commencer à faire des tests graphique (la modèle avance mais le test en console c'est pas fou)

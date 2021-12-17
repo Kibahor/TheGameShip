@@ -1,11 +1,14 @@
 package model.entity;
 
 public class MovableDecorator extends EntityDecorator {
-    float speed;
 
-    public MovableDecorator(Entity entity, float speed) {
+    float speedX;
+    float speedY;
+
+    public MovableDecorator(Entity entity, float speedX, float speedY) {
         super(entity);
-        this.speed = speed;
+        this.speedX = speedX;
+        this.speedY = speedY;
     }
 
     @Override
@@ -15,7 +18,9 @@ public class MovableDecorator extends EntityDecorator {
         // ...
     }
 
-    public float getSpeed() { return speed; }
+    public float getSpeedX() { return speedX; }
+    public void setSpeedX() { this.speedX = speedX; }
 
-    public void setSpeed() { this.speed = speed; }
+    public float getSpeedY() { return speedY; }
+    public void setSpeedY() { this.speedX = speedY; }
 }
