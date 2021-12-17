@@ -7,6 +7,7 @@ import java.util.UUID;
 
 public class Main {
     public static void main(String[] args) throws Exception {
+        //Exemple de jeu en javafx : https://edencoding.com/game-loop-javafx/
         Entity simpleEntity=new SimpleEntity(new URI("file://test.jpg"),"Test","Joueur");
         //printEntity(simpleEntity);
         Entity decorate=new EntityDecorator(new HasLifeDecorator(new MovableDecorator(simpleEntity,5),10));
