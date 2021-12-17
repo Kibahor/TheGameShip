@@ -5,11 +5,11 @@ import java.net.*;
 import java.util.*;
 
 
-public class Main
-{
-    public static void main(String[] args) throws Exception
-    {
-        Entity simpleEntity = new SimpleEntity(new URI("file://test.jpg"),"Test","Joueur");
+public class Main {
+    public static void main(String[] args) throws Exception {
+        //Exemple de jeu en javafx : https://edencoding.com/game-loop-javafx/
+        Entity simpleEntity=new SimpleEntity(new URI("file://test.jpg"),"Test","Joueur");
+
         //printEntity(simpleEntity);
         Entity decorate = new EntityDecorator(new HasLifeDecorator(new MovableDecorator(simpleEntity,5, 5),10));
         //printEntity(decorate);
