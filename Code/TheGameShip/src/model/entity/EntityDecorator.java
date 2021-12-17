@@ -15,4 +15,13 @@ public class EntityDecorator implements Entity {
     public String toString() {
         return decoratedEntity.toString();
     }
+
+    @Override
+    public int hashCode(){
+        return super.hashCode();
+    }
+    @Override
+    public boolean equals(Entity obj){
+        return super.equals(obj);
+    }
 }

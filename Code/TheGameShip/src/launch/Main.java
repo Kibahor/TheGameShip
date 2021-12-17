@@ -1,13 +1,25 @@
 package launch;
 import model.entity.*;
 import java.net.*;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        Entity simpleEntity=new SimpleEntity(new URI("file://test.jpg"),100,100,"Test","Joueur");
+        Entity simpleEntity=new SimpleEntity(new URI("file://test.jpg"),"Test","Joueur");
         printEntity(simpleEntity);
-        Entity hasLife=new HasLifeDecorator(simpleEntity,10);
-        printEntity(hasLife);
+        Entity decorate=new EntityDecorator(new HasLifeDecorator(new MovableDecorator(simpleEntity,5),10));
+        printEntity(decorate);
+        EntityManager manager=new EntityManager();
+
+        manager.add(simpleEntity);
+        manager.add(decorate);
+        manager.setLocation(simpleEntity,56,99);
+        printEntity(simpleEntity);
+
+        System.out.println(decorate instanceof EntityDecorator);
+        //manager.moveX(decorate);
+        //printEntity(decorate);
 
     }
 
