@@ -3,24 +3,28 @@ import model.entity.*;
 import java.net.*;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 public class Main {
     public static void main(String[] args) throws Exception {
         Entity simpleEntity=new SimpleEntity(new URI("file://test.jpg"),"Test","Joueur");
-        printEntity(simpleEntity);
+        //printEntity(simpleEntity);
         Entity decorate=new EntityDecorator(new HasLifeDecorator(new MovableDecorator(simpleEntity,5),10));
-        printEntity(decorate);
+        //printEntity(decorate);
         EntityManager manager=new EntityManager();
 
         manager.add(simpleEntity);
         manager.add(decorate);
+        manager.add(new SimpleEntity(new URI("file://blabla.jpg"),"Monstre","Ennemy"));
         manager.setLocation(simpleEntity,56,99);
-        printEntity(simpleEntity);
+        //printEntity(simpleEntity);
 
-        System.out.println(decorate instanceof EntityDecorator);
+        //Problème de détection de MovableDecorator dans manager.move()
         //manager.moveX(decorate);
         //printEntity(decorate);
 
+        //Le set ne doit posséder qu'un seul objet avec un unique id
+        manager.listEntity();
     }
 
     public static void printEntity(Entity entity){
