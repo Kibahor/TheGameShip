@@ -1,0 +1,25 @@
+
+		## A lire !! ##
+
+
+Tips :
+
+-> Tuto FXML (old)
+https://docs.oracle.com/javafx/2/get_started/fxml_tutorial.htm
+
+
+
+Problèmes à résoudre :
+
+A faire MAINTENANT :
+-> Gérer le fait de rester appuyé sur une touche tout en continuant à inspecter les autres touches.
+-> Tester la boucle de jeu (ajouter le broadcast et accessoirement l'obvervation deçu).
+-> Trouver une méthode de calcul pour transformer les inputs (de déplacement) en vitesse (utilisation d'un temps? d'un nombre d'occurence? de la vitesse actuelle?).
+-> Créer les fenêtre FXML du menu (rapide) puis du jeu en lui même (version simple de test).
+
+
+A faire le PLUS TOT POSSIBLE :
+-> Intégrer des sprites pour des tests visuels
+-> Gérer les collisions entre entités (debug)
+-> Intégrer le modèles (dans son entièreté (gestion des power up, tir, ..))
+
