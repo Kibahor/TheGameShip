@@ -1,0 +1,8 @@
+Donc une branche qui ajoute les entité
+Une branche qui anime les entité
+Une branche qui anime autre chose
+
+
+touche -> Code Behind -> Manager -> déplaceur -> Collisionneur --OK-> Déplacement(deplace)
+
+Manager-> créer un animateur d'entité => écoute les beep et a chaque fois fais une action -> colisionneur ...

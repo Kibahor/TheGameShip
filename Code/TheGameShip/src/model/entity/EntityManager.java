@@ -29,7 +29,7 @@ public class EntityManager
         se1.setX(se1.getX() + speedX);
         se1.setY(se1.getY() + speedY);
     }
-
+    //TODO:Utiliser le nom d'une entiter à la place d'une entité entière
     public void setLocation(Entity e1, double x, double y) {
         ((SimpleEntity)e1).setX(x);
         ((SimpleEntity)e1).setY(y);

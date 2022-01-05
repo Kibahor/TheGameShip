@@ -12,6 +12,7 @@ public class SimpleEntity implements Entity {
     private String type;
     private double hitbox_radius;
 
+    //TODO:Remplacer URI par path et gérer l'URI dans le constructeur
     public SimpleEntity(URI sprite, String nom, String type) {
         this.id = UUID.randomUUID();
         this.sprite = sprite;
@@ -20,6 +21,7 @@ public class SimpleEntity implements Entity {
         this.hitbox_radius = 10;
     }
 
+    //TODO:Remplacer URI par path et gérer l'URI dans le constructeur
     public SimpleEntity(URI sprite, String nom, String type, double x, double y, double hitbox_radius) {
         new SimpleEntity(sprite,nom,type);
         this.x = x;
