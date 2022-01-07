@@ -23,13 +23,16 @@ import model.entity.*;
 public class Launcher extends Application {
 
     public void start(Stage primaryStage) throws IOException {
-        Scene defaultScene=new Scene(FXMLLoader.load(this.getClass().getResource("/FXML/Fenetre.fxml")));
-        ViewManager viewManager=new ViewManager();
-        viewManager.addScene("Fenetre",defaultScene);
-        viewManager.addScene("Fenetre2",new Scene(FXMLLoader.load(this.getClass().getResource("/FXML/Fenetre2.fxml"))));
-
-        primaryStage.setScene(viewManager.getScene("Fenetre2",defaultScene));
         primaryStage.setTitle("TheGameShip");
+
+        Scene scene=new Scene(FXMLLoader.load(getClass().getResource("/FXML/Fenetre.fxml")));
+        primaryStage.setScene(scene);
+
+        ViewManager viewManager=new ViewManager(scene);
+        viewManager.addView("Fenetre",FXMLLoader.load(getClass().getResource("/FXML/Fenetre.fxml")));
+        viewManager.addView("Fenetre2",FXMLLoader.load(getClass().getResource("/FXML/Fenetre2.fxml")));
+        viewManager.setView("Fenetre");
+
         primaryStage.show();
     }
 }

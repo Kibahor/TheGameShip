@@ -1,32 +1,32 @@
 package view;
 
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-
-import java.io.IOException;
+import javafx.scene.layout.Pane;
 import java.util.HashMap;
-import java.util.Map;
-
 
 public class ViewManager {
-    private Map view;
+    private HashMap<String, Pane> view=new HashMap<>();
+    private Scene main;
 
-    public ViewManager(){
-        this.view = new HashMap();
+    public ViewManager(Scene main){
+        this.main = main;
     }
 
     //TODO: Ajouter méthode autoAdd qui va être dans le constructeur et qui va charger toute les vue dans la Map
-    public void addScene(String name,Scene scene){
-        view.put(name,scene);
+    public void addView(String name,Pane pane){
+        view.put(name,pane);
     }
 
-    public void removeScene(String name){
+    public void removeView(String name){
         view.remove(name);
     }
 
-    public Scene getScene(String name,Scene DefaultScene){
-        return (Scene) view.getOrDefault(name,DefaultScene);
+    public Pane getView(String name){
+        return (Pane) view.get(name);
+    }
+
+    public void setView(String name){
+        main.setRoot(view.get(name));
     }
 
     public void listScene(){
