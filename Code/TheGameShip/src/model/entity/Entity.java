@@ -4,7 +4,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.UUID;
 
-public class SimpleEntity implements IEntity {
+public class Entity implements IEntity {
     private UUID id;
     private URI sprite;
     private double x;
@@ -13,7 +13,7 @@ public class SimpleEntity implements IEntity {
     private String type;
     private final double hitbox_radius;
 
-    public SimpleEntity(String sprite, String nom, String type) throws URISyntaxException {
+    public Entity(String sprite, String nom, String type) throws URISyntaxException {
         this.id = UUID.randomUUID();
         this.sprite = new URI(sprite);
         this.nom = nom;
@@ -21,8 +21,8 @@ public class SimpleEntity implements IEntity {
         this.hitbox_radius = 10;
     }
 
-    public SimpleEntity(String sprite, String nom, String type, double x, double y, double hitbox_radius) throws URISyntaxException {
-        new SimpleEntity(sprite,nom,type);
+    public Entity(String sprite, String nom, String type, double x, double y, double hitbox_radius) throws URISyntaxException {
+        new Entity(sprite,nom,type);
         this.x = x;
         this.y = y;
         this.hitbox_radius=hitbox_radius;

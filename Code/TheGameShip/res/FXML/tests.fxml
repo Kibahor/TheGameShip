@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane maxHeight="1440.0" maxWidth="2650.0" minHeight="720.0" minWidth="1260.0" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Tests">
+   <children>
+      <HBox prefHeight="1080.0" prefWidth="1920.0">
+         <children>
+            <GridPane prefHeight="1080.0" prefWidth="600.0">
+               <columnConstraints>
+                  <ColumnConstraints minWidth="600.0" maxWidth="600.0" prefWidth="600.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints prefHeight="150.0" />
+                  <RowConstraints prefHeight="75.0" />
+                  <RowConstraints prefHeight="250.0" />
+                  <RowConstraints prefHeight="75.0" />
+                  <RowConstraints prefHeight="75.0" />
+               </rowConstraints>
+               <children>
+                  <Button alignment="CENTER" prefHeight="1000.0" prefWidth="1000.0" text="Play" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets bottom="10.0" left="25.0" right="25.0" top="10.0" />
+                     </GridPane.margin>
+                  </Button>
+                  <Button alignment="CENTER" prefHeight="1000.0" prefWidth="1000.0" text="Settings" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                     <GridPane.margin>
+                        <Insets bottom="10.0" left="25.0" right="25.0" top="10.0" />
+                     </GridPane.margin>
+                  </Button>
+                  <Button alignment="CENTER" prefHeight="1000.0" prefWidth="1000.0" text="Quit" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+                     <GridPane.margin>
+                        <Insets bottom="10.0" left="25.0" right="25.0" top="10.0" />
+                     </GridPane.margin>
+                  </Button>
+               </children>
+            </GridPane>
+            <Pane prefHeight="1080.0" prefWidth="1320.0" />
+         </children></HBox>
+   </children>
+</AnchorPane>

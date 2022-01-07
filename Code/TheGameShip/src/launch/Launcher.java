@@ -11,6 +11,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import view.Tests;
 import view.ViewManager;
 
 import java.util.HashSet;
@@ -27,8 +28,9 @@ public class Launcher extends Application {
         ViewManager viewManager=new ViewManager();
         viewManager.addScene("Fenetre",defaultScene);
         viewManager.addScene("Fenetre2",new Scene(FXMLLoader.load(this.getClass().getResource("/FXML/Fenetre2.fxml"))));
+        viewManager.addScene("tests", new Scene(FXMLLoader.load(this.getClass().getResource("/FXML/tests.fxml"))));
 
-        primaryStage.setScene(viewManager.getScene("Fenetre2",defaultScene));
+        primaryStage.setScene(viewManager.getScene("tests",defaultScene));
         primaryStage.setTitle("TheGameShip");
         primaryStage.show();
     }

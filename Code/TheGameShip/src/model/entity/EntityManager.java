@@ -1,5 +1,4 @@
 package model.entity;
-import javax.swing.text.html.parser.Entity;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -28,7 +27,7 @@ public class EntityManager
         if(!(e1 instanceof MovableDecorator)) {
             throw new Exception("L'entitée ne peut pas se déplacer car elle n'hérite pas de MovableDecorator");
         }
-        SimpleEntity se1 = (SimpleEntity) e1;
+        Entity se1 = (Entity) e1;
         float speedX = ((MovableDecorator)e1).getSpeedX();
         float speedY = ((MovableDecorator)e1).getSpeedY();
         se1.setX(se1.getX() + speedX);
@@ -40,8 +39,8 @@ public class EntityManager
         if(e1==null){
             return;
         }
-        ((SimpleEntity)e1).setX(x);
-        ((SimpleEntity)e1).setY(y);
+        ((Entity)e1).setX(x);
+        ((Entity)e1).setY(y);
     }
 
     public void listEntity() {

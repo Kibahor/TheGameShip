@@ -4,11 +4,11 @@ public class Collider {
 
     public boolean Collider(IEntity e1, IEntity e2) throws Exception
     {
-        if (!(e1 instanceof SimpleEntity) || !(e2 instanceof SimpleEntity)) {
+        if (!(e1 instanceof Entity) || !(e2 instanceof Entity)) {
             throw new Exception("L'entitée n'est pas une SimpleEntity, il ne possède donc pas de x, ni de y");
         }
-        SimpleEntity se1=(SimpleEntity) e1;
-        SimpleEntity se2=(SimpleEntity) e2;
+        Entity se1=(Entity) e1;
+        Entity se2=(Entity) e2;
 
         double x1 = se1.getX();
         double x2 = se2.getX();
