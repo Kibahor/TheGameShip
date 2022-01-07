@@ -14,14 +14,15 @@ import javafx.stage.Stage;
 import view.ViewManager;
 
 public class Launcher extends Application {
+    public static Scene main;
 
     public void start(Stage primaryStage) throws IOException {
         primaryStage.setTitle("TheGameShip");
 
-        Scene scene=new Scene(FXMLLoader.load(getClass().getResource("/FXML/Fenetre.fxml")));
-        primaryStage.setScene(scene);
+        this.main=new Scene(FXMLLoader.load(getClass().getResource("/FXML/Fenetre2.fxml")));
+        primaryStage.setScene(this.main);
 
-        ViewManager viewManager=new ViewManager(scene);
+        ViewManager viewManager=new ViewManager(this.main);
         viewManager.addView("Fenetre",FXMLLoader.load(getClass().getResource("/FXML/Fenetre.fxml")));
         viewManager.addView("Fenetre2",FXMLLoader.load(getClass().getResource("/FXML/Fenetre2.fxml")));
         viewManager.setView("Fenetre");

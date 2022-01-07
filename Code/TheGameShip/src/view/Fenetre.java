@@ -4,41 +4,48 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
+import launch.Launcher;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Fenetre {
-    ArrayList<String> input;
+    ArrayList<String> input=new ArrayList<String>();
+
+    @FXML
+    private Pane pane;
+
     @FXML
     private Rectangle joueur;
 
     public void initialize() {
-        input= new ArrayList<String>();
         //TODO: Faire fonctionner les déplacements
-        /*
         //Déplacement
-        HashSet<String> input = new HashSet<String>();
 
-        scene.setOnKeyPressed(e -> {
+        Launcher.main.setOnKeyPressed(e -> {
             String code = e.getCode().toString();
             input.add(code);
         });
-        scene.setOnKeyReleased((EventHandler<KeyEvent>) e -> {
+        Launcher.main.setOnKeyReleased(e -> {
             String code = e.getCode().toString();
             if (input.contains("LEFT")){
+                joueur.setX(joueur.getX()-5);
                 System.out.println("LEFT");
             }else if (input.contains("RIGHT")){
+                joueur.setX(joueur.getX()+5);
                 System.out.println("RIGHT");
             }else if (input.contains("DOWN")){
+                joueur.setY(joueur.getY()+5);
                 System.out.println("DOWN");
             }else if (input.contains("UP")){
+                joueur.setY(joueur.getY()-5);
                 System.out.println("UP");
             }else if (input.contains("A")){
                 System.out.println("A");
             }
             input.remove( code );
-        });*/
+        });
     }
 }
