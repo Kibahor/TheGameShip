@@ -17,13 +17,16 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.input.KeyEvent;
 import model.entity.*;
+import view.ViewManager;
 
 public class Launcher extends Application {
 
     public void start(Stage primaryStage) throws IOException {
-        Parent racine = (Parent)FXMLLoader.load(this.getClass().getResource("/FXML/Fenetre.fxml"));
-        Scene scene = new Scene(racine);
-
+        Scene defaultScene=new Scene(FXMLLoader.load(this.getClass().getResource("/FXML/Fenetre.fxml")));
+        ViewManager viewManager=new ViewManager();
+        viewManager.addScene("Fenetre",defaultScene);
+        viewManager.addScene("Fenetre2",new Scene(FXMLLoader.load(this.getClass().getResource("/FXML/Fenetre2.fxml"))));
+        /*
         //Déplacement
         Set<String> input = new HashSet<String>();
         scene.setOnKeyPressed(e -> {
@@ -44,8 +47,8 @@ public class Launcher extends Application {
                 System.out.println("A");
             }
             input.remove( code );
-        });
-        primaryStage.setScene(scene);
+        });*/
+        primaryStage.setScene(viewManager.getScene("Fenetre2",defaultScene));
         primaryStage.setTitle("TheGameShip");
         primaryStage.show();
     }

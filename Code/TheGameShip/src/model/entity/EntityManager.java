@@ -18,8 +18,9 @@ public class EntityManager
         entities.remove(e);
     }
 
-    public void move(Entity e1) throws Exception
+    public void move(String name) throws Exception
     {
+        Entity e1=this.getEntity(name);
         if(!(e1 instanceof MovableDecorator)) {
             throw new Exception("L'entitée ne peut pas se déplacer car elle n'hérite pas de MovableDecorator");
         }
@@ -29,8 +30,9 @@ public class EntityManager
         se1.setX(se1.getX() + speedX);
         se1.setY(se1.getY() + speedY);
     }
-    //TODO:Utiliser le nom d'une entiter à la place d'une entité entière
-    public void setLocation(Entity e1, double x, double y) {
+
+    public void setLocation(String name, double x, double y) {
+        Entity e1=this.getEntity(name);
         ((SimpleEntity)e1).setX(x);
         ((SimpleEntity)e1).setY(y);
     }
@@ -41,5 +43,19 @@ public class EntityManager
             Entity e=(Entity)it.next();
             System.out.println(e);
         }
+    }
+
+    private Entity getEntity(String name){
+        if(name.isEmpty()){
+            return null;
+        }
+        Iterator it=entities.iterator();
+        while(it.hasNext()){
+            SimpleEntity e=(SimpleEntity) it.next();
+            if(e.getNom().equals(name)){
+                return e;
+            }
+        }
+        return null;
     }
 }
