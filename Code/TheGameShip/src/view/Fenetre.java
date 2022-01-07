@@ -8,7 +8,6 @@ import javafx.scene.shape.Rectangle;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Set;
 
 public class Fenetre {
     ArrayList<String> input;
@@ -17,10 +16,11 @@ public class Fenetre {
 
     public void initialize() {
         input= new ArrayList<String>();
-        //Déplacement
-        Set<String> input = new HashSet<String>();
+        //TODO: Faire fonctionner les déplacements
         /*
-        //Déplacements
+        //Déplacement
+        HashSet<String> input = new HashSet<String>();
+
         scene.setOnKeyPressed(e -> {
             String code = e.getCode().toString();
             input.add(code);

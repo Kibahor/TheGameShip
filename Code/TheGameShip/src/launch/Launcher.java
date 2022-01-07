@@ -13,13 +13,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import view.ViewManager;
 
-import java.util.HashSet;
-import java.util.Set;
-import javafx.event.EventHandler;
-import javafx.scene.Parent;
-import javafx.scene.input.KeyEvent;
-import model.entity.*;
-
 public class Launcher extends Application {
 
     public void start(Stage primaryStage) throws IOException {
