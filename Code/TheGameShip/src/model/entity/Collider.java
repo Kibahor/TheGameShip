@@ -2,7 +2,7 @@ package model.entity;
 
 public class Collider {
 
-    public boolean Collider(Entity e1, Entity e2) throws Exception
+    public boolean Collider(IEntity e1, IEntity e2) throws Exception
     {
         if (!(e1 instanceof SimpleEntity) || !(e2 instanceof SimpleEntity)) {
             throw new Exception("L'entitée n'est pas une SimpleEntity, il ne possède donc pas de x, ni de y");

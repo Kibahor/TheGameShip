@@ -4,15 +4,15 @@ public class TakePowerUp extends EntityDecorator {
 
     int duration;
 
-    public TakePowerUp(Entity entity, int duration)
+    public TakePowerUp(IEntity IEntity, int duration)
     {
-        super(entity);
+        super(IEntity);
         this.duration = duration;
     }
 
     @Override
     public void draw() {
-        decoratedEntity.draw();
+        decoratedIEntity.draw();
         System.out.print("TakePowerUp"); //DEBUG
         // ...
     }

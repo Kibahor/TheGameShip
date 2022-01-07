@@ -1,19 +1,19 @@
 //https://www.geeksforgeeks.org/decorator-design-pattern-in-java-with-example/
 package model.entity;
 
-public class EntityDecorator implements Entity {
-    protected Entity decoratedEntity;
+public class EntityDecorator implements IEntity {
+    protected IEntity decoratedIEntity;
 
-    public EntityDecorator(Entity entity) {
-        this.decoratedEntity=entity;
+    public EntityDecorator(IEntity IEntity) {
+        this.decoratedIEntity = IEntity;
     }
     public void draw(){
-        decoratedEntity.draw();
+        decoratedIEntity.draw();
     }
 
     @Override
     public String toString() {
-        return decoratedEntity.toString();
+        return decoratedIEntity.toString();
     }
 
     @Override
@@ -21,7 +21,12 @@ public class EntityDecorator implements Entity {
         return super.hashCode();
     }
     @Override
-    public boolean equals(Entity obj){
+    public boolean equals(IEntity obj){
         return super.equals(obj);
+    }
+
+    @Override
+    public String getName() {
+        return "defaultEntityDecorator name";
     }
 }

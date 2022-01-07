@@ -16,6 +16,7 @@ public class ViewManager {
         this.view = new HashMap();
     }
 
+    //TODO: Ajouter méthode autoAdd qui va être dans le constructeur et qui va charger toute les vue dans la Map
     public void addScene(String name,Scene scene){
         view.put(name,scene);
     }

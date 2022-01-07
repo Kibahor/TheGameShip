@@ -5,15 +5,15 @@ public class MovableDecorator extends EntityDecorator {
     float speedX;
     float speedY;
 
-    public MovableDecorator(Entity entity, float speedX, float speedY) {
-        super(entity);
+    public MovableDecorator(IEntity IEntity, float speedX, float speedY) {
+        super(IEntity);
         this.speedX = speedX;
         this.speedY = speedY;
     }
 
     @Override
     public void draw() {
-        decoratedEntity.draw();
+        decoratedIEntity.draw();
         System.out.print("Movable "); //DEBUG
         // ...
     }

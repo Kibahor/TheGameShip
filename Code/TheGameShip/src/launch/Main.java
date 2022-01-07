@@ -1,23 +1,21 @@
 package launch;
 import model.Boucle;
 import model.entity.*;
-import java.net.*;
-import java.util.*;
 
 
 public class Main {
     public static void main(String[] args) throws Exception {
         //Exemple de jeu en javafx : https://edencoding.com/game-loop-javafx/
-        Entity simpleEntity=new SimpleEntity(new URI("file://test.jpg"),"Test","Joueur");
+        IEntity simpleIEntity =new SimpleEntity("file://test.jpg","Test","Joueur");
 
         //printEntity(simpleEntity);
-        Entity decorate = new EntityDecorator(new HasLifeDecorator(new MovableDecorator(simpleEntity,5, 5),10));
+        IEntity decorate = new EntityDecorator(new HasLifeDecorator(new MovableDecorator(simpleIEntity,5, 5),10));
         //printEntity(decorate);
         EntityManager manager=new EntityManager();
 
-        manager.add(simpleEntity);
+        manager.add(simpleIEntity);
         manager.add(decorate);
-        manager.add(new SimpleEntity(new URI("file://blabla.jpg"),"Monstre","Ennemy"));
+        manager.add(new SimpleEntity("file://blabla.jpg","Monstre","Ennemy"));
         manager.setLocation("Joueur",56,99);
         //printEntity(simpleEntity);
 
@@ -33,9 +31,9 @@ public class Main {
         b.start();
     }
 
-    public static void printEntity(Entity entity){
+    public static void printEntity(IEntity IEntity){
         System.out.print("Entity : ");
-        entity.draw();
-        System.out.println(entity+"\n");
+        IEntity.draw();
+        System.out.println(IEntity +"\n");
     }
 }

@@ -1,18 +1,18 @@
 package model.entity;
 
-public class HasLifeDecorator extends EntityDecorator{
+public class HasLifeDecorator extends EntityDecorator {
     int hp;
     boolean isDead;
 
-    public HasLifeDecorator(Entity entity,int hp) {
-        super(entity);
+    public HasLifeDecorator(IEntity IEntity, int hp) {
+        super(IEntity);
         this.hp=hp;
         this.isDead=false;
     }
 
     @Override
     public void draw() {
-        decoratedEntity.draw();
+        decoratedIEntity.draw();
         System.out.print("HasLife "); //DEBUG
         //ajouter autre chose ...
     }
