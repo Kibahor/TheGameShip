@@ -25,6 +25,7 @@ public class Launcher extends Application {
         ViewManager viewManager=new ViewManager(this.main);
         viewManager.addView("Fenetre",FXMLLoader.load(getClass().getResource("/FXML/Fenetre.fxml")));
         viewManager.addView("Fenetre2",FXMLLoader.load(getClass().getResource("/FXML/Fenetre2.fxml")));
+        viewManager.addView("tests", FXMLLoader.load(getClass().getResource("/FXML/tests.fxml")));
         viewManager.setView("Fenetre");
 
         primaryStage.show();

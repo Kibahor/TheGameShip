@@ -6,7 +6,7 @@ import model.entity.*;
 public class Main {
     public static void main(String[] args) throws Exception {
         //Exemple de jeu en javafx : https://edencoding.com/game-loop-javafx/
-        IEntity simpleIEntity =new SimpleEntity("file://test.jpg","Test","Joueur");
+        IEntity simpleIEntity =new Entity("file://test.jpg","Test","Joueur");
 
         //printEntity(simpleEntity);
         IEntity decorate = new EntityDecorator(new HasLifeDecorator(new MovableDecorator(simpleIEntity,5, 5),10));
@@ -15,7 +15,7 @@ public class Main {
 
         manager.add(simpleIEntity);
         manager.add(decorate);
-        manager.add(new SimpleEntity("file://blabla.jpg","Monstre","Ennemy"));
+        manager.add(new Entity("file://blabla.jpg","Monstre","Ennemy"));
         manager.setLocation("Joueur",56,99);
         //printEntity(simpleEntity);
 
