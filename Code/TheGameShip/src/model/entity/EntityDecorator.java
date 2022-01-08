@@ -8,12 +8,8 @@ public class EntityDecorator implements IEntity {
         this.entity = e;
     }
 
-    public void draw(){
-        entity.draw();
-    }
-
-    public IEntity getOriginalEntity(){
-        return entity;
+    public void printDecorationName(){
+        entity.printDecorationName();
     }
 
     @Override
@@ -29,7 +25,6 @@ public class EntityDecorator implements IEntity {
     public boolean equals(IEntity obj){
         return super.equals(obj);
     }
-
     @Override
     public String getName() {
         return entity.getName();

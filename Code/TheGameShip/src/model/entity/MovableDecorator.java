@@ -12,8 +12,8 @@ public class MovableDecorator extends EntityDecorator implements IEntityMovable 
     }
 
     @Override
-    public void draw() {
-        entity.draw();
+    public void printDecorationName() {
+        entity.printDecorationName();
         System.out.print("Movable "); //DEBUG
         // ...
     }

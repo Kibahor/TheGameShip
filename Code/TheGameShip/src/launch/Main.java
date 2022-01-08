@@ -33,7 +33,7 @@ public class Main {
 
     public static void printEntity(IEntity IEntity){
         System.out.print("Entity : ");
-        IEntity.draw();
+        IEntity.printDecorationName();
         System.out.println(IEntity +"\n");
     }
 }

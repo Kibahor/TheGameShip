@@ -29,13 +29,8 @@ public class Entity implements IEntity {
     }
 
     @Override
-    public void draw() {
-        System.out.print("SimpleEntity "); //DEBUG
-    }
-
-    @Override
-    public String toString() {
-        return "\nId : "+id.toString() + "\nNom : "+nom + "\nType : "+type + "\nSprite : "+sprite.toString() + "\nX : "+ x + "\nY : "+ y+ "\nRadius : "+ hitbox_radius;
+    public void printDecorationName() {
+        System.out.print("Entity "); //DEBUG
     }
 
     @Override
@@ -51,6 +46,11 @@ public class Entity implements IEntity {
     @Override
     public String getName() {
         return getNom();
+    }
+
+    @Override
+    public String toString() {
+        return "\nId : "+id.toString() + "\nNom : "+nom + "\nType : "+type + "\nSprite : "+sprite.toString() + "\nX : "+ x + "\nY : "+ y+ "\nRadius : "+ hitbox_radius;
     }
 
     public UUID getId() {return id;}

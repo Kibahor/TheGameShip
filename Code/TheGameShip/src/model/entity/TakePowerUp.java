@@ -11,8 +11,8 @@ public class TakePowerUp extends EntityDecorator {
     }
 
     @Override
-    public void draw() {
-        entity.draw();
+    public void printDecorationName() {
+        entity.printDecorationName();
         System.out.print("TakePowerUp"); //DEBUG
         // ...
     }

@@ -11,8 +11,8 @@ public class ShootDecorator extends EntityDecorator {
     }
 
     @Override
-    public void draw() {
-        entity.draw();
+    public void printDecorationName() {
+        entity.printDecorationName();
         System.out.print("Shoot "); //DEBUG
         // ...
     }
