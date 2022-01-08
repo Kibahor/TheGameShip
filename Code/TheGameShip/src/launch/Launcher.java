@@ -18,6 +18,9 @@ public class Launcher extends Application {
 
     public void start(Stage primaryStage) throws IOException {
         primaryStage.setTitle("TheGameShip");
+        primaryStage.setMaxHeight(720);
+        primaryStage.setMaxHeight(1280);
+        primaryStage.setResizable(false);
 
         this.main=new Scene(FXMLLoader.load(getClass().getResource("/FXML/Fenetre2.fxml")));
         primaryStage.setScene(this.main);
