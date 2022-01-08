@@ -1,5 +1,9 @@
 package model.entity;
 
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+
+
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.UUID;
@@ -7,11 +11,17 @@ import java.util.UUID;
 public class Entity implements IEntity {
     private UUID id;
     private URI sprite;
-    private double x;
-    private double y;
+    private final DoubleProperty x = new SimpleDoubleProperty();
+        public double getX() {return x.get();}
+        public void setX(double x) {this.x.set(x);}
+        public DoubleProperty xProperty(){return x;}
+    private final DoubleProperty y = new SimpleDoubleProperty();
+        public double getY() {return y.get();}
+        public void setY(double y) {this.y.set(y);}
+        public DoubleProperty yProperty(){return y;}
     private String name;
     private String type;
-    private final double hitbox_radius;
+    private double hitbox_radius;
 
     public Entity(String sprite, String nom, String type) throws URISyntaxException {
         this.id = UUID.randomUUID();
@@ -22,9 +32,9 @@ public class Entity implements IEntity {
     }
 
     public Entity(String sprite, String nom, String type, double x, double y, double hitbox_radius) throws URISyntaxException {
-        new Entity(sprite,nom,type);
-        this.x = x;
-        this.y = y;
+        this(sprite,nom,type);
+        setX(x);
+        setY(y);
         this.hitbox_radius=hitbox_radius;
     }
 
@@ -60,22 +70,6 @@ public class Entity implements IEntity {
 
     public void setSprite(URI sprite) {
         this.sprite = sprite;
-    }
-
-    public double getX() {
-        return x;
-    }
-
-    public void setX(double x) {
-        this.x = x;
-    }
-
-    public double getY() {
-        return y;
-    }
-
-    public void setY(double y) {
-        this.y = y;
     }
 
     public double getHitbox_radius() {

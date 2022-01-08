@@ -5,29 +5,51 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.shape.Rectangle;
 import launch.Launcher;
 
+import java.util.*;
+
 public class Input{
+    private Map<String, Boolean> isPressed=new HashMap<>();
+    private Move move;
+
     public Input(String entityName) throws Exception {
-        Move move=new Move(entityName);
-        EventHandler<KeyEvent> eventHandler= e -> {
+        move=new Move(entityName);
+        //TODO : Un peu brut, trouver un moyen plus flexible
+        isPressed.put("DOWN",false);
+        isPressed.put("UP",false);
+        isPressed.put("RIGHT",false);
+        isPressed.put("LEFT",false);
+        Launcher.main.addEventFilter(KeyEvent.KEY_PRESSED, e -> {
             String code = e.getCode().toString();
-            switch (code) {
-                case "LEFT":
-                    move.left();
-                    System.out.println("LEFT");
-                    break;
-                case "RIGHT":
-                    move.right();
-                    System.out.println("RIGHT");
-                    break;
-                case "DOWN":
-                    move.down();
-                    System.out.println("DOWN");
-                    break;
-                case "UP":
-                    move.up();
-                    System.out.println("UP");
+            System.out.println(code);//DEBUG
+            if(isPressed.containsKey(code)){
+                isPressed.replace(code,true);
             }
-        };
-        Launcher.main.addEventFilter(KeyEvent.KEY_PRESSED, eventHandler);
+        });
+    }
+
+    //Quand la boucle la notifie
+    public void update(){
+        for(Map.Entry m: isPressed.entrySet()){
+            if((Boolean)m.getValue()){
+                switch ((String)m.getKey()) {
+                    case "LEFT":
+                        move.left();
+                        isPressed.put("LEFT",false);
+                        break;
+                    case "RIGHT":
+                        move.right();
+                        isPressed.put("RIGHT",false);
+                        break;
+                    case "DOWN":
+                        move.down();
+                        isPressed.put("DOWN",false);
+                        break;
+                    case "UP":
+                        move.up();
+                        isPressed.put("UP",false);
+                        break;
+                }
+            }
+        }
     }
 }

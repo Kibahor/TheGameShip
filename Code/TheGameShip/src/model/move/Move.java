@@ -1,9 +1,7 @@
 package model.move;
 
 import launch.Launcher;
-import model.entity.Entity;
 import model.entity.IEntity;
-import model.entity.MovableDecorator;
 
 public class Move{
     IEntity e;
@@ -19,16 +17,15 @@ public class Move{
     }
 
     public void left(){
-        e.setX(e.getX()-((MovableDecorator) e).getSpeedX());
+        e.setX(e.getX()-5);
     }
     public void right(){
-        e.setX(e.getX()+((MovableDecorator) e).getSpeedX());
+        e.setX(e.getX()+5);
     }
     public void down(){
-        e.setY(e.getY()-((MovableDecorator) e).getSpeedY());
+        e.setY(e.getY()+5);
     }
     public void up(){
-        e.setY(e.getY()+((MovableDecorator) e).getSpeedY());
+        e.setY(e.getY()-5);
     }
-
 }

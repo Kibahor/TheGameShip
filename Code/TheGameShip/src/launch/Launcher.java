@@ -11,6 +11,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.Boucle;
 import model.entity.*;
 import view.ViewManager;
 
@@ -21,12 +22,13 @@ public class Launcher extends Application {
 
     public void start(Stage primaryStage) throws Exception {
         entityManager=new EntityManager();
-        entityManager.add(new EntityDecorator(new MovableDecorator(new Entity("file://test.jpg","Vaisseau","Joueur"),5, 5)));
+        entityManager.add(new Entity("file://test.jpg","Vaisseau","Joueur"));
 
         primaryStage.setTitle("TheGameShip");
         primaryStage.setMaxHeight(720);
         primaryStage.setMaxHeight(1280);
         primaryStage.setResizable(false);
+        //primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/img/EdenCodingIcon.png")));
 
         main=new Scene(FXMLLoader.load(getClass().getResource("/FXML/tests.fxml")));
 

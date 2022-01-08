@@ -1,16 +1,12 @@
 package view;
 
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import launch.Launcher;
+import model.Boucle;
+import model.entity.Entity;
 import model.move.Input;
-
-import java.util.ArrayList;
-import java.util.HashSet;
 
 public class MainWindow {
     @FXML
@@ -22,7 +18,7 @@ public class MainWindow {
     public void initialize() throws Exception {
         //TODO: Faire fonctionner les déplacements
         //Déplacement
-        //Déplacement
+        /*
         Launcher.main.setOnKeyPressed(e -> {
             String code = e.getCode().toString();
             if (code.contains("LEFT")){
@@ -40,8 +36,19 @@ public class MainWindow {
             }else if (code.contains("A")){
                 System.out.println("A");
             }
-        });
-        ///Input input=new Input("Vaisseau");
+        });*/
+        Entity e= (Entity) Launcher.entityManager.getEntity("Vaisseau");
 
+        joueur.xProperty().bind(e.xProperty());
+        joueur.yProperty().bind(e.yProperty());
+        Input input=new Input("Vaisseau");
+        //TODO : Le mettre dans le Launcher
+        Thread b = new Thread(new Boucle() {
+            @Override
+            public void update() {
+                input.update();
+            }
+        });
+        b.start();
     }
 }

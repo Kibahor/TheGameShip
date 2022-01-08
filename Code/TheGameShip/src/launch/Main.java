@@ -27,8 +27,8 @@ public class Main {
         manager.listEntity();
 
         // Création et lancement du beeper
-        Thread b = new Thread(new Boucle());
-        b.start();
+        //Thread b = new Thread(new Boucle());
+        //b.start();
     }
 
     public static void printEntity(IEntity IEntity){

@@ -1,18 +1,19 @@
 package model;
 
-public class Boucle extends Thread {
+public abstract class Boucle extends Thread {
 
     public void run()
     {
-        // Faudra arranger ça
+        // TODO : Il faut créer une méthode qui permet de s'abonner a un eventHandler et notifier tout les abonnés
         while (true) {
             try {
                 sleep(50);
-                //update();
-            }
-            catch (InterruptedException e) {
+                update();
+            } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
     }
+    public abstract void update();
+
 }

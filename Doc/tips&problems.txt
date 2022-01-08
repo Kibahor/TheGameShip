@@ -31,3 +31,9 @@ A faire DANS LE FUTUR (FUTUR) :
 -> Intégrer les ennemis
 -> Intégrer un médiateur pour le collisionneur
 -> Récupérer les options du menu
+
+Note :
+Pour les power up le décorateur semble adapter, sinon utiliser l'état
+pour les entités le décorateur ne va pas il faut changer
+un monde possède un entity manager, comme sa chaque monde a sa liste d'entiter
+ECS (Entity Componement System) :https://matthall.codes/blog/ecs/
