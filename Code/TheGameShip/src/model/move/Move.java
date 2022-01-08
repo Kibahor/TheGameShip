@@ -2,13 +2,33 @@ package model.move;
 
 import launch.Launcher;
 import model.entity.Entity;
+import model.entity.IEntity;
 import model.entity.IEntityMovable;
 
 public class Move{
-    public static void deplacement(String name, double X, double Y) throws Exception {
-        Entity e= (Entity) Launcher.entityManager.getEntity(name);
-        e.setX(e.getX()+1);
-        e.setY(e.getY()+1);
+    IEntity e;
+
+    public Move(String entityName) throws Exception{
+        e= Launcher.entityManager.getEntity(entityName);
+
+        //TODO:Marche pas, vérifier autrement, genre créer une méthode qui envoie un tableau de string avec tout les décorateurs
+        /*
+        if(!(e instanceof IEntityMovable)){
+            throw new Exception("L'entiter n'a pas de vitesse (EntityMovable)");
+        }*/
+    }
+
+    public void left(){
+        //e.setX(e.getX()-((IEntityMovable) e).getSpeedX());
+    }
+    public void right(){
+        //e.setX(e.getX()+((IEntityMovable) e).getSpeedX());
+    }
+    public void down(){
+        //e.setY(e.getY()-((IEntityMovable) e).getSpeedY());
+    }
+    public void up(){
+        //e.setY(e.getY()+((IEntityMovable) e).getSpeedY());
     }
     /* public void move(String name) throws Exception
     {

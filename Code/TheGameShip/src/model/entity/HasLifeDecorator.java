@@ -12,7 +12,7 @@ public class HasLifeDecorator extends EntityDecorator {
 
     @Override
     public void draw() {
-        decoratedIEntity.draw();
+        entity.draw();
         System.out.print("HasLife "); //DEBUG
         //ajouter autre chose ...
     }

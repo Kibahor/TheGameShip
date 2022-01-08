@@ -25,17 +25,15 @@ public class EntityManager
         }
     }
 
-    public IEntity getEntity(String name){
-        if(name.isEmpty()){
-            return null;
-        }
+    public IEntity getEntity(String name) throws Exception{
         Iterator it=entities.iterator();
         while(it.hasNext()){
             IEntity e=(IEntity)it.next();
+            System.out.println(e.getName());
             if(e.getName().equals(name)){
                 return e;
             }
         }
-        return null;
+        throw new Exception("L'Entité \""+name+"\" n'existe pas");
     }
 }

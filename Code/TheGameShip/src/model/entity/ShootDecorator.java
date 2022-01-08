@@ -12,7 +12,7 @@ public class ShootDecorator extends EntityDecorator {
 
     @Override
     public void draw() {
-        decoratedIEntity.draw();
+        entity.draw();
         System.out.print("Shoot "); //DEBUG
         // ...
     }

@@ -12,7 +12,7 @@ public class TakePowerUp extends EntityDecorator {
 
     @Override
     public void draw() {
-        decoratedIEntity.draw();
+        entity.draw();
         System.out.print("TakePowerUp"); //DEBUG
         // ...
     }

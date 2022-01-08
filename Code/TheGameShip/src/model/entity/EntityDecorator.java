@@ -2,18 +2,23 @@
 package model.entity;
 
 public class EntityDecorator implements IEntity {
-    protected IEntity decoratedIEntity;
+    protected IEntity entity;
 
-    public EntityDecorator(IEntity IEntity) {
-        this.decoratedIEntity = IEntity;
+    public EntityDecorator(IEntity e) {
+        this.entity = e;
     }
+
     public void draw(){
-        decoratedIEntity.draw();
+        entity.draw();
+    }
+
+    public IEntity getOriginalEntity(){
+        return entity;
     }
 
     @Override
     public String toString() {
-        return decoratedIEntity.toString();
+        return entity.toString();
     }
 
     @Override
@@ -27,6 +32,6 @@ public class EntityDecorator implements IEntity {
 
     @Override
     public String getName() {
-        return "defaultEntityDecorator name";
+        return entity.getName();
     }
 }
