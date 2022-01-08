@@ -12,8 +12,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Fenetre {
-    ArrayList<String> input=new ArrayList<String>();
-
     @FXML
     private Pane pane;
 
@@ -23,29 +21,23 @@ public class Fenetre {
     public void initialize() {
         //TODO: Faire fonctionner les déplacements
         //Déplacement
-
         Launcher.main.setOnKeyPressed(e -> {
             String code = e.getCode().toString();
-            input.add(code);
-        });
-        Launcher.main.setOnKeyReleased(e -> {
-            String code = e.getCode().toString();
-            if (input.contains("LEFT")){
+            if (code.contains("LEFT")){
                 joueur.setX(joueur.getX()-5);
                 System.out.println("LEFT");
-            }else if (input.contains("RIGHT")){
+            }else if (code.contains("RIGHT")){
                 joueur.setX(joueur.getX()+5);
                 System.out.println("RIGHT");
-            }else if (input.contains("DOWN")){
+            }else if (code.contains("DOWN")){
                 joueur.setY(joueur.getY()+5);
                 System.out.println("DOWN");
-            }else if (input.contains("UP")){
+            }else if (code.contains("UP")){
                 joueur.setY(joueur.getY()-5);
                 System.out.println("UP");
-            }else if (input.contains("A")){
+            }else if (code.contains("A")){
                 System.out.println("A");
             }
-            input.remove( code );
         });
     }
 }

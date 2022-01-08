@@ -17,32 +17,6 @@ public class EntityManager
     public void delete(IEntity e){
         entities.remove(e);
     }
-
-    public void move(String name) throws Exception
-    {
-        IEntity e1=this.getEntity(name);
-        if(e1==null){
-            return;
-        }
-        if(!(e1 instanceof MovableDecorator)) {
-            throw new Exception("L'entitée ne peut pas se déplacer car elle n'hérite pas de MovableDecorator");
-        }
-        Entity se1 = (Entity) e1;
-        float speedX = ((MovableDecorator)e1).getSpeedX();
-        float speedY = ((MovableDecorator)e1).getSpeedY();
-        se1.setX(se1.getX() + speedX);
-        se1.setY(se1.getY() + speedY);
-    }
-
-    public void setLocation(String name, double x, double y) {
-        IEntity e1=this.getEntity(name);
-        if(e1==null){
-            return;
-        }
-        ((Entity)e1).setX(x);
-        ((Entity)e1).setY(y);
-    }
-
     public void listEntity() {
         Iterator it = entities.iterator();
         while(it.hasNext()){
@@ -51,7 +25,7 @@ public class EntityManager
         }
     }
 
-    private IEntity getEntity(String name){
+    public IEntity getEntity(String name){
         if(name.isEmpty()){
             return null;
         }
