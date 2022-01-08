@@ -1,7 +1,5 @@
 package view;
 
-import javafx.fxml.FXML;
-
-public class Tests {
+public class tests {
     public void initialize() {}
 }
