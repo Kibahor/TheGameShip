@@ -1,17 +1,13 @@
 package view;
 
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import launch.Launcher;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 
-public class Fenetre {
+public class MainWindow {
     ArrayList<String> input=new ArrayList<String>();
 
     @FXML

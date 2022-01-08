@@ -22,14 +22,15 @@ public class Launcher extends Application {
         primaryStage.setMaxHeight(1280);
         primaryStage.setResizable(false);
 
-        this.main=new Scene(FXMLLoader.load(getClass().getResource("/FXML/tests.fxml")));
+        this.main=new Scene(FXMLLoader.load(getClass().getResource("/FXML/Menu.fxml")));
         primaryStage.setScene(this.main);
 
         ViewManager viewManager=new ViewManager(this.main);
-        viewManager.addView("Fenetre",FXMLLoader.load(getClass().getResource("/FXML/Fenetre.fxml")));
-        viewManager.addView("Fenetre2",FXMLLoader.load(getClass().getResource("/FXML/Fenetre2.fxml")));
-        viewManager.addView("tests", FXMLLoader.load(getClass().getResource("/FXML/tests.fxml")));
-        viewManager.setView("tests");
+        viewManager.addView("MainWindow",FXMLLoader.load(getClass().getResource("/FXML/MainWindow.fxml")));
+        viewManager.addView("Menu", FXMLLoader.load(getClass().getResource("/FXML/Menu.fxml")));
+        viewManager.addView("Settings", FXMLLoader.load(getClass().getResource("/FXML/Settings.fxml")));
+        viewManager.addView("tests",FXMLLoader.load(getClass().getResource("/FXML/tests.fxml")));
+        viewManager.setView("Menu");
 
         primaryStage.show();
     }
