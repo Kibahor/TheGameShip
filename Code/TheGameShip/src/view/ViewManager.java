@@ -24,7 +24,7 @@ public class ViewManager {
     public Pane getView(String name){
         return (Pane) view.get(name);
     }
-
+    //TODO: throw une exception si la scene n'est pas trouver
     public void setView(String name){
         main.setRoot(view.get(name));
     }

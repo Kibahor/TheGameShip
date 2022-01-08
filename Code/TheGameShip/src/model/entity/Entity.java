@@ -9,14 +9,14 @@ public class Entity implements IEntity {
     private URI sprite;
     private double x;
     private double y;
-    private String nom;
+    private String name;
     private String type;
     private final double hitbox_radius;
 
     public Entity(String sprite, String nom, String type) throws URISyntaxException {
         this.id = UUID.randomUUID();
         this.sprite = new URI(sprite);
-        this.nom = nom;
+        this.name = nom;
         this.type = type;
         this.hitbox_radius = 10;
     }
@@ -38,6 +38,7 @@ public class Entity implements IEntity {
         return id.hashCode();
     }
 
+    //TODO:Equals trop simple, le refaire bien
     @Override
     public boolean equals(IEntity obj) {
         return super.equals(obj);
@@ -45,15 +46,13 @@ public class Entity implements IEntity {
 
     @Override
     public String getName() {
-        return getNom();
+        return name;
     }
 
     @Override
     public String toString() {
-        return "\nId : "+id.toString() + "\nNom : "+nom + "\nType : "+type + "\nSprite : "+sprite.toString() + "\nX : "+ x + "\nY : "+ y+ "\nRadius : "+ hitbox_radius;
+        return "\nId : "+id.toString() + "\nNom : "+ name + "\nType : "+type + "\nSprite : "+sprite.toString() + "\nX : "+ x + "\nY : "+ y+ "\nRadius : "+ hitbox_radius;
     }
-
-    public UUID getId() {return id;}
 
     public URI getSprite() {
         return sprite;
@@ -77,14 +76,6 @@ public class Entity implements IEntity {
 
     public void setY(double y) {
         this.y = y;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public String getType() {
-        return type;
     }
 
     public double getHitbox_radius() {

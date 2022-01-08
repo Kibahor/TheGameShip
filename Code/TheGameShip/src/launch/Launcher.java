@@ -21,7 +21,7 @@ public class Launcher extends Application {
 
     public void start(Stage primaryStage) throws Exception {
         entityManager=new EntityManager();
-        entityManager.add(new EntityDecorator(new HasLifeDecorator(new MovableDecorator(new Entity("file://test.jpg","Vaisseau","Joueur"),5, 5),10)));
+        entityManager.add(new EntityDecorator(new MovableDecorator(new Entity("file://test.jpg","Vaisseau","Joueur"),5, 5)));
 
         primaryStage.setTitle("TheGameShip");
         primaryStage.setMaxHeight(720);
@@ -30,7 +30,7 @@ public class Launcher extends Application {
 
         main=new Scene(FXMLLoader.load(getClass().getResource("/FXML/tests.fxml")));
 
-        ViewManager viewManager=new ViewManager(this.main);
+        ViewManager viewManager=new ViewManager(main);
         viewManager.addView("MainWindow",FXMLLoader.load(getClass().getResource("/FXML/MainWindow.fxml")));
         viewManager.addView("Menu", FXMLLoader.load(getClass().getResource("/FXML/Menu.fxml")));
         viewManager.addView("Settings", FXMLLoader.load(getClass().getResource("/FXML/Settings.fxml")));
@@ -38,7 +38,7 @@ public class Launcher extends Application {
 
         primaryStage.setScene(main);
 
-        viewManager.setView("Menu");
+        viewManager.setView("MainWindow");
 
         primaryStage.show();
     }
