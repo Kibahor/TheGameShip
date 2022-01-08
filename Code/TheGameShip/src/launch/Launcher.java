@@ -38,7 +38,7 @@ public class Launcher extends Application {
 
         primaryStage.setScene(main);
 
-        viewManager.setView("MainWindow");
+        viewManager.setView("Menu");
 
         primaryStage.show();
     }
