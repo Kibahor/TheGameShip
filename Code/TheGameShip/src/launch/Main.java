@@ -16,7 +16,7 @@ public class Main {
         manager.add(simpleIEntity);
         manager.add(decorate);
         manager.add(new Entity("file://blabla.jpg","Monstre","Ennemy"));
-        manager.setLocation("Joueur",56,99);
+        //manager.setLocation("Joueur",56,99);
         //printEntity(simpleEntity);
 
         //Problème de détection de MovableDecorator dans manager.move()

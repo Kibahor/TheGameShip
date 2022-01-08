@@ -11,7 +11,7 @@ import launch.Launcher;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-public class Fenetre {
+public class MainWindow {
     @FXML
     private Pane pane;
 

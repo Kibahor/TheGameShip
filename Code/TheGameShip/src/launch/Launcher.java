@@ -19,8 +19,15 @@ public class Launcher extends Application {
     public static ViewManager viewManager;
     public static EntityManager entityManager;
 
-    @Override
-    public void init() throws Exception {
+    public void start(Stage primaryStage) throws Exception {
+        entityManager=new EntityManager();
+        entityManager.add(new EntityDecorator(new HasLifeDecorator(new MovableDecorator(new Entity("file://test.jpg","Vaisseau","Joueur"),5, 5),10)));
+
+        primaryStage.setTitle("TheGameShip");
+        primaryStage.setMaxHeight(720);
+        primaryStage.setMaxHeight(1280);
+        primaryStage.setResizable(false);
+
         main=new Scene(FXMLLoader.load(getClass().getResource("/FXML/tests.fxml")));
 
         ViewManager viewManager=new ViewManager(this.main);
@@ -29,19 +36,9 @@ public class Launcher extends Application {
         viewManager.addView("Settings", FXMLLoader.load(getClass().getResource("/FXML/Settings.fxml")));
         viewManager.addView("tests",FXMLLoader.load(getClass().getResource("/FXML/tests.fxml")));
 
-        entityManager=new EntityManager();
-        entityManager.add(new EntityDecorator(new HasLifeDecorator(new MovableDecorator(new Entity("file://test.jpg","Vaisseau","Joueur"),5, 5),10)));
-
-    }
-
-    public void start(Stage primaryStage) throws IOException {
-        primaryStage.setTitle("TheGameShip");
-        primaryStage.setMaxHeight(720);
-        primaryStage.setMaxHeight(1280);
-        primaryStage.setResizable(false);
         primaryStage.setScene(main);
 
-        viewManager.setView("Menu");
+        viewManager.setView("MainWindow");
 
         primaryStage.show();
     }
