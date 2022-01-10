@@ -1,22 +1,32 @@
 package model.entity;
 
+import launch.Launcher;
+import model.entity.IEntity;
+
 public class Collider {
 
-    public boolean Collider(IEntity e1, IEntity e2) throws Exception
+    public static boolean isCollision(IEntity e1) throws Exception
     {
-        if (!(e1 instanceof Entity) || !(e2 instanceof Entity)) {
-            throw new Exception("L'entitée n'est pas une SimpleEntity, il ne possède donc pas de x, ni de y");
+        double x1 = e1.getX();
+        System.out.println("X : "+x1);//DEBUG
+        double y1 = e1.getY();
+        System.out.println("Y : "+y1);//DEBUG
+        double radius = e1.getHitbox_radius() / 2;
+        double height=Launcher.viewManager.getHeight()-1;
+        double width=Launcher.viewManager.getWidth()-1;
+        if(x1<radius || x1>width-radius){
+            return true;
+        }else if(y1<radius || y1>height-radius){
+            return true;
         }
-        Entity se1=(Entity) e1;
-        Entity se2=(Entity) e2;
-
-        double x1 = se1.getX();
-        double x2 = se2.getX();
-        double y1 = se1.getY();
-        double y2 = se2.getY();
-        double radius = se1.getHitbox_radius();
-        double dis = Math.sqrt((x2-x1)*(x2- x1) + (y2-y1)*(y2-y1)); //Distance entre deux points
-
-        return (dis >= radius);
+        for(IEntity e2 : Launcher.entityManager.getAllEntity()){
+            double x2 = e2.getX();
+            double y2 = e2.getY();
+            double dis = Math.sqrt((x2-x1)*(x2- x1) + (y2-y1)*(y2-y1)); //Distance entre deux points
+            if((dis >= radius)){
+                return true;
+            }
+        }
+        return false;
     }
 }

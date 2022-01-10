@@ -11,9 +11,11 @@ public abstract class Boucle extends Thread {
                 update();
             } catch (InterruptedException e) {
                 e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }
-    public abstract void update();
+    public abstract void update() throws Exception;
 
 }

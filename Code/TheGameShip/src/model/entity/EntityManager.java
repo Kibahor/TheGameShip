@@ -35,4 +35,7 @@ public class EntityManager
         }
         throw new Exception("L'Entité \""+name+"\" n'existe pas");
     }
+    public Set<IEntity> getAllEntity(){
+        return entities;
+    }
 }

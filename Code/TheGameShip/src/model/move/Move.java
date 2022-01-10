@@ -1,6 +1,7 @@
 package model.move;
 
 import launch.Launcher;
+import model.entity.Collider;
 import model.entity.IEntity;
 
 public class Move{
@@ -16,16 +17,21 @@ public class Move{
         }*/
     }
 
-    public void left(){
-        e.setX(e.getX()-10);
+    public void left() throws Exception {
+        if(!Collider.isCollision(e)){
+            e.setX(e.getX()-10);
+        }
     }
-    public void right(){
-        e.setX(e.getX()+10);
+    public void right() throws Exception {
+        if(!Collider.isCollision(e)){
+        e.setX(e.getX()+10);}
     }
-    public void down(){
-        e.setY(e.getY()+10);
+    public void down() throws Exception {
+        if(!Collider.isCollision(e)){
+        e.setY(e.getY()+10);}
     }
-    public void up(){
-        e.setY(e.getY()-10);
+    public void up() throws Exception {
+        if(!Collider.isCollision(e)){
+        e.setY(e.getY()-10);}
     }
 }

@@ -31,7 +31,7 @@ public class Keyboard extends Input{
         });
     }
 
-    public void update(){
+    public void update() throws Exception{
         for(Map.Entry m: isPressed.entrySet()){
             if((Boolean)m.getValue()){
                 String key=(String)m.getKey();

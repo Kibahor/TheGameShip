@@ -24,8 +24,8 @@ public class Launcher extends Application {
     public static EntityManager entityManager;
 
     public void start(Stage stage) throws Exception {
-        entityManager=new EntityManager();
-        entityManager.add(new Entity("file://test.jpg","Vaisseau","Joueur"));
+        entityManager=new EntityManager(); //TODO: Il faut le faire lors de la création d'un niveau
+        entityManager.add(new Entity("file://test.jpg","Vaisseau","Joueur",100,100,50)); //TODO:Bind hitbox sur la taille de l'élément qui le représente
 
         //primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/img/EdenCodingIcon.png")));
 
@@ -36,7 +36,7 @@ public class Launcher extends Application {
         Input input=new Keyboard("Vaisseau");
         Thread b = new Thread(new Boucle() {
             @Override
-            public void update() {
+            public void update() throws Exception {
                 input.update();
             }
         });
