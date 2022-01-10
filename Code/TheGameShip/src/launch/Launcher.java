@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import model.Boucle;
 import model.entity.*;
 import model.move.Input;
+import model.move.Keyboard;
 import view.ViewManager;
 
 public class Launcher extends Application {
@@ -21,6 +22,7 @@ public class Launcher extends Application {
     //TODO: Sur l'évenement fermer, kill thread de la boucle
     public static ViewManager viewManager;
     public static EntityManager entityManager;
+    private Thread b;
 
     public void start(Stage stage) throws Exception {
         entityManager=new EntityManager(); //TODO: Il faut le faire lors de la création d'un niveau
@@ -33,7 +35,7 @@ public class Launcher extends Application {
         viewManager.setView("MainWindow");//DEBUG
 
         Input input=new Keyboard("Vaisseau");
-        Thread b = new Thread(new Boucle() {
+        b = new Thread(new Boucle() {
             @Override
             public void update() throws Exception {
                 input.update();
@@ -42,5 +44,10 @@ public class Launcher extends Application {
         b.start();
 
         viewManager.show();
+    }
+
+    @Override
+    public void stop() {
+        b.stop();
     }
 }

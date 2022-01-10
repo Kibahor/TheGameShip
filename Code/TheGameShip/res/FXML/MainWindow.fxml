@@ -4,5 +4,5 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane minHeight="600.0" minWidth="900.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MainWindow" fx:id="pane">
-        <Rectangle fx:id="joueur" width="50" height="50" stroke="black" strokeWidth="5"/>
+        <Rectangle fx:id="joueur" width="50" height="50" stroke="black"/>
 </AnchorPane>
