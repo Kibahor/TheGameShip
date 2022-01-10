@@ -26,7 +26,7 @@ public class Settings {
         ButtonLeaveAndApply.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                //TODO: Fixer ça..
+                Launcher.viewManager.setView("Menu");
             }
         });
     }

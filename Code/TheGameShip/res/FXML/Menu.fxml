@@ -28,7 +28,7 @@
                   <RowConstraints percentHeight="10" />
                </rowConstraints>
                <children>
-                  <ImageView fitHeight="720.0" fitWidth="300.0" GridPane.rowSpan="5">
+                  <ImageView fitHeight="720.0" fitWidth="300.0" GridPane.rowSpan="6">
                      <image>
                         <!-- <Image url="./Sprites/space2.png" /> -->
                      </image>

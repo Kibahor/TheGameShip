@@ -26,14 +26,13 @@ public class Menu {
         ButtonQuit.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                //TODO: récupérer le primary stage
+                //TODO: récupérer le primary stage pour le détruire
             }
         });
 
         ButtonSettings.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                //TODO: Fixer ça
                 Launcher.viewManager.setView("Settings");
             }
         });
@@ -41,7 +40,6 @@ public class Menu {
         ButtonHighScore.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                //TODO: Fixer ça
                 Launcher.viewManager.setView("HighScore");
             }
         });
@@ -49,8 +47,7 @@ public class Menu {
         ButtonPlay.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                //TODO: Fixer ça
-                Launcher.viewManager.setView("Play");
+                Launcher.viewManager.setView("MainWindow");
             }
         });
     }
