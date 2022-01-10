@@ -14,10 +14,12 @@ import javafx.stage.Stage;
 import model.Boucle;
 import model.entity.*;
 import model.move.Input;
+import model.move.Keyboard;
 import view.ViewManager;
 
 public class Launcher extends Application {
     //TODO: Faire des fonction pour attacher des événements a une scène dans ViewManager
+    //TODO: Sur l'évenement fermer, kill thread de la boucle
     public static ViewManager viewManager;
     public static EntityManager entityManager;
 
@@ -29,9 +31,9 @@ public class Launcher extends Application {
 
         viewManager=new ViewManager(stage);
         viewManager.loadView();
-        viewManager.setView("Menu");
+        viewManager.setView("MainWindow");//DEBUG
 
-        Input input=new Input("Vaisseau");
+        Input input=new Keyboard("Vaisseau");
         Thread b = new Thread(new Boucle() {
             @Override
             public void update() {
@@ -39,6 +41,7 @@ public class Launcher extends Application {
             }
         });
         b.start();
-        stage.show();
+
+        viewManager.show();
     }
 }

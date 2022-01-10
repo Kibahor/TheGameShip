@@ -62,4 +62,7 @@ public class ViewManager {
         this.addView("Settings", FXMLLoader.load(getClass().getResource("/FXML/Settings.fxml")));
         this.addView("tests",FXMLLoader.load(getClass().getResource("/FXML/tests.fxml")));
     }
+    public void show(){
+        stage.show();
+    }
 }

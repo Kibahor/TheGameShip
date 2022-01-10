@@ -17,15 +17,15 @@ public class Move{
     }
 
     public void left(){
-        e.setX(e.getX()-5);
+        e.setX(e.getX()-10);
     }
     public void right(){
-        e.setX(e.getX()+5);
+        e.setX(e.getX()+10);
     }
     public void down(){
-        e.setY(e.getY()+5);
+        e.setY(e.getY()+10);
     }
     public void up(){
-        e.setY(e.getY()-5);
+        e.setY(e.getY()-10);
     }
 }
