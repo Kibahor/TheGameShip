@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import model.Boucle;
 import model.entity.*;
 import model.move.Input;
+import model.move.Keyboard;
 import view.ViewManager;
 
 public class Launcher extends Application {
