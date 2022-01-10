@@ -59,6 +59,7 @@ public class ViewManager {
     public void loadView() throws IOException {
         this.addView("MainWindow",FXMLLoader.load(getClass().getResource("/FXML/MainWindow.fxml")));
         this.addView("Menu", FXMLLoader.load(getClass().getResource("/FXML/Menu.fxml")));
+        this.addView("HighScore", FXMLLoader.load(getClass().getResource("/FXML/HighScore.fxml")));
         this.addView("Settings", FXMLLoader.load(getClass().getResource("/FXML/Settings.fxml")));
         this.addView("tests",FXMLLoader.load(getClass().getResource("/FXML/tests.fxml")));
     }
