@@ -1,15 +1,6 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
-
 package launch;
 
-import java.io.IOException;
 import javafx.application.Application;
-
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.Boucle;
 import model.entity.*;
@@ -22,16 +13,16 @@ public class Launcher extends Application {
     public static EntityManager entityManager;
 
     public void start(Stage stage) throws Exception {
-        entityManager=new EntityManager();
+        entityManager = new EntityManager();
         entityManager.add(new Entity("file://test.jpg","Vaisseau","Joueur"));
 
         //primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/img/EdenCodingIcon.png")));
 
-        viewManager=new ViewManager(stage);
+        viewManager = new ViewManager(stage);
         viewManager.loadView();
         viewManager.setView("Menu");
 
-        Input input=new Input("Vaisseau");
+        Input input = new Input("Vaisseau");
         Thread b = new Thread(new Boucle() {
             @Override
             public void update() {

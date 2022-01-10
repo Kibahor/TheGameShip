@@ -4,11 +4,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.util.HashMap;
 
 public class ViewManager {
+
     private HashMap<String, Pane> view=new HashMap<>();
     private Stage stage;
     private Scene main;
@@ -23,39 +23,47 @@ public class ViewManager {
         stage.setScene(main);
     }
 
+    public void exitStage() {
+        //TODO: A compléter !!
+        stage.close();
+        System.out.println("Fermeture de l'application !");
+    }
+
     //TODO: Ajouter méthode autoAdd qui va être dans le constructeur et qui va charger toute les vue dans la Map
-    private void addView(String name,Pane pane){
+    private void addView(String name,Pane pane) {
         view.put(name,pane);
     }
 
-    private void removeView(String name){
+    private void removeView(String name) {
         view.remove(name);
     }
 
-    private Pane getView(String name){
-        Pane pane=(Pane) view.get(name);
+    private Pane getView(String name) {
+        Pane pane = (Pane) view.get(name);
         if(pane==null){
             return new Pane(); //TODO: Charger une vue d'erreur par exemple
         }
         return pane;
     }
 
-    public void setView(String name){
+    public void setView(String name) {
         main.setRoot(view.get(name));
     }
 
-    public void listScene(){
+    public void listScene() {
         for (Object key: view.keySet()) {
             System.out.println(key);
         }
     }
 
-    public Scene getScene(){
+    public Scene getScene() {
         return main;
     }
-    public Stage getStage(){
+
+    public Stage getStage() {
         return stage;
     }
+
     public void loadView() throws IOException {
         this.addView("MainWindow",FXMLLoader.load(getClass().getResource("/FXML/MainWindow.fxml")));
         this.addView("Menu", FXMLLoader.load(getClass().getResource("/FXML/Menu.fxml")));
