@@ -21,7 +21,6 @@ public class ViewManager {
         this.stage.setResizable(false);
         main=new Scene(FXMLLoader.load(getClass().getResource("/FXML/MainWindow.fxml")));
         stage.setScene(main);
-
     }
 
     //TODO: Ajouter méthode autoAdd qui va être dans le constructeur et qui va charger toute les vue dans la Map
@@ -34,15 +33,15 @@ public class ViewManager {
     }
 
     private Pane getView(String name){
-        return (Pane) view.get(name);
-    }
-    //TODO: throw une exception si la scene n'est pas trouver
-    public void setView(String name){
-        Pane pane=view.get(name);
+        Pane pane=(Pane) view.get(name);
         if(pane==null){
-            main.setRoot(new Pane()); //TODO: Charger une vue d'erreur par exemple
+            return new Pane(); //TODO: Charger une vue d'erreur par exemple
         }
-        main.setRoot(pane);
+        return pane;
+    }
+
+    public void setView(String name){
+        main.setRoot(view.get(name));
     }
 
     public void listScene(){
@@ -53,6 +52,9 @@ public class ViewManager {
 
     public Scene getScene(){
         return main;
+    }
+    public Stage getStage(){
+        return stage;
     }
     public void loadView() throws IOException {
         this.addView("MainWindow",FXMLLoader.load(getClass().getResource("/FXML/MainWindow.fxml")));
