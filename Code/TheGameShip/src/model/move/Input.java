@@ -19,10 +19,15 @@ public class Input{
         isPressed.put("RIGHT",false);
         isPressed.put("LEFT",false);
         Launcher.main.addEventFilter(KeyEvent.KEY_PRESSED, e -> {
-            String code = e.getCode().toString();
-            System.out.println(code);//DEBUG
-            if(isPressed.containsKey(code)){
-                isPressed.replace(code,true);
+            String key = e.getCode().toString();
+            if(isPressed.containsKey(key)){
+                isPressed.replace(key,true);
+            }
+        });
+        Launcher.main.addEventFilter(KeyEvent.KEY_RELEASED, e ->{
+            String key = e.getCode().toString();
+            if(isPressed.containsKey(key)){
+                isPressed.replace(key,false);
             }
         });
     }
@@ -31,23 +36,15 @@ public class Input{
     public void update(){
         for(Map.Entry m: isPressed.entrySet()){
             if((Boolean)m.getValue()){
-                switch ((String)m.getKey()) {
-                    case "LEFT":
-                        move.left();
-                        isPressed.put("LEFT",false);
-                        break;
-                    case "RIGHT":
-                        move.right();
-                        isPressed.put("RIGHT",false);
-                        break;
-                    case "DOWN":
-                        move.down();
-                        isPressed.put("DOWN",false);
-                        break;
-                    case "UP":
-                        move.up();
-                        isPressed.put("UP",false);
-                        break;
+                String key=(String)m.getKey();
+                if(key.contains("LEFT")) {
+                    move.left();
+                }else if(key.contains("RIGHT")) {
+                    move.right();
+                }else if(key.contains("UP")) {
+                    move.up();
+                }else if(key.contains("DOWN")) {
+                    move.down();
                 }
             }
         }

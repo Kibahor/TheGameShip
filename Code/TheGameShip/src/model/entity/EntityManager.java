@@ -29,7 +29,6 @@ public class EntityManager
         Iterator it=entities.iterator();
         while(it.hasNext()){
             IEntity e=(IEntity)it.next();
-            System.out.println(e.getName());
             if(e.getName().equals(name)){
                 return e;
             }
