@@ -16,6 +16,7 @@ import model.entity.*;
 import view.ViewManager;
 
 public class Launcher extends Application {
+    //TODO: Faire des fonction pour attacher des événements a une scène dans ViewManager
     public static Scene main;
     public static ViewManager viewManager;
     public static EntityManager entityManager;
