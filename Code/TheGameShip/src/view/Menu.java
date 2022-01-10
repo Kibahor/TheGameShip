@@ -26,7 +26,7 @@ public class Menu {
         ButtonQuit.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                //TODO: récupérer le primary stage pour le détruire
+                Launcher.viewManager.exitStage();
             }
         });
 

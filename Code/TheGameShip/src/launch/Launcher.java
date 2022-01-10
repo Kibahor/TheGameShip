@@ -14,7 +14,6 @@ import javafx.stage.Stage;
 import model.Boucle;
 import model.entity.*;
 import model.move.Input;
-import model.move.Keyboard;
 import view.ViewManager;
 
 public class Launcher extends Application {
@@ -29,7 +28,7 @@ public class Launcher extends Application {
 
         //primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/img/EdenCodingIcon.png")));
 
-        viewManager=new ViewManager(stage);
+        viewManager = new ViewManager(stage);
         viewManager.loadView();
         viewManager.setView("MainWindow");//DEBUG
 
