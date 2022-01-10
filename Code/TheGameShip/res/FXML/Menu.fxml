@@ -17,14 +17,15 @@
          <children>
             <GridPane prefHeight="720.0" prefWidth="300.0">
                <columnConstraints>
-                  <ColumnConstraints prefWidth="300.0" />
+                  <ColumnConstraints percentWidth="100" />
                </columnConstraints>
                <rowConstraints>
-                  <RowConstraints prefHeight="195.0" />
-                  <RowConstraints prefHeight="75.0" />
-                  <RowConstraints prefHeight="300.0" />
-                  <RowConstraints prefHeight="75.0" />
-                  <RowConstraints prefHeight="75.0" />
+                  <RowConstraints percentHeight="25" />
+                  <RowConstraints percentHeight="10" />
+                  <RowConstraints percentHeight="10" />
+                  <RowConstraints percentHeight="35" />
+                  <RowConstraints percentHeight="10" />
+                  <RowConstraints percentHeight="10" />
                </rowConstraints>
                <children>
                   <ImageView fitHeight="720.0" fitWidth="300.0" GridPane.rowSpan="5">
@@ -45,7 +46,7 @@
                         <Font size="25.0" />
                      </font>
                   </Button>
-                  <Button fx:id="ButtonSettings" alignment="CENTER" prefHeight="1000.0" prefWidth="1000.0" text="Settings" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                  <Button fx:id="ButtonHighScore" alignment="CENTER" prefHeight="1000.0" prefWidth="1000.0" text="High Score" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets bottom="10.0" left="25.0" right="25.0" top="10.0" />
                      </GridPane.margin>
@@ -53,7 +54,15 @@
                         <Font size="20.0" />
                      </font>
                   </Button>
-                  <Button fx:id="ButtonQuit" alignment="CENTER" prefHeight="1000.0" prefWidth="1000.0" text="Quit" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+                  <Button fx:id="ButtonSettings" alignment="CENTER" prefHeight="1000.0" prefWidth="1000.0" text="Settings" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+                     <GridPane.margin>
+                        <Insets bottom="10.0" left="25.0" right="25.0" top="10.0" />
+                     </GridPane.margin>
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="ButtonQuit" alignment="CENTER" prefHeight="1000.0" prefWidth="1000.0" text="Quit" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="5">
                      <GridPane.margin>
                         <Insets bottom="10.0" left="25.0" right="25.0" top="10.0" />
                      </GridPane.margin>

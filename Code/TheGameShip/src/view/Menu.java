@@ -15,6 +15,9 @@ public class Menu {
     private Button ButtonSettings;
 
     @FXML
+    private Button ButtonHighScore;
+
+    @FXML
     private Button ButtonPlay;
 
 
@@ -32,6 +35,14 @@ public class Menu {
             public void handle(ActionEvent event) {
                 //TODO: Fixer ça
                 Launcher.viewManager.setView("Settings");
+            }
+        });
+
+        ButtonHighScore.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                //TODO: Fixer ça
+                Launcher.viewManager.setView("HighScore");
             }
         });
 
