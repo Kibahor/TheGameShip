@@ -18,13 +18,13 @@ public class Input{
         isPressed.put("UP",false);
         isPressed.put("RIGHT",false);
         isPressed.put("LEFT",false);
-        Launcher.main.addEventFilter(KeyEvent.KEY_PRESSED, e -> {
+        Launcher.viewManager.getScene().addEventFilter(KeyEvent.KEY_PRESSED, e -> {
             String key = e.getCode().toString();
             if(isPressed.containsKey(key)){
                 isPressed.replace(key,true);
             }
         });
-        Launcher.main.addEventFilter(KeyEvent.KEY_RELEASED, e ->{
+        Launcher.viewManager.getScene().addEventFilter(KeyEvent.KEY_RELEASED, e ->{
             String key = e.getCode().toString();
             if(isPressed.containsKey(key)){
                 isPressed.replace(key,false);
