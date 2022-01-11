@@ -14,10 +14,7 @@ public class MainWindow {
     private Rectangle joueur;
 
     public void initialize() throws Exception {
-            Entity e = (Entity) Launcher.gameManager.getEntityManager().getEntity("Vaisseau"); //TODO:Pas foufou
-            joueur.xProperty().bind(e.xProperty());
-            joueur.yProperty().bind(e.yProperty());
-            joueur.widthProperty().bind(e.hitbox_radiusProperty());
-            joueur.heightProperty().bind(e.hitbox_radiusProperty());
+            //C'est au GameManager -> Niveau de bind les bonne propriété
+            Launcher.gameManager.BindPlayerProperties(joueur.xProperty(),joueur.yProperty(),joueur.heightProperty(),joueur.widthProperty());
     }
 }

@@ -12,7 +12,6 @@ public class Entity implements IEntity {
         public UUID getId(){return id;}
 
     private String name;
-        @Override
         public String getName() { return name; }
     private String type;
 

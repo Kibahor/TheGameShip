@@ -30,7 +30,6 @@ public class Launcher extends Application {
         viewManager.loadView();
         viewManager.setView("Menu");//DEBUG
         viewManager.show();
-        gameManager.start();//TODO:Voir si il ne faudrait pas le faire autre part
     }
 
     @Override

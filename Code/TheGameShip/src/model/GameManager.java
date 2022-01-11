@@ -1,6 +1,8 @@
 package model;
 
+import javafx.beans.property.DoubleProperty;
 import model.entity.EntityManager;
+import model.entity.IEntity;
 import model.entity.Player;
 import model.move.Input;
 import model.move.Keyboard;
@@ -10,7 +12,6 @@ public class GameManager {
     private Boucle boucle;
     private Thread thread;
     private EntityManager entityManager;
-        public EntityManager getEntityManager(){return entityManager;}
     boolean isStart;
         public boolean isStart(){return isStart;}
     //List Monde
@@ -38,5 +39,17 @@ public class GameManager {
     public void exit(){
         boucle.StopBoucle();
         thread.stop();
+    }
+
+    public void BindPlayerProperties(DoubleProperty x, DoubleProperty y, DoubleProperty height, DoubleProperty width){
+        try{
+            IEntity e = entityManager.getEntity("Vaisseau");
+            x.bind(e.xProperty());
+            y.bind(e.yProperty());
+            width.bind(e.hitbox_radiusProperty());
+            height.bind(e.hitbox_radiusProperty());
+        }catch(Exception err){
+            err.printStackTrace();
+        }
     }
 }
