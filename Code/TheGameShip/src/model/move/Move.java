@@ -17,21 +17,21 @@ public class Move{
         }*/
     }
 
-    public void left() throws Exception {
-        if(!Collider.isCollision(e)){
+    public void left() {
+        if(!Collider.isCollision(e,"LEFT")){
             e.setX(e.getX()-10);
         }
     }
-    public void right() throws Exception {
-        if(!Collider.isCollision(e)){
+    public void right() {
+        if(!Collider.isCollision(e,"RIGHT")){
         e.setX(e.getX()+10);}
     }
-    public void down() throws Exception {
-        if(!Collider.isCollision(e)){
+    public void down() {
+        if(!Collider.isCollision(e,"DOWN")){
         e.setY(e.getY()+10);}
     }
-    public void up() throws Exception {
-        if(!Collider.isCollision(e)){
+    public void up() {
+        if(!Collider.isCollision(e,"UP")){
         e.setY(e.getY()-10);}
     }
 }

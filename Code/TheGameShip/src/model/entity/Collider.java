@@ -5,20 +5,27 @@ import model.entity.IEntity;
 
 public class Collider {
 
-    public static boolean isCollision(IEntity e1) throws Exception
-    {
+    public static boolean isCollision(IEntity e1,String direction) {
         double x1 = e1.getX();
-        System.out.println("X : "+x1);//DEBUG
         double y1 = e1.getY();
-        System.out.println("Y : "+y1);//DEBUG
-        double radius = e1.getHitbox_radius() / 2;
+        double radius = e1.getHitbox_radius();
         double height=Launcher.viewManager.getHeight()-1;
         double width=Launcher.viewManager.getWidth()-1;
-        if(x1<radius || x1>width-radius){
-            return true;
-        }else if(y1<radius || y1>height-radius){
-            return true;
+
+        System.out.println((int)height+"x"+(int)width+" = X :"+x1+" Y :"+y1);//DEBUG
+
+        switch(direction){
+            case "RIGHT":
+                return  x1>=width-radius-20;
+            case "LEFT":
+                return x1<=0;
+            case "UP":
+                return y1<=0;
+            case "DOWN":
+                return y1>=height-radius-40;
         }
+        return false;
+        /*
         for(IEntity e2 : Launcher.entityManager.getAllEntity()){
             double x2 = e2.getX();
             double y2 = e2.getY();
@@ -27,6 +34,6 @@ public class Collider {
                 return true;
             }
         }
-        return false;
+        return false;*/
     }
 }
