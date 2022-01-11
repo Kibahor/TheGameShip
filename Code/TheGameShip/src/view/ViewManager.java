@@ -60,7 +60,7 @@ public class ViewManager {
         this.stage.setMaxHeight(1280);
         this.stage.setResizable(false);
         //primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/img/EdenCodingIcon.png")));
-        main=new Scene(FXMLLoader.load(getClass().getResource("/FXML/MainWindow.fxml")));
+        main = new Scene(FXMLLoader.load(getClass().getResource("/FXML/MainWindow.fxml")));
         stage.setScene(main);
     }
 
@@ -72,7 +72,4 @@ public class ViewManager {
         this.addView("Settings", FXMLLoader.load(getClass().getResource("/FXML/Settings.fxml")));
         this.addView("tests",FXMLLoader.load(getClass().getResource("/FXML/tests.fxml")));
     }
-
-
-
 }
