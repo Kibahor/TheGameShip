@@ -2,8 +2,6 @@ package model.entity;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
-
-
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.UUID;
@@ -15,9 +13,7 @@ public class Entity implements IEntity {
 
     private String name;
         @Override
-        public String getName() {
-        return name;
-    }
+        public String getName() { return name; }
     private String type;
 
     //Coordonate
@@ -80,10 +76,4 @@ public class Entity implements IEntity {
     public String toString() {
         return "\nId : "+id.toString() + "\nNom : "+ name + "\nType : "+type + "\nSprite : "+sprite.toString() + "\nX : "+ x + "\nY : "+ y+ "\nRadius : "+ hitbox_radius;
     }
-
-
-
-
-
-
 }

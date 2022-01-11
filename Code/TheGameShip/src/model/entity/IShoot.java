@@ -1,6 +1,5 @@
 package model.entity;
 
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 public interface IShoot {

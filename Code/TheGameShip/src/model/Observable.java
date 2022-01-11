@@ -13,8 +13,8 @@ public class Observable {
         observateurs.remove(listener);
     }
 
-    public void notifier(){
-        for(var observateur : observateurs){
+    public void notifier() {
+        for(var observateur : observateurs) {
             observateur.update();
         }
     }
