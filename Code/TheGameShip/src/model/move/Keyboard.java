@@ -13,14 +13,19 @@ public class Keyboard extends Input {
         this.move = move;
 
         //TODO : Un peu brut, trouver un moyen plus flexible
+
+        //Set1
         isPressed.put("UP",false);
         isPressed.put("LEFT",false);
         isPressed.put("DOWN",false);
         isPressed.put("RIGHT",false);
+
+        //Set2
         isPressed.put("Z",false);
         isPressed.put("Q",false);
         isPressed.put("S",false);
         isPressed.put("D",false);
+
         isPressed.put("SPACE",false);
 
         Launcher.viewManager.getActualScene().addEventFilter(KeyEvent.KEY_PRESSED, e -> {
@@ -42,24 +47,12 @@ public class Keyboard extends Input {
         for (Map.Entry m: isPressed.entrySet()) {
             if ((Boolean)m.getValue()) {
                 String key = (String)m.getKey();
-
                 switch (key) {
-                    case "UP": case "Z":
-                        move.up();
-                        break;
-                    case "LEFT": case "Q":
-                        move.left();
-                        break;
-                    case "DOWN": case "S":
-                        move.down();
-                        break;
-                    case "RIGHT": case "D":
-                        move.right();
-                        break;
-                    case "SPACE":
-                        //TODO: Faire ça ailleur !
-                        move.shoot();
-                        break;
+                    case "UP", "Z" -> move.up();
+                    case "LEFT", "Q" -> move.left();
+                    case "DOWN", "S" -> move.down();
+                    case "RIGHT", "D" -> move.right();
+                    case "SPACE" -> move.shoot(); //TODO: Faire ça ailleur !
                 }
             }
         }
