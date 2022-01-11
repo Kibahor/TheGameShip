@@ -2,27 +2,10 @@ package model.entity;
 
 import launch.Launcher;
 
-public class Collider {
+public interface Collider {
 
-    public static boolean isCollision(IEntity e1, String direction) {
-        double x1 = e1.getX();
-        double y1 = e1.getY();
-        double radius = e1.getHitbox_radius();
-        double height=Launcher.viewManager.getSceneHeight()-1;
-        double width=Launcher.viewManager.getSceneWidth()-1;
+    double height = Launcher.viewManager.getSceneHeight();
+    double width = Launcher.viewManager.getSceneWidth();
 
-        System.out.println((int)height+"x"+(int)width+" = X :"+x1+" Y :"+y1);//DEBUG
-        //Collison scene
-        switch (direction) {
-            case "UP":
-                return (x1 - radius <= 0);
-            case "LEFT":
-                return (y1 - radius <= 0);
-            case "DOWN":
-                return (x1 + radius >= width);
-            case "RIGHT":
-                return  (y1 + radius >= height);
-        }
-        return false;
-    }
+    static boolean isCollision(IEntity e1, String direction);
 }
