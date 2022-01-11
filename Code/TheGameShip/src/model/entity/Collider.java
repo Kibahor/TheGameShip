@@ -14,14 +14,14 @@ public class Collider {
         System.out.println((int)height+"x"+(int)width+" = X :"+x1+" Y :"+y1);//DEBUG
         //Collison scene
         switch (direction) {
-            case "RIGHT":
-                return  (x1 + radius >= width);
-            case "LEFT":
-                return (x1 - radius <= 0);
             case "UP":
+                return (x1 - radius <= 0);
+            case "LEFT":
                 return (y1 - radius <= 0);
             case "DOWN":
-                return (y1 + radius >= height);
+                return (x1 + radius >= width);
+            case "RIGHT":
+                return  (y1 + radius >= height);
         }
         return false;
     }
