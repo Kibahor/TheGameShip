@@ -14,10 +14,10 @@ public class MainWindow {
     private Rectangle joueur;
 
     public void initialize() throws Exception {
-        Entity e= (Entity) Launcher.entityManager.getEntity("Vaisseau");
-        joueur.xProperty().bind(e.xProperty());
-        joueur.yProperty().bind(e.yProperty());
-        joueur.widthProperty().bind(e.hitbox_radiusProperty());
-        joueur.heightProperty().bind(e.hitbox_radiusProperty());
+            Entity e = (Entity) Launcher.gameManager.getEntityManager().getEntity("Vaisseau"); //TODO:Pas foufou
+            joueur.xProperty().bind(e.xProperty());
+            joueur.yProperty().bind(e.yProperty());
+            joueur.widthProperty().bind(e.hitbox_radiusProperty());
+            joueur.heightProperty().bind(e.hitbox_radiusProperty());
     }
 }

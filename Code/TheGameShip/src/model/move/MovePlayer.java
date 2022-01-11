@@ -9,14 +9,8 @@ import model.entity.Player;
 public class MovePlayer implements IMove{
     Player e;
 
-    public MovePlayer(String entityName) throws Exception {
-        IEntity e=Launcher.entityManager.getEntity(entityName);
-        //TODO:Troouver un autre moyen de vérifier
-        /*
-        if(e instanceof Player){
-            throw new Exception("L'entiter n'est pas un Player");
-        }*/
-        this.e= (Player) e;
+    public MovePlayer(Player e){
+        this.e=e;
     }
 
     @Override

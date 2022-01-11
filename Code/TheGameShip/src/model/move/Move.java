@@ -7,9 +7,8 @@ import model.entity.IEntity;
 public class Move implements IMove{
     IEntity e;
 
-    public Move(String entityName) throws Exception{
-        e= Launcher.entityManager.getEntity(entityName);
-
+    public Move(IEntity e) throws Exception{
+        this.e=e;
         //TODO:Marche pas, vérifier autrement, genre créer une méthode qui envoie un tableau de string avec tout les décorateurs
         /*
         if(!(e instanceof IEntityMovable)){
