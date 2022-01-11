@@ -55,7 +55,7 @@ public class ViewManager {
         }
     }
 
-    public Scene getScene(){
+    public Scene getActualScene(){
         return main;
     }
     public void loadView() throws IOException {

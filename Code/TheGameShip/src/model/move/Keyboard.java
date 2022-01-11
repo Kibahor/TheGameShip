@@ -18,13 +18,13 @@ public class Keyboard extends Input{
         isPressed.put("RIGHT",false);
         isPressed.put("LEFT",false);
         isPressed.put("SPACE",false);
-        Launcher.viewManager.getScene().addEventFilter(KeyEvent.KEY_PRESSED, e -> {
+        Launcher.viewManager.getActualScene().addEventFilter(KeyEvent.KEY_PRESSED, e -> {
             String key = e.getCode().toString();
             if(isPressed.containsKey(key)){
                 isPressed.replace(key,true);
             }
         });
-        Launcher.viewManager.getScene().addEventFilter(KeyEvent.KEY_RELEASED, e ->{
+        Launcher.viewManager.getActualScene().addEventFilter(KeyEvent.KEY_RELEASED, e ->{
             String key = e.getCode().toString();
             if(isPressed.containsKey(key)){
                 isPressed.replace(key,false);

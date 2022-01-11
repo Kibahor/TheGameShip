@@ -48,15 +48,11 @@ public class Player extends Entity implements IHasLife,IMovable,IShoot {
             return shoots;
         }
         @Override public void addShoot(String sprite, double radius){
-            try {
-                shoots.add(new Shoot(sprite, getX(), getY(), radius));
-                System.out.println("Shoot Add on player : "+getName());//DEBUG
-            }catch(URISyntaxException err) {
-                err.printStackTrace();
-            }
+            shoots.add(new Shoot(getId(),sprite, getX(), getY(), radius));
+            System.out.println("Shoot Add on player : "+getName());//DEBUG
         }
 
-    public Player(String sprite, String nom, double x, double y, double hitbox_radius) throws URISyntaxException {
+    public Player(String sprite, String nom, double x, double y, double hitbox_radius){
         super(sprite, nom, "Joueur", x, y, hitbox_radius);
         this.hp=6;
         this.speedX=5;
