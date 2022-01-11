@@ -21,34 +21,18 @@ public class Menu {
     private Button ButtonPlay;
 
 
-    public void initialize() {
+    public void initialize() {}
 
-        ButtonQuit.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                Launcher.viewManager.exitStage();
-            }
-        });
-
-        ButtonSettings.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                Launcher.viewManager.setView("Settings");
-            }
-        });
-
-        ButtonHighScore.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                Launcher.viewManager.setView("HighScore");
-            }
-        });
-
-        ButtonPlay.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                Launcher.viewManager.setView("MainWindow");
-            }
-        });
+    public void play(ActionEvent actionEvent) {
+        Launcher.viewManager.setView("MainWindow");
+    }
+    public void highScore(ActionEvent actionEvent) {
+        Launcher.viewManager.setView("HighScore");
+    }
+    public void settings(ActionEvent actionEvent) {
+        Launcher.viewManager.setView("Settings");
+    }
+    public void exit(ActionEvent actionEvent){
+        Launcher.viewManager.exitStage();
     }
 }

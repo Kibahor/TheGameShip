@@ -60,7 +60,7 @@ public class Player extends Entity implements IHasLife,IMovable,IShoot {
         this.shoots = new ArrayList<>();
     }
 
-    public Player(String sprite, String nom, double x, double y, double hitbox_radius, int hp, float speedX, float speedY) throws URISyntaxException {
+    public Player(String sprite, String nom, double x, double y, double hitbox_radius, int hp, float speedX, float speedY){
         this(sprite,nom,x,y,hitbox_radius);
         this.hp=hp;
         this.speedX=speedX;
