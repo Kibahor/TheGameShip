@@ -6,33 +6,29 @@ import java.util.Set;
 
 public class EntityManager {
     //TODO:Il faudrait que le set soit observable afin que quand il est un ajout, le monde l'affiche
-    private Set<IEntity> entities;
+    private final Set<IEntity> entities;
 
     public EntityManager() {
-        this.entities = new HashSet();
+        this.entities = new HashSet<>();
     }
 
     public void add(IEntity e){
         entities.add(e);
     }
 
-    public void delete(IEntity e) {
-        entities.remove(e);
+    public void delete(String entityName) throws Exception {
+        entities.remove(getEntity(entityName));
     }
 
     public void listEntity() {
-        Iterator it = entities.iterator();
-        while (it.hasNext()){
-            IEntity e=(IEntity)it.next();
+        for (IEntity e : entities) {
             System.out.println(e);
         }
     }
 
     public IEntity getEntity(String name) throws Exception {
-        Iterator it = entities.iterator();
-        while (it.hasNext()){
-            IEntity e = (IEntity)it.next();
-            if (e.getName().equals(name)){
+        for (IEntity e : entities) {
+            if (e.getName().equals(name)) {
                 return e;
             }
         }

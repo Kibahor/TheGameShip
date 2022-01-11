@@ -8,26 +8,14 @@ import launch.Launcher;
 
 public class Settings {
 
-    @FXML
-    private Button ButtonReset;
+    public void initialize() {}
 
-    @FXML
-    private Button ButtonLeaveAndApply;
+    public void reset(ActionEvent actionEvent){
+        //TODO: Peut être plus tard hein ;)
+        System.out.println("Un jour peut être ^^"); //DEBUG
+    }
 
-    public void initialize() {
-
-        ButtonReset.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                //TODO: Peut être plus tard hein ;)
-            }
-        });
-
-        ButtonLeaveAndApply.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                Launcher.viewManager.setView("Menu");
-            }
-        });
+    public void menu(ActionEvent actionEvent){
+        Launcher.viewManager.setView("Menu");
     }
 }

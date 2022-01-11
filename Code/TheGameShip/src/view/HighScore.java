@@ -8,27 +8,14 @@ import launch.Launcher;
 
 public class HighScore {
 
-    @FXML
-    private Button ButtonLeave;
+    public void initialize() {}
 
-    @FXML
-    private Button ButtonClear;
+    public void menu(ActionEvent actionEvent){
+        Launcher.viewManager.setView("Menu");
+    }
 
-    public void initialize() {
-
-        ButtonLeave.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                Launcher.viewManager.setView("Menu");
-            }
-        });
-
-        ButtonClear.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                //TODO: Si on a le temps..
-                System.out.println("Un jour peut être ^^");
-            }
-        });
+    public void clear(ActionEvent actionEvent){
+        //TODO: Si on a le temps..
+        System.out.println("Un jour peut être ^^"); //DEBUG
     }
 }

@@ -19,7 +19,7 @@ public class Boucle extends model.Observable implements Runnable {
         while (isRunning) {
             try {
                 sleep(millis);
-                beep();
+                notifier();
             }
             catch (InterruptedException e) {
                 e.printStackTrace();
@@ -35,7 +35,4 @@ public class Boucle extends model.Observable implements Runnable {
         isRunning = true;
     }
 
-    public void beep(){
-        notifier();
-    }
 }

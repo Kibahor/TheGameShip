@@ -11,9 +11,9 @@ public class Entity implements IEntity {
     private final UUID id;
         public UUID getId(){return id;}
 
-    private String name;
+    private final String name;
         public String getName() { return name; }
-    private String type;
+    private final String type;
 
     //Coordonate
     private final DoubleProperty x = new SimpleDoubleProperty();
@@ -50,6 +50,8 @@ public class Entity implements IEntity {
         this.id = UUID.randomUUID();
         this.name = nom;
         this.type = type;
+        setX(0);
+        setY(0);
         setHitbox_radius(10);
     }
 

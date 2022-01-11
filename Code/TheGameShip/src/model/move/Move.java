@@ -6,48 +6,48 @@ import model.entity.IEntity;
 
 public class Move implements IMove {
     IEntity e;
+    Collider c;
 
-    public Move(String entityName) throws Exception {
-        e = Launcher.entityManager.getEntity(entityName);
-
-        //TODO:Marche pas, vérifier autrement, genre créer une méthode qui envoie un tableau de string avec tout les décorateurs
-        /*
-        if(!(e instanceof IEntityMovable)) {
-            throw new Exception("L'entiter n'a pas de vitesse (EntityMovable)");
-        }*/
+    public Move(IEntity e){
+        this.e=e;
+        this.c=new Collider();
+    }
+    protected Move(IEntity e, Collider c){
+        this.e=e;
+        this.c=c;
     }
 
     @Override
     public void left() {
-        if (!Collider.isCollision(e,"LEFT")) {
+        if (!c.isCollision(e,"LEFT")) {
             e.setY(e.getY() - 10);
         }
     }
 
     @Override
     public void right() {
-        if (!Collider.isCollision(e,"RIGHT")) {
+        if (!c.isCollision(e,"RIGHT")) {
             e.setY(e.getY() + 10);
         }
     }
 
     @Override
     public void down() {
-        if (!Collider.isCollision(e,"DOWN")) {
+        if (!c.isCollision(e,"DOWN")) {
             e.setX(e.getX() + 10);
         }
     }
 
     @Override
     public void up() {
-        if (!Collider.isCollision(e,"UP")) {
+        if (!c.isCollision(e,"UP")) {
             e.setX(e.getX() - 10);
         }
     }
 
     @Override
     public void shoot(){
-        if (!Collider.isCollision(e,"SHOOT")) {
+        if (!c.isCollision(e,"SHOOT")) {
             //TODO: Ajouter Instruction Tir
         }
     }

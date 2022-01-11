@@ -12,9 +12,7 @@ public class GameManager {
 
     private Boucle boucle;
     private Thread thread;
-    private EntityManager entityManager;
-    boolean isStart;
-        public boolean isStart() { return isStart; }
+    private final EntityManager entityManager;
     //List Monde
     //ViewManager ?
 
@@ -22,25 +20,23 @@ public class GameManager {
         entityManager=new EntityManager();
         boucle = new Boucle(50);
         thread = new Thread(boucle);
-        isStart=false;
-        entityManager.add(new Player("file://test.jpg","Vaisseau",100,100,40,5, 20, 20)); //DEBUG
+        entityManager.add(new Player("file://test.jpg","Vaisseau",100,100,40,5, 10, 10)); //DEBUG
     }
 
     public void start() {
         try {
-            Input input=new Keyboard(new MovePlayer((Player) entityManager.getEntity("Vaisseau"))); //DEBUG
+            Input input=new Keyboard(new MovePlayer(entityManager.getEntity("Vaisseau"))); //DEBUG
             boucle.subscribe(input); //DEBUG
         }
         catch(Exception err) {
             err.printStackTrace();
         }
         thread.start(); //DEBUG
-        isStart=true;
     }
 
     public void exit() {
         boucle.StopBoucle();
-        thread.stop();
+        thread.stop(); //TODO: Voir si il n'y a pas un autre moyen car deprecated
     }
 
     public void BindPlayerProperties(DoubleProperty x, DoubleProperty y, DoubleProperty radius) {

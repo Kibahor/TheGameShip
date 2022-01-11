@@ -1,45 +1,45 @@
 package model.move;
 
-import model.entity.Collider;
-import model.entity.Player;
+import model.entity.*;
 
-public class MovePlayer implements IMove {
-    Player e;
+public class MovePlayer extends Move {
 
-    public MovePlayer(Player e) {
-        this.e = e;
+    public MovePlayer(IEntity e) throws Exception {
+        super(e);
+        //TODO:Vérifier que c'est belle et bien un Player
+        //Si nécessaire on peut spécifier le collider => super(e,new ColliderXXXX());
     }
 
     @Override
     public void left() {
-        if (!Collider.isCollision(e,"UP")) {
-            e.setX(e.getX()-e.getSpeedX());
+        if (!c.isCollision(e,"UP")) {
+            e.setX(e.getX()-((IMovable)e).getSpeedX());
         }
     }
 
     @Override
     public void right() {
-        if (!Collider.isCollision(e,"DOWN")) {
-            e.setX(e.getX()+e.getSpeedX());}
+        if (!c.isCollision(e,"DOWN")) {
+            e.setX(e.getX()+((IMovable)e).getSpeedX());}
     }
 
     @Override
     public void down() {
-        if (!Collider.isCollision(e,"RIGHT")) {
-            e.setY(e.getY()+e.getSpeedY());}
+        if (!c.isCollision(e,"RIGHT")) {
+            e.setY(e.getY()+((IMovable)e).getSpeedY());}
     }
 
     @Override
     public void up() {
-        if (!Collider.isCollision(e,"LEFT")) {
-            e.setY(e.getY()-e.getSpeedY());}
+        if (!c.isCollision(e,"LEFT")) {
+            e.setY(e.getY()-((IMovable)e).getSpeedY());}
     }
 
     @Override
     public void shoot() {
-        if (!Collider.isCollision(e,"SHOOT")) {
+        if (!c.isCollision(e,"SHOOT")) {
             //TODO:Pas foufou de le faire ici
-            e.addShoot("file://test.jpg",10);
+            ((IShoot)e).addShoot("file://test.jpg",10);
         }
     }
 }
