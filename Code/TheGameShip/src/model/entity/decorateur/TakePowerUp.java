@@ -1,4 +1,6 @@
-package model.entity;
+package model.entity.decorateur;
+
+import model.entity.IEntity;
 
 public class TakePowerUp extends EntityDecorator {
 

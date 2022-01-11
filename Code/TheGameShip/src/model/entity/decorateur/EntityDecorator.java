@@ -1,5 +1,7 @@
 //https://www.geeksforgeeks.org/decorator-design-pattern-in-java-with-example/
-package model.entity;
+package model.entity.decorateur;
+
+import model.entity.IEntity;
 
 import java.net.URI;
 

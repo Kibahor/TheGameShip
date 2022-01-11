@@ -15,6 +15,7 @@ import model.Boucle;
 import model.entity.*;
 import model.move.Input;
 import model.move.Keyboard;
+import model.move.MovePlayer;
 import view.ViewManager;
 
 public class Launcher extends Application {
@@ -26,7 +27,7 @@ public class Launcher extends Application {
 
     public void start(Stage stage) throws Exception {
         entityManager=new EntityManager(); //TODO: Il faut le faire lors de la création d'un niveau
-        entityManager.add(new Entity("file://test.jpg","Vaisseau","Joueur",100,100,50)); //TODO:Bind hitbox sur la taille de l'élément qui le représente
+        entityManager.add(new Player("file://test.jpg","Vaisseau","Joueur",100,100,50)); //TODO:Bind hitbox sur la taille de l'élément qui le représente
 
         //primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/img/EdenCodingIcon.png")));
 
@@ -34,7 +35,7 @@ public class Launcher extends Application {
         viewManager.loadView();
         viewManager.setView("MainWindow");//DEBUG
 
-        Input input=new Keyboard("Vaisseau");
+        Input input=new Keyboard(new MovePlayer("Vaisseau"));
         b = new Thread(new Boucle() {
             @Override
             public void update() throws Exception {

@@ -8,10 +8,10 @@ import java.util.Map;
 
 public class Keyboard extends Input{
     private Map<String, Boolean> isPressed=new HashMap<>();
-    private Move move;
+    private IMove move;
 
-    public Keyboard(String entityName) throws Exception {
-        move=new Move(entityName);
+    public Keyboard(IMove move) throws Exception {
+        this.move=move;
         //TODO : Un peu brut, trouver un moyen plus flexible
         isPressed.put("DOWN",false);
         isPressed.put("UP",false);

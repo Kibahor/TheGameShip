@@ -1,10 +1,9 @@
 package launch;
-import model.Boucle;
 import model.entity.*;
-
 
 public class Main {
     public static void main(String[] args) throws Exception {
+        /*
         //Exemple de jeu en javafx : https://edencoding.com/game-loop-javafx/
         IEntity simpleIEntity =new Entity("file://test.jpg","Test","Joueur");
 
@@ -35,5 +34,5 @@ public class Main {
         System.out.print("Entity : ");
         IEntity.printDecorationName();
         System.out.println(IEntity +"\n");
-    }
-}
+    }*/
+}}

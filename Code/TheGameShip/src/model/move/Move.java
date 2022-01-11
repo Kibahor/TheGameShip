@@ -4,7 +4,7 @@ import launch.Launcher;
 import model.entity.Collider;
 import model.entity.IEntity;
 
-public class Move{
+public class Move  implements IMove{
     IEntity e;
 
     public Move(String entityName) throws Exception{
@@ -17,19 +17,23 @@ public class Move{
         }*/
     }
 
+    @Override
     public void left() {
         if(!Collider.isCollision(e,"LEFT")){
             e.setX(e.getX()-10);
         }
     }
+    @Override
     public void right() {
         if(!Collider.isCollision(e,"RIGHT")){
         e.setX(e.getX()+10);}
     }
+    @Override
     public void down() {
         if(!Collider.isCollision(e,"DOWN")){
         e.setY(e.getY()+10);}
     }
+    @Override
     public void up() {
         if(!Collider.isCollision(e,"UP")){
         e.setY(e.getY()-10);}
