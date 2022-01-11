@@ -20,28 +20,28 @@ public class Move implements IMove {
     @Override
     public void left() {
         if (!Collider.isCollision(e,"LEFT")) {
-            e.setX(e.getX() - 10);
+            e.setY(e.getY() - 10);
         }
     }
 
     @Override
     public void right() {
         if (!Collider.isCollision(e,"RIGHT")) {
-            e.setX(e.getX() + 10);
+            e.setY(e.getY() + 10);
         }
     }
 
     @Override
     public void down() {
         if (!Collider.isCollision(e,"DOWN")) {
-            e.setY(e.getY() + 10);
+            e.setX(e.getX() + 10);
         }
     }
 
     @Override
     public void up() {
         if (!Collider.isCollision(e,"UP")) {
-            e.setY(e.getY() - 10);
+            e.setX(e.getX() - 10);
         }
     }
 

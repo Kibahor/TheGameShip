@@ -41,14 +41,14 @@ public class GameManager {
         thread.stop();
     }
 
-    public void BindPlayerProperties(DoubleProperty x, DoubleProperty y, DoubleProperty height, DoubleProperty width){
-        try{
+    public void BindPlayerProperties(DoubleProperty x, DoubleProperty y, DoubleProperty radius){
+        try {
             IEntity e = entityManager.getEntity("Vaisseau");
             x.bind(e.xProperty());
             y.bind(e.yProperty());
-            width.bind(e.hitbox_radiusProperty());
-            height.bind(e.hitbox_radiusProperty());
-        }catch(Exception err){
+            radius.bind(e.hitbox_radiusProperty());
+        }
+        catch(Exception err){
             err.printStackTrace();
         }
     }

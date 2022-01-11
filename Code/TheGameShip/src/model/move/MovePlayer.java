@@ -1,8 +1,6 @@
 package model.move;
 
-import launch.Launcher;
 import model.entity.Collider;
-import model.entity.IEntity;
 import model.entity.Player;
 
 public class MovePlayer implements IMove {
