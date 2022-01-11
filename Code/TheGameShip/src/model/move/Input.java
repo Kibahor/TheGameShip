@@ -1,6 +1,5 @@
 package model.move;
 
-import model.Observable;
 import model.Observateur;
 
 public abstract class Input implements Observateur {
