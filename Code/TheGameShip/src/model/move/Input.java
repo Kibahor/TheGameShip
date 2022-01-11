@@ -1,6 +1,9 @@
 package model.move;
 
-public abstract class Input implements IInput{
+import model.Observable;
+import model.Observateur;
+
+public abstract class Input implements Observateur {
     //Quand la boucle la notifie
-    public abstract void update() throws Exception;
+    public abstract void update();
 }

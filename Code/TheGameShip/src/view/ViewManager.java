@@ -69,11 +69,11 @@ public class ViewManager {
         stage.show();
     }
 
-    public double getHeight(){
-        return stage.getHeight();
+    public double getSceneHeight(){
+        return main.getHeight();
     }
 
-    public double getWidth(){
-        return stage.getWidth();
+    public double getSceneWidth(){
+        return main.getWidth();
     }
 }

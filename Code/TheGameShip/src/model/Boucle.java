@@ -7,36 +7,39 @@ import java.util.Observer;
 
 import static java.lang.Thread.sleep;
 
-public abstract class Boucle implements Runnable, Observable {
+public class Boucle extends model.Observable implements Runnable{
+    private boolean isRunning=true;
+    private long millis;
+
+    public Boucle(){
+        this.millis=50;
+    }
+
+    public Boucle(long millis){
+        this.millis=millis;
+    }
 
     @Override
     public void run()
     {
         // TODO : Il faut créer une méthode qui permet de s'abonner a un eventHandler et notifier tout les abonnés
-        while (true) {
+        while (isRunning) {
             try {
-                sleep(50);
-                update();
+                sleep(millis);
+                beep();
             } catch (InterruptedException e) {
-                e.printStackTrace();
-            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
     }
-
-    public void update() throws Exception {
-
+    public void StopBoucle(){
+        isRunning=false;
     }
-
-    @Override
-    public void addListener(InvalidationListener listener) {
-
+    public void StartBoucle(){
+        isRunning=true;
     }
-
-    @Override
-    public void removeListener(InvalidationListener listener) {
-
+    public void beep(){
+        notifier();
     }
 
 }

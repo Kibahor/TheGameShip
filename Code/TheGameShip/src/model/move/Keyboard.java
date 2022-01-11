@@ -10,7 +10,7 @@ public class Keyboard extends Input{
     private Map<String, Boolean> isPressed=new HashMap<>();
     private IMove move;
 
-    public Keyboard(IMove move) throws Exception {
+    public Keyboard(IMove move) {
         this.move=move;
         //TODO : Un peu brut, trouver un moyen plus flexible
         isPressed.put("DOWN",false);
@@ -32,7 +32,8 @@ public class Keyboard extends Input{
         });
     }
 
-    public void update() throws Exception{
+    @Override
+    public void update(){
         for(Map.Entry m: isPressed.entrySet()){
             if((Boolean)m.getValue()){
                 String key=(String)m.getKey();

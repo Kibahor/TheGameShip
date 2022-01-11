@@ -5,6 +5,7 @@ import java.util.Set;
 
 public class EntityManager
 {
+    //TODO:Il faudrait que le set soit observable afin que quand il est un ajout, le monde l'affiche
     private Set<IEntity> entities;
 
     public EntityManager() {

@@ -1,7 +1,6 @@
 package model.entity;
 
 import launch.Launcher;
-import model.entity.IEntity;
 
 public class Collider {
 
@@ -9,23 +8,24 @@ public class Collider {
         double x1 = e1.getX();
         double y1 = e1.getY();
         double radius = e1.getHitbox_radius();
-        double height=Launcher.viewManager.getHeight()-1;
-        double width=Launcher.viewManager.getWidth()-1;
+        double height=Launcher.viewManager.getSceneHeight()-1;
+        double width=Launcher.viewManager.getSceneWidth()-1;
 
         System.out.println((int)height+"x"+(int)width+" = X :"+x1+" Y :"+y1);//DEBUG
-        //TODO: Quelque chose de pas clair avec la collison (-10 et -40)
+        //Collison scene
         switch(direction){
             case "RIGHT":
-                return  x1>=width-radius-10;
+                return  x1>=width-radius;
             case "LEFT":
                 return x1<=0;
             case "UP":
                 return y1<=0;
             case "DOWN":
-                return y1>=height-radius-40;
+                return y1>=height-radius;
         }
         return false;
         /*
+        //Collision entre entités
         for(IEntity e2 : Launcher.entityManager.getAllEntity()){
             double x2 = e2.getX();
             double y2 = e2.getY();

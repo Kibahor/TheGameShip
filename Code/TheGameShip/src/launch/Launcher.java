@@ -22,7 +22,8 @@ public class Launcher extends Application {
     //TODO: Faire des fonction pour attacher des événements a une scène dans ViewManager
     public static ViewManager viewManager;
     public static EntityManager entityManager;
-    private Thread b;
+    private Thread bt;
+    private Boucle b;
 
     public void start(Stage stage) throws Exception {
         entityManager=new EntityManager(); //TODO: Il faut le faire lors de la création d'un niveau
@@ -32,22 +33,21 @@ public class Launcher extends Application {
 
         viewManager = new ViewManager(stage);
         viewManager.loadView();
-        viewManager.setView("MainWindow");//DEBUG
+        viewManager.setView("Menu");//DEBUG
 
         Input input=new Keyboard(new MovePlayer("Vaisseau"));
-        b = new Thread(new Boucle() {
-            @Override
-            public void update() throws Exception {
-                input.update();
-            }
-        });
-        b.start();
+
+        b = new Boucle(50);
+        bt= new Thread(b);
+        bt.start();
+        b.subscribe(input);
 
         viewManager.show();
     }
 
     @Override
     public void stop() {
-        b.stop();
+        b.StopBoucle();
+        bt.stop();
     }
 }
