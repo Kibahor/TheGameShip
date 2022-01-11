@@ -22,17 +22,17 @@ public class EntityManager {
 
     public void listEntity() {
         Iterator it = entities.iterator();
-        while(it.hasNext()){
+        while (it.hasNext()){
             IEntity e=(IEntity)it.next();
             System.out.println(e);
         }
     }
 
-    public IEntity getEntity(String name) throws Exception{
-        Iterator it=entities.iterator();
-        while(it.hasNext()){
-            IEntity e=(IEntity)it.next();
-            if(e.getName().equals(name)){
+    public IEntity getEntity(String name) throws Exception {
+        Iterator it = entities.iterator();
+        while (it.hasNext()){
+            IEntity e = (IEntity)it.next();
+            if (e.getName().equals(name)){
                 return e;
             }
         }

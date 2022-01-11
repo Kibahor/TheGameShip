@@ -40,10 +40,11 @@ public class Entity implements IEntity {
         public void setHitbox_radius(double hitbox_radius) {this.hitbox_radius.set(hitbox_radius);}
         public DoubleProperty hitbox_radiusProperty(){return hitbox_radius;}
 
-    public Entity(String sprite, String nom, String type){
-        try{
+    public Entity(String sprite, String nom, String type) {
+        try {
             this.sprite = new URI(sprite);
-        }catch(URISyntaxException err){
+        }
+        catch(URISyntaxException err){
             err.printStackTrace();
         }
         this.id = UUID.randomUUID();
@@ -52,7 +53,7 @@ public class Entity implements IEntity {
         setHitbox_radius(10);
     }
 
-    public Entity(String sprite, String nom, String type, double x, double y, double hitbox_radius){
+    public Entity(String sprite, String nom, String type, double x, double y, double hitbox_radius) {
         this(sprite,nom,type);
         setX(x);
         setY(y);
