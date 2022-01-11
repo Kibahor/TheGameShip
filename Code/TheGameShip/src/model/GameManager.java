@@ -1,6 +1,7 @@
 package model;
 
 import javafx.beans.property.DoubleProperty;
+import model.entity.Entity;
 import model.entity.EntityManager;
 import model.entity.IEntity;
 import model.entity.Player;
@@ -21,14 +22,14 @@ public class GameManager {
         boucle = new Boucle(50);
         thread = new Thread(boucle);
         entityManager.add(new Player("file://test.jpg","Vaisseau",100,100,40,5, 10, 10)); //DEBUG
+        entityManager.add(new Entity("file://test.jpg","Obstacle","Obstacle",300,300,20));//DEBUG
     }
 
     public void start() {
         try {
             Input input=new Keyboard(new MovePlayer(entityManager.getEntity("Vaisseau"))); //DEBUG
             boucle.subscribe(input); //DEBUG
-        }
-        catch(Exception err) {
+        } catch(Exception err) {
             err.printStackTrace();
         }
         thread.start(); //DEBUG
@@ -39,9 +40,9 @@ public class GameManager {
         thread.stop(); //TODO: Voir si il n'y a pas un autre moyen car deprecated
     }
 
-    public void BindPlayerProperties(DoubleProperty x, DoubleProperty y, DoubleProperty radius) {
+    public void BindProperties(String entityName,DoubleProperty x, DoubleProperty y, DoubleProperty radius) {
         try {
-            IEntity e = entityManager.getEntity("Vaisseau");
+            IEntity e = entityManager.getEntity(entityName);
             x.bind(e.xProperty());
             y.bind(e.yProperty());
             radius.bind(e.hitbox_radiusProperty());

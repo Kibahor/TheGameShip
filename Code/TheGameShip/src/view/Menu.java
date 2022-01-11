@@ -8,6 +8,8 @@ import launch.Launcher;
 import model.GameManager;
 
 public class Menu {
+    //TODO: Afficher les contrôle sur le menu
+    //TODO: Faire un menu plus joli (bouton centrer au milieu sur la Vbox de droite et a droite demo du jeu/animation gameplay/image du jeu)
     private GameManager gameManager;
     public void initialize() {
         gameManager=new GameManager();
