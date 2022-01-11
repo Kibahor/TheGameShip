@@ -43,4 +43,12 @@ public class MovePlayer implements IMove{
         if(!Collider.isCollision(e,"UP")){
             e.setY(e.getY()-e.getSpeedY());}
     }
+
+    @Override
+    public void shoot(){
+        if(!Collider.isCollision(e,"SHOOT")){
+            //TODO:Pas foufou de le faire ici
+            e.addShoot("file://test.jpg",10);
+        }
+    }
 }

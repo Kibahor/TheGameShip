@@ -40,25 +40,24 @@ public class Entity implements IEntity {
         this.sprite = sprite;
     }
 
-    private double hitbox_radius;
-        public void setHitbox_radius(double radius){hitbox_radius=radius;}
-        public double getHitbox_radius() {
-        return hitbox_radius;
-    }
+    private final DoubleProperty hitbox_radius = new SimpleDoubleProperty();
+        public double getHitbox_radius() {return hitbox_radius.get();}
+        public void setHitbox_radius(double hitbox_radius) {this.hitbox_radius.set(hitbox_radius);}
+        public DoubleProperty hitbox_radiusProperty(){return hitbox_radius;}
 
     public Entity(String sprite, String nom, String type) throws URISyntaxException {
         this.id = UUID.randomUUID();
         this.sprite = new URI(sprite);
         this.name = nom;
         this.type = type;
-        this.hitbox_radius = 10;
+        setHitbox_radius(10);
     }
 
     public Entity(String sprite, String nom, String type, double x, double y, double hitbox_radius) throws URISyntaxException {
         this(sprite,nom,type);
         setX(x);
         setY(y);
-        this.hitbox_radius=hitbox_radius;
+        setHitbox_radius(hitbox_radius);
     }
 
     //JAVA

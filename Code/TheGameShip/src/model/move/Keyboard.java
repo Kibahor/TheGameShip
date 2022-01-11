@@ -17,6 +17,7 @@ public class Keyboard extends Input{
         isPressed.put("UP",false);
         isPressed.put("RIGHT",false);
         isPressed.put("LEFT",false);
+        isPressed.put("SPACE",false);
         Launcher.viewManager.getScene().addEventFilter(KeyEvent.KEY_PRESSED, e -> {
             String key = e.getCode().toString();
             if(isPressed.containsKey(key)){
@@ -43,6 +44,8 @@ public class Keyboard extends Input{
                     move.up();
                 }else if(key.contains("DOWN")) {
                     move.down();
+                }else if(key.contains("SPACE")) {
+                    move.shoot();
                 }
             }
         }

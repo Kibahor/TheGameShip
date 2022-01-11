@@ -4,7 +4,7 @@ import launch.Launcher;
 import model.entity.Collider;
 import model.entity.IEntity;
 
-public class Move  implements IMove{
+public class Move implements IMove{
     IEntity e;
 
     public Move(String entityName) throws Exception{
@@ -37,5 +37,11 @@ public class Move  implements IMove{
     public void up() {
         if(!Collider.isCollision(e,"UP")){
         e.setY(e.getY()-10);}
+    }
+    @Override
+    public void shoot(){
+        if(!Collider.isCollision(e,"SHOOT")){
+            //TODO:Ajouter Instruction Tir
+        }
     }
 }

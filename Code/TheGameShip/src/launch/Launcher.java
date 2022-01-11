@@ -20,14 +20,13 @@ import view.ViewManager;
 
 public class Launcher extends Application {
     //TODO: Faire des fonction pour attacher des événements a une scène dans ViewManager
-    //TODO: Sur l'évenement fermer, kill thread de la boucle
     public static ViewManager viewManager;
     public static EntityManager entityManager;
     private Thread b;
 
     public void start(Stage stage) throws Exception {
         entityManager=new EntityManager(); //TODO: Il faut le faire lors de la création d'un niveau
-        entityManager.add(new Player("file://test.jpg","Vaisseau","Joueur",100,100,50)); //TODO:Bind hitbox sur la taille de l'élément qui le représente
+        entityManager.add(new Player("file://test.jpg","Vaisseau",100,100,80,6, 20, 20));
 
         //primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/img/EdenCodingIcon.png")));
 

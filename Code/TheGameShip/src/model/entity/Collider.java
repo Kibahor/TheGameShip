@@ -13,10 +13,10 @@ public class Collider {
         double width=Launcher.viewManager.getWidth()-1;
 
         System.out.println((int)height+"x"+(int)width+" = X :"+x1+" Y :"+y1);//DEBUG
-
+        //TODO: Quelque chose de pas clair avec la collison (-10 et -40)
         switch(direction){
             case "RIGHT":
-                return  x1>=width-radius-20;
+                return  x1>=width-radius-10;
             case "LEFT":
                 return x1<=0;
             case "UP":
