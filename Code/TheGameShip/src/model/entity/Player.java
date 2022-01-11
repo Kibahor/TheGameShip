@@ -1,7 +1,5 @@
 package model.entity;
 
-import javax.swing.plaf.synth.SynthTextAreaUI;
-import java.lang.reflect.Array;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 
@@ -52,7 +50,7 @@ public class Player extends Entity implements IHasLife,IMovable,IShoot {
             System.out.println("Shoot Add on player : "+getName());//DEBUG
         }
 
-    public Player(String sprite, String nom, double x, double y, double hitbox_radius){
+    public Player(String sprite, String nom, double x, double y, double hitbox_radius) {
         super(sprite, nom, "Joueur", x, y, hitbox_radius);
         this.hp=6;
         this.speedX=5;
@@ -66,6 +64,4 @@ public class Player extends Entity implements IHasLife,IMovable,IShoot {
         this.speedX=speedX;
         this.speedY=speedY;
     }
-
-
 }
