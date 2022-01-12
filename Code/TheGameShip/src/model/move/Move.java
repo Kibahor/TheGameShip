@@ -4,7 +4,7 @@ import model.collider.ICollider;
 import model.entity.IEntity;
 
 public class Move implements IMove {
-
+    //TODO: Direction de left,right,up,down n'est pas logique
     @Override
     public void left(IEntity e, ICollider c) {
         if (!c.isCollision(e,null,"LEFT")) {

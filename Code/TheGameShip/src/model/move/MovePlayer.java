@@ -12,26 +12,26 @@ public class MovePlayer extends Move {
 
     @Override
     public void left(IEntity e, ICollider c) {
-        if (!c.isCollision(e,null,"LEFT")) {
+        if (!c.isCollision(e,null,"UP")) {
             e.setX(e.getX()-((IMovable)e).getSpeedX());
         }
     }
 
     @Override
     public void right(IEntity e, ICollider c) {
-        if (!c.isCollision(e,null,"RIGHT")) {
+        if (!c.isCollision(e,null,"DOWN")) {
             e.setX(e.getX()+((IMovable)e).getSpeedX());}
     }
 
     @Override
     public void down(IEntity e, ICollider c) {
-        if (!c.isCollision(e,null,"DOWN")) {
+        if (!c.isCollision(e,null,"DRIGHT")) {
             e.setY(e.getY()+((IMovable)e).getSpeedY());}
     }
 
     @Override
     public void up(IEntity e, ICollider c) {
-        if (!c.isCollision(e,null,"UP")) {
+        if (!c.isCollision(e,null,"LEFT")) {
             e.setY(e.getY()-((IMovable)e).getSpeedY());}
     }
 
