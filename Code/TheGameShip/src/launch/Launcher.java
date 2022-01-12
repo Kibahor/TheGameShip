@@ -12,14 +12,11 @@ import model.entity.*;
 import view.ViewManager;
 
 public class Launcher extends Application {
-    //TODO: Trouver un autre moyen que le singleton
-    public static GameManager gameManager;
-    public static ViewManager viewManager;
-    public static EntityManager entityManager;
+    private static ViewManager viewManager; //C'est bien (équivalent a passer le en static primaryStage)
 
     @Override
     public void init(){
-        gameManager=new GameManager();//DEBUG
+        //gameManager=new GameManager();//DEBUG
     }
 
     public void start(Stage stage) throws Exception {
@@ -31,6 +28,11 @@ public class Launcher extends Application {
 
     @Override
     public void stop() {
-        gameManager.exit();
+        //TODO : attacher la fonction a l'événement quitter de la scene
+        //gameManager.exit();
+    }
+
+    public static ViewManager getViewManager(){
+        return viewManager;
     }
 }

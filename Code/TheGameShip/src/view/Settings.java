@@ -16,6 +16,6 @@ public class Settings {
     }
 
     public void menu(ActionEvent actionEvent){
-        Launcher.viewManager.setView("Menu");
+        Launcher.getViewManager().setView("Menu");
     }
 }
