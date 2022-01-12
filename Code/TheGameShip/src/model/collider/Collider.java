@@ -18,10 +18,10 @@ public class Collider implements ICollider {
 
         //Collison scene
         return switch (direction) {
-            case "UP" -> (x1 - radius <= 0);
-            case "LEFT" -> (y1 - radius <= 0);
-            case "DOWN" -> (x1 + radius >= width);
-            case "RIGHT" -> (y1 + radius >= height);
+            case "UP" -> (y1 - radius <= 0);
+            case "LEFT" -> (x1 - radius <= 0);
+            case "DOWN" -> (y1 + radius >= height);
+            case "RIGHT" -> (x1 + radius >= width);
             default -> false;
         };
     }

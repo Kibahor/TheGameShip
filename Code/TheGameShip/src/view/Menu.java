@@ -24,6 +24,6 @@ public class Menu {
         Launcher.getViewManager().setView("Settings");
     }
     public void exit(ActionEvent actionEvent){
-        Launcher.getViewManager().exitStage();
+        Launcher.getStage().close();
     }
 }

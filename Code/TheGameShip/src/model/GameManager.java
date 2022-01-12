@@ -24,9 +24,10 @@ public class GameManager {
         entityManager=new EntityManager();
         boucle = new Boucle(50);
         thread = new Thread(boucle);
-        player=new Player("file://test.jpg","Vaisseau",100,100,40,5, 10, 10); //DEBUG
+        player=new Player("file://test.jpg","Vaisseau",100,300,40,5, 10, 10); //DEBUG
         entityManager.add(player); //DEBUG
         entityManager.add(new Entity("file://test.jpg","Obstacle","Obstacle",300,300,20));//DEBUG
+        //TODO:ICI tu abonne une méthode a la boucle
     }
 
     public void start() {

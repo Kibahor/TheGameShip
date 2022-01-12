@@ -13,6 +13,7 @@ import view.ViewManager;
 
 public class Launcher extends Application {
     private static ViewManager viewManager; //C'est bien (équivalent a passer le en static primaryStage)
+    private static Stage stage;
 
     @Override
     public void init(){
@@ -20,10 +21,11 @@ public class Launcher extends Application {
     }
 
     public void start(Stage stage) throws Exception {
-        viewManager = new ViewManager(stage);
+        this.stage=stage;
+        viewManager = new ViewManager();
         viewManager.loadView();
         viewManager.setView("Menu");//DEBUG
-        viewManager.show();
+        Launcher.getStage().show();
     }
 
     @Override
@@ -35,4 +37,5 @@ public class Launcher extends Application {
     public static ViewManager getViewManager(){
         return viewManager;
     }
+    public static Stage getStage(){return stage;}
 }
