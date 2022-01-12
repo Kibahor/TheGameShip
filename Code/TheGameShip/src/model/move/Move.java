@@ -1,20 +1,19 @@
 package model.move;
 
-import launch.Launcher;
-import model.entity.Collider;
+import model.entity.ColliderPlayground;
 import model.entity.IEntity;
 
 public class Move implements IMove {
     IEntity e;
-    Collider c;
+    ColliderPlayground c;
 
     public Move(IEntity e){
         this.e=e;
-        this.c=new Collider();
+        this.c = new ColliderPlayground();
     }
-    protected Move(IEntity e, Collider c){
-        this.e=e;
-        this.c=c;
+    protected Move(IEntity e, ColliderPlayground c) {
+        this.e = e;
+        this.c = c;
     }
 
     @Override
