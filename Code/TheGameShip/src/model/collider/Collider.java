@@ -13,8 +13,8 @@ public class Collider implements ICollider {
         double x1 = e1.getX();
         double y1 = e1.getY();
         double radius = e1.getHitbox_radius();
-        double height= Launcher.viewManager.getSceneHeight();
-        double width=Launcher.viewManager.getSceneWidth();
+        double height= Launcher.getViewManager().getSceneHeight();
+        double width=Launcher.getViewManager().getSceneWidth();
 
         //Collison scene
         return switch (direction) {

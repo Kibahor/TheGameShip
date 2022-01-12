@@ -1,9 +1,12 @@
 package model.move;
 
+import model.collider.ICollider;
+import model.entity.IEntity;
+
 public interface IMove {
-    void left();
-    void right();
-    void up();
-    void down();
-    void shoot();
+    void left(IEntity e, ICollider c);
+    void right(IEntity e, ICollider c);
+    void up(IEntity e, ICollider c);
+    void down(IEntity e, ICollider c);
+    void shoot(IEntity e, ICollider c);
 }

@@ -1,10 +1,10 @@
 package model;
 
 import javafx.beans.property.DoubleProperty;
-import model.entity.Entity;
-import model.entity.EntityManager;
-import model.entity.IEntity;
-import model.entity.Player;
+import model.collider.Collider;
+import model.collider.ICollider;
+import model.entity.*;
+import model.move.IMove;
 import model.move.Input;
 import model.move.Keyboard;
 import model.move.MovePlayer;
@@ -14,6 +14,9 @@ public class GameManager {
     private Boucle boucle;
     private Thread thread;
     private final EntityManager entityManager;
+    private IMove move;
+    private ICollider collider;
+    private Player player;
     //List Monde
     //ViewManager ?
 
@@ -21,13 +24,16 @@ public class GameManager {
         entityManager=new EntityManager();
         boucle = new Boucle(50);
         thread = new Thread(boucle);
-        entityManager.add(new Player("file://test.jpg","Vaisseau",100,100,40,5, 10, 10)); //DEBUG
+        player=new Player("file://test.jpg","Vaisseau",100,100,40,5, 10, 10); //DEBUG
+        entityManager.add(player); //DEBUG
         entityManager.add(new Entity("file://test.jpg","Obstacle","Obstacle",300,300,20));//DEBUG
     }
 
     public void start() {
         try {
-            Input input=new Keyboard(new MovePlayer(entityManager.getEntity("Vaisseau"))); //DEBUG
+            move=new MovePlayer();
+            collider= new Collider();
+            Input input=new Keyboard(this);
             boucle.subscribe(input); //DEBUG
         } catch(Exception err) {
             err.printStackTrace();
@@ -50,5 +56,15 @@ public class GameManager {
         catch(Exception err) {
             err.printStackTrace();
         }
+    }
+
+    public void movePlayer(String key){
+                switch (key) {
+                    case "UP", "Z" -> move.up(player,collider);
+                    case "LEFT", "Q" -> move.left(player,collider);
+                    case "DOWN", "S" -> move.down(player,collider);
+                    case "RIGHT", "D" -> move.right(player,collider);
+                    case "SPACE" -> move.shoot(player,collider); //TODO: Faire ça ailleur !
+                }
     }
 }

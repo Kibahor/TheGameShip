@@ -2,15 +2,17 @@ package model.move;
 
 import javafx.scene.input.KeyEvent;
 import launch.Launcher;
+import model.GameManager;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class Keyboard extends Input {
     private Map<String, Boolean> isPressed = new HashMap<>();
-    private IMove move;
+    private GameManager gameManager;
 
-    public Keyboard(IMove move) {
-        this.move = move;
+    public Keyboard(GameManager gameManager) {
+        this.gameManager = gameManager;
 
         //TODO : Un peu brut, trouver un moyen plus flexible
 
@@ -46,14 +48,7 @@ public class Keyboard extends Input {
     public void update() {
         for (Map.Entry m: isPressed.entrySet()) {
             if ((Boolean)m.getValue()) {
-                String key = (String)m.getKey();
-                switch (key) {
-                    case "UP", "Z" -> move.up();
-                    case "LEFT", "Q" -> move.left();
-                    case "DOWN", "S" -> move.down();
-                    case "RIGHT", "D" -> move.right();
-                    case "SPACE" -> move.shoot(); //TODO: Faire ça ailleur !
-                }
+                gameManager.movePlayer((String)m.getKey());
             }
         }
     }

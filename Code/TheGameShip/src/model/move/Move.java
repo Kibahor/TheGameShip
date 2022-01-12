@@ -1,52 +1,41 @@
 package model.move;
 
-import model.collider.Collider;
+import model.collider.ICollider;
 import model.entity.IEntity;
 
 public class Move implements IMove {
-    IEntity e;
-    Collider c;
-
-    public Move(IEntity e){
-        this.e=e;
-        this.c = new Collider();
-    }
-    protected Move(IEntity e, Collider c) {
-        this.e = e;
-        this.c = c;
-    }
 
     @Override
-    public void left() {
-        if (!c.isCollision(e,"LEFT")) {
+    public void left(IEntity e, ICollider c) {
+        if (!c.isCollision(e,null,"LEFT")) {
             e.setY(e.getY() - 10);
         }
     }
 
     @Override
-    public void right() {
-        if (!c.isCollision(e,"RIGHT")) {
+    public void right(IEntity e, ICollider c) {
+        if (!c.isCollision(e,null,"RIGHT")) {
             e.setY(e.getY() + 10);
         }
     }
 
     @Override
-    public void down() {
-        if (!c.isCollision(e,"DOWN")) {
+    public void down(IEntity e, ICollider c) {
+        if (!c.isCollision(e,null,"DOWN")) {
             e.setX(e.getX() + 10);
         }
     }
 
     @Override
-    public void up() {
-        if (!c.isCollision(e,"UP")) {
+    public void up(IEntity e, ICollider c) {
+        if (!c.isCollision(e,null,"UP")) {
             e.setX(e.getX() - 10);
         }
     }
 
     @Override
-    public void shoot(){
-        if (!c.isCollision(e,"SHOOT")) {
+    public void shoot(IEntity e, ICollider c){
+        if (!c.isCollision(e,null,"SHOOT")) {
             //TODO: Ajouter Instruction Tir
         }
     }
