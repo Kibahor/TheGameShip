@@ -11,7 +11,7 @@ public class HighScore {
     public void initialize() {}
 
     public void menu(ActionEvent actionEvent){
-        Launcher.viewManager.setView("Menu");
+        Launcher.getViewManager().setView("Menu");
     }
 
     public void clear(ActionEvent actionEvent){
