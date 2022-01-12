@@ -1,17 +1,17 @@
 package model.move;
 
-import model.entity.ColliderPlayground;
+import model.collider.Collider;
 import model.entity.IEntity;
 
 public class Move implements IMove {
     IEntity e;
-    ColliderPlayground c;
+    Collider c;
 
     public Move(IEntity e){
         this.e=e;
-        this.c = new ColliderPlayground();
+        this.c = new Collider();
     }
-    protected Move(IEntity e, ColliderPlayground c) {
+    protected Move(IEntity e, Collider c) {
         this.e = e;
         this.c = c;
     }
