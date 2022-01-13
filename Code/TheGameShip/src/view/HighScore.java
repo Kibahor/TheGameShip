@@ -11,7 +11,7 @@ public class HighScore {
         Launcher.getViewManager().setView("Menu");
     }
 
-    public void clear(ActionEvent actionEvent){
+    public void clear(ActionEvent actionEvent) {
         //TODO: Si on a le temps..
         System.out.println("Un jour peut être ^^"); //DEBUG
     }

@@ -7,8 +7,6 @@ package launch;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import model.GameManager;
-import model.entity.*;
 import view.ViewManager;
 
 public class Launcher extends Application {
@@ -16,15 +14,15 @@ public class Launcher extends Application {
     private static Stage stage;
 
     public void start(Stage stage) throws Exception {
-        this.stage=stage;
+        this.stage = stage;
         viewManager = new ViewManager();
         viewManager.loadView();
         viewManager.setView("Menu");//DEBUG
         this.stage.show();
     }
 
-    public static ViewManager getViewManager(){
+    public static ViewManager getViewManager() {
         return viewManager;
     }
-    public static Stage getStage(){return stage;}
+    public static Stage getStage(){ return stage; }
 }
