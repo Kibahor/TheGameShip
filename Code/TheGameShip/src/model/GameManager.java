@@ -1,6 +1,8 @@
 package model;
 
 import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleSetProperty;
+import javafx.collections.ObservableSet;
 import model.collider.Collider;
 import model.collider.ICollider;
 import model.entity.*;
@@ -23,12 +25,8 @@ public class GameManager implements IShoot,Observateur {
     //Shoot
     //TODO:Voir si il faut faire autrement pour la gestion des tirs (list obsvervable et quand ajout d'un tir MoveShoot.update() (qui sera abonner a la boucle))
     //TODO: Limite le nombre de tirs créer par seconde (par exemple mettre un timer)
-    private ArrayList<Shoot> shoots;
-    @Override public ArrayList<Shoot> getShoots(){
-        return shoots;
-    }
     @Override public void addShoot(String sprite, double radius){
-        shoots.add(new Shoot(player.getId(),sprite, player.getX(), player.getY(), radius));
+        entityManager.add(new Shoot(player.getId(),sprite, player.getX(), player.getY(), radius));
         System.out.println("Shoot Add on player : "+player.getName());//DEBUG
     }
     //List Monde
@@ -41,7 +39,6 @@ public class GameManager implements IShoot,Observateur {
         player = new Player("file://test.jpg","Vaisseau",100,360,50,5, 10, 10); //DEBUG
         entityManager.add(player); //DEBUG
         entityManager.add(new Entity("file://test.jpg","Obstacle1","Obstacle",500,360,100));//DEBUG
-        this.shoots = new ArrayList<>();
         //TODO:ICI tu abonne une méthode a la boucle
     }
 
@@ -86,14 +83,15 @@ public class GameManager implements IShoot,Observateur {
         }
     }
 
-    public Set<IEntity> getAllEntities(){
-        return entityManager.getAllEntity();
+    public ObservableSet<IEntity> getAllEntities(){
+        return entityManager.getSetEntity();
     }
 
     @Override
     public void update() {
+        /*
         for(IEntity e : shoots){
             move.left(e,collider);
-        }
+        }*/
     }
 }

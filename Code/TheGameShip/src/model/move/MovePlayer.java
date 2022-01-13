@@ -5,7 +5,7 @@ import model.collider.ICollider;
 import model.entity.*;
 
 public class MovePlayer extends Move {
-
+    //TODO:Vérifier que c'est castable
     @Override
     public void left(IEntity e, ICollider c) {
         if (!c.isCollision(e,"LEFT")) {
