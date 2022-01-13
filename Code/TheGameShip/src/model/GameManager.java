@@ -68,6 +68,8 @@ public class GameManager implements Observateur {
     public void exit() {
         boucle.StopBoucle();
         thread.stop(); //TODO: Voir si il n'y a pas un autre moyen car deprecated
+        boucleShoot.StopBoucle();
+        thread.stop();
     }
 
     public void movePlayer (String key) {

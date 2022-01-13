@@ -15,10 +15,8 @@ public class Launcher extends Application {
 
     public void start(Stage stage) throws Exception {
         this.stage = stage;
-        viewManager = new ViewManager();
-        viewManager.loadView();
-        viewManager.setView("Menu");//DEBUG
-        this.stage.show();
+        viewManager = new ViewManager("res/FXML/","Menu");
+        stage.show();
     }
 
     public static ViewManager getViewManager() { return viewManager; }
