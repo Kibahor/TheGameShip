@@ -3,6 +3,7 @@ package model.collider;
 import launch.Launcher;
 import model.GameManager;
 import model.entity.IEntity;
+import model.entity.Shoot;
 
 public class Collider implements ICollider {
     private final GameManager gameManager;
@@ -36,7 +37,12 @@ public class Collider implements ICollider {
         double y1 = e1.getY();
         double radius1 = e1.getHitbox_radius();
         for(IEntity e2: gameManager.getSetEntity()){
-            if(!e1.equals(e2)) {
+            boolean ownedShoot=false;
+            /*Décommenter une fois que : TODO: Il faudrait utiliser la liste des entités visible et utilisé
+            if(e2.getType().equals("Shoot")){
+                ownedShoot=((Shoot)e2).getOwnerId().equals(e1.getId());
+            }*/
+            if(!e1.equals(e2) && !ownedShoot) {
                 double x2 = e2.getX();
                 double y2 = e2.getY();
                 double radius2 = e2.getHitbox_radius();

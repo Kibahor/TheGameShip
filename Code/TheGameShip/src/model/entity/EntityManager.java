@@ -17,6 +17,7 @@ public class EntityManager {
     private final ObservableSet<IEntity> setEntity;
         public ObservableSet<IEntity> getSetEntity(){return setEntity;}
 
+
     public EntityManager() {
         this.setEntity = FXCollections.observableSet(new HashSet<>());
     }

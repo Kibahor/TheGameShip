@@ -19,12 +19,12 @@ public class GameManager implements Observateur {
     private ICollider collider;
     private Player player;
 
-    private Boucle boucleShoot;
+    private Boucle boucleInputShoot;
     private Thread threadShoot;
-    private IMove move;
     private ICollider colliderShoot;
 
-    private ArrayList<IEntity> usedEntity=new ArrayList<>();//DEBUG
+    private volatile ArrayList<IEntity> usedEntity=new ArrayList<>();//DEBUG
+
     //List Monde
     //ViewManager ?
     //TODO: Mieux gérer entités (visible vs non visible) (Gérer efficaement les deux collection)
@@ -35,7 +35,8 @@ public class GameManager implements Observateur {
 
     //DEBUG
     public void initEntity(){
-        for(int i=0;i<50;i++){
+        int nbShootPreGenerate=100; //DEBUG
+        for(int i=0;i<nbShootPreGenerate;i++){
             entityManager.add(new Shoot());
         }
         entityManager.add(player); //DEBUG
@@ -44,20 +45,26 @@ public class GameManager implements Observateur {
 
     public void start() {
         try {
-            boucle = new Boucle(25);
+            boucle = new Boucle(25); //Temps d'attente entre chaque actualisation de sprite du joueur
             thread = new Thread(boucle);
-            movePlayer = new MovePlayer();
+            movePlayer = new MoveSpeed();
             collider = new Collider(this);
             boucle.subscribe(new Keyboard(this, new String[]{"UP", "DOWN", "LEFT", "RIGHT", "Z", "Q", "S", "D"}));
-            thread.start(); //DEBUG
 
-            boucleShoot=new Boucle(300);
-            threadShoot = new Thread(boucleShoot);
-            move=new Move();
+
+            boucleInputShoot =new Boucle(200); //Temps d'attente entre chaque tire
+            boucleInputShoot.subscribe(new Keyboard(this, new String[]{"SPACE"}));
+            threadShoot = new Thread(boucleInputShoot);
             colliderShoot=new ColliderShoot();
-            boucleShoot.subscribe(new Keyboard(this, new String[]{"SPACE"}));
-            boucle.subscribe(this);
+
+            Boucle boucleShootUpdate=new Boucle(10); //Temps d'attente entre chaque actualisation de sprite des tirs
+            boucleShootUpdate.subscribe(this);
+            Thread threadShootUpdate = new Thread(boucleShootUpdate);
+
+            thread.start(); //DEBUG
             threadShoot.start(); //DEBUG
+            threadShootUpdate.start();
+
         }
         catch(Exception err) {
             err.printStackTrace();
@@ -66,10 +73,10 @@ public class GameManager implements Observateur {
     }
 
     public void exit() {
+        boucleInputShoot.StopBoucle();
+        thread.stop();
         boucle.StopBoucle();
         thread.stop(); //TODO: Voir si il n'y a pas un autre moyen car deprecated
-        boucleShoot.StopBoucle();
-        thread.stop();
     }
 
     public void movePlayer (String key) {
@@ -104,14 +111,18 @@ public class GameManager implements Observateur {
 
     @Override
     public void update() {
-        for(IEntity e : usedEntity) {
-            if(e.getType().equals("Shoot")){
-                move.right(e, colliderShoot);
-                if(colliderShoot.isCollision(e,"RIGHT")){
-                    ((Shoot) e).reset();
-                    usedEntity.remove(e); //TODO:ConccurentException : faire des méthodes asynchrone
+        try {
+            for (IEntity e : usedEntity) {
+                if (e.getType().equals("Shoot")) {
+                    movePlayer.right(e, colliderShoot);
+                    if (colliderShoot.isCollision(e, "RIGHT")) {
+                        ((Shoot) e).reset();
+                        usedEntity.remove(e);
+                    }
                 }
             }
+        }catch(Exception err){
+            //TODO:ConccurentException : gérer la gestion concurrente des ressources entre le thread principal et la boucle : https://www.jmdoudoux.fr/java/dej/chap-acces_concurrents.htm
         }
     }
 }

@@ -16,31 +16,19 @@ public class MainWindow {
     private Pane pane;
 
     private GameManager gameManager;
-    private Launcher launch;
 
     public void initialize() {
-
-        launch.getStage().getIcons().add(new Image("https://img2.freepng.fr/20180519/rya/kisspng-logo-phoenix-art-5afffc96998f80.692522331526725782629.jpg"));
-
-        //C'est au GameManager -> Niveau de bind les bonne propriété
-        System.out.println("LOAD");//DEBUG
         gameManager = new GameManager();
 
-        gameManager.getSetEntity().addListener(new SetChangeListener<IEntity>() {
-            @Override
-            public void onChanged(Change<? extends IEntity> change) {
-                if (change.wasAdded()) {
-                    addEntity(change.getElementAdded());
-                }
+        gameManager.getSetEntity().addListener((SetChangeListener<IEntity>) change -> {
+            if (change.wasAdded()) {
+                addEntity(change.getElementAdded());
             }
         });
         gameManager.initEntity();
         gameManager.start();
 
-        Launcher.getStage().setOnCloseRequest(e -> {
-            gameManager.exit();
-            System.out.println("EXIT");//DEBUG
-        });
+        Launcher.getStage().setOnCloseRequest(e -> gameManager.exit());
 
     }
 

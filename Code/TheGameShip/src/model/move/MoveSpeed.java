@@ -3,7 +3,7 @@ package model.move;
 import model.collider.ICollider;
 import model.entity.*;
 
-public class MovePlayer extends Move {
+public class MoveSpeed extends Move {
 
     @Override
     public void left(IEntity e, ICollider c) {
