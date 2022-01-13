@@ -95,6 +95,7 @@ public class GameManager implements Observateur {
         }
         return null;
     }
+
     public ObservableSet<IEntity> getSetEntity(){
         return entityManager.getSetEntity();
     }

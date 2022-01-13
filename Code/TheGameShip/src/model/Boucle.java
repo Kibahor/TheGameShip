@@ -29,12 +29,8 @@ public class Boucle extends model.Observable implements Runnable {
         }
     }
 
-    public void StopBoucle(){
-        isRunning = false;
-    }
-
+    public void StopBoucle(){ isRunning = false; }
     public void StartBoucle(){
         isRunning = true;
     }
-
 }

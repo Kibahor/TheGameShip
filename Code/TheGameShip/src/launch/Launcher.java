@@ -21,8 +21,6 @@ public class Launcher extends Application {
         this.stage.show();
     }
 
-    public static ViewManager getViewManager() {
-        return viewManager;
-    }
-    public static Stage getStage(){ return stage; }
+    public static ViewManager getViewManager() { return viewManager; }
+    public static Stage getStage() { return stage; }
 }
