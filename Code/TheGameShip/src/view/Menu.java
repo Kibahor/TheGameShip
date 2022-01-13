@@ -21,5 +21,6 @@ public class Menu {
     }
     public void exit(ActionEvent actionEvent) {
         //TODO: Trouver un moyen de stopper les threads (au moins GameManager)
-        Launcher.getStage().close(); }
+        Launcher.getStage().close();
+    }
 }

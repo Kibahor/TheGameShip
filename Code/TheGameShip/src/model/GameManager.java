@@ -33,8 +33,8 @@ public class GameManager implements Observateur {
     }
 
     //DEBUG
-    public void initEntity(){
-        for(int i=0;i<50;i++){
+    public void initEntity() {
+        for (int i = 0; i < 50; i++) {
             entityManager.add(new Shoot());
         }
         entityManager.add(player); //DEBUG
@@ -43,14 +43,14 @@ public class GameManager implements Observateur {
 
     public void start() {
         try {
-            move=new Move();
-            colliderShoot=new ColliderShoot();
+            move = new Move();
+            colliderShoot = new ColliderShoot();
             movePlayer = new MovePlayer();
             collider = new Collider(this);
             Input input = new Keyboard(this);
             boucle.subscribe(input); //DEBUG
         }
-        catch(Exception err) {
+        catch (Exception err) {
             err.printStackTrace();
         }
         thread.start(); //DEBUG
@@ -69,8 +69,8 @@ public class GameManager implements Observateur {
             case "DOWN", "S" -> movePlayer.down(player,collider);
             case "RIGHT", "D" -> movePlayer.right(player,collider);
             case "SPACE" -> {
-                Shoot s=getEmptyShoot();
-                if(s!=null) {
+                Shoot s = getEmptyShoot();
+                if (s!=null) {
                     s.setOwnerId(player.getId());
                     s.setX(player.getX() + player.getHitbox_radius() + getEmptyShoot().getHitbox_radius() + 10);
                     s.setY(player.getY());
@@ -81,23 +81,25 @@ public class GameManager implements Observateur {
             }
         }
     }
-    public Shoot getEmptyShoot(){
-        for(IEntity e:getSetEntity()){
-            if(e.getType().equals("Shoot")){
-                if(!e.getVisible()){
+
+    public Shoot getEmptyShoot() {
+        for (IEntity e:getSetEntity()) {
+            if (e.getType().equals("Shoot")) {
+                if (!e.getVisible()) {
                     return (Shoot)e;
                 }
             }
         }
         return null;
     }
+
     public ObservableSet<IEntity> getSetEntity(){
         return entityManager.getSetEntity();
     }
 
     @Override
     public void update() {
-        for(IEntity e : shoots) {
+        for (IEntity e : shoots) {
             move.right(e, colliderShoot);
         }
     }
