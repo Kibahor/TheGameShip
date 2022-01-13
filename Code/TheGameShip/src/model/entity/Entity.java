@@ -2,6 +2,8 @@ package model.entity;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.UUID;
@@ -14,7 +16,7 @@ public class Entity implements IEntity {
 
     private final String name;
         public String getName() { return name; }
-    private final String type;
+        private final String type;
 
     //Coordonate
     private final DoubleProperty x = new SimpleDoubleProperty();
@@ -28,10 +30,9 @@ public class Entity implements IEntity {
         public DoubleProperty yProperty() { return y; }
 
     //Life
-    private final DoubleProperty hp = new SimpleDoubleProperty();
+    private final SimpleIntegerProperty hp = new SimpleIntegerProperty();
         public double getHp() { return hp.get(); }
-        public void setHp(double hp) { this.hp.set(hp); }
-        public DoubleProperty hpProperty() { return hp; }
+        public void setHp(int hp) { this.hp.set(hp); }
 
     //Sprite
     private URI sprite;
@@ -45,7 +46,7 @@ public class Entity implements IEntity {
     private final DoubleProperty hitbox_radius = new SimpleDoubleProperty();
         public double getHitbox_radius() { return hitbox_radius.get(); }
         public void setHitbox_radius(double hitbox_radius) { this.hitbox_radius.set(hitbox_radius); }
-        public DoubleProperty hitbox_radiusProperty(){return hitbox_radius;}
+        public DoubleProperty hitbox_radiusProperty() { return hitbox_radius; }
 
     public Entity(String sprite, String nom, String type) {
         try {
@@ -63,7 +64,7 @@ public class Entity implements IEntity {
         setHitbox_radius(10);
     }
 
-    public Entity(String sprite, String nom, String type, double x, double y, double hitbox_radius, double hp) {
+    public Entity(String sprite, String nom, String type, double x, double y, double hitbox_radius, int hp) {
         this(sprite,nom,type);
         setX(x);
         setY(y);

@@ -2,6 +2,7 @@ package view;
 
 import javafx.collections.SetChangeListener;
 import javafx.fxml.FXML;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -31,14 +32,6 @@ public class MainWindow {
             }
         });
         gameManager.initEntity();
-        //Circle joueur = new Circle (20, Color.BLACK);
-
-        //addEntity("Vaisseau", joueur);
-        //addEntity("Obstacle1", new Circle(20, Color.DARKGRAY));
-        /*
-        Rectangle lifeBar = new Rectangle(0, 0, 10, 30);
-        gameManager.BindLifeBar("Vaisseau", joueur.strokeWidthProperty());
-        pane.getChildren().add(lifeBar);*/
 
         gameManager.start();
         Launcher.getStage().setOnCloseRequest(e -> {
@@ -48,7 +41,7 @@ public class MainWindow {
 
     }
     public void addEntity(IEntity e) {
-        Circle c=new Circle(e.getHitbox_radius(),Color.BLACK);
+        Circle c = new Circle(e.getHitbox_radius(),Color.BLACK);
         c.centerXProperty().bind(e.xProperty());
         c.centerYProperty().bind(e.yProperty());
         c.radiusProperty().bind(e.hitbox_radiusProperty());
