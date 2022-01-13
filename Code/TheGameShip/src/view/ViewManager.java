@@ -3,7 +3,6 @@ package view;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 import launch.Launcher;
 
 import java.io.IOException;
@@ -11,7 +10,7 @@ import java.util.HashMap;
 
 public class ViewManager {
 
-    private HashMap<String, Pane> view=new HashMap<>();
+    private HashMap<String, Pane> view = new HashMap<>();
         private void addView(String name,Pane pane){
         view.put(name,pane);
     }
@@ -20,20 +19,14 @@ public class ViewManager {
     }
         private Pane getView(String name){
             Pane pane=(Pane) view.get(name);
-            if(pane==null){
+            if(pane == null){
                 return new Pane(); //TODO: Charger une vue d'erreur par exemple
             }
             return pane;
         }
 
-
-        /*public void show(){
-        stage.show();
-    }*/
-        /*public void exitStage() {
-            //TODO: A compléter !!
-            stage.close();
-            System.out.println("Fermeture de l'application !");
+        /*public void show() {
+            stage.show();
         }*/
 
     private Scene main;
@@ -48,9 +41,7 @@ public class ViewManager {
                 System.out.println(key);
             }
         }
-        public double getSceneHeight(){
-        return main.getHeight();
-    }
+        public double getSceneHeight() { return main.getHeight() - 70; }
         public double getSceneWidth(){
         return main.getWidth();
     }

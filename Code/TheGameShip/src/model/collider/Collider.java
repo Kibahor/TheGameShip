@@ -7,7 +7,7 @@ import model.entity.IEntity;
 public class Collider implements ICollider {
     private GameManager gameManager;
     public Collider(GameManager gameManager){
-        this.gameManager=gameManager;
+        this.gameManager = gameManager;
     }
 
     public boolean isCollision(IEntity e1, String direction) {
@@ -18,8 +18,8 @@ public class Collider implements ICollider {
         double x1 = e1.getX();
         double y1 = e1.getY();
         double radius = e1.getHitbox_radius();
-        double height= Launcher.getViewManager().getSceneHeight();
-        double width=Launcher.getViewManager().getSceneWidth();
+        double height = Launcher.getViewManager().getSceneHeight();
+        double width = Launcher.getViewManager().getSceneWidth();
 
         //Collison scene
         return switch (direction) {

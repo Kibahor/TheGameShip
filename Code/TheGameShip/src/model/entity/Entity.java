@@ -7,6 +7,7 @@ import java.net.URISyntaxException;
 import java.util.UUID;
 
 public class Entity implements IEntity {
+
     //Base
     private final UUID id;
         public UUID getId(){return id;}
@@ -22,9 +23,15 @@ public class Entity implements IEntity {
         public DoubleProperty xProperty(){return x;}
 
     private final DoubleProperty y = new SimpleDoubleProperty();
-        public double getY() {return y.get();}
-        public void setY(double y) {this.y.set(y);}
-        public DoubleProperty yProperty(){return y;}
+        public double getY() { return y.get(); }
+        public void setY(double y) { this.y.set(y); }
+        public DoubleProperty yProperty() { return y; }
+
+    //Life
+    private final DoubleProperty hp = new SimpleDoubleProperty();
+        public double getHp() { return hp.get(); }
+        public void setHp(double hp) { this.hp.set(hp); }
+        public DoubleProperty hpProperty() { return hp; }
 
     //Sprite
     private URI sprite;
@@ -36,8 +43,8 @@ public class Entity implements IEntity {
     }
 
     private final DoubleProperty hitbox_radius = new SimpleDoubleProperty();
-        public double getHitbox_radius() {return hitbox_radius.get();}
-        public void setHitbox_radius(double hitbox_radius) {this.hitbox_radius.set(hitbox_radius);}
+        public double getHitbox_radius() { return hitbox_radius.get(); }
+        public void setHitbox_radius(double hitbox_radius) { this.hitbox_radius.set(hitbox_radius); }
         public DoubleProperty hitbox_radiusProperty(){return hitbox_radius;}
 
     public Entity(String sprite, String nom, String type) {
@@ -52,13 +59,15 @@ public class Entity implements IEntity {
         this.type = type;
         setX(0);
         setY(0);
+        setHp(10);
         setHitbox_radius(10);
     }
 
-    public Entity(String sprite, String nom, String type, double x, double y, double hitbox_radius) {
+    public Entity(String sprite, String nom, String type, double x, double y, double hitbox_radius, double hp) {
         this(sprite,nom,type);
         setX(x);
         setY(y);
+        setHp(hp);
         setHitbox_radius(hitbox_radius);
     }
 
