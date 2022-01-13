@@ -30,7 +30,6 @@ public class Keyboard extends Input {
 
         isPressed.put("SPACE",false);
 
-        //Launcher.getViewManager().getActualScene().addEventFilter(KeyEvent.KEY_PRESSED, e -> {
         Launcher.getStage().addEventFilter(KeyEvent.KEY_PRESSED, e -> {
             String key = e.getCode().toString();
             if (isPressed.containsKey(key)) {

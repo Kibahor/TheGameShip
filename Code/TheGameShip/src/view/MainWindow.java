@@ -16,25 +16,19 @@ public class MainWindow {
     @FXML
     private Pane pane;
 
-    @FXML
-    private Circle joueur;
-
-    @FXML
-    private Circle obstacle;
-
     private GameManager gameManager;
 
     public void initialize() throws Exception {
         //C'est au GameManager -> Niveau de bind les bonne propriété
         System.out.println("LOAD");//DEBUG
         gameManager = new GameManager();
-        joueur = new Circle (20, Color.BLACK);
-        obstacle = new Circle(20, Color.DARKGRAY);
 
+        Circle joueur = new Circle (20, Color.BLACK);
         gameManager.BindProperties("Vaisseau",joueur.centerXProperty(),joueur.centerYProperty(),joueur.radiusProperty());
-        gameManager.BindProperties("Obstacle",obstacle.centerXProperty(),obstacle.centerYProperty(),obstacle.radiusProperty());
-
         pane.getChildren().add(joueur);
+
+        Circle obstacle = new Circle(20, Color.DARKGRAY);
+        gameManager.BindProperties("Obstacle1",obstacle.centerXProperty(),obstacle.centerYProperty(),obstacle.radiusProperty());
         pane.getChildren().add(obstacle);
 
         //TODO: Voir si il ne faudrait pas le faire autre part
