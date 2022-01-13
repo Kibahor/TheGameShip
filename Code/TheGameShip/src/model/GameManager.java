@@ -1,7 +1,6 @@
 package model;
 
 import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleSetProperty;
 import javafx.collections.ObservableSet;
 import model.collider.Collider;
 import model.collider.ICollider;
@@ -10,9 +9,6 @@ import model.move.IMove;
 import model.move.Input;
 import model.move.Keyboard;
 import model.move.MovePlayer;
-
-import java.util.ArrayList;
-import java.util.Set;
 
 public class GameManager implements IShoot,Observateur {
 
@@ -26,7 +22,7 @@ public class GameManager implements IShoot,Observateur {
     //TODO:Voir si il faut faire autrement pour la gestion des tirs (list obsvervable et quand ajout d'un tir MoveShoot.update() (qui sera abonner a la boucle))
     //TODO: Limite le nombre de tirs créer par seconde (par exemple mettre un timer)
     @Override public void addShoot(String sprite, double radius){
-        entityManager.add(new Shoot(player.getId(),sprite, player.getX(), player.getY(), radius));
+        entityManager.add(new Shoot(player.getId(),sprite, player.getX(), player.getY(), radius,1));
         System.out.println("Shoot Add on player : "+player.getName());//DEBUG
     }
     //List Monde
@@ -36,9 +32,9 @@ public class GameManager implements IShoot,Observateur {
         entityManager = new EntityManager();
         boucle = new Boucle(50);
         thread = new Thread(boucle);
-        player = new Player("file://test.jpg","Vaisseau",100,360,50,5, 10, 10); //DEBUG
+        player = new Player("file://test.jpg","Vaisseau",100,360,20,5, 10,10); //DEBUG
         entityManager.add(player); //DEBUG
-        entityManager.add(new Entity("file://test.jpg","Obstacle1","Obstacle",500,360,100));//DEBUG
+        entityManager.add(new Entity("file://test.jpg","Obstacle1","Obstacle",500,360,20,5));//DEBUG
         //TODO:ICI tu abonne une méthode a la boucle
     }
 
@@ -60,12 +56,22 @@ public class GameManager implements IShoot,Observateur {
         thread.stop(); //TODO: Voir si il n'y a pas un autre moyen car deprecated
     }
 
-    public void BindProperties(String entityName,DoubleProperty x, DoubleProperty y, DoubleProperty radius) {
+    public void BindProperties(String entityName, DoubleProperty x, DoubleProperty y, DoubleProperty radius) {
         try {
             IEntity e = entityManager.getEntity(entityName);
             x.bind(e.xProperty());
             y.bind(e.yProperty());
             radius.bind(e.hitbox_radiusProperty());
+        }
+        catch (Exception err) {
+            err.printStackTrace();
+        }
+    }
+
+    public void BindLifeBar(String entityName, DoubleProperty hp) {
+        try {
+            IEntity e = entityManager.getEntity((entityName));
+            hp.bind(((IHasLife)e).hpProperty()); //TODO: vérifier que c'est castable
         }
         catch (Exception err) {
             err.printStackTrace();

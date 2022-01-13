@@ -1,21 +1,15 @@
 package model.entity;
 
-import model.Observateur;
+public class Player extends Entity implements IHasLife, IMovable {
 
-import java.net.URISyntaxException;
-import java.util.ArrayList;
-
-public class Player extends Entity implements IHasLife,IMovable{
     //LIFE
-    int hp;
-        @Override public int getHp() {
-        return hp;
-    }
-        @Override public void setHp(int hp) {
+    double hp;
+        @Override public double getHp() { return hp; }
+        @Override public void setHp(double hp) {
         this.hp = hp;
     }
 
-    boolean isDead=false;
+    boolean isDead = false;
         @Override public boolean isDead() {
         return isDead;
     }
@@ -29,7 +23,7 @@ public class Player extends Entity implements IHasLife,IMovable{
             return speedX;
         }
         @Override public void setSpeedX(float speedX) {
-            this.speedX=speedX;
+            this.speedX = speedX;
         }
 
     private float speedY;
@@ -37,21 +31,20 @@ public class Player extends Entity implements IHasLife,IMovable{
             return speedY;
         }
         @Override public void setSpeedY(float speedY) {
-            this.speedY=speedY;
+            this.speedY = speedY;
         }
 
     public Player(String sprite, String nom, double x, double y, double hitbox_radius) {
-        super(sprite, nom, "Joueur", x, y, hitbox_radius);
-        this.hp=6;
-        this.speedX=5;
-        this.speedY=10;
+        super(sprite, nom, "Joueur", x, y, hitbox_radius, 5);
+        this.speedX = 5;
+        this.speedY = 10;
     }
 
-    public Player(String sprite, String nom, double x, double y, double hitbox_radius, int hp, float speedX, float speedY){
-        this(sprite,nom,x,y,hitbox_radius);
-        this.hp=hp;
-        this.speedX=speedX;
-        this.speedY=speedY;
+    public Player(String sprite, String nom, double x, double y, double hitbox_radius, double hp, float speedX, float speedY) {
+        this(sprite, nom, x, y, hitbox_radius);
+        this.hp = hp;
+        this.speedX = speedX;
+        this.speedY = speedY;
     }
 
 }

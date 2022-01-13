@@ -1,11 +1,9 @@
 package model.move;
 
-import model.GameManager;
-import model.Observateur;
 import model.collider.ICollider;
 import model.entity.IEntity;
 
-public class Move implements IMove{
+public class Move implements IMove {
 
     @Override
     public void left(IEntity e, ICollider c) {

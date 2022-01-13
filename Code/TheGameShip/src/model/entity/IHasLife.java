@@ -1,11 +1,13 @@
 package model.entity;
 
-public interface IHasLife {
-    int getHp();
+import javafx.beans.property.DoubleProperty;
 
-    void setHp(int hp);
+public interface IHasLife {
+
+    void setHp(double hp);
+    double getHp();
+    DoubleProperty hpProperty();
 
     boolean isDead();
-
     void setDead(boolean dead);
 }

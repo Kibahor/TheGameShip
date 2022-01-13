@@ -1,6 +1,5 @@
 package model.move;
 
-import model.GameManager;
 import model.collider.ICollider;
 import model.entity.*;
 

@@ -4,9 +4,9 @@ import javafx.fxml.FXML;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 import launch.Launcher;
 import model.GameManager;
-import model.Observateur;
 
 public class MainWindow {
 
@@ -20,17 +20,23 @@ public class MainWindow {
         System.out.println("LOAD");//DEBUG
         gameManager = new GameManager();
 
-        addEntity("Vaisseau",new Circle (20, Color.BLACK));
-        addEntity("Obstacle1",new Circle(20, Color.DARKGRAY));
+        Circle joueur = new Circle (20, Color.BLACK);
+
+        addEntity("Vaisseau", joueur);
+        addEntity("Obstacle1", new Circle(20, Color.DARKGRAY));
+
+        Rectangle lifeBar = new Rectangle(0, 0, 10, 30);
+        gameManager.BindLifeBar("Vaisseau", joueur.strokeWidthProperty());
+        pane.getChildren().add(lifeBar);
 
         gameManager.start();
-        Launcher.getStage().setOnCloseRequest(e ->{
+        Launcher.getStage().setOnCloseRequest(e -> {
             gameManager.exit();
             System.out.println("EXIT");//DEBUG
         });
     }
-    public void addEntity(String entityName,Circle c){
-        gameManager.BindProperties(entityName,c.centerXProperty(),c.centerYProperty(),c.radiusProperty());
+    public void addEntity(String entityName, Circle c) {
+        gameManager.BindProperties(entityName, c.centerXProperty(), c.centerYProperty(), c.radiusProperty());
         pane.getChildren().add(c);
     }
 }

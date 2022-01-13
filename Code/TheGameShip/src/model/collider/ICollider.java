@@ -1,6 +1,5 @@
 package model.collider;
 
-import model.GameManager;
 import model.entity.IEntity;
 
 public interface ICollider {
