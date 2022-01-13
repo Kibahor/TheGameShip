@@ -21,6 +21,7 @@ public interface IEntity {
     DoubleProperty hitbox_radiusProperty();
 
     String getName();
+    String getType();
 
     URI getSprite();
     void setSprite(URI sprite);

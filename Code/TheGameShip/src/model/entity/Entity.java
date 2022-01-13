@@ -14,7 +14,9 @@ public class Entity implements IEntity {
 
     private final String name;
         public String getName() { return name; }
+
     private final String type;
+        public String getType() { return type;}
 
     //Coordonate
     private final DoubleProperty x = new SimpleDoubleProperty();

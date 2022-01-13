@@ -22,7 +22,7 @@ public class GameManager implements IShoot,Observateur {
     //TODO:Voir si il faut faire autrement pour la gestion des tirs (list obsvervable et quand ajout d'un tir MoveShoot.update() (qui sera abonner a la boucle))
     //TODO: Limite le nombre de tirs créer par seconde (par exemple mettre un timer)
     @Override public void addShoot(String sprite, double radius){
-        entityManager.add(new Shoot(player.getId(),sprite, player.getX(), player.getY(), radius,1));
+        entityManager.add(new Shoot(player.getId(),sprite, player.getX()+radius+5, player.getY(), radius,1));
         System.out.println("Shoot Add on player : "+player.getName());//DEBUG
     }
     //List Monde
@@ -39,7 +39,7 @@ public class GameManager implements IShoot,Observateur {
     //DEBUG
     public void initEntity(){
         entityManager.add(player); //DEBUG
-        entityManager.add(new Entity("file://test.jpg","Obstacle1","Obstacle",500,360,20,5));//DEBUG
+        entityManager.add(new Entity("file://test.jpg","Obstacle1","Obstacle",500,360,50,5));//DEBUG
     }
 
     public void start() {
@@ -70,9 +70,9 @@ public class GameManager implements IShoot,Observateur {
         }
     }
 
-    public void movePlayer (String direction) {
+    public void movePlayer (String key) {
         //TODO: Au lieu de passer une entite on peut passer le strict minimum (,y,radius)
-        switch (direction) {
+        switch (key) {
             case "UP", "Z" -> move.up(player,collider);
             case "LEFT", "Q" -> move.left(player,collider);
             case "DOWN", "S" -> move.down(player,collider);
@@ -87,9 +87,10 @@ public class GameManager implements IShoot,Observateur {
 
     @Override
     public void update() {
-        /*
-        for(IEntity e : shoots){
-            move.left(e,collider);
-        }*/
+        for(IEntity e : getSetEntity()) {
+            if (e.getType().equals("Shoot")) {
+                move.left(e, collider);
+            }
+        }
     }
 }

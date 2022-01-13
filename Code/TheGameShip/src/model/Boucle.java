@@ -1,5 +1,7 @@
 package model;
 
+import javafx.application.Platform;
+
 import static java.lang.Thread.sleep;
 
 public class Boucle extends model.Observable implements Runnable {
@@ -19,7 +21,7 @@ public class Boucle extends model.Observable implements Runnable {
         while (isRunning) {
             try {
                 sleep(millis);
-                notifier();
+                Platform.runLater(() -> notifier());
             }
             catch (InterruptedException e) {
                 e.printStackTrace();

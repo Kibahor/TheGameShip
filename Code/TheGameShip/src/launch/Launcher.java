@@ -12,26 +12,15 @@ import model.entity.*;
 import view.ViewManager;
 
 public class Launcher extends Application {
-    private static ViewManager viewManager; //C'est bien (équivalent a passer le en static primaryStage)
+    private static ViewManager viewManager;
     private static Stage stage;
-
-    @Override
-    public void init(){
-        //gameManager=new GameManager();//DEBUG
-    }
 
     public void start(Stage stage) throws Exception {
         this.stage=stage;
         viewManager = new ViewManager();
         viewManager.loadView();
         viewManager.setView("Menu");//DEBUG
-        Launcher.getStage().show();
-    }
-
-    @Override
-    public void stop() {
-        //TODO : attacher la fonction a l'événement quitter de la scene
-        //gameManager.exit();
+        this.stage.show();
     }
 
     public static ViewManager getViewManager(){
