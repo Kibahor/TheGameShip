@@ -33,9 +33,13 @@ public class GameManager implements IShoot,Observateur {
         boucle = new Boucle(50);
         thread = new Thread(boucle);
         player = new Player("file://test.jpg","Vaisseau",100,360,20,5, 10,10); //DEBUG
+        //TODO:ICI tu abonne une méthode a la boucle
+    }
+
+    //DEBUG
+    public void initEntity(){
         entityManager.add(player); //DEBUG
         entityManager.add(new Entity("file://test.jpg","Obstacle1","Obstacle",500,360,20,5));//DEBUG
-        //TODO:ICI tu abonne une méthode a la boucle
     }
 
     public void start() {
@@ -54,18 +58,6 @@ public class GameManager implements IShoot,Observateur {
     public void exit() {
         boucle.StopBoucle();
         thread.stop(); //TODO: Voir si il n'y a pas un autre moyen car deprecated
-    }
-
-    public void BindProperties(String entityName, DoubleProperty x, DoubleProperty y, DoubleProperty radius) {
-        try {
-            IEntity e = entityManager.getEntity(entityName);
-            x.bind(e.xProperty());
-            y.bind(e.yProperty());
-            radius.bind(e.hitbox_radiusProperty());
-        }
-        catch (Exception err) {
-            err.printStackTrace();
-        }
     }
 
     public void BindLifeBar(String entityName, DoubleProperty hp) {
