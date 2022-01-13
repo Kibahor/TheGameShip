@@ -9,9 +9,10 @@ import model.move.Input;
 import model.move.Keyboard;
 import model.move.MovePlayer;
 
+import java.util.ArrayList;
 import java.util.Set;
 
-public class GameManager {
+public class GameManager implements IShoot,Observateur {
 
     private Boucle boucle;
     private Thread thread;
@@ -19,6 +20,17 @@ public class GameManager {
     private IMove move;
     private ICollider collider;
     private Player player;
+    //Shoot
+    //TODO:Voir si il faut faire autrement pour la gestion des tirs (list obsvervable et quand ajout d'un tir MoveShoot.update() (qui sera abonner a la boucle))
+    //TODO: Limite le nombre de tirs créer par seconde (par exemple mettre un timer)
+    private ArrayList<Shoot> shoots;
+    @Override public ArrayList<Shoot> getShoots(){
+        return shoots;
+    }
+    @Override public void addShoot(String sprite, double radius){
+        shoots.add(new Shoot(player.getId(),sprite, player.getX(), player.getY(), radius));
+        System.out.println("Shoot Add on player : "+player.getName());//DEBUG
+    }
     //List Monde
     //ViewManager ?
 
@@ -29,6 +41,7 @@ public class GameManager {
         player = new Player("file://test.jpg","Vaisseau",100,360,50,5, 10, 10); //DEBUG
         entityManager.add(player); //DEBUG
         entityManager.add(new Entity("file://test.jpg","Obstacle1","Obstacle",500,360,100));//DEBUG
+        this.shoots = new ArrayList<>();
         //TODO:ICI tu abonne une méthode a la boucle
     }
 
@@ -69,11 +82,18 @@ public class GameManager {
             case "LEFT", "Q" -> move.left(player,collider);
             case "DOWN", "S" -> move.down(player,collider);
             case "RIGHT", "D" -> move.right(player,collider);
-            case "SPACE" -> move.shoot(player,collider);
+            case "SPACE" -> addShoot("file://f",10);
         }
     }
 
     public Set<IEntity> getAllEntities(){
         return entityManager.getAllEntity();
+    }
+
+    @Override
+    public void update() {
+        for(IEntity e : shoots){
+            move.left(e,collider);
+        }
     }
 }

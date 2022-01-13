@@ -1,10 +1,11 @@
 package model.move;
 
 import model.GameManager;
+import model.Observateur;
 import model.collider.ICollider;
 import model.entity.IEntity;
 
-public class Move implements IMove {
+public class Move implements IMove{
 
     @Override
     public void left(IEntity e, ICollider c) {
@@ -31,13 +32,6 @@ public class Move implements IMove {
     public void up(IEntity e, ICollider c) {
         if (!c.isCollision(e,"UP")) {
             e.setX(e.getX() - 10);
-        }
-    }
-
-    @Override
-    public void shoot(IEntity e, ICollider c){
-        if (!c.isCollision(e,"SHOOT")) {
-            //TODO: Ajouter Instruction Tir
         }
     }
 }

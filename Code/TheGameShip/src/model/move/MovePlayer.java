@@ -31,11 +31,4 @@ public class MovePlayer extends Move {
             e.setY(e.getY()-((IMovable)e).getSpeedY());}
     }
 
-    @Override
-    public void shoot(IEntity e, ICollider c) {
-        if (!c.isCollision(e,"SHOOT")) {
-            //TODO:Pas foufou de le faire ici
-            ((IShoot)e).addShoot("file://test.jpg",10);
-        }
-    }
 }

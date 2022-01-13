@@ -1,9 +1,11 @@
 package model.entity;
 
+import model.Observateur;
+
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 
-public class Player extends Entity implements IHasLife,IMovable,IShoot {
+public class Player extends Entity implements IHasLife,IMovable{
     //LIFE
     int hp;
         @Override public int getHp() {
@@ -38,24 +40,11 @@ public class Player extends Entity implements IHasLife,IMovable,IShoot {
             this.speedY=speedY;
         }
 
-    //Shoot
-    //TODO:Voir si il faut faire autrement pour la gestion des tirs (list obsvervable et quand ajout d'un tir MoveShoot.update() (qui sera abonner a la boucle))
-    //TODO: Limite le nombre de tirs créer par seconde (par exemple mettre un timer)
-    private ArrayList<Shoot> shoots;
-        @Override public ArrayList<Shoot> getShoots(){
-            return shoots;
-        }
-        @Override public void addShoot(String sprite, double radius){
-            shoots.add(new Shoot(getId(),sprite, getX(), getY(), radius));
-            System.out.println("Shoot Add on player : "+getName());//DEBUG
-        }
-
     public Player(String sprite, String nom, double x, double y, double hitbox_radius) {
         super(sprite, nom, "Joueur", x, y, hitbox_radius);
         this.hp=6;
         this.speedX=5;
         this.speedY=10;
-        this.shoots = new ArrayList<>();
     }
 
     public Player(String sprite, String nom, double x, double y, double hitbox_radius, int hp, float speedX, float speedY){
@@ -64,4 +53,5 @@ public class Player extends Entity implements IHasLife,IMovable,IShoot {
         this.speedX=speedX;
         this.speedY=speedY;
     }
+
 }

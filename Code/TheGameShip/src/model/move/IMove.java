@@ -8,5 +8,4 @@ public interface IMove {
     void right(IEntity e, ICollider c);
     void up(IEntity e, ICollider c);
     void down(IEntity e, ICollider c);
-    void shoot(IEntity e, ICollider c);
 }
