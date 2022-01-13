@@ -5,7 +5,7 @@ public class Player extends Entity implements IHasLife, IMovable {
     //LIFE
     double hp;
         @Override public double getHp() { return hp; }
-        @Override public void setHp(double hp) {
+        @Override public void setHp(int hp) {
         this.hp = hp;
     }
 
@@ -40,7 +40,7 @@ public class Player extends Entity implements IHasLife, IMovable {
         this.speedY = 10;
     }
 
-    public Player(String sprite, String nom, double x, double y, double hitbox_radius, double hp, float speedX, float speedY) {
+    public Player(String sprite, String nom, double x, double y, double hitbox_radius, int hp, float speedX, float speedY) {
         this(sprite, nom, x, y, hitbox_radius);
         this.hp = hp;
         this.speedX = speedX;

@@ -2,6 +2,8 @@ package model.entity;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.UUID;
@@ -47,7 +49,7 @@ public class Entity implements IEntity {
     private final DoubleProperty hitbox_radius = new SimpleDoubleProperty();
         public double getHitbox_radius() { return hitbox_radius.get(); }
         public void setHitbox_radius(double hitbox_radius) { this.hitbox_radius.set(hitbox_radius); }
-        public DoubleProperty hitbox_radiusProperty(){return hitbox_radius;}
+        public DoubleProperty hitbox_radiusProperty() { return hitbox_radius; }
 
     public Entity(String sprite, String nom, String type) {
         try {

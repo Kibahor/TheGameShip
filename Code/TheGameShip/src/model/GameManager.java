@@ -60,16 +60,6 @@ public class GameManager implements IShoot,Observateur {
         thread.stop(); //TODO: Voir si il n'y a pas un autre moyen car deprecated
     }
 
-    public void BindLifeBar(String entityName, DoubleProperty hp) {
-        try {
-            IEntity e = entityManager.getEntity((entityName));
-            hp.bind(((IHasLife)e).hpProperty()); //TODO: vérifier que c'est castable
-        }
-        catch (Exception err) {
-            err.printStackTrace();
-        }
-    }
-
     public void movePlayer (String key) {
         //TODO: Au lieu de passer une entite on peut passer le strict minimum (,y,radius)
         switch (key) {
