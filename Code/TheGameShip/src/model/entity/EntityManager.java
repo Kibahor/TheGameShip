@@ -14,12 +14,11 @@ import java.util.Set;
 
 public class EntityManager {
     //TODO:Il faudrait que le set soit observable afin que quand il est un ajout, le monde l'affiche
-    private final SimpleSetProperty<IEntity> setEntity;
-        public ObservableSet<IEntity> getSetEntity(){return setEntity.get();}
-        public SimpleSetProperty<IEntity> getSetEntityProperty(){return setEntity;}
+    private final ObservableSet<IEntity> setEntity;
+        public ObservableSet<IEntity> getSetEntity(){return setEntity;}
 
     public EntityManager() {
-        this.setEntity = new SimpleSetProperty(FXCollections.observableSet(new HashSet<>()));
+        this.setEntity = FXCollections.observableSet(new HashSet<>());
     }
 
     public void add(IEntity e){

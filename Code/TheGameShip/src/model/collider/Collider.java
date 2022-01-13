@@ -35,7 +35,7 @@ public class Collider implements ICollider {
         double x1 = e1.getX();
         double y1 = e1.getY();
         double radius1 = e1.getHitbox_radius();
-        for(IEntity e2: gameManager.getAllEntities()){
+        for(IEntity e2: gameManager.getSetEntity()){
             if(!e1.equals(e2)) {
                 double x2 = e2.getX();
                 double y2 = e2.getY();

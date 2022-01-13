@@ -83,7 +83,7 @@ public class GameManager implements IShoot,Observateur {
         }
     }
 
-    public ObservableSet<IEntity> getAllEntities(){
+    public ObservableSet<IEntity> getSetEntity(){
         return entityManager.getSetEntity();
     }
 
