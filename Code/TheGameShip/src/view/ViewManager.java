@@ -58,6 +58,7 @@ public class ViewManager {
     }
 
     //TODO: Ajouter méthode autoAdd qui va être dans le constructeur et qui va charger toute les vue dans la Map
+    //TODO: Ne charger le vue que quand on clique sur le bouton du menu
     public void loadView() throws IOException {
         this.addView("MainWindow",FXMLLoader.load(getClass().getResource("/FXML/MainWindow.fxml")));
         //this.addView("Menu", FXMLLoader.load(getClass().getResource("/FXML/Menu.fxml")));

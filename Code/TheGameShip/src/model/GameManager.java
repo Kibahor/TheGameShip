@@ -11,25 +11,26 @@ import java.util.ArrayList;
 
 public class GameManager implements Observateur {
 
+    private final EntityManager entityManager;
+
     private Boucle boucle;
     private Thread thread;
-    private final EntityManager entityManager;
-    private IMove move;
-    private ICollider colliderShoot;
     private IMove movePlayer;
     private ICollider collider;
     private Player player;
-    private ArrayList<Shoot> shoots;//DEBUG
+
+    private Boucle boucleShoot;
+    private Thread threadShoot;
+    private IMove move;
+    private ICollider colliderShoot;
+
+    private ArrayList<IEntity> usedEntity=new ArrayList<>();//DEBUG
     //List Monde
     //ViewManager ?
-
+    //TODO: Mieux gérer entités (visible vs non visible) (Gérer efficaement les deux collection)
     public GameManager() {
         entityManager = new EntityManager();
-        boucle = new Boucle(50);
-        thread = new Thread(boucle);
-        player = new Player("Vaisseau","file://test.jpg",100,360,20,5,10,10,true); //DEBUG
-        shoots=new ArrayList<>();//DEBUG
-        boucle.subscribe(this);
+        player = new Player("Vaisseau","file://test.jpg",100,360,20,5,5,5,true); //DEBUG
     }
 
     //DEBUG
@@ -43,17 +44,25 @@ public class GameManager implements Observateur {
 
     public void start() {
         try {
-            move=new Move();
-            colliderShoot=new ColliderShoot();
+            boucle = new Boucle(25);
+            thread = new Thread(boucle);
             movePlayer = new MovePlayer();
             collider = new Collider(this);
-            Input input = new Keyboard(this);
-            boucle.subscribe(input); //DEBUG
+            boucle.subscribe(new Keyboard(this, new String[]{"UP", "DOWN", "LEFT", "RIGHT", "Z", "Q", "S", "D"}));
+            thread.start(); //DEBUG
+
+            boucleShoot=new Boucle(300);
+            threadShoot = new Thread(boucleShoot);
+            move=new Move();
+            colliderShoot=new ColliderShoot();
+            boucleShoot.subscribe(new Keyboard(this, new String[]{"SPACE"}));
+            boucle.subscribe(this);
+            threadShoot.start(); //DEBUG
         }
         catch(Exception err) {
             err.printStackTrace();
         }
-        thread.start(); //DEBUG
+
     }
 
     public void exit() {
@@ -62,7 +71,6 @@ public class GameManager implements Observateur {
     }
 
     public void movePlayer (String key) {
-        //TODO: Au lieu de passer une entite on peut passer le strict minimum (,y,radius)
         switch (key) {
             case "UP", "Z" -> movePlayer.up(player,collider);
             case "LEFT", "Q" -> movePlayer.left(player,collider);
@@ -71,12 +79,8 @@ public class GameManager implements Observateur {
             case "SPACE" -> {
                 Shoot s=getEmptyShoot();
                 if(s!=null) {
-                    s.setOwnerId(player.getId());
-                    s.setX(player.getX() + player.getHitbox_radius() + getEmptyShoot().getHitbox_radius() + 10);
-                    s.setY(player.getY());
-                    s.setVisible(true);
-                    shoots.add(s);
-                    System.out.println("Shoot add !");
+                    s.applyToEntity(player);
+                    usedEntity.add(s);
                 }
             }
         }
@@ -97,8 +101,14 @@ public class GameManager implements Observateur {
 
     @Override
     public void update() {
-        for(IEntity e : shoots) {
-            move.right(e, colliderShoot);
+        for(IEntity e : usedEntity) {
+            if(e.getType().equals("Shoot")){
+                move.right(e, colliderShoot);
+                if(colliderShoot.isCollision(e,"RIGHT")){
+                    ((Shoot) e).reset();
+                    usedEntity.remove(e); //TODO:ConccurentException : faire des méthodes asynchrone
+                }
+            }
         }
     }
 }

@@ -5,7 +5,7 @@ import model.GameManager;
 import model.entity.IEntity;
 
 public class Collider implements ICollider {
-    private GameManager gameManager;
+    private final GameManager gameManager;
     public Collider(GameManager gameManager){
         this.gameManager = gameManager;
     }
@@ -41,7 +41,6 @@ public class Collider implements ICollider {
                 double y2 = e2.getY();
                 double radius2 = e2.getHitbox_radius();
 
-                System.out.println("Collision Entity :" + (Math.sqrt( Math.pow(x2-x1,2) + Math.pow(y2-y1,2))  < radius1 +radius2));//DEBUG
                 if(Math.sqrt( Math.pow(x2-x1,2) + Math.pow(y2-y1,2))  < radius1 +radius2) {
                     return true;
                 }

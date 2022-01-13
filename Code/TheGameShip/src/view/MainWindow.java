@@ -45,6 +45,7 @@ public class MainWindow {
         });
 
     }
+
     public void addEntity(IEntity e) {
         Circle c = new Circle(e.getHitbox_radius(),Color.BLACK);
         c.centerXProperty().bind(e.xProperty());

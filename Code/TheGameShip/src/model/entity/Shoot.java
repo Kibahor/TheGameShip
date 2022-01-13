@@ -18,4 +18,17 @@ public class Shoot extends Entity {
         setOwnerId(ownerId);
         nbShoot++;
     }
+
+    public void applyToEntity(IEntity e){
+        setOwnerId(e.getId());
+        setX(e.getX() + e.getHitbox_radius() + getHitbox_radius() + 10);
+        setY(e.getY());
+        setVisible(true);
+    }
+    public void reset(){
+        setOwnerId(null);
+        setX(-200);
+        setY(-200);
+        setVisible(false);
+    }
 }

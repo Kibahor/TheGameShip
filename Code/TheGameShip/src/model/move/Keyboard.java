@@ -4,6 +4,7 @@ import javafx.scene.input.KeyEvent;
 import launch.Launcher;
 import model.GameManager;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,24 +12,12 @@ public class Keyboard extends Input {
     private Map<String, Boolean> isPressed = new HashMap<>();
     private GameManager gameManager;
 
-    public Keyboard(GameManager gameManager) {
+    public Keyboard(GameManager gameManager, String[] keys) {
         this.gameManager = gameManager;
 
-        //TODO : Un peu brut, trouver un moyen plus flexible
-
-        //Set1
-        isPressed.put("UP",false);
-        isPressed.put("LEFT",false);
-        isPressed.put("DOWN",false);
-        isPressed.put("RIGHT",false);
-
-        //Set2
-        isPressed.put("Z",false);
-        isPressed.put("Q",false);
-        isPressed.put("S",false);
-        isPressed.put("D",false);
-
-        isPressed.put("SPACE",false);
+        for(String key : keys){
+            isPressed.put(key,false);
+        }
 
         Launcher.getStage().addEventFilter(KeyEvent.KEY_PRESSED, e -> {
             String key = e.getCode().toString();
