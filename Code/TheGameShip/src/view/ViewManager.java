@@ -18,7 +18,7 @@ public class ViewManager {
         view.remove(name);
     }
         private Pane getView(String name){
-            Pane pane=(Pane) view.get(name);
+            Pane pane = (Pane) view.get(name);
             if(pane == null){
                 return new Pane(); //TODO: Charger une vue d'erreur par exemple
             }
