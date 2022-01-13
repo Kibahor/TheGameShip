@@ -45,6 +45,7 @@ public class MainWindow {
         c.centerXProperty().bind(e.xProperty());
         c.centerYProperty().bind(e.yProperty());
         c.radiusProperty().bind(e.hitbox_radiusProperty());
+        c.visibleProperty().bind(e.getVisibleBooleanProperty());
         pane.getChildren().add(c);
     }
 }

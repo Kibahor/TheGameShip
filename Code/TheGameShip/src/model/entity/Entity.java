@@ -6,7 +6,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.UUID;
 
-public class Entity implements IEntity,IHasLife {
+public class Entity implements IEntity,IHasLife { //TODO: Faire une énumération de type (Player, shoot, Ennemie, Obstacle ?)
 
     //IEntity
     private final UUID id;
