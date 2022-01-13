@@ -1,12 +1,18 @@
 package model.entity;
 
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.DoubleProperty;
 
 import java.net.URI;
+import java.util.UUID;
 
 public interface IEntity {
-    int hashCode();
-    boolean equals(IEntity obj);
+
+    UUID getId();
+
+    String getName();
+
+    String getType();
 
     void setX(double x);
     double getX();
@@ -20,9 +26,10 @@ public interface IEntity {
     double getHitbox_radius();
     DoubleProperty hitbox_radiusProperty();
 
-    String getName();
-    String getType();
-
     URI getSprite();
     void setSprite(URI sprite);
+
+    boolean getVisible();
+    void setVisible(boolean b);
+    BooleanProperty getVisibleBooleanProperty();
 }

@@ -1,23 +1,8 @@
 package model.entity;
 
-public class Player extends Entity implements IHasLife, IMovable {
+public class Player extends Entity implements IMovable {
 
-    //LIFE
-    double hp;
-        @Override public double getHp() { return hp; }
-        @Override public void setHp(int hp) {
-        this.hp = hp;
-    }
-
-    boolean isDead = false;
-        @Override public boolean isDead() {
-        return isDead;
-    }
-        @Override public void setDead(boolean dead) {
-        isDead = dead;
-    }
-
-    //Movable
+    //IMovable
     private float speedX;
         @Override public float getSpeedX() {
             return speedX;
@@ -34,17 +19,18 @@ public class Player extends Entity implements IHasLife, IMovable {
             this.speedY = speedY;
         }
 
-    public Player(String sprite, String nom, double x, double y, double hitbox_radius) {
-        super(sprite, nom, "Joueur", x, y, hitbox_radius, 5);
-        this.speedX = 5;
-        this.speedY = 10;
+    public Player(String name, String sprite, double x, double y, double hitbox_radius) {
+        super(name,sprite,"Joueur",hitbox_radius,5,x,y,true);
+        setSpeedX(5);
+        setSpeedY(10);
     }
 
-    public Player(String sprite, String nom, double x, double y, double hitbox_radius, int hp, float speedX, float speedY) {
-        this(sprite, nom, x, y, hitbox_radius);
-        this.hp = hp;
-        this.speedX = speedX;
-        this.speedY = speedY;
+    public Player(String name, String sprite, double x, double y, double hitbox_radius, double hp, float speedX, float speedY, boolean visible) {
+        this(name, sprite, x, y, hitbox_radius);
+        setHp(hp);
+        setSpeedX(speedX);
+        setSpeedY(speedY);
+        setVisible(visible);
     }
 
 }

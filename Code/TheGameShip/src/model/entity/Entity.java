@@ -1,5 +1,6 @@
 package model.entity;
 
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -8,83 +9,85 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.UUID;
 
-public class Entity implements IEntity {
+public class Entity implements IEntity,IHasLife {
 
-    //Base
+    //IEntity
     private final UUID id;
-        public UUID getId(){return id;}
+        @Override public UUID getId(){return id;}
 
     private final String name;
-        public String getName() { return name; }
+        @Override public String getName() { return name; }
 
     private final String type;
-        public String getType() { return type;}
+        @Override public String getType() { return type;}
 
-    //Coordonate
     private final DoubleProperty x = new SimpleDoubleProperty();
-        public double getX() {return x.get();}
-        public void setX(double x) {this.x.set(x);}
-        public DoubleProperty xProperty(){return x;}
+        @Override public double getX() {return x.get();}
+        @Override public void setX(double x) {this.x.set(x);}
+        @Override public DoubleProperty xProperty(){return x;}
 
     private final DoubleProperty y = new SimpleDoubleProperty();
-        public double getY() { return y.get(); }
-        public void setY(double y) { this.y.set(y); }
-        public DoubleProperty yProperty() { return y; }
-
-    //Life
-    private final DoubleProperty hp = new SimpleDoubleProperty();
-        public double getHp() { return hp.get(); }
-        public void setHp(double hp) { this.hp.set(hp); }
-        public DoubleProperty hpProperty() { return hp; }
-
-    //Sprite
-    private URI sprite;
-        public URI getSprite() {
-        return sprite;
-    }
-        public void setSprite(URI sprite) {
-        this.sprite = sprite;
-    }
+        @Override public double getY() { return y.get(); }
+        @Override public void setY(double y) { this.y.set(y); }
+        @Override public DoubleProperty yProperty() { return y; }
 
     private final DoubleProperty hitbox_radius = new SimpleDoubleProperty();
-        public double getHitbox_radius() { return hitbox_radius.get(); }
-        public void setHitbox_radius(double hitbox_radius) { this.hitbox_radius.set(hitbox_radius); }
-        public DoubleProperty hitbox_radiusProperty() { return hitbox_radius; }
+        @Override public double getHitbox_radius() { return hitbox_radius.get(); }
+        @Override public void setHitbox_radius(double hitbox_radius) { this.hitbox_radius.set(hitbox_radius); }
+        @Override public DoubleProperty hitbox_radiusProperty() { return hitbox_radius; }
 
-    public Entity(String sprite, String nom, String type) {
-        try {
-            this.sprite = new URI(sprite);
-        }
-        catch(URISyntaxException err){
-            err.printStackTrace();
-        }
+    private URI sprite;
+        @Override public URI getSprite() {return sprite;}
+        @Override public void setSprite(URI sprite) {this.sprite = sprite;}
+
+    private BooleanProperty visible;
+        @Override public boolean getVisible(){return visible.get();}
+        @Override public void setVisible(boolean b){visible.set(b);}
+        @Override public BooleanProperty getVisibleBooleanProperty(){return visible;}
+
+    //IHasLife
+    private final DoubleProperty hp = new SimpleDoubleProperty();
+        @Override public double getHp() { return hp.get(); }
+        @Override public void setHp(double hp) { this.hp.set(hp); }
+        @Override public DoubleProperty hpProperty() { return hp; }
+
+    private boolean isDead;
+        @Override public boolean isDead(){return isDead;}
+        @Override public void setDead(boolean dead){isDead=dead;}
+
+    public Entity(String name,String type, String sprite) {
+        //IEntity
         this.id = UUID.randomUUID();
-        this.name = nom;
+        this.name = name;
         this.type = type;
-        setX(0);
-        setY(0);
-        setHp(10);
+        setX(-200);
+        setY(-200);
         setHitbox_radius(10);
+        try {this.sprite = new URI(sprite);}catch(URISyntaxException err){err.printStackTrace();}
+        setVisible(false);
+
+        //IHasLife
+        setHp(10);
+        setDead(false);
     }
 
-    public Entity(String sprite, String nom, String type, double x, double y, double hitbox_radius, double hp) {
-        this(sprite,nom,type);
+    public Entity(String name, String sprite, String type, double hitbox_radius, double hp){
+        this(name,type,sprite);
+        setHitbox_radius(hitbox_radius);
+        setHp(hp);
+    }
+
+    public Entity(String name, String sprite, String type, double hitbox_radius, double hp, double x, double y, boolean visible) {
+        this(name,sprite,type,hitbox_radius,hp);
         setX(x);
         setY(y);
-        setHp(hp);
-        setHitbox_radius(hitbox_radius);
+        setVisible(visible);
     }
 
-    //JAVA
+    //Pour le Hashset
     @Override
     public int hashCode() {
         return id.hashCode();
-    }
-
-    //TODO:Equals trop simple, le refaire bien
-    @Override
-    public boolean equals(IEntity obj) {
-        return super.equals(obj);
     }
 
     @Override

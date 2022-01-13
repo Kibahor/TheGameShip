@@ -10,7 +10,7 @@ import model.move.Input;
 import model.move.Keyboard;
 import model.move.MovePlayer;
 
-public class GameManager implements IShoot,Observateur {
+public class GameManager implements Observateur {
 
     private Boucle boucle;
     private Thread thread;
@@ -18,13 +18,6 @@ public class GameManager implements IShoot,Observateur {
     private IMove move;
     private ICollider collider;
     private Player player;
-    //Shoot
-    //TODO:Voir si il faut faire autrement pour la gestion des tirs (list obsvervable et quand ajout d'un tir MoveShoot.update() (qui sera abonner a la boucle))
-    //TODO: Limite le nombre de tirs créer par seconde (par exemple mettre un timer)
-    @Override public void addShoot(String sprite, double radius){
-        entityManager.add(new Shoot(player.getId(),sprite, player.getX()+radius+5, player.getY(), radius,1));
-        System.out.println("Shoot Add on player : "+player.getName());//DEBUG
-    }
     //List Monde
     //ViewManager ?
 
@@ -32,14 +25,17 @@ public class GameManager implements IShoot,Observateur {
         entityManager = new EntityManager();
         boucle = new Boucle(50);
         thread = new Thread(boucle);
-        player = new Player("file://test.jpg","Vaisseau",100,360,20,5, 10,10); //DEBUG
+        player = new Player("file://test.jpg","Vaisseau",100,360,20,5, 10,10,true); //DEBUG
         //TODO:ICI tu abonne une méthode a la boucle
     }
 
     //DEBUG
     public void initEntity(){
+        for(int i=0;i<50;i++){
+            entityManager.add(new Shoot());
+        }
         entityManager.add(player); //DEBUG
-        entityManager.add(new Entity("file://test.jpg","Obstacle1","Obstacle",500,360,50,5));//DEBUG
+        entityManager.add(new Entity("file://test.jpg","Obstacle1","Obstacle",50,5));//DEBUG
     }
 
     public void start() {
@@ -67,7 +63,7 @@ public class GameManager implements IShoot,Observateur {
             case "LEFT", "Q" -> move.left(player,collider);
             case "DOWN", "S" -> move.down(player,collider);
             case "RIGHT", "D" -> move.right(player,collider);
-            case "SPACE" -> addShoot("file://f",10);
+            case "SPACE" -> move.right(player,collider); //DO SOMETHING
         }
     }
 
