@@ -1,9 +1,6 @@
 package model.entity;
 
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -40,7 +37,7 @@ public class Entity implements IEntity,IHasLife {
         @Override public URI getSprite() {return sprite;}
         @Override public void setSprite(URI sprite) {this.sprite = sprite;}
 
-    private BooleanProperty visible;
+    private BooleanProperty visible=new SimpleBooleanProperty();
         @Override public boolean getVisible(){return visible.get();}
         @Override public void setVisible(boolean b){visible.set(b);}
         @Override public BooleanProperty getVisibleBooleanProperty(){return visible;}
