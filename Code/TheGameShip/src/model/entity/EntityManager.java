@@ -6,25 +6,59 @@ import model.IHasEntityCollection;
 
 import java.util.HashSet;
 
-public class EntityManager implements IHasEntityCollection { //TODO: Mieux gérer entités (visible vs non visible) (Gérer efficaement les deux collection)
+public class EntityManager implements IHasEntityCollection {
 
     private final ObservableSet<IEntity> unUsedEntities;
-        @Override public ObservableSet<IEntity> getUnusedEntityCollection(){return unUsedEntities;} //Todo: mettre un readonly Observateur au pire
+        @Override public ObservableSet<IEntity> getUnusedEntityCollection(){return unUsedEntities;} //Todo: Plus besoin que le set soit observable
 
     private final ObservableSet<IEntity> usedEntities;
-        @Override public ObservableSet<IEntity> getUsedEntityCollection(){return usedEntities;} //Todo: mettre un readonly Observateur au pire
+        @Override public ObservableSet<IEntity> getUsedEntityCollection(){return usedEntities;} //Todo:  Plus besoin que le set soit observable
 
     public EntityManager() {
         this.unUsedEntities = FXCollections.observableSet(new HashSet<>());
         this.usedEntities = FXCollections.observableSet(new HashSet<>());
     }
 
-    public void add(IEntity e){
-        if(e.getVisible()){
-            getUsedEntityCollection().add(e);
-        }else{
-            getUnusedEntityCollection().add(e);
+    //Used Entities
+    public void setUsedEntity(String name) throws Exception{
+        IEntity e= getUnUsedEntity(name);
+        e.setVisible(true);
+        getUsedEntityCollection().add(e);
+    }
+
+    public void setUsedEntity(IEntity e){
+        e.setVisible(true);
+        getUsedEntityCollection().add(e);
+    }
+
+    public IEntity getUsedEntity(String name) throws Exception {
+        for(IEntity e: getUsedEntityCollection()){
+            if(name.equals(e.getName())){
+                return e;
+            }
         }
+        throw new Exception("Il n'y a pas d'entité de nom : \""+ name+"\"");
+    }
+
+    public IEntity getUsedEntity(EType type) throws Exception {
+        for(IEntity e: getUsedEntityCollection()){
+            if(type.equals(e.getType())){
+                return e;
+            }
+        }
+        throw new Exception("Il n'y a pas d'entité de type : \""+ type.toString()+" disponible");
+    }
+
+    //UnUsed Entities
+    public void add(IEntity e){
+            e.setVisible(false); //Au cas où
+        getUnusedEntityCollection().add(e);
+    }
+
+    public void setUnUsedEntity(IEntity e){
+        e.setVisible(false);
+        //e.reset(); //Il met tout les autre parametre par defaut sauf visible
+        getUnusedEntityCollection().add(e);
     }
 
     public IEntity getUnUsedEntity(EType type) throws Exception {
@@ -34,7 +68,26 @@ public class EntityManager implements IHasEntityCollection { //TODO: Mieux gére
                 return e;
             }
         }
-        throw new Exception("Il n'y a pas d'entité de type : \""+ type.toString()+" disponible");
+        throw new Exception("Il n'y a pas d'entité de type : \""+ type.toString()+" disponible"); //Todo:Trouver un autre moyen que throw une exception
+    }
+
+    public IEntity getUnUsedEntity(String name) throws Exception {
+        for(IEntity e: getUnusedEntityCollection()){
+            if(name.equals(e.getName())){
+                return e;
+            }
+        }
+        throw new Exception("Il n'y a pas d'entité de nom : \""+ name+"\"");
+    }
+
+    //General
+    public IEntity getEntity(String name) throws Exception{
+        try {
+            return getUnUsedEntity(name);
+        }catch (Exception err){
+            err.printStackTrace();//DEBUG
+            return getUsedEntity(name);
+        }
     }
 
     public void listEntity() {

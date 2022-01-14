@@ -6,7 +6,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.UUID;
 
-public class Entity implements IEntity,IHasLife { //TODO: Faire une énumération de type (Player, shoot, Ennemie, Obstacle ?)
+public class Entity implements IEntity,IHasLife {
 
     //IEntity
     private final UUID id;
@@ -74,11 +74,10 @@ public class Entity implements IEntity,IHasLife { //TODO: Faire une énumératio
         setHp(hp);
     }
 
-    public Entity(String name, String sprite, EType type, double hitbox_radius, double hp, double x, double y, boolean visible) {
+    public Entity(String name, String sprite, EType type, double hitbox_radius, double hp, double x, double y) {
         this(name, sprite, type, hitbox_radius, hp);
         setX(x);
         setY(y);
-        setVisible(visible);
     }
 
     //Pour le Hashset

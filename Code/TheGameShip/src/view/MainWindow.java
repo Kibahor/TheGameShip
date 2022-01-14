@@ -21,7 +21,7 @@ public class MainWindow {
 
     private GameManager gameManager;
 
-    public void initialize() {
+    public void initialize() throws Exception {
 
         gameManager = new GameManager();
 
@@ -31,19 +31,13 @@ public class MainWindow {
 
         gameManager.start();
 
-        Launcher.getStage().setOnCloseRequest(e -> gameManager.exit());
-        ((IHasEntityCollection)gameManager).getUnusedEntityCollection().addListener((SetChangeListener<IEntity>) change -> {
-            if (change.wasAdded()) {
-                change.getElementAdded().setVisible(false);
+        Launcher.getStage().setOnCloseRequest(e -> {
+            try {
+                gameManager.exit();
+            } catch (Exception ex) {
+                ex.printStackTrace();
             }
         });
-
-        ((IHasEntityCollection)gameManager).getUsedEntityCollection().addListener((SetChangeListener<IEntity>) change -> {
-            if (change.wasAdded()) {
-                change.getElementAdded().setVisible(true);
-            }
-        });
-
     }
 
     private void loadEntity(Collection<IEntity> c){
