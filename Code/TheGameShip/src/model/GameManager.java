@@ -3,6 +3,8 @@ package model;
 import javafx.collections.ObservableSet;
 import model.entity.*;
 
+import java.util.Collection;
+
 public class GameManager implements IHasEntityCollection{
 
     //TODO : Faire une liste de boucle pour avoir un point d'extentibilité et cela éviterais de la duplication de code
@@ -18,8 +20,8 @@ public class GameManager implements IHasEntityCollection{
 
     //TODO: Faire une List de Monde et récupérer celui qui va être choisis
     ILevel level1;
-        @Override public ObservableSet<IEntity> getUnusedEntityCollection() {return ((IHasEntityCollection)level1).getUnusedEntityCollection();}
-        @Override public ObservableSet<IEntity> getUsedEntityCollection() {return ((IHasEntityCollection)level1).getUsedEntityCollection();}
+        @Override public Collection<IEntity> getUnusedEntityCollection() {return ((IHasEntityCollection)level1).getUnusedEntityCollection();}
+        @Override public Collection<IEntity> getUsedEntityCollection() {return ((IHasEntityCollection)level1).getUsedEntityCollection();}
 
     public GameManager(){
         //Boucle

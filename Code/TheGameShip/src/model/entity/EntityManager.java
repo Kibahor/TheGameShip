@@ -4,15 +4,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableSet;
 import model.IHasEntityCollection;
 
+import java.util.Collection;
 import java.util.HashSet;
 
 public class EntityManager implements IHasEntityCollection {
 
-    private final ObservableSet<IEntity> unUsedEntities;
-        @Override public ObservableSet<IEntity> getUnusedEntityCollection(){return unUsedEntities;} //Todo: Plus besoin que le set soit observable
+    private final Collection<IEntity> unUsedEntities;
+        @Override public Collection<IEntity> getUnusedEntityCollection(){return unUsedEntities;}
 
     private final ObservableSet<IEntity> usedEntities;
-        @Override public ObservableSet<IEntity> getUsedEntityCollection(){return usedEntities;} //Todo:  Plus besoin que le set soit observable
+        @Override public Collection<IEntity> getUsedEntityCollection(){return usedEntities;}
 
     public EntityManager() {
         this.unUsedEntities = FXCollections.observableSet(new HashSet<>());

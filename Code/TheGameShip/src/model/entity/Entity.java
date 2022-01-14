@@ -46,6 +46,8 @@ public class Entity implements IEntity,IHasLife {
     private final DoubleProperty hp = new SimpleDoubleProperty();
         @Override public double getHp() { return hp.get(); }
         @Override public void setHp(double hp) { this.hp.set(hp); }
+        @Override public void incrementHp() { setHp(getHp()+1); }
+        @Override public void decreaseHp() { setHp(getHp()-1); }
         @Override public DoubleProperty hpProperty() { return hp; }
 
     private boolean isDead;

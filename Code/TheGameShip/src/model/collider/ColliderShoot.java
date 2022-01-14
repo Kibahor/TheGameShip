@@ -53,8 +53,8 @@ public class ColliderShoot implements ICollider{
 
                 if(Math.sqrt( Math.pow(x2-x1,2) + Math.pow(y2-y1,2))  < radius1 +radius2) {
                     if(e2 instanceof IHasLife){ //Si l'entité a de la vie
-                        ((IHasLife)e2).setHp(((IHasLife)e2).getHp()-1); //TODO : créer des méthodes qui permettent d'incrémenter ou augmenter vie
-                        System.out.println("Name : "+e2.getName()+" || Name : "+e2.getName()+" HP : "+((IHasLife)e2).getHp());//DEBUG
+                        ((IHasLife)e2).decreaseHp();
+                        System.out.println("Name : "+e1.getName()+" || Name : "+e2.getName()+" HP : "+((IHasLife)e2).getHp());//DEBUG
                     }
                     return new ColliderInfo(e2);
                 }

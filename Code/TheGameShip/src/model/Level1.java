@@ -10,6 +10,7 @@ import model.move.Keyboard;
 import model.move.MoveSpeed;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 //TODO: A la place faire une fabrique, qui se basera sur un fichier xml/json qui spécifie toute les caractéristiques
 public class Level1 implements ILevel, IObserver, IHasEntityCollection {
@@ -17,8 +18,8 @@ public class Level1 implements ILevel, IObserver, IHasEntityCollection {
     private GameManager gameManager;
 
     private EntityManager entityManager;
-        @Override public ObservableSet<IEntity> getUnusedEntityCollection(){return entityManager.getUnusedEntityCollection();}
-        @Override public ObservableSet<IEntity> getUsedEntityCollection(){return entityManager.getUsedEntityCollection();}
+        @Override public Collection<IEntity> getUnusedEntityCollection(){return entityManager.getUnusedEntityCollection();}
+        @Override public Collection<IEntity> getUsedEntityCollection(){return entityManager.getUsedEntityCollection();}
 
     //TODO : Ne donner qu'un move qui en fonction du type de l'entités choisis le bon move
     //private IMove move;
