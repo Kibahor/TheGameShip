@@ -5,8 +5,9 @@ import model.collider.ICollider;
 import model.entity.IEntity;
 
 public class Move implements IMove {
-
-    //Faire qu'une seul méthode avec en parametre la direction pour faire un switch
+    //Todo : Voir si ne pas fusionner Move et MoveSpeed (2 constructeur speed ou sans speed)
+    //Todo : Faire qu'une seul méthode avec en parametre (la direction) et faire un switch
+    //Todo : faire une enumeration de touche
     @Override
     public ColliderInfo left(IEntity e, ICollider c) {
         ColliderInfo ci = c.isCollision(e,"LEFT");

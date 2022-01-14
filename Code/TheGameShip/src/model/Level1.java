@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 //TODO: A la place faire une fabrique, qui se basera sur un fichier xml/json qui spécifie toute les caractéristiques
+//Todo : Level1 doit hériter de Level qui contiendra les méthode et propriété de base.
+
 public class Level1 implements ILevel, IObserver, IHasEntityCollection {
 
     private GameManager gameManager;
@@ -73,6 +75,7 @@ public class Level1 implements ILevel, IObserver, IHasEntityCollection {
     //TODO: eventuellement pour avoir un point d'extension, il faudrait que selon le type d'entité il y est une redéfinition du comportement
     @Override
     public void update() {
+        //TODO : Ajouter quand une entité n'a plus de vie et setUnUsedEntity()
         for (IEntity e : getUsedEntityCollection()) {
             if (e instanceof Shoot) { //Si l'entité est un tir
                 if(moveSpeed.right(e, colliderShoot).IsCollision()){
