@@ -33,21 +33,17 @@ public class GameManager implements IHasEntityCollection{
         level1=new Level1(this);
     }
     //TODO: init,start,exit doit être des méthode qui notifie tout ces abonnés (par rapport a stage)
-    public void init(){
+    public void init() throws Exception{
         level1.init();
     }
 
-    public void start() {
-        try {
-            thread1.start();
-            thread2.start();
-        } catch(Exception err) {
-            err.printStackTrace();
-        }
+    public void start() throws Exception {
+        thread1.start();
+        thread2.start();
         level1.start();
     }
 
-    public void exit() {
+    public void exit() throws Exception {
         level1.exit();
         boucle1.StopBoucle();
         thread1.stop();

@@ -1,7 +1,7 @@
 package model;
 
 public interface ILevel {
-   void init();
-   void start();
-   void exit();
+   void init() throws Exception;
+   void start() throws Exception;
+   void exit() throws Exception;
 }

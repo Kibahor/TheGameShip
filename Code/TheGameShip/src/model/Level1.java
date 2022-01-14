@@ -20,11 +20,11 @@ public class Level1 implements ILevel, IObserver, IHasEntityCollection {
         @Override public ObservableSet<IEntity> getUnusedEntityCollection(){return entityManager.getUnusedEntityCollection();}
         @Override public ObservableSet<IEntity> getUsedEntityCollection(){return entityManager.getUsedEntityCollection();}
 
-    //TODO : List de IMove (extensibility et moins de duplication de code)
+    //TODO : Ne donner qu'un move qui en fonction du type de l'entités choisis le bon move
     //private IMove move;
     private IMove moveSpeed;
 
-    //TODO : List de ICollider (extensibility et moins de duplication de code)
+    //TODO : Ne donner qu'un Collider qui en fonction du type de l'entités choisis le bon collider
     private ICollider collider;
     private ICollider colliderShoot;
 

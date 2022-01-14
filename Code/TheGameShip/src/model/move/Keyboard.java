@@ -37,7 +37,11 @@ public class Keyboard extends Input {
     public void update() {
         for (Map.Entry m: isPressed.entrySet()) {
             if ((Boolean)m.getValue()) {
-                level.movePlayer((String)m.getKey());
+                try {
+                    level.movePlayer((String) m.getKey());
+                }catch(Exception err){
+                    err.printStackTrace();
+                }
             }
         }
     }

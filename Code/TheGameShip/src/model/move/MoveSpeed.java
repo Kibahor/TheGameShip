@@ -17,7 +17,7 @@ public class MoveSpeed extends Move {
 
     @Override
     public ColliderInfo right(IEntity e, ICollider c) {
-        ColliderInfo ci = c.isCollision(e,"LEFT");
+        ColliderInfo ci = c.isCollision(e,"RIGHT");
         if (!ci.IsCollision()) {
             e.setX(e.getX()+((IMovable)e).getSpeedX());
         }
@@ -26,7 +26,7 @@ public class MoveSpeed extends Move {
 
     @Override
     public ColliderInfo down(IEntity e, ICollider c) {
-        ColliderInfo ci = c.isCollision(e,"LEFT");
+        ColliderInfo ci = c.isCollision(e,"DOWN");
         if (!ci.IsCollision()) {
             e.setY(e.getY()+((IMovable)e).getSpeedY());
         }
@@ -35,7 +35,7 @@ public class MoveSpeed extends Move {
 
     @Override
     public ColliderInfo up(IEntity e, ICollider c) {
-        ColliderInfo ci = c.isCollision(e,"LEFT");
+        ColliderInfo ci = c.isCollision(e,"UP");
         if (!ci.IsCollision()) {
             e.setY(e.getY()-((IMovable)e).getSpeedY());
         }

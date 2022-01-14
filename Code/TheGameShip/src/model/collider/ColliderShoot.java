@@ -5,6 +5,8 @@ import model.ColliderInfo;
 import model.IHasEntityCollection;
 import model.ILevel;
 import model.entity.IEntity;
+import model.entity.IHasLife;
+import model.entity.Shoot;
 
 public class ColliderShoot implements ICollider{
 
@@ -44,12 +46,16 @@ public class ColliderShoot implements ICollider{
         double y1 = e1.getY();
         double radius1 = e1.getHitbox_radius();
         for(IEntity e2: ((IHasEntityCollection)level).getUsedEntityCollection()){
-            if(!e1.equals(e2)) {
+            if(!e1.equals(e2) && !(e2 instanceof Shoot)) {
                 double x2 = e2.getX();
                 double y2 = e2.getY();
                 double radius2 = e2.getHitbox_radius();
 
                 if(Math.sqrt( Math.pow(x2-x1,2) + Math.pow(y2-y1,2))  < radius1 +radius2) {
+                    if(e2 instanceof IHasLife){ //Si l'entité a de la vie
+                        ((IHasLife)e2).setHp(((IHasLife)e2).getHp()-1); //TODO : créer des méthodes qui permettent d'incrémenter ou augmenter vie
+                        System.out.println("Name : "+e2.getName()+" || Name : "+e2.getName()+" HP : "+((IHasLife)e2).getHp());//DEBUG
+                    }
                     return new ColliderInfo(e2);
                 }
             }
