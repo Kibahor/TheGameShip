@@ -2,9 +2,9 @@ package model.collider;
 
 import launch.Launcher;
 import model.ColliderInfo;
+import model.IHasEntityCollection;
 import model.ILevel;
 import model.entity.IEntity;
-import model.entity.Type;
 
 public class ColliderShoot implements ICollider{
 
@@ -43,7 +43,7 @@ public class ColliderShoot implements ICollider{
         double x1 = e1.getX();
         double y1 = e1.getY();
         double radius1 = e1.getHitbox_radius();
-        for(IEntity e2: level.getSetEntity()){
+        for(IEntity e2: ((IHasEntityCollection)level).getUsedEntityCollection()){
             if(!e1.equals(e2)) {
                 double x2 = e2.getX();
                 double y2 = e2.getY();

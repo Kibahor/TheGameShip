@@ -3,7 +3,9 @@ package model.collider;
 import launch.Launcher;
 import model.ColliderInfo;
 import model.GameManager;
+import model.IHasEntityCollection;
 import model.ILevel;
+import model.entity.EType;
 import model.entity.IEntity;
 import model.entity.Shoot;
 
@@ -39,12 +41,11 @@ public class Collider implements ICollider {
         double x1 = e1.getX();
         double y1 = e1.getY();
         double radius1 = e1.getHitbox_radius();
-        for(IEntity e2: level.getSetEntity()){
+        for(IEntity e2: ((IHasEntityCollection)level).getUsedEntityCollection()){
             boolean ownedShoot=false;
-            /*Décommenter une fois que : TODO: Il faudrait utiliser la liste des entités visible et utilisé
-            if(e2.getType().equals("Shoot")){
+            if(e2 instanceof Shoot){
                 ownedShoot=((Shoot)e2).getOwnerId().equals(e1.getId());
-            }*/
+            }
             if(!e1.equals(e2) && !ownedShoot) {
                 double x2 = e2.getX();
                 double y2 = e2.getY();

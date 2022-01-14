@@ -1,35 +1,45 @@
 package model.move;
 
+import model.ColliderInfo;
 import model.collider.ICollider;
 import model.entity.IEntity;
 
 public class Move implements IMove {
 
+    //Faire qu'une seul méthode avec en parametre la direction pour faire un switch
     @Override
-    public void left(IEntity e, ICollider c) {
-        if (!c.isCollision(e,"LEFT").IsCollision()) {
+    public ColliderInfo left(IEntity e, ICollider c) {
+        ColliderInfo ci = c.isCollision(e,"LEFT");
+        if (!ci.IsCollision()) {
             e.setX(e.getX() - 10);
         }
+        return ci;
     }
 
     @Override
-    public void right(IEntity e, ICollider c) {
-        if (!c.isCollision(e,"RIGHT").IsCollision()) {
+    public ColliderInfo right(IEntity e, ICollider c) {
+        ColliderInfo ci = c.isCollision(e,"LEFT");
+        if (!ci.IsCollision()) {
             e.setX(e.getX() + 10);
         }
+        return ci;
     }
 
     @Override
-    public void down(IEntity e, ICollider c) {
-        if (!c.isCollision(e,"DOWN").IsCollision()) {
+    public ColliderInfo down(IEntity e, ICollider c) {
+        ColliderInfo ci = c.isCollision(e,"LEFT");
+        if (!ci.IsCollision()) {
             e.setY(e.getY() + 10);
         }
+        return ci;
     }
 
     @Override
-    public void up(IEntity e, ICollider c) {
-        if (!c.isCollision(e,"UP").IsCollision()) {
+    public ColliderInfo up(IEntity e, ICollider c) {
+        ColliderInfo ci = c.isCollision(e,"LEFT");
+        if (!ci.IsCollision()) {
             e.setY(e.getY() - 10);
         }
+        return ci;
     }
 }
