@@ -18,6 +18,7 @@ public class MainWindow {
     private GameManager gameManager;
 
     public void initialize() {
+
         gameManager = new GameManager();
 
         gameManager.getSetEntity().addListener((SetChangeListener<IEntity>) change -> {
@@ -25,7 +26,7 @@ public class MainWindow {
                 addEntity(change.getElementAdded());
             }
         });
-        gameManager.initEntity();
+        gameManager.init();
         gameManager.start();
 
         Launcher.getStage().setOnCloseRequest(e -> gameManager.exit());

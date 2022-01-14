@@ -3,17 +3,17 @@ package model.move;
 import javafx.scene.input.KeyEvent;
 import launch.Launcher;
 import model.GameManager;
+import model.Level1;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Keyboard extends Input {
     private Map<String, Boolean> isPressed = new HashMap<>();
-    private GameManager gameManager;
+    private Level1 level;
 
-    public Keyboard(GameManager gameManager, String[] keys) {
-        this.gameManager = gameManager;
+    public Keyboard(Level1 level, String[] keys) {
+        this.level = level;
 
         for(String key : keys){
             isPressed.put(key,false);
@@ -37,7 +37,7 @@ public class Keyboard extends Input {
     public void update() {
         for (Map.Entry m: isPressed.entrySet()) {
             if ((Boolean)m.getValue()) {
-                gameManager.movePlayer((String)m.getKey());
+                level.movePlayer((String)m.getKey());
             }
         }
     }

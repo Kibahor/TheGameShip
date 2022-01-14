@@ -12,7 +12,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-public class EntityManager {
+public class EntityManager { //TODO: Mieux gérer entités (visible vs non visible) (Gérer efficaement les deux collection)
 
     private final ObservableSet<IEntity> setEntity;
         public ObservableSet<IEntity> getSetEntity(){return setEntity;}

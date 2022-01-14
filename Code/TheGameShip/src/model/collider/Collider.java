@@ -2,13 +2,15 @@ package model.collider;
 
 import launch.Launcher;
 import model.GameManager;
+import model.ILevel;
 import model.entity.IEntity;
 import model.entity.Shoot;
 
 public class Collider implements ICollider {
-    private final GameManager gameManager;
-    public Collider(GameManager gameManager){
-        this.gameManager = gameManager;
+    private final ILevel level;
+
+    public Collider(ILevel level){
+        this.level = level;
     }
 
     public boolean isCollision(IEntity e1, String direction) {
@@ -36,7 +38,7 @@ public class Collider implements ICollider {
         double x1 = e1.getX();
         double y1 = e1.getY();
         double radius1 = e1.getHitbox_radius();
-        for(IEntity e2: gameManager.getSetEntity()){
+        for(IEntity e2: level.getSetEntity()){
             boolean ownedShoot=false;
             /*Décommenter une fois que : TODO: Il faudrait utiliser la liste des entités visible et utilisé
             if(e2.getType().equals("Shoot")){

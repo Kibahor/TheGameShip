@@ -20,7 +20,7 @@ public class Player extends Entity implements IMovable {
         }
 
     public Player(String name, String sprite, double x, double y, double hitbox_radius) {
-        super(name,sprite,"Joueur",hitbox_radius,5,x,y,true);
+        super(name,sprite, Type.Player ,hitbox_radius,5,x,y,true);
         setSpeedX(5);
         setSpeedY(10);
     }

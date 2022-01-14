@@ -15,8 +15,8 @@ public class Entity implements IEntity,IHasLife { //TODO: Faire une énumératio
     private final String name;
         @Override public String getName() { return name; }
 
-    private final String type;
-        @Override public String getType() { return type;}
+    private final Type type;
+        @Override public Type getType() { return type;}
 
     private final DoubleProperty x = new SimpleDoubleProperty();
         @Override public double getX() {return x.get();}
@@ -52,7 +52,7 @@ public class Entity implements IEntity,IHasLife { //TODO: Faire une énumératio
         @Override public boolean isDead(){return isDead;}
         @Override public void setDead(boolean dead){isDead=dead;}
 
-    public Entity(String name,String type, String sprite) {
+    public Entity(String name, Type type, String sprite) {
         //IEntity
         this.id = UUID.randomUUID();
         this.name = name;
@@ -68,13 +68,13 @@ public class Entity implements IEntity,IHasLife { //TODO: Faire une énumératio
         setDead(false);
     }
 
-    public Entity(String name, String sprite, String type, double hitbox_radius, double hp){
+    public Entity(String name, String sprite, Type type, double hitbox_radius, double hp){
         this(name,type,sprite);
         setHitbox_radius(hitbox_radius);
         setHp(hp);
     }
 
-    public Entity(String name, String sprite, String type, double hitbox_radius, double hp, double x, double y, boolean visible) {
+    public Entity(String name, String sprite, Type type, double hitbox_radius, double hp, double x, double y, boolean visible) {
         this(name,sprite,type,hitbox_radius,hp);
         setX(x);
         setY(y);

@@ -12,7 +12,7 @@ public interface IEntity {
 
     String getName();
 
-    String getType();
+    Type getType();
 
     void setX(double x);
     double getX();
