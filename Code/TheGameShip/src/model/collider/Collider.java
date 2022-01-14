@@ -1,6 +1,7 @@
 package model.collider;
 
 import launch.Launcher;
+import model.ColliderInfo;
 import model.GameManager;
 import model.ILevel;
 import model.entity.IEntity;
@@ -13,8 +14,8 @@ public class Collider implements ICollider {
         this.level = level;
     }
 
-    public boolean isCollision(IEntity e1, String direction) {
-        return isCollisionPlayground(e1, direction) || (isCollisionEntity(e1));
+    public ColliderInfo isCollision(IEntity e1, String direction) {
+        return new ColliderInfo(isCollisionPlayground(e1, direction) || (isCollisionEntity(e1)));
     }
 
     private boolean isCollisionPlayground(IEntity e1, String direction) {

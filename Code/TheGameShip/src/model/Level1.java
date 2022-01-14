@@ -72,10 +72,18 @@ public class Level1 implements ILevel,Observateur {
     public void update() {
         try {
             for (IEntity e : usedShoot) {
-                if (e.getType().equals(Type.Shoot)) {
+                if (e instanceof Shoot) { //Si l'entité est un tir
                     moveSpeed.right(e, colliderShoot);
-                    if (colliderShoot.isCollision(e, "RIGHT")) {
-                        ((Shoot) e).reset();
+                    ColliderInfo i=colliderShoot.isCollision(e, "RIGHT");
+                    if (i.IsCollision()) {  //Si le tir est en collision
+                        IEntity e2=i.getEntity();
+                        if(e2 != null){ //Si e est null c'est que la collision a été faite sur la scene
+                            if(e2 instanceof IHasLife){ //Si l'entité a de la vie
+                                ((IHasLife)e2).setHp(((IHasLife)e2).getHp()-1); //TODO : créer des méthodes qui permettent d'incrémenter ou augmenter vie
+                                System.out.println("Name : "+e2.getName()+" || HP : "+((IHasLife)e2).getHp());//DEBUG
+                            }
+                        }
+                        ((Shoot) e).reset(); //TODO : Appliquer le même systeme pour toute les entités
                         usedShoot.remove(e);
                     }
                 }
@@ -104,7 +112,7 @@ public class Level1 implements ILevel,Observateur {
 
     public Shoot getEmptyShoot() {
         for (IEntity e:getSetEntity()) {
-            if (e.getType().equals(Type.Shoot)) {
+            if (e instanceof Shoot) {
                 if (!e.getVisible()) {
                     return (Shoot)e;
                 }

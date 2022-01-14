@@ -1,7 +1,8 @@
 package model.collider;
 
+import model.ColliderInfo;
 import model.entity.IEntity;
 
 public interface ICollider {
-    boolean isCollision(IEntity e, String direction);
+    ColliderInfo isCollision(IEntity e, String direction);
 }

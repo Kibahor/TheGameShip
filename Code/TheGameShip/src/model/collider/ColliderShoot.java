@@ -1,24 +1,26 @@
 package model.collider;
 
 import launch.Launcher;
+import model.ColliderInfo;
 import model.ILevel;
 import model.entity.IEntity;
 import model.entity.Type;
 
 public class ColliderShoot implements ICollider{
-    private final ILevel level;
 
-    private Type collisionType;
-        public Type getCollisionType() {return collisionType;}
+    private final ILevel level;
 
     public ColliderShoot(ILevel level){
         this.level = level;
     }
 
     @Override
-    public boolean isCollision(IEntity e, String direction) {
-        //Collison scene
-        return isCollisionScene(e, direction) || (isCollisionEntity(e));
+    public ColliderInfo isCollision(IEntity e, String direction) {
+        if(this.isCollisionScene(e,direction)){
+            return new ColliderInfo(true);
+        }
+        return isCollisionEntity(e);
+
     }
 
     private boolean isCollisionScene(IEntity e1, String direction) {
@@ -28,7 +30,6 @@ public class ColliderShoot implements ICollider{
         double height = Launcher.getViewManager().getSceneHeight();
         double width = Launcher.getViewManager().getSceneWidth();
 
-        //Collison scene
         return switch (direction) {
             case "UP" -> (y1 - radius <= 0);
             case "LEFT" -> (x1 - radius <= 0);
@@ -38,7 +39,7 @@ public class ColliderShoot implements ICollider{
         };
     }
 
-    private boolean isCollisionEntity(IEntity e1) {
+    private ColliderInfo isCollisionEntity(IEntity e1) {
         double x1 = e1.getX();
         double y1 = e1.getY();
         double radius1 = e1.getHitbox_radius();
@@ -49,10 +50,10 @@ public class ColliderShoot implements ICollider{
                 double radius2 = e2.getHitbox_radius();
 
                 if(Math.sqrt( Math.pow(x2-x1,2) + Math.pow(y2-y1,2))  < radius1 +radius2) {
-                    return true;
+                    return new ColliderInfo(e2);
                 }
             }
         }
-        return false;
+        return new ColliderInfo(false);
     }
 }
