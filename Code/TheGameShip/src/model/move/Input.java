@@ -1,8 +1,8 @@
 package model.move;
 
-import model.Observateur;
+import model.IObserver;
 
-public abstract class Input implements Observateur {
+public abstract class Input implements IObserver {
     //Quand la boucle la notifie
     public abstract void update();
 }

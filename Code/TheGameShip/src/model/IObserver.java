@@ -1,5 +1,5 @@
 package model;
 
-public interface Observateur {
+public interface IObserver {
     void update();
 }

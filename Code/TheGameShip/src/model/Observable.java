@@ -3,18 +3,18 @@ package model;
 import java.util.LinkedList;
 
 public class Observable {
-    private final LinkedList<Observateur> observateurs = new LinkedList<>();
+    private final LinkedList<IObserver> observers = new LinkedList<>();
 
-    public void subscribe(Observateur listener){
-        observateurs.add(listener);
+    public void subscribe(IObserver listener){
+        observers.add(listener);
     }
 
-    public void unsubscribe(Observateur listener){
-        observateurs.remove(listener);
+    public void unsubscribe(IObserver listener){
+        observers.remove(listener);
     }
 
     public void notifier() {
-        for(var observateur : observateurs) {
+        for(var observateur : observers) {
             observateur.update();
         }
     }
