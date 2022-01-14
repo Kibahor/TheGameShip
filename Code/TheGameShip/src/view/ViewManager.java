@@ -12,11 +12,13 @@ import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
 
 
 public class ViewManager {
 
-    private HashMap<String, String> view = new HashMap<>();
+    private Map<String, String> view = new HashMap<>();
         private void addView(String name,String path){view.put(name,path);}
         private void removeView(String name){view.remove(name);}
         public void listView(){
