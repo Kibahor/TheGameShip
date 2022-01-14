@@ -6,39 +6,40 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import launch.Launcher;
+
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 
 
 public class ViewManager {
 
     private Map<String, String> view = new HashMap<>();
-    private void addView(String name,String path){ view.put(name,path); }
-    private void removeView(String name){ view.remove(name); }
-    public void listView() {
-        for (String key: view.keySet()) {
-            System.out.println(key+" -> "+view.get(key));
+        private void addView(String name,String path){ view.put(name,path); }
+        private void removeView(String name){ view.remove(name); }
+        public void listView() {
+            for (String key: view.keySet()) {
+                System.out.println(key+" -> "+view.get(key));
+            }
         }
-    }
 
     private final Scene main;
-    public double getSceneHeight() { return main.getHeight() - 70; }
+    public double getSceneHeight() { return main.getHeight(); }
     public double getSceneWidth(){ return main.getWidth(); }
 
 
     public ViewManager(String pathView,String defaultView) throws Exception {
         //Liste et ajoute les vues dans la map
-        try {
-            for (File file : new File(pathView).listFiles(File::isFile)) {
-                Path path = Paths.get(file.getPath());
+        try{
+            for(File file : new File(pathView).listFiles(File::isFile)) {
+                Path path = Paths.get(file.getPath()); // path = /a/b/c/truc.fxml
                 String name = file.getName().replace(".fxml", ""); // name = truc.fxml => truc
-                addView(name,path.subpath(1,path.getNameCount()).toString()); // path = /a/b/c/truc.fxml => c/truc.fxml
+                addView(name, path.subpath(1,path.getNameCount()).toString()); // path = /a/b/c/truc.fxml => c/truc.fxml
             }
-        }
-        catch (Exception err) {
+        }catch(Exception err){
             throw new Exception("Aucune vue n'a été trouvé dans : "+pathView);
         }
         main = new Scene(loadView(defaultView));
@@ -54,8 +55,7 @@ public class ViewManager {
     private Parent loadView(String name) {
         try {
             return FXMLLoader.load(getClass().getClassLoader().getResource(view.get(name)));
-        }
-        catch (Exception err){
+        } catch(Exception err) {
             return new Pane();//TODO: Charger une vue d'erreur par exemple
         }
     }

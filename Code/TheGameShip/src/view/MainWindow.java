@@ -9,6 +9,7 @@ import javafx.scene.shape.Circle;
 import launch.Launcher;
 import model.GameManager;
 import model.entity.IEntity;
+import model.entity.Type;
 
 public class MainWindow {
 
@@ -34,7 +35,14 @@ public class MainWindow {
     }
 
     public void addEntity(IEntity e) {
-        Circle c = new Circle(e.getHitbox_radius(),Color.BLACK);
+        Color color;
+        switch(e.getType()){
+            case Ennemy -> color=Color.RED;
+            case Obstacle -> color=Color.GRAY;
+            default -> color=Color.BLACK;
+        }
+
+        Circle c = new Circle(e.getHitbox_radius(),color);
         c.centerXProperty().bind(e.xProperty());
         c.centerYProperty().bind(e.yProperty());
         c.radiusProperty().bind(e.hitbox_radiusProperty());

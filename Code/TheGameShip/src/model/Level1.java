@@ -11,6 +11,7 @@ import model.move.MoveSpeed;
 
 import java.util.ArrayList;
 
+//TODO: A la place faire une fabrique, qui se basera sur un fichier xml/json qui spécifie toute les caractéristiques
 public class Level1 implements ILevel,Observateur {
 
     private GameManager gameManager;
@@ -28,9 +29,13 @@ public class Level1 implements ILevel,Observateur {
     private ICollider collider;
     private ICollider colliderShoot;
 
-    public Level1(GameManager gameManager) {
-        this.gameManager = gameManager;
-        entityManager = new EntityManager();
+    public Level1(GameManager gameManager){
+        this.gameManager=gameManager;
+        entityManager=new EntityManager();
+
+        moveSpeed = new MoveSpeed();
+        collider = new Collider(this);
+        colliderShoot=new ColliderShoot(this);
     }
 
     @Override
@@ -42,12 +47,8 @@ public class Level1 implements ILevel,Observateur {
             entityManager.add(new Shoot());
         }
         entityManager.add(player);
-        entityManager.add(new Entity("Obstacle1","file://test.jpg", Type.Obstacle,50,5));
-
-        moveSpeed = new MoveSpeed();
-
-        collider = new Collider(this);
-        colliderShoot = new ColliderShoot();
+        //entityManager.add(new Entity("Obstacle1","file://test.jpg", Type.Obstacle,35,5,500,500,true ));
+        entityManager.add(new Entity("Ennemy1","file://test.jpg", Type.Ennemy,20,5,700,300,true));
     }
 
     @Override
@@ -79,8 +80,7 @@ public class Level1 implements ILevel,Observateur {
                     }
                 }
             }
-        }
-        catch (Exception err) {
+        } catch(Exception err) {
             err.printStackTrace();
             //TODO:ConccurentException : gérer la gestion concurrente des ressources entre le thread principal et la boucle : https://www.jmdoudoux.fr/java/dej/chap-acces_concurrents.htm
         }

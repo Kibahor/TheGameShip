@@ -4,5 +4,6 @@ public enum Type {
     Player,
     Ennemy,
     Shoot,
-    Obstacle
+    Obstacle,
+    Scene
 }
