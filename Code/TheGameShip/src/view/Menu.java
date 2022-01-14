@@ -19,8 +19,5 @@ public class Menu {
     public void settings(ActionEvent actionEvent) {
         Launcher.getViewManager().setView("Settings");
     }
-    public void exit(ActionEvent actionEvent) {
-        //TODO: Trouver un moyen de stopper les threads (au moins GameManager)
-        Launcher.getStage().close();
-    }
+    public void exit(ActionEvent actionEvent) { Launcher.getStage().close(); }
 }

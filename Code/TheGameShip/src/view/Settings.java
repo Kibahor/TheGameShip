@@ -21,9 +21,7 @@ public class Settings {
     public void difficulty(ActionEvent actionEvent) { System.out.println("Inopérant."); }     //TODO: garder ça en mémoire qq part
     public void volume(ActionEvent actionEvent) { System.out.println("Inopérant."); }         //TODO: garder ça en mémoire qq part
 
-    public void menu(ActionEvent actionEvent){
-        Launcher.getViewManager().setView("Menu");
-    }
+    public void menu(ActionEvent actionEvent){ Launcher.getViewManager().setView("Menu"); }
     public void reset(ActionEvent actionEvent) {
         difficultySlider.setValue(2);
         volumeSlider.setValue(50);
