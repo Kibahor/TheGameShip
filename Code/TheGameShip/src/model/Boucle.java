@@ -1,9 +1,6 @@
 package model;
 
 import javafx.application.Platform;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-
 import static java.lang.Thread.sleep;
 
 public class Boucle extends model.Observable implements Runnable {

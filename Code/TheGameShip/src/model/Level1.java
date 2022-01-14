@@ -11,7 +11,7 @@ import model.move.MoveSpeed;
 
 import java.util.ArrayList;
 
-public class Level1 implements ILevel,Observateur{
+public class Level1 implements ILevel,Observateur {
 
     private GameManager gameManager;
 
@@ -28,9 +28,9 @@ public class Level1 implements ILevel,Observateur{
     private ICollider collider;
     private ICollider colliderShoot;
 
-    public Level1(GameManager gameManager){
-        this.gameManager=gameManager;
-        entityManager=new EntityManager();
+    public Level1(GameManager gameManager) {
+        this.gameManager = gameManager;
+        entityManager = new EntityManager();
     }
 
     @Override
@@ -38,7 +38,7 @@ public class Level1 implements ILevel,Observateur{
         //ENTITIES
         player = new Player("Vaisseau","file://test.jpg",100,360,20,5,5,5,true); //DEBUG
         int nbShootPreGenerate=100;
-        for(int i=0;i<nbShootPreGenerate;i++){
+        for(int i=0; i < nbShootPreGenerate; i++){
             entityManager.add(new Shoot());
         }
         entityManager.add(player);
@@ -47,7 +47,7 @@ public class Level1 implements ILevel,Observateur{
         moveSpeed = new MoveSpeed();
 
         collider = new Collider(this);
-        colliderShoot=new ColliderShoot();
+        colliderShoot = new ColliderShoot();
     }
 
     @Override
@@ -79,7 +79,8 @@ public class Level1 implements ILevel,Observateur{
                     }
                 }
             }
-        }catch(Exception err){
+        }
+        catch (Exception err) {
             err.printStackTrace();
             //TODO:ConccurentException : gérer la gestion concurrente des ressources entre le thread principal et la boucle : https://www.jmdoudoux.fr/java/dej/chap-acces_concurrents.htm
         }
@@ -92,8 +93,8 @@ public class Level1 implements ILevel,Observateur{
             case "DOWN", "S" -> moveSpeed.down(player,collider);
             case "RIGHT", "D" -> moveSpeed.right(player,collider);
             case "SPACE" -> {
-                Shoot s=getEmptyShoot();
-                if(s!=null) {
+                Shoot s = getEmptyShoot();
+                if (s != null) {
                     s.applyToEntity(player);
                     usedShoot.add(s);
                 }
@@ -101,10 +102,10 @@ public class Level1 implements ILevel,Observateur{
         }
     }
 
-    public Shoot getEmptyShoot(){
-        for(IEntity e:getSetEntity()){
-            if(e.getType().equals(Type.Shoot)){
-                if(!e.getVisible()){
+    public Shoot getEmptyShoot() {
+        for (IEntity e:getSetEntity()) {
+            if (e.getType().equals(Type.Shoot)) {
+                if (!e.getVisible()) {
                     return (Shoot)e;
                 }
             }

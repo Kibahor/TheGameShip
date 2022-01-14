@@ -3,7 +3,7 @@ package model.collider;
 import launch.Launcher;
 import model.entity.IEntity;
 
-public class ColliderShoot implements ICollider{
+public class ColliderShoot implements ICollider {
 
     @Override
     public boolean isCollision(IEntity e, String direction) {
