@@ -56,6 +56,7 @@ public class ViewManager {
         try {
             return FXMLLoader.load(getClass().getClassLoader().getResource(view.get(name)));
         } catch(Exception err) {
+            err.printStackTrace(); //DEBUG
             return new Pane();//TODO: Charger une vue d'erreur par exemple
         }
     }

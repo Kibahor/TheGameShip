@@ -12,20 +12,22 @@ import model.move.MoveSpeed;
 import java.util.ArrayList;
 
 //TODO: A la place faire une fabrique, qui se basera sur un fichier xml/json qui spécifie toute les caractéristiques
-public class Level1 implements ILevel,Observateur {
+public class Level1 implements ILevel, IObserver, IHasEntityCollection {
 
     private GameManager gameManager;
 
     private EntityManager entityManager;
-        @Override public ObservableSet<IEntity> getSetEntity(){
-        return entityManager.getSetEntity();
-    }
-    private volatile ArrayList<IEntity> usedShoot =new ArrayList<>();//DEBUG
+        @Override public ObservableSet<IEntity> getUnusedEntityCollection(){return entityManager.getUnusedEntityCollection();}
+        @Override public ObservableSet<IEntity> getUsedEntityCollection(){return entityManager.getUsedEntityCollection();}
+
+    private volatile ArrayList<IEntity> usedShoot =new ArrayList<>();//DEBUG //TODO : enlever sa
     private Player player;
 
+    //TODO : List de IMove (extendibilité et moins de duplication de code)
     //private IMove move;
     private IMove moveSpeed;
 
+    //TODO : List de ICollider (extendibilité et moins de duplication de code)
     private ICollider collider;
     private ICollider colliderShoot;
 
@@ -48,7 +50,7 @@ public class Level1 implements ILevel,Observateur {
         }
         entityManager.add(player);
         //entityManager.add(new Entity("Obstacle1","file://test.jpg", Type.Obstacle,35,5,500,500,true ));
-        entityManager.add(new Entity("Ennemy1","file://test.jpg", Type.Ennemy,20,5,700,300,true));
+        entityManager.add(new Entity("Ennemy1","file://test.jpg", EType.Ennemy,20,5,700,300,true));
     }
 
     @Override
@@ -65,9 +67,10 @@ public class Level1 implements ILevel,Observateur {
 
     @Override
     public void exit() {
-        //TODO: Unscribe les événement ajouter
+        //TODO: Unscribe les événement ajouter aux boucle (créer une méthode destroy dans boucle)
     }
 
+    //TODO: eventuellement pour avoir un point d'extension, il faudrait que selon le type d'entité il y est une redéfinition du comportement
     @Override
     public void update() {
         try {
@@ -110,12 +113,11 @@ public class Level1 implements ILevel,Observateur {
         }
     }
 
+    //TODO : le remplacer par la méthode générique de l'entity manager
     public Shoot getEmptyShoot() {
-        for (IEntity e:getSetEntity()) {
+        for (IEntity e : getUnusedEntityCollection()) {
             if (e instanceof Shoot) {
-                if (!e.getVisible()) {
-                    return (Shoot)e;
-                }
+                return (Shoot)e;
             }
         }
         return null;

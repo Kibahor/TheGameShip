@@ -1,46 +1,49 @@
 package model.entity;
 
-import javafx.beans.InvalidationListener;
-import javafx.beans.property.SimpleSetProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableSet;
-import javafx.collections.SetChangeListener;
-import model.Observable;
+import model.IHasEntityCollection;
 
-import java.util.Collection;
 import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
 
-public class EntityManager { //TODO: Mieux gérer entités (visible vs non visible) (Gérer efficaement les deux collection)
+public class EntityManager implements IHasEntityCollection { //TODO: Mieux gérer entités (visible vs non visible) (Gérer efficaement les deux collection)
 
-    private final ObservableSet<IEntity> setEntity;
-        public ObservableSet<IEntity> getSetEntity(){return setEntity;}
+    private final ObservableSet<IEntity> unUsedEntities;
+        @Override public ObservableSet<IEntity> getUnusedEntityCollection(){return unUsedEntities;} //Todo: mettre un readonly Observateur au pire
 
+    private final ObservableSet<IEntity> usedEntities;
+        @Override public ObservableSet<IEntity> getUsedEntityCollection(){return usedEntities;} //Todo: mettre un readonly Observateur au pire
 
     public EntityManager() {
-        this.setEntity = FXCollections.observableSet(new HashSet<>());
+        this.unUsedEntities = FXCollections.observableSet(new HashSet<>());
+        this.usedEntities = FXCollections.observableSet(new HashSet<>());
     }
 
     public void add(IEntity e){
-        getSetEntity().add(e);
+        if(e.getVisible()){
+            getUsedEntityCollection().add(e);
+        }else{
+            getUnusedEntityCollection().add(e);
+        }
     }
 
-    public void delete(String entityName) throws Exception {
-        getSetEntity().remove(getEntity(entityName));
-    }
-
-    public IEntity getEntity(String name) throws Exception {
-        for (IEntity e : getSetEntity()) {
-            if (e.getName().equals(name)) {
+    public IEntity getUnUsedEntity(EType type) throws Exception {
+        for (IEntity e : getUnusedEntityCollection()) {
+            if (type.equals(e.getType())) {
+                getUnusedEntityCollection().remove(e);
                 return e;
             }
         }
-        throw new Exception("L'Entité \""+name+"\" n'existe pas");
+        throw new Exception("Il n'y a pas d'entité de type : \""+ type.toString()+" disponible");
     }
 
     public void listEntity() {
-        for (IEntity e : getSetEntity()) {
+        System.out.println("Used Entity :\n");
+        for (IEntity e : getUsedEntityCollection()) {
+            System.out.println(e);
+        }
+        System.out.println("Un-used Entity :\n");
+        for (IEntity e : getUnusedEntityCollection()) {
             System.out.println(e);
         }
     }

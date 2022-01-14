@@ -1,16 +1,11 @@
 package model;
 
 import javafx.collections.ObservableSet;
-import model.collider.Collider;
-import model.collider.ColliderShoot;
-import model.collider.ICollider;
 import model.entity.*;
-import model.move.*;
 
-import java.util.ArrayList;
+public class GameManager implements IHasEntityCollection{
 
-public class GameManager{
-
+    //TODO : Faire une liste de boucle pour avoir un point d'extentibilité et cela éviterais de la duplication de code
     Boucle boucle1;
         public Boucle getBoucle1() {return boucle1;}
 
@@ -23,6 +18,8 @@ public class GameManager{
 
     //TODO: Faire une List de Monde et récupérer celui qui va être choisis
     ILevel level1;
+        @Override public ObservableSet<IEntity> getUnusedEntityCollection() {return ((IHasEntityCollection)level1).getUnusedEntityCollection();}
+        @Override public ObservableSet<IEntity> getUsedEntityCollection() {return ((IHasEntityCollection)level1).getUsedEntityCollection();}
 
     public GameManager(){
         //Boucle
@@ -35,7 +32,7 @@ public class GameManager{
         //Level
         level1=new Level1(this);
     }
-
+    //TODO: init,start,exit doit être des méthode qui notifie tout ces abonnés (par rapport a stage)
     public void init(){
         level1.init();
     }
@@ -57,11 +54,4 @@ public class GameManager{
         boucle2.StopBoucle();
         thread2.stop(); //TODO: Voir si il n'y a pas un autre moyen car deprecated
     }
-
-
-    public ObservableSet<IEntity> getSetEntity(){
-        return level1.getSetEntity();//TODO: mettre le level actuel à la place
-    }
-
-
 }

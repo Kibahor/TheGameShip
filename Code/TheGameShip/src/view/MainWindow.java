@@ -1,15 +1,18 @@
 package view;
 
+import javafx.beans.Observable;
+import javafx.collections.ObservableSet;
 import javafx.collections.SetChangeListener;
 import javafx.fxml.FXML;
-import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import launch.Launcher;
 import model.GameManager;
+import model.IHasEntityCollection;
 import model.entity.IEntity;
-import model.entity.Type;
+
+import java.util.Collection;
 
 public class MainWindow {
 
@@ -22,16 +25,31 @@ public class MainWindow {
 
         gameManager = new GameManager();
 
-        gameManager.getSetEntity().addListener((SetChangeListener<IEntity>) change -> {
-            if (change.wasAdded()) {
-                addEntity(change.getElementAdded());
-            }
-        });
         gameManager.init();
+        loadEntity(((IHasEntityCollection)gameManager).getUnusedEntityCollection());
+        loadEntity(((IHasEntityCollection)gameManager).getUsedEntityCollection());
+
         gameManager.start();
 
         Launcher.getStage().setOnCloseRequest(e -> gameManager.exit());
+        ((IHasEntityCollection)gameManager).getUnusedEntityCollection().addListener((SetChangeListener<IEntity>) change -> {
+            if (change.wasAdded()) {
+                change.getElementAdded().setVisible(false);
+            }
+        });
 
+        ((IHasEntityCollection)gameManager).getUsedEntityCollection().addListener((SetChangeListener<IEntity>) change -> {
+            if (change.wasAdded()) {
+                change.getElementAdded().setVisible(true);
+            }
+        });
+
+    }
+
+    private void loadEntity(Collection<IEntity> c){
+        for(IEntity e : c){
+            addEntity(e);
+        }
     }
 
     public void addEntity(IEntity e) {

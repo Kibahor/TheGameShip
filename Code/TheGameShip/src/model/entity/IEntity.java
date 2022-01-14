@@ -12,8 +12,9 @@ public interface IEntity {
 
     String getName();
 
-    Type getType();
+    EType getType();
 
+    //TODO : mettre sa dans une interface IHasLocation et caster avec cette interface a tout les endroit où c'est utiliser avec l'interface IEntity
     void setX(double x);
     double getX();
     DoubleProperty xProperty();
@@ -25,6 +26,7 @@ public interface IEntity {
     void setHitbox_radius(double y);
     double getHitbox_radius();
     DoubleProperty hitbox_radiusProperty();
+    //
 
     URI getSprite();
     void setSprite(URI sprite);
@@ -32,4 +34,6 @@ public interface IEntity {
     boolean getVisible();
     void setVisible(boolean b);
     BooleanProperty getVisibleBooleanProperty();
+
+
 }
