@@ -1,6 +1,6 @@
 package model.entity;
 
-public enum Type {
+public enum EType {
     Player,
     Ennemy,
     Shoot,

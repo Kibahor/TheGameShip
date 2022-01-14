@@ -27,14 +27,14 @@ public class Shoot extends Entity implements IMovable {
     }
 
     public Shoot() {
-        super(Integer.toString(nbShoot),"vide",Type.Shoot,10,1);
+        super("Shoot "+Integer.toString(nbShoot),"vide", EType.Shoot,10,1);
         setSpeedX(5);
         setSpeedY(5);
         nbShoot++;
     }
 
     public Shoot(String sprite, double hitbox_radius, double hp, double x, double y,float speedX,float speedY,UUID ownerId) {
-        super(Integer.toString(nbShoot),sprite,Type.Shoot,hitbox_radius,hp,x,y,true);
+        super(Integer.toString(nbShoot),sprite, EType.Shoot,hitbox_radius,hp,x,y,true);
         setOwnerId(ownerId);
         setSpeedX(speedX);
         setSpeedY(speedY);
@@ -47,6 +47,7 @@ public class Shoot extends Entity implements IMovable {
         setY(e.getY());
         setVisible(true);
     }
+
     public void reset(){
         setOwnerId(null);
         setX(-200);
