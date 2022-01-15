@@ -23,7 +23,7 @@ public class Move implements IMove {
                 case "RIGHT" -> m.setX(m.getX() + m.getSpeedX());
                 case "DOWN" -> m.setY(m.getY() + m.getSpeedY());
                 case "UP" -> m.setY(m.getY() - m.getSpeedY());
-                default -> System.out.println("Pas de d'action pour la touche \""+direction+"\" !"); //DEBUG
+                default -> System.out.println("Pas d'action pour la touche \""+direction+"\" !"); //DEBUG
             }
         }
         return ci;

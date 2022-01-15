@@ -18,8 +18,11 @@ public class ColliderInfo {
     }
 
     public ColliderInfo(boolean isCollison,IEntity e){
-        this(isCollison);
         this.e=e;
+        this.isCollison=isCollison;
+        if(e != null) {
+            this.isCollison=true;
+        }
     }
 
     @Override

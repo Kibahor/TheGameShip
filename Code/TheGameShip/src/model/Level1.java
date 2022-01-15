@@ -12,7 +12,7 @@ import model.move.Move;
 import java.util.Collection;
 
 //TODO: A la place faire une fabrique, qui se basera sur un fichier xml/json qui spécifie toute les caractéristiques
-//Todo : Level1 doit hériter de Level qui contiendra les méthode et propriété de base.
+//Todo : Level1 doit hériter de Level qui contiendra les méthode et propriété de base et le comportement classique.
 
 public class Level1 implements ILevel, IObserver, IHasEntityCollection {
 
