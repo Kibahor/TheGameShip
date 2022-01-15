@@ -4,6 +4,7 @@ import launch.Launcher;
 import model.ILevel;
 import model.entity.IEntity;
 import model.entity.IHasLocation;
+import model.entity.IShoot;
 import model.entity.Shoot;
 
 public class Collider implements ICollider {
@@ -41,11 +42,7 @@ public class Collider implements ICollider {
         double y1 = h1.getY();
         double radius1 = h1.getHitbox_radius();
         for(IEntity e2: level.getUsedEntityCollection()){
-            boolean selfShoot=false;
-            if(e2 instanceof Shoot){
-                selfShoot=((Shoot)e2).getOwnerId().equals(e1.getId());
-            }
-            if(!e1.equals(e2) && !selfShoot) {
+            if(!e1.equals(e2) && !IShoot.cast(e2).getOwnerId().equals(e1.getId())) {
                 IHasLocation h2 =IHasLocation.cast(e2);
                 double x2 = h2.getX();
                 double y2 = h2.getY();

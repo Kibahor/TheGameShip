@@ -2,12 +2,12 @@ package model.entity;
 
 import java.util.UUID;
 
-public class Shoot extends Entity implements IMovable { //Ajouter Interface IShoot avec une méthode cast (comme IHasLocation)
+public class Shoot extends Entity implements IMovable,IShoot { //Todo : Ajouter Interface IShoot avec une méthode cast (comme IHasLocation)
 
     private static int nbShoot=0;
     private UUID ownerId;
-        public UUID getOwnerId() {return ownerId;}
-        public void setOwnerId(UUID ownerId) {this.ownerId=ownerId;}
+        @Override public UUID getOwnerId() {return ownerId;}
+        @Override public void setOwnerId(UUID ownerId) {this.ownerId=ownerId;}
 
     //IMovable
     private float speedX;
@@ -42,10 +42,13 @@ public class Shoot extends Entity implements IMovable { //Ajouter Interface ISho
     }
 
     public void applyToEntity(IEntity e) throws Exception {
-        setOwnerId(e.getId());
-        if(!(e instanceof IHasLocation)){
+        if(ownerId!=null){
+                throw new Exception("Le tir appartient déjà a une entité qui a pour id : "+getOwnerId().toString());
+        }else if(!(e instanceof IHasLocation)){
             throw new Exception("Impossible d'appliquer l'entité \""+e.getName()+"\" au Shoot \""+this.getName()+"\" car elle n'implémente pas IHasLocation !");
         }
+        setOwnerId(e.getId());
+
         setX(((IHasLocation)e).getX() + ((IHasLocation)e).getHitbox_radius() + getHitbox_radius() + 10);
         setY(((IHasLocation)e).getY());
     }
