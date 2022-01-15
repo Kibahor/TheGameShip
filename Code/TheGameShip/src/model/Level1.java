@@ -1,6 +1,7 @@
 package model;
 
 import model.collider.Collider;
+import model.collider.ColliderInfo;
 import model.collider.ColliderShoot;
 import model.collider.ICollider;
 import model.entity.*;
@@ -81,8 +82,10 @@ public class Level1 implements ILevel, IObserver, IHasEntityCollection {
                     ((IHasLife)e2).decreaseHp();
                     System.out.println("Name : "+e1.getName()+" || Name : "+e2.getName()+" HP : "+((IHasLife)e2).getHp());//DEBUG
                 }*/
-                if (e instanceof Shoot) { //Si l'entité est un tir
-                    if (move.move(e, colliderShoot, "RIGHT").IsCollision()) {
+                if (e instanceof IShoot) { //Si l'entité est un tir
+                    ColliderInfo ci=move.move(e, colliderShoot, "RIGHT");
+                    if (ci.IsCollision()) {
+                        System.out.println(ci);//DEBUG
                         entityManager.setUnUsedEntity(e);
                     }
                 }
