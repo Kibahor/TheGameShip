@@ -15,7 +15,7 @@ public class Move implements IMove {
         if(!(e instanceof IMovable)) {
             throw new Exception("L'entité \""+e.getName()+"\" n'implémente pas IMovable, il ne peut donc pas être déplacé !");
         }
-        IMovable m=(IMovable)e;
+        IMovable m=IMovable.cast(e);
         ColliderInfo ci = c.isCollision(e,direction);
         if (!ci.IsCollision()) {
             switch (direction){

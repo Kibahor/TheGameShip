@@ -110,4 +110,12 @@ public class Entity implements IEntity, IHasLocation, IHasLife{
     public String toString() {
         return "\nId : "+id.toString() + "\nNom : "+ name + "\nType : "+ type + "\nSprite : "+sprite.toString() + "\nX : "+ x + "\nY : "+ y+ "\nRadius : "+ hitbox_radius;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof IEntity){
+            return ((IEntity) obj).getId().equals(getId());
+        }
+        return false;
+    }
 }

@@ -24,5 +24,4 @@ public interface IEntity extends IReset {
     void setVisible(boolean b);
     BooleanProperty getVisibleBooleanProperty();
 
-
 }

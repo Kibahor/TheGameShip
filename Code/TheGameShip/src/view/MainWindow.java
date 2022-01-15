@@ -51,8 +51,10 @@ public class MainWindow {
         switch(e.getType()){
             case Ennemy -> color=Color.RED;
             case Obstacle -> color=Color.GRAY;
-            default -> color=Color.BLACK;
+            case Player -> color=Color.BLACK;
+            default -> color=Color.GREY;
         }
+
         Circle c = new Circle(h.getHitbox_radius(),color);
         c.centerXProperty().bind(h.xProperty());
         c.centerYProperty().bind(h.yProperty());
@@ -63,3 +65,4 @@ public class MainWindow {
 }
 
 //TODO: Code + Docs + Video (une demo vidéo d'1 min max) + Preuve de compétence (avec la feuille de compétence en expliquant)
+//Todo: Utiliser du css pour le style de la vue

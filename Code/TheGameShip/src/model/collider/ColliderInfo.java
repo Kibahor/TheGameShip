@@ -31,6 +31,6 @@ public class ColliderInfo {
         if(e != null){
             entityname=e.getName();
         }
-        return "isCollison : "+isCollison+"\nAvec l'entité : "+entityname;
+        return "isCollison : "+isCollison+"\nAvec l'entité : "+entityname+"\n";
     }
 }

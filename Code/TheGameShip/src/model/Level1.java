@@ -46,11 +46,11 @@ public class Level1 implements ILevel, IObserver, IHasEntityCollection {
         for(int i=0; i < nbShootPreGenerate; i++){
             entityManager.add(new Shoot());
         }
-        entityManager.add(new Player("Vaisseau","file://test.jpg",100,360,20,5,5,5));
+        entityManager.add(new Player("Vaisseau","file://test.jpg",100,360,20,5,8,8));
         entityManager.setUsedEntity("Vaisseau");
-        entityManager.add(new Entity("Obstacle1","file://test.jpg", EType.Obstacle,35,5,500,500));
-        entityManager.setUsedEntity("Obstacle1");
-        entityManager.add(new Entity("Ennemy1","file://test.jpg", EType.Ennemy,20,5,700,300));
+        /*entityManager.add(new Entity("Obstacle1","file://test.jpg", EType.Obstacle,35,5,500,500));
+        entityManager.setUsedEntity("Obstacle1");*/
+        entityManager.add(new Entity("Ennemy1","file://test.jpg", EType.Ennemy,20,5,150,300));
         entityManager.setUsedEntity("Ennemy1");
     }
 
@@ -110,7 +110,7 @@ public class Level1 implements ILevel, IObserver, IHasEntityCollection {
             ((Shoot)s).applyToEntity(entityManager.getUsedEntity(EType.Player)); //Je donne l'appartenance du tir au joueur
             entityManager.setUsedEntity(s); //Je l'ajoute à la collection des entitées visible
         }else {
-            move.move(e, collider, key);
+            System.out.println(move.move(e, collider, key));
         }
     }
 }

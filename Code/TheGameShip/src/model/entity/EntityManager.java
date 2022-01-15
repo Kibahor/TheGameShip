@@ -38,7 +38,7 @@ public class EntityManager implements IHasEntityCollection {
                 return e;
             }
         }
-        throw new Exception("Il n'y a pas d'entité de nom : \""+ name+"\"");
+        throw newException(name);
     }
 
     public IEntity getUsedEntity(EType type) throws Exception {
@@ -47,7 +47,7 @@ public class EntityManager implements IHasEntityCollection {
                 return e;
             }
         }
-        throw new Exception("Il n'y a pas d'entité de type : \""+ type.toString()+" disponible");
+        throw newException(type);
     }
 
     //UnUsed Entities
@@ -70,7 +70,7 @@ public class EntityManager implements IHasEntityCollection {
                 return e;
             }
         }
-        throw new Exception("Il n'y a pas d'entité de type : \""+ type.toString()+" disponible"); //Todo:Trouver un autre moyen que throw une exception
+        throw newException(type);
     }
 
     public IEntity getUnUsedEntity(String name) throws Exception {
@@ -79,7 +79,7 @@ public class EntityManager implements IHasEntityCollection {
                 return e;
             }
         }
-        throw new Exception("Il n'y a pas d'entité de nom : \""+ name+"\"");
+        throw newException(name);
     }
 
     //General
@@ -102,5 +102,13 @@ public class EntityManager implements IHasEntityCollection {
             System.out.println(e);
         }
     }
-    //TODO : faire 2 méthode newException(String name) et newException(Etype type)
+
+    //Todo: Trouver un autre moyen que throw une exception ?
+    public Exception newException(String name) throws Exception{
+        return new Exception("Il n'y a pas d'entité de nom : \""+ name+"\"");
+    }
+    public Exception newException(EType type) throws Exception{
+        return new Exception("Il n'y a pas d'entité de type : \""+ type.toString()+"\" disponible");
+    }
+
 }
