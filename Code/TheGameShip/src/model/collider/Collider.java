@@ -8,7 +8,7 @@ import model.entity.IShoot;
 import model.entity.Shoot;
 
 public class Collider implements ICollider {
-    private final ILevel level;
+    protected final ILevel level;
 
     public Collider(ILevel level){
         this.level = level;
@@ -19,7 +19,7 @@ public class Collider implements ICollider {
         return new ColliderInfo(isCollisionScene(IHasLocation.cast(e), direction),isCollisionEntity(e).getEntity());
     }
 
-    private boolean isCollisionScene(IHasLocation h, String direction){
+    protected boolean isCollisionScene(IHasLocation h, String direction){
         double x1 = h.getX();
         double y1 = h.getY();
         double radius = h.getHitbox_radius();
@@ -36,7 +36,7 @@ public class Collider implements ICollider {
         };
     }
 
-    private ColliderInfo isCollisionEntity(IEntity e1) throws Exception{
+    protected ColliderInfo isCollisionEntity(IEntity e1) throws Exception{
         IHasLocation h1=IHasLocation.cast(e1);
         double x1 = h1.getX();
         double y1 = h1.getY();

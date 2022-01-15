@@ -13,7 +13,7 @@ public class Move implements IMove {
     @Override
     public ColliderInfo move(IEntity e, ICollider c, String direction) throws Exception {
         if(!(e instanceof IMovable)) {
-            throw new Exception("Le joueur \""+e.getName()+"\" n'implémente pas IMovable, il ne peut donc pas être déplacé !");
+            throw new Exception("L'entité \""+e.getName()+"\" n'implémente pas IMovable, il ne peut donc pas être déplacé !");
         }
         IMovable m=(IMovable)e;
         ColliderInfo ci = c.isCollision(e,direction);
@@ -21,7 +21,7 @@ public class Move implements IMove {
             switch (direction){
                 case "LEFT" -> m.setX(m.getX() - m.getSpeedX());
                 case "RIGHT" -> m.setX(m.getX() + m.getSpeedX());
-                case "DOWN" -> m.setY(m.getY()+m.getSpeedY());
+                case "DOWN" -> m.setY(m.getY() + m.getSpeedY());
                 case "UP" -> m.setY(m.getY() - m.getSpeedY());
                 default -> System.out.println("Pas de d'action pour la touche \""+direction+"\" !"); //DEBUG
             }

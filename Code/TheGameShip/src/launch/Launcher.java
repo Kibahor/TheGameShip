@@ -12,6 +12,7 @@ import view.ViewManager;
 public class Launcher extends Application {
     private static ViewManager viewManager;
     private static Stage stage;
+    //todo :Faire une classe static DEBUG et set dans launcher si debug=true/false et remplacer toute les ligne de débug par la méthode
 
     public void start(Stage stage) throws Exception {
         this.stage = stage;

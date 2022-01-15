@@ -77,18 +77,20 @@ public class Level1 implements ILevel, IObserver, IHasEntityCollection {
         //TODO : Ajouter quand une entité n'a plus de vie et setUnUsedEntity()
         try {
             for (IEntity e : getUsedEntityCollection()) {
-                /*
-                if(e2 instanceof IHasLife){ //Si l'entité a de la vie
-                    ((IHasLife)e2).decreaseHp();
-                    System.out.println("Name : "+e1.getName()+" || Name : "+e2.getName()+" HP : "+((IHasLife)e2).getHp());//DEBUG
-                }*/
-                if (e instanceof IShoot) { //Si l'entité est un tir
+                //Gestion des tirs
+                if (e instanceof IShoot) {
                     ColliderInfo ci=move.move(e, colliderShoot, "RIGHT");
                     if (ci.IsCollision()) {
                         System.out.println(ci);//DEBUG
                         entityManager.setUnUsedEntity(e);
                     }
                 }
+                //Gestion de la vie
+                /*
+                if(e instanceof IHasLife){ //Si l'entité a de la vie
+                    e.decreaseHp();
+                    System.out.println("Name : "+e1.getName()+" || Name : "+e.getName()+" HP : "+e.getHp());//DEBUG
+                }*/
             }
         } catch (Exception err) {
             err.printStackTrace();
