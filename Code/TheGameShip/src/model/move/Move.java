@@ -1,45 +1,30 @@
 package model.move;
 
-import model.ColliderInfo;
+import model.collider.ColliderInfo;
 import model.collider.ICollider;
 import model.entity.IEntity;
+import model.entity.IMovable;
 
 public class Move implements IMove {
-    //Todo : Voir si ne pas fusionner Move et MoveSpeed (2 constructeur speed ou sans speed)
     //Todo : Faire qu'une seul méthode avec en parametre (la direction) et faire un switch
     //Todo : faire une enumeration de touche
-    @Override
-    public ColliderInfo left(IEntity e, ICollider c) {
-        ColliderInfo ci = c.isCollision(e,"LEFT");
-        if (!ci.IsCollision()) {
-            e.setX(e.getX() - 10);
-        }
-        return ci;
-    }
+
 
     @Override
-    public ColliderInfo right(IEntity e, ICollider c) {
-        ColliderInfo ci = c.isCollision(e,"RIGHT");
-        if (!ci.IsCollision()) {
-            e.setX(e.getX() + 10);
+    public ColliderInfo move(IEntity e, ICollider c, String direction) throws Exception {
+        if(!(e instanceof IMovable)) {
+            throw new Exception("Le joueur \""+e.getName()+"\" n'implémente pas IMovable, il ne peut donc pas être déplacé !");
         }
-        return ci;
-    }
-
-    @Override
-    public ColliderInfo down(IEntity e, ICollider c) {
-        ColliderInfo ci = c.isCollision(e,"DOWN");
+        IMovable m=(IMovable)e;
+        ColliderInfo ci = c.isCollision(e,direction);
         if (!ci.IsCollision()) {
-            e.setY(e.getY() + 10);
-        }
-        return ci;
-    }
-
-    @Override
-    public ColliderInfo up(IEntity e, ICollider c) {
-        ColliderInfo ci = c.isCollision(e,"UP");
-        if (!ci.IsCollision()) {
-            e.setY(e.getY() - 10);
+            switch (direction){
+                case "LEFT" -> m.setX(m.getX() - m.getSpeedX());
+                case "RIGHT" -> m.setX(m.getX() + m.getSpeedX());
+                case "DOWN" -> m.setY(m.getY()+m.getSpeedY());
+                case "UP" -> m.setY(m.getY() - m.getSpeedY());
+                default -> System.out.println("Pas de d'action pour la touche \""+direction+"\" !"); //DEBUG
+            }
         }
         return ci;
     }

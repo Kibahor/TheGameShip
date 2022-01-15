@@ -1,6 +1,6 @@
 package model.entity;
 
-public interface IMovable {
+public interface IMovable extends IHasLocation {
 
     float getSpeedX();
     void setSpeedX(float speedX);

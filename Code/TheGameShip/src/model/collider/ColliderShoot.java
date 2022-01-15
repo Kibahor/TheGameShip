@@ -1,11 +1,11 @@
 package model.collider;
 
 import launch.Launcher;
-import model.ColliderInfo;
 import model.IHasEntityCollection;
 import model.ILevel;
 import model.entity.IEntity;
 import model.entity.IHasLife;
+import model.entity.IHasLocation;
 import model.entity.Shoot;
 
 public class ColliderShoot implements ICollider{
@@ -17,18 +17,14 @@ public class ColliderShoot implements ICollider{
     }
 
     @Override
-    public ColliderInfo isCollision(IEntity e, String direction) {
-        if(this.isCollisionScene(e,direction)){
-            return new ColliderInfo(true);
-        }
-        return isCollisionEntity(e);
-
+    public ColliderInfo isCollision(IEntity e, String direction) throws Exception {
+        return new ColliderInfo(isCollisionScene(IHasLocation.cast(e), direction),isCollisionEntity(e).getEntity());
     }
 
-    private boolean isCollisionScene(IEntity e1, String direction) {
-        double x1 = e1.getX();
-        double y1 = e1.getY();
-        double radius = e1.getHitbox_radius();
+    private boolean isCollisionScene(IHasLocation h, String direction) {
+        double x1 = h.getX();
+        double y1 = h.getY();
+        double radius = h.getHitbox_radius();
         double height = Launcher.getViewManager().getSceneHeight();
         double width = Launcher.getViewManager().getSceneWidth();
 
@@ -41,21 +37,19 @@ public class ColliderShoot implements ICollider{
         };
     }
 
-    private ColliderInfo isCollisionEntity(IEntity e1) {
-        double x1 = e1.getX();
-        double y1 = e1.getY();
-        double radius1 = e1.getHitbox_radius();
-        for(IEntity e2: ((IHasEntityCollection)level).getUsedEntityCollection()){
+    private ColliderInfo isCollisionEntity(IEntity e1) throws Exception {
+        IHasLocation h1=IHasLocation.cast(e1);
+        double x1 = h1.getX();
+        double y1 = h1.getY();
+        double radius1 = h1.getHitbox_radius();
+        for(IEntity e2: level.getUsedEntityCollection()){
             if(!e1.equals(e2) && !(e2 instanceof Shoot)) {
-                double x2 = e2.getX();
-                double y2 = e2.getY();
-                double radius2 = e2.getHitbox_radius();
+                IHasLocation h2 =IHasLocation.cast(e2);
+                double x2 = h2.getX();
+                double y2 = h2.getY();
+                double radius2 = h2.getHitbox_radius();
 
                 if(Math.sqrt( Math.pow(x2-x1,2) + Math.pow(y2-y1,2))  < radius1 +radius2) {
-                    if(e2 instanceof IHasLife){ //Si l'entité a de la vie
-                        ((IHasLife)e2).decreaseHp();
-                        System.out.println("Name : "+e1.getName()+" || Name : "+e2.getName()+" HP : "+((IHasLife)e2).getHp());//DEBUG
-                    }
                     return new ColliderInfo(e2);
                 }
             }

@@ -6,7 +6,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.UUID;
 
-public class Entity implements IEntity,IHasLife {
+public class Entity implements IEntity,IHasLocation,IHasLife {
 
     //IEntity
     private final UUID id;
@@ -18,7 +18,17 @@ public class Entity implements IEntity,IHasLife {
     private final EType type;
         @Override public EType getType() { return type;}
 
-    private final DoubleProperty x = new SimpleDoubleProperty();
+    private URI sprite;
+        @Override public URI getSprite() {return sprite;}
+        @Override public void setSprite(URI sprite) {this.sprite = sprite;}
+
+    private BooleanProperty visible=new SimpleBooleanProperty();
+        @Override public boolean getVisible(){return visible.get();}
+        @Override public void setVisible(boolean b){visible.set(b);}
+        @Override public BooleanProperty getVisibleBooleanProperty(){return visible;}
+
+    //IHasLocation
+        private final DoubleProperty x = new SimpleDoubleProperty();
         @Override public double getX() {return x.get();}
         @Override public void setX(double x) {this.x.set(x);}
         @Override public DoubleProperty xProperty(){return x;}
@@ -32,15 +42,6 @@ public class Entity implements IEntity,IHasLife {
         @Override public double getHitbox_radius() { return hitbox_radius.get(); }
         @Override public void setHitbox_radius(double hitbox_radius) { this.hitbox_radius.set(hitbox_radius); }
         @Override public DoubleProperty hitbox_radiusProperty() { return hitbox_radius; }
-
-    private URI sprite;
-        @Override public URI getSprite() {return sprite;}
-        @Override public void setSprite(URI sprite) {this.sprite = sprite;}
-
-    private BooleanProperty visible=new SimpleBooleanProperty();
-        @Override public boolean getVisible(){return visible.get();}
-        @Override public void setVisible(boolean b){visible.set(b);}
-        @Override public BooleanProperty getVisibleBooleanProperty(){return visible;}
 
     //IHasLife
     private final DoubleProperty hp = new SimpleDoubleProperty();

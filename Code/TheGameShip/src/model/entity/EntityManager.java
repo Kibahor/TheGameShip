@@ -101,5 +101,5 @@ public class EntityManager implements IHasEntityCollection {
             System.out.println(e);
         }
     }
-
+    //TODO : faire 2 méthode newException(String name) et newException(Etype type)
 }

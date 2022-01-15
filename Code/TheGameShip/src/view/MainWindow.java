@@ -1,8 +1,5 @@
 package view;
 
-import javafx.beans.Observable;
-import javafx.collections.ObservableSet;
-import javafx.collections.SetChangeListener;
 import javafx.fxml.FXML;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -11,6 +8,7 @@ import launch.Launcher;
 import model.GameManager;
 import model.IHasEntityCollection;
 import model.entity.IEntity;
+import model.entity.IHasLocation;
 
 import java.util.Collection;
 
@@ -40,24 +38,25 @@ public class MainWindow {
         });
     }
 
-    private void loadEntity(Collection<IEntity> c){
+    private void loadEntity(Collection<IEntity> c) throws Exception {
         for(IEntity e : c){
             addEntity(e);
         }
     }
 
-    public void addEntity(IEntity e) {
+    public void addEntity(IEntity e) throws Exception {
+        if(!(e instanceof IHasLocation)){return;}
+        IHasLocation h=IHasLocation.cast(e);
         Color color;
         switch(e.getType()){
             case Ennemy -> color=Color.RED;
             case Obstacle -> color=Color.GRAY;
             default -> color=Color.BLACK;
         }
-
-        Circle c = new Circle(e.getHitbox_radius(),color);
-        c.centerXProperty().bind(e.xProperty());
-        c.centerYProperty().bind(e.yProperty());
-        c.radiusProperty().bind(e.hitbox_radiusProperty());
+        Circle c = new Circle(h.getHitbox_radius(),color);
+        c.centerXProperty().bind(h.xProperty());
+        c.centerYProperty().bind(h.yProperty());
+        c.radiusProperty().bind(h.hitbox_radiusProperty());
         c.visibleProperty().bind(e.getVisibleBooleanProperty());
         pane.getChildren().add(c);
     }

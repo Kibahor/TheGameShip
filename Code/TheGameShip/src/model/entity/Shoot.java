@@ -2,7 +2,7 @@ package model.entity;
 
 import java.util.UUID;
 
-public class Shoot extends Entity implements IMovable {
+public class Shoot extends Entity implements IMovable { //Ajouter Interface IShoot avec une méthode cast (comme IHasLocation)
 
     private static int nbShoot=0;
     private UUID ownerId;
@@ -41,10 +41,13 @@ public class Shoot extends Entity implements IMovable {
         nbShoot++;
     }
 
-    public void applyToEntity(IEntity e){
+    public void applyToEntity(IEntity e) throws Exception {
         setOwnerId(e.getId());
-        setX(e.getX() + e.getHitbox_radius() + getHitbox_radius() + 10);
-        setY(e.getY());
+        if(!(e instanceof IHasLocation)){
+            throw new Exception("Impossible d'appliquer l'entité \""+e.getName()+"\" au Shoot \""+this.getName()+"\" car elle n'implémente pas IHasLocation !");
+        }
+        setX(((IHasLocation)e).getX() + ((IHasLocation)e).getHitbox_radius() + getHitbox_radius() + 10);
+        setY(((IHasLocation)e).getY());
     }
 
     public void reset(){

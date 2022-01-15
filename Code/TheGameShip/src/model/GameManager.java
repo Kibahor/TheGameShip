@@ -1,7 +1,6 @@
 package model;
 
-import javafx.collections.ObservableSet;
-import model.entity.*;
+import model.entity.IEntity;
 
 import java.util.Collection;
 
@@ -20,8 +19,8 @@ public class GameManager implements IHasEntityCollection{
 
     //TODO: Faire une List de Monde et récupérer celui qui va être choisis
     ILevel level1;
-        @Override public Collection<IEntity> getUnusedEntityCollection() {return ((IHasEntityCollection)level1).getUnusedEntityCollection();}
-        @Override public Collection<IEntity> getUsedEntityCollection() {return ((IHasEntityCollection)level1).getUsedEntityCollection();}
+        @Override public Collection<IEntity> getUnusedEntityCollection() {return level1.getUnusedEntityCollection();}
+        @Override public Collection<IEntity> getUsedEntityCollection() {return level1.getUsedEntityCollection();}
 
     public GameManager(){
         //Boucle

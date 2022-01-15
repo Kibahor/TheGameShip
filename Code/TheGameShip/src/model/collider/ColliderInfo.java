@@ -1,4 +1,4 @@
-package model;
+package model.collider;
 
 import model.entity.IEntity;
 
@@ -14,6 +14,11 @@ public class ColliderInfo {
 
     public ColliderInfo(IEntity e){
         this(true);
+        this.e=e;
+    }
+
+    public ColliderInfo(boolean isCollison,IEntity e){
+        this(isCollison);
         this.e=e;
     }
 }

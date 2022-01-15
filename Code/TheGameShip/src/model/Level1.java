@@ -1,15 +1,13 @@
 package model;
 
-import javafx.collections.ObservableSet;
 import model.collider.Collider;
 import model.collider.ColliderShoot;
 import model.collider.ICollider;
 import model.entity.*;
 import model.move.IMove;
 import model.move.Keyboard;
-import model.move.MoveSpeed;
+import model.move.Move;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 //TODO: A la place faire une fabrique, qui se basera sur un fichier xml/json qui spécifie toute les caractéristiques
@@ -25,7 +23,7 @@ public class Level1 implements ILevel, IObserver, IHasEntityCollection {
 
     //TODO : Ne donner qu'un move qui en fonction du type de l'entités choisis le bon move
     //private IMove move;
-    private IMove moveSpeed;
+    private IMove move;
 
     //TODO : Ne donner qu'un Collider qui en fonction du type de l'entités choisis le bon collider
     private ICollider collider;
@@ -35,7 +33,7 @@ public class Level1 implements ILevel, IObserver, IHasEntityCollection {
         this.gameManager=gameManager;
         entityManager=new EntityManager();
 
-        moveSpeed = new MoveSpeed();
+        move = new Move();
         collider = new Collider(this);
         colliderShoot=new ColliderShoot(this);
     }
@@ -76,28 +74,35 @@ public class Level1 implements ILevel, IObserver, IHasEntityCollection {
     @Override
     public void update() {
         //TODO : Ajouter quand une entité n'a plus de vie et setUnUsedEntity()
-        for (IEntity e : getUsedEntityCollection()) {
-            if (e instanceof Shoot) { //Si l'entité est un tir
-                if(moveSpeed.right(e, colliderShoot).IsCollision()){
-                    entityManager.setUnUsedEntity(e);
+        try {
+            for (IEntity e : getUsedEntityCollection()) {
+                /*
+                if(e2 instanceof IHasLife){ //Si l'entité a de la vie
+                    ((IHasLife)e2).decreaseHp();
+                    System.out.println("Name : "+e1.getName()+" || Name : "+e2.getName()+" HP : "+((IHasLife)e2).getHp());//DEBUG
+                }*/
+                if (e instanceof Shoot) { //Si l'entité est un tir
+                    if (move.move(e, colliderShoot, "RIGHT").IsCollision()) {
+                        entityManager.setUnUsedEntity(e);
+                    }
                 }
             }
+        } catch (Exception err) {
+            err.printStackTrace();
         }
     }
 
     public void movePlayer (String key) throws Exception {
-        switch (key) {
-            case "UP", "Z" -> moveSpeed.up(entityManager.getUsedEntity(EType.Player), collider); //DEBUG
-            case "LEFT", "Q" -> moveSpeed.left(entityManager.getUsedEntity(EType.Player),collider);
-            case "DOWN", "S" -> moveSpeed.down(entityManager.getUsedEntity(EType.Player),collider);
-            case "RIGHT", "D" -> moveSpeed.right(entityManager.getUsedEntity(EType.Player),collider);
-            case "SPACE" -> {
-                IEntity s = entityManager.getUnUsedEntity(EType.Shoot); //Je récupère un tir qui n'est pas utilisé
-                if (s instanceof Shoot) { //Il se peut que que cela soit autre chose qu'un tir
-                    ((Shoot)s).applyToEntity(entityManager.getUsedEntity(EType.Player)); //Je donne l'appartenance du tir au joueur
-                    entityManager.setUsedEntity(s); //Je l'ajoute à la collection des entitées visible
-                }
+        IEntity e=entityManager.getUsedEntity(EType.Player);
+        if(key.equals("SPACE")){
+            IEntity s = entityManager.getUnUsedEntity(EType.Shoot); //Je récupère un tir qui n'est pas utilisé
+            if (!(s instanceof Shoot)) { //Il se peut que que cela soit autre chose qu'un tir
+                throw new Exception("Impossible d'ajouter le tir \""+e.getName()+"\" car il n'est pas une instance de Shoot");
             }
+            ((Shoot)s).applyToEntity(entityManager.getUsedEntity(EType.Player)); //Je donne l'appartenance du tir au joueur
+            entityManager.setUsedEntity(s); //Je l'ajoute à la collection des entitées visible
+        }else {
+            move.move(e, collider, key);
         }
     }
 }
