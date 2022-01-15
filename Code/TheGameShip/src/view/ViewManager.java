@@ -5,6 +5,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import launch.Launcher;
 
 import java.io.File;
@@ -56,8 +59,13 @@ public class ViewManager {
         try {
             return FXMLLoader.load(getClass().getClassLoader().getResource(view.get(name)));
         } catch(Exception err) {
-            err.printStackTrace(); //DEBUG
-            return new Pane();//TODO: Charger une vue d'erreur par exemple
+            int fontsize=20;
+            Pane pane=new Pane();
+            Text texte=new Text(0,fontsize,"Impossible de charger la vue : "+name);
+            texte.setFill(Color.RED);
+            texte.setFont(new Font(fontsize));
+            pane.getChildren().add(texte);
+            return pane;
         }
     }
 
