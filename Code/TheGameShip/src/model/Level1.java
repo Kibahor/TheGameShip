@@ -81,16 +81,20 @@ public class Level1 implements ILevel, IObserver, IHasEntityCollection {
                 if (e instanceof IShoot) {
                     ColliderInfo ci=move.move(e, colliderShoot, "RIGHT");
                     if (ci.IsCollision()) {
-                        System.out.println(ci);//DEBUG
+                        ((Shoot) e).reset();//DEBUG
                         entityManager.setUnUsedEntity(e);
+                        if(ci.getEntity() instanceof IHasLife){
+                            ((IHasLife) ci.getEntity()).decreaseHp();
+                            //System.out.println("Tir : "+e.getName()+" || Entité : "+ci.getEntity().getName()+" HP : "+((IHasLife) ci.getEntity()).getHp());//DEBUG
+                        }
                     }
                 }
                 //Gestion de la vie
-                /*
                 if(e instanceof IHasLife){ //Si l'entité a de la vie
-                    e.decreaseHp();
-                    System.out.println("Name : "+e1.getName()+" || Name : "+e.getName()+" HP : "+e.getHp());//DEBUG
-                }*/
+                    if(((IHasLife) e).getHp()<=0){
+                        entityManager.setUnUsedEntity(e);
+                    }
+                }
             }
         } catch (Exception err) {
             err.printStackTrace();
