@@ -2,7 +2,7 @@ package model.entity;
 
 import java.util.UUID;
 
-public class Shoot extends Entity implements IMovable,IShoot { //Todo : Ajouter Interface IShoot avec une méthode cast (comme IHasLocation)
+public class Shoot extends Entity implements IMovable,IShoot{ //Todo : Ajouter Interface IShoot avec une méthode cast (comme IHasLocation)
 
     private static int nbShoot=0;
     private UUID ownerId;
@@ -53,7 +53,9 @@ public class Shoot extends Entity implements IMovable,IShoot { //Todo : Ajouter 
         setY(((IHasLocation)e).getY());
     }
 
+    @Override
     public void reset(){
+        super.reset();
         setOwnerId(null);
         setX(-200);
         setY(-200);

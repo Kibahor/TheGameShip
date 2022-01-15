@@ -5,7 +5,7 @@ import javafx.beans.property.BooleanProperty;
 import java.net.URI;
 import java.util.UUID;
 
-public interface IEntity {
+public interface IEntity extends IReset {
 
     UUID getId();
 

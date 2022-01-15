@@ -6,13 +6,13 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.UUID;
 
-public class Entity implements IEntity,IHasLocation,IHasLife {
+public class Entity implements IEntity, IHasLocation, IHasLife{
 
     //IEntity
-    private final UUID id;
+    private UUID id;
         @Override public UUID getId(){return id;}
 
-    private final String name;
+    private String name;
         @Override public String getName() { return name; }
 
     private final EType type;
@@ -81,6 +81,23 @@ public class Entity implements IEntity,IHasLocation,IHasLife {
         this(name, sprite, type, hitbox_radius, hp);
         setX(x);
         setY(y);
+    }
+
+    //IReset
+    @Override
+    public void reset() {
+        //IEntity (id,name,type,sprite,visible)
+        this.id = UUID.randomUUID();
+        setVisible(false);
+
+        /*//IHasLocation (x,y,radius)
+        setX(0);
+        setY(0);
+        setHitbox_radius(10);*/
+
+        //IHasLife (hp,dead)
+        setHp(10);
+        setDead(false);
     }
 
     //Pour le Hashset

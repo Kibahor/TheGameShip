@@ -52,14 +52,14 @@ public class EntityManager implements IHasEntityCollection {
 
     //UnUsed Entities
     public void add(IEntity e){
-            e.setVisible(false); //Au cas où
+        e.setVisible(false); //Au cas où
         getUnusedEntityCollection().add(e);
     }
 
     public void setUnUsedEntity(IEntity e){
         e.setVisible(false);
         getUsedEntityCollection().remove(e);
-        //e.reset(); /Il met tout les autre parametre par defaut sauf visible //todo: faire une interface IReset et l'appliquer aux entités nécessaire
+        e.reset(); //Il met tous les autres paramètres par défauts sauf visible
         getUnusedEntityCollection().add(e);
     }
 

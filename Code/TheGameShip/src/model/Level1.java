@@ -81,7 +81,6 @@ public class Level1 implements ILevel, IObserver, IHasEntityCollection {
                 if (e instanceof IShoot) {
                     ColliderInfo ci=move.move(e, colliderShoot, "RIGHT");
                     if (ci.IsCollision()) {
-                        ((Shoot) e).reset();//DEBUG
                         entityManager.setUnUsedEntity(e);
                         if(ci.getEntity() instanceof IHasLife){
                             ((IHasLife) ci.getEntity()).decreaseHp();
