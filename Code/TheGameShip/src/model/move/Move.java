@@ -1,6 +1,6 @@
 package model.move;
 
-import model.collider.Collider;
+import model.input.ECommand;
 import model.collider.ColliderInfo;
 import model.collider.ICollider;
 import model.entity.EType;
@@ -8,7 +8,6 @@ import model.entity.IEntity;
 import model.entity.IMovable;
 import model.entity.IShoot;
 
-import java.util.ArrayList;
 import java.util.UUID;
 
 public class Move implements IMove {

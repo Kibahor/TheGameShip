@@ -1,4 +1,4 @@
-package model.move;
+package model.input;
 
 import java.util.ArrayList;
 import java.util.HashMap;

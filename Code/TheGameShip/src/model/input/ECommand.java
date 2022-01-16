@@ -1,4 +1,4 @@
-package model.move;
+package model.input;
 
 public enum ECommand {
     UP,

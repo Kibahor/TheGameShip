@@ -6,7 +6,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import launch.Launcher;
 import model.World;
-import model.IHasEntityCollection;
+import model.entity.IHasEntityCollection;
 import model.entity.IEntity;
 import model.entity.IHasLocation;
 

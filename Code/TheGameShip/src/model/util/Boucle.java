@@ -1,9 +1,11 @@
-package model;
+package model.util;
 
 import javafx.application.Platform;
+import model.util.Observable;
+
 import static java.lang.Thread.sleep;
 
-public class Boucle extends model.Observable implements Runnable {
+public class Boucle extends Observable implements Runnable {
     private final long millis;
     private boolean isRunning = true;
 

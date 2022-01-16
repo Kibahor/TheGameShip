@@ -2,7 +2,6 @@ package model.entity;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableSet;
-import model.IHasEntityCollection;
 
 import java.util.Collection;
 import java.util.HashSet;

@@ -1,5 +1,6 @@
 package model.move;
 
+import model.input.ECommand;
 import model.collider.ColliderInfo;
 import model.collider.ICollider;
 import model.entity.IEntity;

@@ -1,4 +1,4 @@
-package model.move;
+package model.input;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;

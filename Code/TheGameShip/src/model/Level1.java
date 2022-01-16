@@ -1,10 +1,14 @@
 package model;
 
+import model.input.ECommand;
+import model.input.Input;
 import model.collider.Collider;
 import model.collider.ColliderInfo;
 import model.collider.ICollider;
 import model.entity.*;
 import model.move.*;
+import model.util.Boucle;
+import model.util.IObserver;
 
 import java.util.Collection;
 

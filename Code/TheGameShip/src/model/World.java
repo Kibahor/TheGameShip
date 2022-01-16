@@ -1,16 +1,16 @@
 package model;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventType;
 import javafx.scene.input.KeyEvent;
 import launch.Launcher;
 import model.entity.IEntity;
-import model.move.Input;
-import model.move.Keyboard;
+import model.entity.IHasEntityCollection;
+import model.input.Input;
+import model.input.Keyboard;
+import model.util.Boucle;
 
 import java.util.Collection;
 
-public class World implements IHasEntityCollection{
+public class World implements IHasEntityCollection {
 
     private Boucle boucle;
 
