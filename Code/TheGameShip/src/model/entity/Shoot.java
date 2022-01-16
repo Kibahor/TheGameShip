@@ -27,14 +27,14 @@ public class Shoot extends Entity implements IMovable,IShoot{ //Todo : Ajouter I
     }
 
     public Shoot() {
-        super("Shoot"+Integer.toString(nbShoot),"vide", EType.Shoot,10,1);
+        super("Shoot"+Integer.toString(nbShoot),"vide", EType.Shoot,10,10,1);
         setSpeedX(5);
         setSpeedY(5);
         nbShoot++;
     }
 
-    public Shoot(String sprite, double hitbox_radius, double hp, double x, double y,float speedX,float speedY,UUID ownerId) {
-        super(Integer.toString(nbShoot),sprite, EType.Shoot,hitbox_radius,hp,x,y);
+    public Shoot(String sprite, double height, double width, double hp, double x, double y,float speedX,float speedY,UUID ownerId) {
+        super(Integer.toString(nbShoot),sprite, EType.Shoot,height,width,hp,x,y);
         setOwnerId(ownerId);
         setSpeedX(speedX);
         setSpeedY(speedY);
@@ -49,15 +49,13 @@ public class Shoot extends Entity implements IMovable,IShoot{ //Todo : Ajouter I
         }
         setOwnerId(e.getId());
 
-        setX(((IHasLocation)e).getX() + ((IHasLocation)e).getHitbox_radius() + getHitbox_radius() + 10);
-        setY(((IHasLocation)e).getY());
+        setX(((IHasLocation)e).getX() + ((IHasLocation)e).getWidth() + 10);
+        setY(((IHasLocation)e).getY() + ((IHasLocation) e).getHeight()/2);
     }
 
     @Override
     public void reset(){
         super.reset();
         setOwnerId(null);
-        setX(-200);
-        setY(-200);
     }
 }

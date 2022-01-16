@@ -38,10 +38,15 @@ public class Entity implements IEntity, IHasLocation, IHasLife{
         @Override public void setY(double y) { this.y.set(y); }
         @Override public DoubleProperty yProperty() { return y; }
 
-    private final DoubleProperty hitbox_radius = new SimpleDoubleProperty();
-        @Override public double getHitbox_radius() { return hitbox_radius.get(); }
-        @Override public void setHitbox_radius(double hitbox_radius) { this.hitbox_radius.set(hitbox_radius); }
-        @Override public DoubleProperty hitbox_radiusProperty() { return hitbox_radius; }
+    private final DoubleProperty width = new SimpleDoubleProperty();
+        @Override public double getWidth() { return width.get(); }
+        @Override public void setWidth(double width) { this.width.set(width); }
+        @Override public DoubleProperty widthProperty() { return width; }
+
+    private final DoubleProperty height = new SimpleDoubleProperty();
+        @Override public double getHeight() { return height.get(); }
+        @Override public void setHeight(double height) { this.height.set(height); }
+        @Override public DoubleProperty heightProperty() { return height; }
 
     //IHasLife
     private final DoubleProperty hp = new SimpleDoubleProperty();
@@ -62,7 +67,8 @@ public class Entity implements IEntity, IHasLocation, IHasLife{
         this.type = type;
         setX(100);
         setY(100);
-        setHitbox_radius(10);
+        setHeight(10);
+        setWidth(10);
         try {this.sprite = new URI(sprite);}catch(URISyntaxException err){err.printStackTrace();}
         setVisible(false);
 
@@ -71,14 +77,15 @@ public class Entity implements IEntity, IHasLocation, IHasLife{
         setDead(false);
     }
 
-    public Entity(String name, String sprite, EType type, double hitbox_radius, double hp){
+    public Entity(String name, String sprite, EType type, double height, double width, double hp){
         this(name, type, sprite);
-        setHitbox_radius(hitbox_radius);
+        setHeight(height);
+        setWidth(width);
         setHp(hp);
     }
 
-    public Entity(String name, String sprite, EType type, double hitbox_radius, double hp, double x, double y) {
-        this(name, sprite, type, hitbox_radius, hp);
+    public Entity(String name, String sprite, EType type, double height, double width, double hp, double x, double y) {
+        this(name, sprite, type, height, width, hp);
         setX(x);
         setY(y);
     }
@@ -90,10 +97,11 @@ public class Entity implements IEntity, IHasLocation, IHasLife{
         this.id = UUID.randomUUID();
         setVisible(false);
 
-        /*//IHasLocation (x,y,radius)
+        //IHasLocation (x,y,height,width)
         setX(0);
         setY(0);
-        setHitbox_radius(10);*/
+        setWidth(10);
+        setHeight(10);
 
         //IHasLife (hp,dead)
         setHp(10);
@@ -108,7 +116,7 @@ public class Entity implements IEntity, IHasLocation, IHasLife{
 
     @Override
     public String toString() {
-        return "\nId : "+id.toString() + "\nNom : "+ name + "\nType : "+ type + "\nSprite : "+sprite.toString() + "\nX : "+ x + "\nY : "+ y+ "\nRadius : "+ hitbox_radius;
+        return "\nId : "+id.toString() + "\nNom : "+ name + "\nType : "+ type + "\nSprite : "+sprite.toString() + "\nX : "+ getX() + "\nY : "+ getY()+ "\nHeight : "+ getHeight() +"\nWidth : "+ getWidth()+"\n";
     }
 
     @Override

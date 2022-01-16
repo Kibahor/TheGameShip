@@ -11,9 +11,13 @@ public interface IHasLocation {
     double getY();
     DoubleProperty yProperty();
 
-    void setHitbox_radius(double y);
-    double getHitbox_radius();
-    DoubleProperty hitbox_radiusProperty();
+    void setHeight(double height);
+    double getHeight();
+    DoubleProperty heightProperty();
+
+    void setWidth(double width);
+    double getWidth();
+    DoubleProperty widthProperty();
 
     static IHasLocation cast(IEntity e) throws Exception {
         if(!(e instanceof IHasLocation)){

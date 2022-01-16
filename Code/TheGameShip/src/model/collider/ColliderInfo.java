@@ -17,14 +17,6 @@ public class ColliderInfo {
         this.e=e;
     }
 
-    public ColliderInfo(boolean isCollison,IEntity e){
-        this.e=e;
-        this.isCollison=isCollison;
-        if(e != null) {
-            this.isCollison=true;
-        }
-    }
-
     @Override
     public String toString() {
         String entityname="null";

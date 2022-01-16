@@ -4,7 +4,7 @@ import launch.Launcher;
 import model.ILevel;
 import model.entity.*;
 
-public class Collider implements ICollider {
+public class Collider implements ICollider { //http://sdz.tdct.org/sdz/eorie-des-collisions.html
     protected final ILevel level;
 
     public Collider(ILevel level){
@@ -13,22 +13,31 @@ public class Collider implements ICollider {
 
     @Override
     public ColliderInfo isCollision(IEntity e, String direction) throws Exception {
-        return new ColliderInfo(isCollisionScene(IHasLocation.cast(e), direction),isCollisionEntity(e,direction).getEntity());
+        boolean scene=isCollisionScene(IHasLocation.cast(e), direction);
+        if(scene){
+            new ColliderInfo(true);
+        }
+        ColliderInfo entity=isCollisionEntity(e,direction);
+        if(entity.IsCollision()){
+            return entity;
+        }
+        return new ColliderInfo(false);
     }
 
     protected boolean isCollisionScene(IHasLocation h, String direction){
         double x1 = h.getX();
         double y1 = h.getY();
-        double radius = h.getHitbox_radius();
-        double height = Launcher.getViewManager().getSceneHeight();
-        double width = Launcher.getViewManager().getSceneWidth();
+        double height1 = h.getHeight();
+        double width1 = h.getWidth();
+        double height2 = Launcher.getViewManager().getSceneHeight();
+        double width2 = Launcher.getViewManager().getSceneWidth();
 
         //Collison scene
         return switch (direction) {
-            case "UP" -> (y1 - radius <= 0);
-            case "LEFT" -> (x1 - radius <= 0);
-            case "DOWN" -> (y1 + radius >= height);
-            case "RIGHT" -> (x1 + radius >= width);
+            case "UP" -> (y1 <= 0);
+            case "LEFT" -> (x1 <= 0);
+            case "DOWN" -> (y1 + height1 >= height2);
+            case "RIGHT" -> (x1 + width1 >= width2);
             default -> false;
         };
     }
@@ -37,11 +46,8 @@ public class Collider implements ICollider {
         IHasLocation h1=IHasLocation.cast(e1);
         double x1 = h1.getX();
         double y1 = h1.getY();
-        double radius1 = h1.getHitbox_radius();
-
-        IMovable m1=IMovable.cast(e1);
-        double speedX1= m1.getSpeedX();
-        double speedY1= m1.getSpeedY();
+        double height1 = h1.getHeight();
+        double width1 = h1.getWidth();
 
         for(IEntity e2: level.getUsedEntityCollection()){
             //TODO: beaucoup de code se répéte (=source de bug), il faudrait trouver un moyen d'unifier les codes et d'ajouter les particularité de chacun
@@ -54,20 +60,29 @@ public class Collider implements ICollider {
                 IHasLocation h2 =IHasLocation.cast(e2);
                 double x2 = h2.getX();
                 double y2 = h2.getY();
-                double radius2 = h2.getHitbox_radius();
-                double distance = Math.sqrt( Math.pow(x2-x1,2) + Math.pow(y2-y1,2));
-                System.out.println("Distance : "+distance);//DEBUG
+                double height2 = h2.getHeight();
+                double width2 = h2.getWidth();
+                /* //Général
+                    if((x2 >= x1 + width1)      // trop à droite
+                            || (x2 + width2 <= x1) // trop à gauche
+                            || (y2 >= y1 + height1) // trop en bas
+                            || (y2 + height2 <= y1))  // trop en haut
+                        return new ColliderInfo(false);
+                    else
+                        return new ColliderInfo(true);*/
+
                 //todo : Collision entre entité un peu foireuse
+                /* //Par direction
                 boolean isCollision = switch (direction) {
-                    case "UP" -> (distance - speedY1 <= radius1+radius2);
-                    case "LEFT" -> (distance + speedX1 <= radius1+radius2);
-                    case "DOWN" -> (distance - speedY1 <= radius1+radius2);
-                    case "RIGHT" -> (distance + speedX1 <= radius1+radius2);
+                    case "UP" -> (y1 <= y2 + height2);
+                    case "LEFT" -> (x1 <= x2 + width2);
+                    case "DOWN" -> (y1 - height1 >= y2);
+                    case "RIGHT" -> (x1 + width1 >= x2);
                     default -> false;
                 };
                 if(isCollision){
                     return new ColliderInfo(e2);
-                }
+                }*/
             }
         }
         return new ColliderInfo(false);

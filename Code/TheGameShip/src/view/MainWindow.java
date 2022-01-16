@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 import launch.Launcher;
 import model.GameManager;
 import model.IHasEntityCollection;
@@ -55,12 +56,14 @@ public class MainWindow {
             default -> color=Color.GREY;
         }
 
-        Circle c = new Circle(h.getHitbox_radius(),color);
-        c.centerXProperty().bind(h.xProperty());
-        c.centerYProperty().bind(h.yProperty());
-        c.radiusProperty().bind(h.hitbox_radiusProperty());
-        c.visibleProperty().bind(e.getVisibleBooleanProperty());
-        pane.getChildren().add(c);
+        Rectangle r = new Rectangle();
+        r.setFill(color);
+        r.heightProperty().bind(h.heightProperty());
+        r.widthProperty().bind(h.widthProperty());
+        r.xProperty().bind(h.xProperty());
+        r.yProperty().bind(h.yProperty());
+        r.visibleProperty().bind(e.getVisibleBooleanProperty());
+        pane.getChildren().add(r);
     }
 }
 

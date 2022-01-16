@@ -19,7 +19,8 @@ public class ColliderShoot extends Collider{
         IHasLocation h1=IHasLocation.cast(e1);
         double x1 = h1.getX();
         double y1 = h1.getY();
-        double radius1 = h1.getHitbox_radius();
+        double height1 = h1.getHeight();
+        double width1 = h1.getWidth();
         for(IEntity e2: level.getUsedEntityCollection()){
 
             //Vérifie que l'entité n'est pas à l'origine du tir (le tireur ne se prend pas ces propre tir)
@@ -30,12 +31,10 @@ public class ColliderShoot extends Collider{
                 IHasLocation h2 =IHasLocation.cast(e2);
                 double x2 = h2.getX();
                 double y2 = h2.getY();
-                double radius2 = h2.getHitbox_radius();
-                double distance = Math.sqrt( Math.pow(x2-x1,2) + Math.pow(y2-y1,2)) - (radius1 +radius2);
+                double height2 = h2.getHeight();
+                double width2 = h2.getWidth();
 
-                if(distance<=0) {
-                    return new ColliderInfo(e2);
-                }
+                //Ajouter méthode collision
             }
         }
         return new ColliderInfo(false);
