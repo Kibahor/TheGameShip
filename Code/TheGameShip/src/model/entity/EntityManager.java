@@ -19,6 +19,7 @@ public class EntityManager implements IHasEntityCollection {
         this.usedEntities = FXCollections.observableSet(new HashSet<>());
     }
 
+    //TODO : fusionner les mêmes algo et ajouter un boolean isUsed pour trancher entre les 2 collections
     //Used Entities
     public void setUsedEntity(String name) throws Exception{
         IEntity e= getUnUsedEntity(name);
@@ -82,15 +83,6 @@ public class EntityManager implements IHasEntityCollection {
     }
 
     //General
-    public IEntity getEntity(String name) throws Exception{
-        try {
-            return getUnUsedEntity(name);
-        }catch (Exception err){
-            err.printStackTrace();//DEBUG
-            return getUsedEntity(name);
-        }
-    }
-
     public void listEntity() {
         System.out.println("Used Entity :\n");
         for (IEntity e : getUsedEntityCollection()) {

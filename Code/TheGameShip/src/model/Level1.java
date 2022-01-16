@@ -53,12 +53,7 @@ public class Level1 implements ILevel, IObserver, IHasEntityCollection {
 
     @Override
     public void start() {
-        try {
-            boucle.subscribe(this);
-        }
-        catch(Exception err) {
-            err.printStackTrace();
-        }
+        boucle.subscribe(this);
     }
 
     @Override
@@ -75,12 +70,12 @@ public class Level1 implements ILevel, IObserver, IHasEntityCollection {
                     for (ECommand key : input.getKeyPressed()){
                         move.move(e, collider, key);
                         if(key.equals(ECommand.SHOOT)) {
-                            //if(boucle.getTimer()>=1000){
+                            if(boucle.getTimer()>=1000){
                                 IEntity s = entityManager.getUnUsedEntity(EType.Shoot); //Je récupère un tir qui n'est pas utilisé
                                 IShoot.cast(s).applyToEntity(entityManager.getUsedEntity(EType.Player)); //Je donne l'appartenance du tir au joueur
                                 entityManager.setUsedEntity(s); //Je l'ajoute à la collection des entitées visible
-                                //boucle.resetTimer();
-                            //}
+                                boucle.resetTimer();
+                            }
                         }
                     }
                 } else if (e instanceof IShoot) { //Gestion des tirs

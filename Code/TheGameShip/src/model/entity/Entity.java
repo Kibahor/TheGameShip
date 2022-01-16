@@ -132,9 +132,6 @@ public class Entity implements IEntity, IHasLocation, IHasLife{
 
     @Override
     public boolean equals(Object obj) {
-        if(obj instanceof IEntity){
-            return ((IEntity) obj).getId().equals(getId());
-        }
-        return false;
+            return (obj instanceof IEntity) ? ((IEntity) obj).getId().equals(getId()) : false;
     }
 }

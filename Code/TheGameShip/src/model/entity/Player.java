@@ -37,7 +37,7 @@ public class Player extends Entity implements IMovable {
     @Override
     public void reset() {
         super.reset();
-        //IMovable(speedX,speedY)
+        //IMovable (speedX,speedY)
         setSpeedX(5);
         setSpeedY(10);
     }
