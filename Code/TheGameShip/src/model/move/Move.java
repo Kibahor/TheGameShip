@@ -25,6 +25,14 @@ public class Move implements IMove {
                 case "UP" -> m.setY(m.getY() - m.getSpeedY());
                 default -> System.out.println("Pas d'action pour la touche \""+direction+"\" !"); //DEBUG
             }
+        }else{ //On annule la dernière action (pas bon car il faut annuler la direction précédente et non celle actuelle)
+            switch (direction){
+                case "LEFT" -> m.setX(m.getX() + m.getSpeedX()*2 +1);
+                case "RIGHT" -> m.setX(m.getX() - m.getSpeedX()*2 +1);
+                case "DOWN" -> m.setY(m.getY() - m.getSpeedY()*2 +1);
+                case "UP" -> m.setY(m.getY() + m.getSpeedY()*2 +1);
+                default -> System.out.println("Pas d'action pour la touche \""+direction+"\" !"); //DEBUG
+            }
         }
         return ci;
     }

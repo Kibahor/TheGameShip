@@ -46,7 +46,7 @@ public class Level1 implements ILevel, IObserver, IHasEntityCollection {
         for(int i=0; i < nbShootPreGenerate; i++){
             entityManager.add(new Shoot());
         }
-        entityManager.add(new Player("Vaisseau","file://test.jpg",50,50,1,0,0,5,5));
+        entityManager.add(new Player("Vaisseau","file://test.jpg",50,50,1,0,250,5,5));
         entityManager.setUsedEntity("Vaisseau");
         /*entityManager.add(new Entity("Obstacle1","file://test.jpg", EType.Obstacle,35,5,500,500));
         entityManager.setUsedEntity("Obstacle1");*/
