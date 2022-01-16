@@ -4,8 +4,8 @@ import javafx.scene.input.KeyEvent;
 import launch.Launcher;
 import model.entity.IEntity;
 import model.entity.IHasEntityCollection;
-import model.input.Input;
-import model.input.Keyboard;
+import model.util.input.IInput;
+import model.util.input.Keyboard;
 import model.util.Boucle;
 
 import java.util.Collection;
@@ -16,8 +16,8 @@ public class World implements IHasEntityCollection {
 
     private Thread thread;
 
-    private Input input;
-        public Input getInput(){return input;}
+    private IInput input;
+        public IInput getInput(){return input;}
 
     //TODO: Faire une List de Monde et récupérer celui qui va être choisis
     ILevel currentLevel;

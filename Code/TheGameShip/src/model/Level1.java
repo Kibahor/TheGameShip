@@ -1,7 +1,7 @@
 package model;
 
-import model.input.ECommand;
-import model.input.Input;
+import model.util.input.ECommand;
+import model.util.input.IInput;
 import model.collider.Collider;
 import model.collider.ColliderInfo;
 import model.collider.ICollider;
@@ -13,13 +13,12 @@ import model.util.IObserver;
 import java.util.Collection;
 
 //TODO: A la place faire une fabrique, qui se basera sur un fichier xml/json qui spécifie toute les caractéristiques
-//Todo : Level1 doit hériter de Level qui contiendra les méthode et propriété de base et le comportement classique.
 
 public class Level1 implements ILevel, IObserver, IHasEntityCollection {
 
     private Boucle boucle;
 
-    private Input input;
+    private IInput input;
 
     private EntityManager entityManager;
         @Override public Collection<IEntity> getUnusedEntityCollection(){return entityManager.getUnusedEntityCollection();}
@@ -29,8 +28,7 @@ public class Level1 implements ILevel, IObserver, IHasEntityCollection {
 
     private ICollider collider;
 
-    //TODO:Donner Liste de boucle à la place du gameManager
-    public Level1(Boucle boucle, Input input){
+    public Level1(Boucle boucle, IInput input){
         this.boucle=boucle;
         this.input=input;
         entityManager=new EntityManager();
@@ -77,9 +75,12 @@ public class Level1 implements ILevel, IObserver, IHasEntityCollection {
                     for (ECommand key : input.getKeyPressed()){
                         move.move(e, collider, key);
                         if(key.equals(ECommand.SHOOT)) {
-                            IEntity s = entityManager.getUnUsedEntity(EType.Shoot); //Je récupère un tir qui n'est pas utilisé
-                            IShoot.cast(s).applyToEntity(entityManager.getUsedEntity(EType.Player)); //Je donne l'appartenance du tir au joueur
-                            entityManager.setUsedEntity(s); //Je l'ajoute à la collection des entitées visible
+                            //if(boucle.getTimer()>=1000){
+                                IEntity s = entityManager.getUnUsedEntity(EType.Shoot); //Je récupère un tir qui n'est pas utilisé
+                                IShoot.cast(s).applyToEntity(entityManager.getUsedEntity(EType.Player)); //Je donne l'appartenance du tir au joueur
+                                entityManager.setUsedEntity(s); //Je l'ajoute à la collection des entitées visible
+                                //boucle.resetTimer();
+                            //}
                         }
                     }
                 } else if (e instanceof IShoot) { //Gestion des tirs

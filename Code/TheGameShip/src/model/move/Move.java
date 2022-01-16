@@ -1,6 +1,6 @@
 package model.move;
 
-import model.input.ECommand;
+import model.util.input.ECommand;
 import model.collider.ColliderInfo;
 import model.collider.ICollider;
 import model.entity.EType;
@@ -11,9 +11,6 @@ import model.entity.IShoot;
 import java.util.UUID;
 
 public class Move implements IMove {
-    //Todo : Faire qu'une seul méthode avec en parametre (la direction) et faire un switch
-    //Todo : faire une enumeration de touche
-
 
     @Override
     public ColliderInfo move(IEntity e, ICollider c, ECommand key) throws Exception {

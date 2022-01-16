@@ -1,4 +1,4 @@
-package model.input;
+package model.util.input;
 
 public enum ECommand {
     UP,

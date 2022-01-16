@@ -1,13 +1,25 @@
-package model.input;
+package model.util.input;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Keyboard extends Input implements EventHandler<KeyEvent> {
+public class Keyboard implements IInput, EventHandler<KeyEvent> {
+    private Map<ECommand, Boolean> keyPressed = new HashMap<>();
+        @Override public ArrayList<ECommand> getKeyPressed() {
+            ArrayList<ECommand> list = new ArrayList<>();
+            for (Map.Entry m: keyPressed.entrySet()) {
+                if ((Boolean)m.getValue()) {
+                    list.add((ECommand) m.getKey());
+                }
+            }
+            return list;
+        }
+
     private Map<KeyCode,ECommand> matchKey = new HashMap<>()
         {
             {
@@ -23,7 +35,9 @@ public class Keyboard extends Input implements EventHandler<KeyEvent> {
             }
         };
     public Keyboard(){
-        super();
+        for(ECommand e : ECommand.values()){
+            keyPressed.put(e,false);
+        }
     }
 
     @Override
