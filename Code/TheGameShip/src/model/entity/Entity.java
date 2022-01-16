@@ -56,7 +56,12 @@ public class Entity implements IEntity, IHasLocation, IHasLife{
     //IHasLife
     private final DoubleProperty hp = new SimpleDoubleProperty();
         @Override public double getHp() { return hp.get(); }
-        @Override public void setHp(double hp) { this.hp.set(hp); }
+        @Override public void setHp(double hp) {
+            this.hp.set(hp);
+            if(getHp()<=0) {
+                setDead(true);
+            }
+        }
         @Override public void incrementHp() { setHp(getHp()+1); }
         @Override public void decreaseHp() { setHp(getHp()-1); }
         @Override public DoubleProperty hpProperty() { return hp; }

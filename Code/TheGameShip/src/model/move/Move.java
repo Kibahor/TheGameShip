@@ -3,8 +3,12 @@ package model.move;
 import model.collider.Collider;
 import model.collider.ColliderInfo;
 import model.collider.ICollider;
+import model.entity.EType;
 import model.entity.IEntity;
 import model.entity.IMovable;
+import model.entity.IShoot;
+
+import java.util.UUID;
 
 public class Move implements IMove {
     //Todo : Faire qu'une seul méthode avec en parametre (la direction) et faire un switch
@@ -25,7 +29,11 @@ public class Move implements IMove {
             case "DOWN" -> nexty = m.getY() + m.getSpeedY();
             case "UP" -> nexty = m.getY() - m.getSpeedY();
         }
-        ColliderInfo ci=c.isCollision(nextx, nexty, m.getHeight(), m.getWidth(), e.getId());
+        UUID id = e.getId();
+        if(e.getType().equals(EType.Shoot)){
+            id = IShoot.cast(e).getOwnerId();
+        }
+        ColliderInfo ci=c.isCollision(nextx, nexty, m.getHeight(), m.getWidth(),id);
         if(!ci.IsCollision()){
             m.setX(nextx);
             m.setY(nexty);

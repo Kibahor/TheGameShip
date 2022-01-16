@@ -2,7 +2,6 @@ package model;
 
 import model.collider.Collider;
 import model.collider.ColliderInfo;
-import model.collider.ColliderShoot;
 import model.collider.ICollider;
 import model.entity.*;
 import model.move.IMove;
@@ -22,13 +21,9 @@ public class Level1 implements ILevel, IObserver, IHasEntityCollection {
         @Override public Collection<IEntity> getUnusedEntityCollection(){return entityManager.getUnusedEntityCollection();}
         @Override public Collection<IEntity> getUsedEntityCollection(){return entityManager.getUsedEntityCollection();}
 
-    //TODO : Ne donner qu'un move qui en fonction du type de l'entités choisis le bon move
-    //private IMove move;
     private IMove move;
 
-    //TODO : Ne donner qu'un Collider qui en fonction du type de l'entités choisis le bon collider
     private ICollider collider;
-    private ICollider colliderShoot;
 
     public Level1(GameManager gameManager){
         this.gameManager=gameManager;
@@ -36,7 +31,6 @@ public class Level1 implements ILevel, IObserver, IHasEntityCollection {
 
         move = new Move();
         collider = new Collider(this);
-        colliderShoot=new ColliderShoot(this);
     }
 
     @Override
@@ -79,18 +73,17 @@ public class Level1 implements ILevel, IObserver, IHasEntityCollection {
             for (IEntity e : getUsedEntityCollection()) {
                 //Gestion des tirs
                 if (e instanceof IShoot) {
-                    ColliderInfo ci=move.move(e, colliderShoot, "RIGHT");
+                    ColliderInfo ci=move.move(e, collider, "RIGHT");
                     if (ci.IsCollision()) {
                         entityManager.setUnUsedEntity(e);
                         if(ci.getEntity() instanceof IHasLife){
                             ((IHasLife) ci.getEntity()).decreaseHp();
-                            //System.out.println("Tir : "+e.getName()+" || Entité : "+ci.getEntity().getName()+" HP : "+((IHasLife) ci.getEntity()).getHp());//DEBUG
                         }
                     }
                 }
                 //Gestion de la vie
                 if(e instanceof IHasLife){ //Si l'entité a de la vie
-                    if(((IHasLife) e).getHp()<=0){
+                    if(((IHasLife) e).isDead()){
                         entityManager.setUnUsedEntity(e);
                     }
                 }
@@ -104,13 +97,10 @@ public class Level1 implements ILevel, IObserver, IHasEntityCollection {
         IEntity e=entityManager.getUsedEntity(EType.Player);
         if(key.equals("SPACE")){
             IEntity s = entityManager.getUnUsedEntity(EType.Shoot); //Je récupère un tir qui n'est pas utilisé
-            if (!(s instanceof Shoot)) { //Il se peut que que cela soit autre chose qu'un tir
-                throw new Exception("Impossible d'ajouter le tir \""+e.getName()+"\" car il n'est pas une instance de Shoot");
-            }
-            ((Shoot)s).applyToEntity(entityManager.getUsedEntity(EType.Player)); //Je donne l'appartenance du tir au joueur
+            IShoot.cast(s).applyToEntity(entityManager.getUsedEntity(EType.Player)); //Je donne l'appartenance du tir au joueur
             entityManager.setUsedEntity(s); //Je l'ajoute à la collection des entitées visible
         }else {
-            System.out.println(move.move(e, collider, key));
+            move.move(e, collider, key);
         }
     }
 }

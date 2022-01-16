@@ -41,11 +41,10 @@ public class Shoot extends Entity implements IMovable,IShoot{ //Todo : Ajouter I
         nbShoot++;
     }
 
+    @Override
     public void applyToEntity(IEntity e) throws Exception {
         if(ownerId!=null){
                 throw new Exception("Le tir appartient déjà a une entité qui a pour id : "+getOwnerId().toString());
-        }else if(!(e instanceof IHasLocation)){
-            throw new Exception("Impossible d'appliquer l'entité \""+e.getName()+"\" au Shoot \""+this.getName()+"\" car elle n'implémente pas IHasLocation !");
         }
         setOwnerId(e.getId());
 
