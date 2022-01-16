@@ -4,8 +4,8 @@ import javafx.application.Platform;
 import static java.lang.Thread.sleep;
 
 public class Boucle extends model.Observable implements Runnable {
-    private boolean isRunning = true;
     private final long millis;
+    private boolean isRunning = true;
 
     public Boucle(long millis) {
         this.millis = millis;

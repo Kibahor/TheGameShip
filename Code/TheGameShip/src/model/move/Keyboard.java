@@ -1,47 +1,42 @@
 package model.move;
 
+import javafx.event.EventHandler;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import launch.Launcher;
-import model.GameManager;
-import model.Level1;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class Keyboard extends Input {
-    private Map<String, Boolean> isPressed = new HashMap<>();
-    private Level1 level;
-
-    public Keyboard(Level1 level, String[] keys) {
-        this.level = level;
-
-        for(String key : keys){
-            isPressed.put(key,false);
-        }
-
-        Launcher.getStage().addEventFilter(KeyEvent.KEY_PRESSED, e -> {
-            String key = e.getCode().toString();
-            if (isPressed.containsKey(key)) {
-                isPressed.replace(key,true);
+public class Keyboard extends Input implements EventHandler<KeyEvent> {
+    private Map<KeyCode,ECommand> matchKey = new HashMap<>()
+        {
+            {
+                put(KeyCode.UP, ECommand.UP);
+                put(KeyCode.Z, ECommand.UP);
+                put(KeyCode.DOWN, ECommand.DOWN);
+                put(KeyCode.S, ECommand.DOWN);
+                put(KeyCode.RIGHT, ECommand.RIGHT);
+                put(KeyCode.D, ECommand.RIGHT);
+                put(KeyCode.LEFT, ECommand.LEFT);
+                put(KeyCode.Q, ECommand.RIGHT);
+                put(KeyCode.SPACE, ECommand.SHOOT);
             }
-        });
-        Launcher.getStage().addEventFilter(KeyEvent.KEY_RELEASED, e -> {
-            String key = e.getCode().toString();
-            if (isPressed.containsKey(key)) {
-                isPressed.replace(key,false);
-            }
-        });
+        };
+    public Keyboard(){
+        super();
     }
 
     @Override
-    public void update() {
-        for (Map.Entry m: isPressed.entrySet()) {
-            if ((Boolean)m.getValue()) {
-                try {
-                    level.movePlayer((String) m.getKey());
-                }catch(Exception err){
-                    err.printStackTrace();
-                }
+    public void handle(KeyEvent event) {
+        if (KeyEvent.KEY_PRESSED.equals(event.getEventType())) {
+            KeyCode key = event.getCode();
+            if(matchKey.containsKey(key)){
+                keyPressed.replace(matchKey.get(key),true);
+            }
+        }else if(KeyEvent.KEY_RELEASED.equals(event.getEventType())){
+            KeyCode key = event.getCode();
+            if(matchKey.containsKey(key)){
+                keyPressed.replace(matchKey.get(key),false);
             }
         }
     }

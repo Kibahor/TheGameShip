@@ -4,9 +4,7 @@ import model.collider.Collider;
 import model.collider.ColliderInfo;
 import model.collider.ICollider;
 import model.entity.*;
-import model.move.IMove;
-import model.move.Keyboard;
-import model.move.Move;
+import model.move.*;
 
 import java.util.Collection;
 
@@ -15,7 +13,9 @@ import java.util.Collection;
 
 public class Level1 implements ILevel, IObserver, IHasEntityCollection {
 
-    private GameManager gameManager;
+    private Boucle boucle;
+
+    private Input input;
 
     private EntityManager entityManager;
         @Override public Collection<IEntity> getUnusedEntityCollection(){return entityManager.getUnusedEntityCollection();}
@@ -25,10 +25,11 @@ public class Level1 implements ILevel, IObserver, IHasEntityCollection {
 
     private ICollider collider;
 
-    public Level1(GameManager gameManager){
-        this.gameManager=gameManager;
+    //TODO:Donner Liste de boucle à la place du gameManager
+    public Level1(Boucle boucle, Input input){
+        this.boucle=boucle;
+        this.input=input;
         entityManager=new EntityManager();
-
         move = new Move();
         collider = new Collider(this);
     }
@@ -51,9 +52,7 @@ public class Level1 implements ILevel, IObserver, IHasEntityCollection {
     @Override
     public void start() {
         try {
-            gameManager.boucle1.subscribe(this);
-            gameManager.boucle1.subscribe(new Keyboard(this, new String[]{"UP", "DOWN", "LEFT", "RIGHT", "Z", "Q", "S", "D"}));
-            gameManager.boucle2.subscribe(new Keyboard(this, new String[]{"SPACE"}));
+            boucle.subscribe(this);
         }
         catch(Exception err) {
             err.printStackTrace();
@@ -65,24 +64,30 @@ public class Level1 implements ILevel, IObserver, IHasEntityCollection {
         //TODO: Unscribe les événement ajouter aux boucle (créer une méthode destroy dans boucle)
     }
 
-    //TODO: eventuellement pour avoir un point d'extension, il faudrait que selon le type d'entité il y est une redéfinition du comportement
+    //TODO: Au lieu de faire if/else, il faudrait trouver un autre moyen
     @Override
     public void update() {
-        //TODO : Ajouter quand une entité n'a plus de vie et setUnUsedEntity()
         try {
             for (IEntity e : getUsedEntityCollection()) {
-                //Gestion des tirs
-                if (e instanceof IShoot) {
-                    ColliderInfo ci=move.move(e, collider, "RIGHT");
+                if (e instanceof Player) { //Gestion mouvement du joueur
+                    for (ECommand key : input.getKeyPressed()){
+                        move.move(e, collider, key);
+                        if(key.equals(ECommand.SHOOT)) {
+                            IEntity s = entityManager.getUnUsedEntity(EType.Shoot); //Je récupère un tir qui n'est pas utilisé
+                            IShoot.cast(s).applyToEntity(entityManager.getUsedEntity(EType.Player)); //Je donne l'appartenance du tir au joueur
+                            entityManager.setUsedEntity(s); //Je l'ajoute à la collection des entitées visible
+                        }
+                    }
+                } else if (e instanceof IShoot) { //Gestion des tirs
+                    ColliderInfo ci=move.move(e, collider, ECommand.RIGHT);
                     if (ci.IsCollision()) {
                         entityManager.setUnUsedEntity(e);
                         if(ci.getEntity() instanceof IHasLife){
                             ((IHasLife) ci.getEntity()).decreaseHp();
                         }
                     }
-                }
-                //Gestion de la vie
-                if(e instanceof IHasLife){ //Si l'entité a de la vie
+                } else if(e instanceof IHasLife){ //Gestion de la vie
+                    //Si l'entité a de la vie
                     if(((IHasLife) e).isDead()){
                         entityManager.setUnUsedEntity(e);
                     }
@@ -90,17 +95,6 @@ public class Level1 implements ILevel, IObserver, IHasEntityCollection {
             }
         } catch (Exception err) {
             err.printStackTrace();
-        }
-    }
-
-    public void movePlayer (String key) throws Exception {
-        IEntity e=entityManager.getUsedEntity(EType.Player);
-        if(key.equals("SPACE")){
-            IEntity s = entityManager.getUnUsedEntity(EType.Shoot); //Je récupère un tir qui n'est pas utilisé
-            IShoot.cast(s).applyToEntity(entityManager.getUsedEntity(EType.Player)); //Je donne l'appartenance du tir au joueur
-            entityManager.setUsedEntity(s); //Je l'ajoute à la collection des entitées visible
-        }else {
-            move.move(e, collider, key);
         }
     }
 }

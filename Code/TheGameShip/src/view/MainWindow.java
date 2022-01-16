@@ -3,10 +3,9 @@ package view;
 import javafx.fxml.FXML;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import launch.Launcher;
-import model.GameManager;
+import model.World;
 import model.IHasEntityCollection;
 import model.entity.IEntity;
 import model.entity.IHasLocation;
@@ -18,11 +17,11 @@ public class MainWindow {
     @FXML
     private Pane pane;
 
-    private GameManager gameManager;
+    private World gameManager;
 
     public void initialize() throws Exception {
 
-        gameManager = new GameManager();
+        gameManager = new World();
 
         gameManager.init();
         loadEntity(((IHasEntityCollection)gameManager).getUnusedEntityCollection());
