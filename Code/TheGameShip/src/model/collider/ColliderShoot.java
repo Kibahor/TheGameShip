@@ -10,7 +10,7 @@ public class ColliderShoot extends Collider{
     public ColliderShoot(ILevel level){
         super(level);
     }
-
+    /*
     @Override
     protected ColliderInfo isCollisionEntity(IEntity e1, String direction) throws Exception {
         if(!(e1 instanceof IShoot)){
@@ -38,5 +38,5 @@ public class ColliderShoot extends Collider{
             }
         }
         return new ColliderInfo(false);
-    }
+    }*/
 }
