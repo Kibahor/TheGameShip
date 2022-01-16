@@ -6,6 +6,11 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.UUID;
 
+//todo : (Changer fonctionnement des interfaces d'entité) Voir si il ne faut l'appliquer qu'aux interfaces (au lieu des entités)
+//(il faudrait créer une classe abstraite par interface concerner et redéfinire reset() dedans au lieu de le faire dans entité)
+//Les interface deviendrait package private et seul les class abstraite créé plus tôt pourrait les implémenter
+//Ensuite au lieu d'implémenter une interface dans l'entités on étend de la classe abstraite (pas sûr il faut y réfléchir avant de le faire)
+
 public class Entity implements IEntity, IHasLocation, IHasLife{
 
     //IEntity
@@ -28,7 +33,7 @@ public class Entity implements IEntity, IHasLocation, IHasLife{
         @Override public BooleanProperty getVisibleBooleanProperty(){return visible;}
 
     //IHasLocation
-        private final DoubleProperty x = new SimpleDoubleProperty();
+    private final DoubleProperty x = new SimpleDoubleProperty();
         @Override public double getX() {return x.get();}
         @Override public void setX(double x) {this.x.set(x);}
         @Override public DoubleProperty xProperty(){return x;}
@@ -107,6 +112,7 @@ public class Entity implements IEntity, IHasLocation, IHasLife{
         setHp(10);
         setDead(false);
     }
+
 
     //Pour le Hashset
     @Override

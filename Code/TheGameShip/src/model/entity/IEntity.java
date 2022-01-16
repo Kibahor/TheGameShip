@@ -13,10 +13,6 @@ public interface IEntity extends IReset {
 
     EType getType();
 
-    //TODO : mettre sa dans une interface IHasLocation et caster avec cette interface a tout les endroit où c'est utiliser avec l'interface IEntity
-
-    //
-
     URI getSprite();
     void setSprite(URI sprite);
 

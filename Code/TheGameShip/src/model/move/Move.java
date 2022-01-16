@@ -1,5 +1,6 @@
 package model.move;
 
+import model.collider.Collider;
 import model.collider.ColliderInfo;
 import model.collider.ICollider;
 import model.entity.IEntity;
@@ -16,23 +17,18 @@ public class Move implements IMove {
             throw new Exception("L'entité \""+e.getName()+"\" n'implémente pas IMovable, il ne peut donc pas être déplacé !");
         }
         IMovable m=IMovable.cast(e);
-        ColliderInfo ci = c.isCollision(e,direction);
-        if (!ci.IsCollision()) {
-            switch (direction){
-                case "LEFT" -> m.setX(m.getX() - m.getSpeedX());
-                case "RIGHT" -> m.setX(m.getX() + m.getSpeedX());
-                case "DOWN" -> m.setY(m.getY() + m.getSpeedY());
-                case "UP" -> m.setY(m.getY() - m.getSpeedY());
-                default -> System.out.println("Pas d'action pour la touche \""+direction+"\" !"); //DEBUG
-            }
-        }else{ //On annule la dernière action (pas bon car il faut annuler la direction précédente et non celle actuelle)
-            switch (direction){
-                case "LEFT" -> m.setX(m.getX() + m.getSpeedX()*2 +1);
-                case "RIGHT" -> m.setX(m.getX() - m.getSpeedX()*2 +1);
-                case "DOWN" -> m.setY(m.getY() - m.getSpeedY()*2 +1);
-                case "UP" -> m.setY(m.getY() + m.getSpeedY()*2 +1);
-                default -> System.out.println("Pas d'action pour la touche \""+direction+"\" !"); //DEBUG
-            }
+        double nextx =m.getX();
+        double nexty =m.getY();
+        switch (direction){
+            case "LEFT" -> nextx =m.getX() - m.getSpeedX();
+            case "RIGHT" -> nextx = m.getX() + m.getSpeedX();
+            case "DOWN" -> nexty = m.getY() + m.getSpeedY();
+            case "UP" -> nexty = m.getY() - m.getSpeedY();
+        }
+        ColliderInfo ci=c.isCollision(nextx, nexty, m.getHeight(), m.getWidth(), e.getId());
+        if(!ci.IsCollision()){
+            m.setX(nextx);
+            m.setY(nexty);
         }
         return ci;
     }

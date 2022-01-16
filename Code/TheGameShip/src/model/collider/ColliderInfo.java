@@ -8,13 +8,9 @@ public class ColliderInfo {
     private IEntity e;
         public IEntity getEntity(){return e;}
 
-    public ColliderInfo(boolean isCollison){
-        this.isCollison=isCollison;
-    }
-
-    public ColliderInfo(IEntity e){
-        this(true);
+    public ColliderInfo(boolean isCollison, IEntity e){
         this.e=e;
+        this.isCollison= e!=null || isCollison; //Si e est attribué alors c'est en collision
     }
 
     @Override

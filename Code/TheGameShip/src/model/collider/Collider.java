@@ -4,6 +4,8 @@ import launch.Launcher;
 import model.ILevel;
 import model.entity.*;
 
+import java.util.UUID;
+
 public class Collider implements ICollider { //http://sdz.tdct.org/sdz/eorie-des-collisions.html
     protected final ILevel level;
 
@@ -12,73 +14,36 @@ public class Collider implements ICollider { //http://sdz.tdct.org/sdz/eorie-des
     } //TODO: au lieu de passer le level il faudrait donner directement la collection
 
     @Override
-    public ColliderInfo isCollision(IEntity e, String direction) throws Exception {
-        if(isCollisionScene(IHasLocation.cast(e), direction)){
-            System.out.println("Collision scene");
-           return new ColliderInfo(true);
-        }
-        ColliderInfo entity=isCollisionEntity(e,direction);
-        if(entity.IsCollision()){
-            System.out.println("Collision entity");
-            return entity;
-        }
-        return new ColliderInfo(false);
+    public ColliderInfo isCollision(double nextX, double nextY, double height, double width, UUID id) throws Exception {
+        boolean scene=isCollisionScene(nextX, nextY, height, width);
+        IEntity e=isCollisionEntity(nextX, nextY, height, width, id);
+        return new ColliderInfo(scene,e);
     }
 
-    protected boolean isCollisionScene(IHasLocation h, String direction){
-        double x1 = h.getX();
-        double y1 = h.getY();
-        double height1 = h.getHeight();
-        double width1 = h.getWidth();
-        double height = Launcher.getViewManager().getSceneHeight();
-        double width = Launcher.getViewManager().getSceneWidth();
-
-        //Collison scene
-        return switch (direction) {
-            case "UP" -> (y1 <= 0);
-            case "LEFT" -> (x1 <= 0);
-            case "DOWN" -> (y1 + height1 >= height);
-            case "RIGHT" -> (x1 + width1 >= width);
-            default -> false;
-        };
+    protected boolean isCollisionScene(double nextX, double nextY, double height, double width){
+        double heightScene = Launcher.getViewManager().getSceneHeight();
+        double widthScene = Launcher.getViewManager().getSceneWidth();
+        return ((nextY <= 0) || (nextX <= 0) || (nextY + height >= heightScene) || (nextX + width >= widthScene)); //trop haut || trop à gauche || trop bas || trop à droite
     }
 
-    protected ColliderInfo isCollisionEntity(IEntity e1, String direction) throws Exception{
-        IHasLocation h1=IHasLocation.cast(e1);
-        double x1 = h1.getX();
-        double y1 = h1.getY();
-        double height1 = h1.getHeight();
-        double width1 = h1.getWidth();
-        double speedX1= IMovable.cast(e1).getSpeedX();
-        double speedY1= IMovable.cast(e1).getSpeedY();
-
+    protected IEntity isCollisionEntity(double nextX, double nextY, double height, double width, UUID id) throws Exception{
         for(IEntity e2: level.getUsedEntityCollection()){
             //TODO: beaucoup de code se répéte (=source de bug), il faudrait trouver un moyen d'unifier les codes et d'ajouter les particularité de chacun
             //Empêche que le joueur soit bloquer par ces propre tir
-
-            boolean isAtOriginOfShoot=false;/*
+            boolean isAtOriginOfShoot=false;
             if(e2 instanceof IShoot){
-                isAtOriginOfShoot=((IShoot) e2).getOwnerId().equals(e1.getId());
-            }*/
-            if(!e1.equals(e2) && !isAtOriginOfShoot) {
+                isAtOriginOfShoot=id.equals(((IShoot) e2).getOwnerId());
+            }
+            if(!id.equals(e2.getId()) && !isAtOriginOfShoot) {
                 IHasLocation h2 =IHasLocation.cast(e2);
                 double x2 = h2.getX();
                 double y2 = h2.getY();
                 double height2 = h2.getHeight();
                 double width2 = h2.getWidth();
-                 //Général
-                    if((x2 >= x1 + width1)      // trop à droite
-                            || (x2 + width2 <= x1) // trop à gauche
-                            || (y2 >= y1 + height1) // trop en bas
-                            || (y2 + height2 <= y1))  // trop en haut
-                        return new ColliderInfo(false);
-                    else
-                        return new ColliderInfo(e2
-                        );
-
-                //todo : Collision entre entité un peu foireuse
+                if(!((x2 >= nextX + width) || (x2 + width2 <= nextX) || (y2 >= nextY + height) || (y2 + height2 <= nextY)))   // trop à droite || trop à gauche || trop en bas || trop en haut
+                    return e2;
             }
         }
-        return new ColliderInfo(false);
+        return null; //Pas de Collision
     }
 }
