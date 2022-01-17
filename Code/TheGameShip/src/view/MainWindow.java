@@ -66,5 +66,4 @@ public class MainWindow {
     }
 }
 
-//TODO: Code + Docs + Video (une demo vidéo d'1 min max) + Preuve de compétence (avec la feuille de compétence en expliquant)
 //Todo: Utiliser du css pour le style de la vue

@@ -84,7 +84,11 @@ public class EntityManager implements IHasEntityCollection {
     }
 
     //General
-    public void listEntity() {
+    //TODO : la refaire pour mettre toute les infos
+
+    @Override
+    public String toString() {
+            /*
         System.out.println("Used Entity :\n");
         for (IEntity e : getUsedEntityCollection()) {
             System.out.println(e);
@@ -92,14 +96,15 @@ public class EntityManager implements IHasEntityCollection {
         System.out.println("Un-used Entity :\n");
         for (IEntity e : getUnusedEntityCollection()) {
             System.out.println(e);
-        }
+        }*/
+        return super.toString();
     }
 
     //Todo: Trouver un autre moyen que throw une exception ?
-    public Exception newException(String name) throws Exception{
+    public Exception newException(String name){
         return new Exception("Il n'y a pas d'entité de nom : \""+ name+"\"");
     }
-    public Exception newException(EType type) throws Exception{
+    public Exception newException(EType type){
         return new Exception("Il n'y a pas d'entité de type : \""+ type.toString()+"\" disponible");
     }
 
