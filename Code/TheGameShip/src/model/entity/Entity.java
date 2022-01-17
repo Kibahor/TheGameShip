@@ -7,9 +7,11 @@ import java.net.URISyntaxException;
 import java.util.UUID;
 
 //todo : (Changer fonctionnement des interfaces d'entité) Voir si il ne faut l'appliquer qu'aux interfaces (au lieu des entités)
-//(il faudrait créer une classe abstraite par interface concerner et redéfinire reset() dedans au lieu de le faire dans entité)
-//Les interface deviendrait package private et seul les class abstraite créé plus tôt pourrait les implémenter
-//Ensuite au lieu d'implémenter une interface dans l'entités on étend de la classe abstraite (pas sûr il faut y réfléchir avant de le faire)
+//(il faudrait créer une classe par interface concerner et redéfinire reset() dedans au lieu de le faire dans entité)
+//Les interface deviendrait package private et seul les class créé plus tôt pourrait les implémenter
+//Ensuite au lieu d'implémenter une interface dans l'entités on met une instance de l'objet
+
+//Ou faire une fabrique qui selon le type choisis les bon composant
 
 public class Entity implements IEntity, IHasLocation, IHasLife{
 

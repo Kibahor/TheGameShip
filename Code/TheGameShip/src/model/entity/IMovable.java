@@ -14,5 +14,4 @@ public interface IMovable extends IHasLocation {
         }
         return (IMovable) e;
     }
-
 }

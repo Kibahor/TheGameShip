@@ -13,6 +13,7 @@ public interface IEntity extends IReset {
 
     EType getType();
 
+    //TODO :  le mettre autre part
     URI getSprite();
     void setSprite(URI sprite);
 

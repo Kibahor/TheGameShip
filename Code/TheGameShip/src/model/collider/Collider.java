@@ -28,7 +28,6 @@ public class Collider implements ICollider { //http://sdz.tdct.org/sdz/eorie-des
 
     protected IEntity isCollisionEntity(double nextX, double nextY, double height, double width, UUID id) throws Exception{
         for(IEntity e2: level.getUsedEntityCollection()){
-            //TODO: beaucoup de code se répéte (=source de bug), il faudrait trouver un moyen d'unifier les codes et d'ajouter les particularité de chacun
             //Empêche que le joueur soit bloquer par ces propre tir
             boolean isAtOriginOfShoot=false;
             if(e2 instanceof IShoot){

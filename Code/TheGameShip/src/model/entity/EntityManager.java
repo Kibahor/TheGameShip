@@ -8,7 +8,7 @@ import java.util.HashSet;
 
 public class EntityManager implements IHasEntityCollection {
 
-    private final Collection<IEntity> unUsedEntities;
+    private final ObservableSet<IEntity> unUsedEntities;
         @Override public Collection<IEntity> getUnusedEntityCollection(){return unUsedEntities;}
 
     private final ObservableSet<IEntity> usedEntities;
@@ -20,6 +20,7 @@ public class EntityManager implements IHasEntityCollection {
     }
 
     //TODO : fusionner les mêmes algo et ajouter un boolean isUsed pour trancher entre les 2 collections
+    //TODO : Mauvais plan de faire deux listes, il faut en faire qu'une mais observable et la bind sur la vue
     //Used Entities
     public void setUsedEntity(String name) throws Exception{
         IEntity e= getUnUsedEntity(name);

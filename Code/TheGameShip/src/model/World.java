@@ -34,9 +34,10 @@ public class World implements IHasEntityCollection {
         Launcher.getStage().addEventFilter(KeyEvent.ANY,(Keyboard)input); //Spécifique au événement de JavaFX
 
         //Level
-        currentLevel =new Level1(boucle, input); //Mettre le bon monde
+        currentLevel = new Level1(boucle, input); //Mettre le bon monde
     }
     //TODO: init,start,exit doit être des méthode qui notifie tout ces abonnés (par rapport a stage)
+    //Init, instancie les entité ou tout autre chose
     public void init() throws Exception{
         currentLevel.init();
     }

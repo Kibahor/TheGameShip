@@ -14,9 +14,6 @@ public class Move implements IMove {
 
     @Override
     public ColliderInfo move(IEntity e, ICollider c, ECommand key) throws Exception {
-        if(!(e instanceof IMovable)) {
-            throw new Exception("L'entité \""+e.getName()+"\" n'implémente pas IMovable, il ne peut donc pas être déplacé !");
-        }
         IMovable m=IMovable.cast(e);
         double nextx =m.getX();
         double nexty =m.getY();
@@ -28,11 +25,14 @@ public class Move implements IMove {
             case UP -> nexty = m.getY() - m.getSpeedY();
         }
 
+        //Vérifie la collision
         UUID id = e.getId();
         if(e.getType().equals(EType.Shoot)){
             id = IShoot.cast(e).getOwnerId();
         }
         ColliderInfo ci=c.isCollision(nextx, nexty, m.getHeight(), m.getWidth(),id);
+
+        //ET si c'est pas en collison sa déplace l'entité
         if(!ci.IsCollision()){
             m.setX(nextx);
             m.setY(nexty);

@@ -20,6 +20,7 @@ public class Keyboard implements IInput, EventHandler<KeyEvent> {
             return list;
         }
 
+        //Correspondance entre les commandes disponible et les touche du clavier
     private Map<KeyCode,ECommand> matchKey = new HashMap<>()
         {
             {
@@ -34,6 +35,7 @@ public class Keyboard implements IInput, EventHandler<KeyEvent> {
                 put(KeyCode.SPACE, ECommand.SHOOT);
             }
         };
+
     public Keyboard(){
         for(ECommand e : ECommand.values()){
             keyPressed.put(e,false);
