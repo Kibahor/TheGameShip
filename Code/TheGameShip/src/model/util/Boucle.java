@@ -5,7 +5,7 @@ import static java.lang.Thread.sleep;
 public class Boucle extends Observable implements Runnable {
     private final long millis;
     private boolean isRunning = true;
-    private long timer=0;
+    private long timer = 0;
         public long getTimer() {
             return timer;
         }
@@ -20,14 +20,14 @@ public class Boucle extends Observable implements Runnable {
         while (isRunning) {
             try {
                 sleep(millis);
-                timer+=millis;
+                timer += millis;
                 notifier();
-            } catch (InterruptedException e) {
+            }
+            catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
     }
-
     public void StopBoucle(){ isRunning = false; }
     public void StartBoucle(){
         isRunning = true;
