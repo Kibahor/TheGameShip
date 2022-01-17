@@ -12,7 +12,7 @@ public class PersistenceManager {
             ISerialize serializableSettings = new SerializeSettings(settings);
 
             //TODO: Utiliser une bibliotèque pour faire du JSON
-            // writeObject(data);
+            oos.writeObject(serializableSettings);
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -26,7 +26,8 @@ public class PersistenceManager {
             SerializeSettings serializeSettings = (SerializeSettings) ois.readObject();
 
             //TODO: set les valeurs dans Settings
-            // ..
+            //settings.setDifficulty(SerializeSettings.getDifficulty());
+            //settings.setVolume(SerializeSettings.getVolume());
         }
         catch (ClassNotFoundException | IOException e) {
             e.printStackTrace();

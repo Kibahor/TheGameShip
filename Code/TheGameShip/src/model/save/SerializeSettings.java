@@ -13,6 +13,9 @@ public class SerializeSettings implements ISerialize {
         volume = settings.getVolume();
     }
 
+    public double getDifficulty() { return difficulty; }
+    public double getVolume() { return volume; }
+
     @Override
     public ISerialize serialize() {
         return this;
