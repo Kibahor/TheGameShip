@@ -56,6 +56,10 @@ public class ViewManager {
         //Launcher.getStage().getIcons().add(new Image(getClass().getResourceAsStream(("Sprite/logo.png"))));   //TODO: Fix ce bug de merde qui throw une exception car le stream est vide !!
         Launcher.getStage().setScene(main);
     }
+    public ViewManager(String pathView,String defaultView, String cssPath) throws Exception {
+        this(pathView, defaultView);
+        main.getStylesheets().add(cssPath);
+    }
 
     private void loadView(String name) {
         View view = views.get(name);

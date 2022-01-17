@@ -16,7 +16,7 @@ public class Launcher extends Application {
 
     public void start(Stage stage) throws Exception {
         this.stage = stage;
-        viewManager = new ViewManager("res/FXML/","Menu");
+        viewManager = new ViewManager("res/FXML/","Menu", "view/CSS/style.css");
         stage.show();
     }
 

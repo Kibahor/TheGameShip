@@ -11,8 +11,8 @@ public interface IEntity extends IReset {
     EType getType();
 
     //TODO :  le mettre autre part
-    URI getSprite();
-    void setSprite(URI sprite);
+    String getSprite();
+    void setSprite(String sprite);
 
     boolean getVisible();
     void setVisible(boolean b);

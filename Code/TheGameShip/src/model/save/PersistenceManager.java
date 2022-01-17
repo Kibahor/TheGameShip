@@ -5,7 +5,7 @@ import java.io.*;
 
 public class PersistenceManager {
 
-    private static final File SettingsFile = new File(System.getProperty("user.dir") + "/res/Settings/settings.json");
+    private static final File SettingsFile = new File("./res/Settings/settings.json");
 
         public static void saveSettings(Settings settings) {
             try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(SettingsFile))) {
@@ -13,8 +13,7 @@ public class PersistenceManager {
 
                 //TODO: Utiliser une bibliotèque pour faire du JSON
                 //oos.writeObject(serializableSettings);
-            }
-            catch (IOException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }

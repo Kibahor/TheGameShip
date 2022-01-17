@@ -18,9 +18,9 @@ public class Entity implements IEntity, IHasLocation, IHasLife{
     private final EType type;
         @Override public EType getType() { return type;}
 
-    private URI sprite;
-        @Override public URI getSprite() { return sprite; }
-        @Override public void setSprite(URI sprite) { this.sprite = sprite; }
+    private String sprite;
+        @Override public String getSprite() { return sprite; }
+        @Override public void setSprite(String sprite) { this.sprite = sprite; }
 
     private BooleanProperty visible = new SimpleBooleanProperty();
         @Override public boolean getVisible() { return visible.get(); }
@@ -65,7 +65,7 @@ public class Entity implements IEntity, IHasLocation, IHasLife{
         @Override public boolean isDead(){return isDead;}
         @Override public void setDead(boolean dead) { isDead=dead; }
 
-    public Entity(String name, EType type, String sprite) throws URISyntaxException {
+    public Entity(String name, EType type, String sprite){
         //IEntity
         this.id = UUID.randomUUID();
         this.name = name;
@@ -74,7 +74,7 @@ public class Entity implements IEntity, IHasLocation, IHasLife{
         setY(100);
         setHeight(10);
         setWidth(10);
-        this.sprite = new URI(sprite);
+        setSprite(sprite);
         setVisible(false);
 
         //IHasLife
@@ -82,14 +82,14 @@ public class Entity implements IEntity, IHasLocation, IHasLife{
         setDead(false);
     }
 
-    public Entity(String name, String sprite, EType type, double height, double width, double hp) throws URISyntaxException {
+    public Entity(String name, String sprite, EType type, double height, double width, double hp) {
         this(name, type, sprite);
         setHeight(height);
         setWidth(width);
         setHp(hp);
     }
 
-    public Entity(String name, String sprite, EType type, double height, double width, double hp, double x, double y) throws URISyntaxException {
+    public Entity(String name, String sprite, EType type, double height, double width, double hp, double x, double y) {
         this(name, sprite, type, height, width, hp);
         setX(x);
         setY(y);

@@ -1,5 +1,6 @@
 package model;
 
+import launch.Launcher;
 import model.util.input.ECommand;
 import model.util.input.IInput;
 import model.collider.Collider;
@@ -51,11 +52,11 @@ public class Level1 implements ILevel, IObserver, IHasEntityCollection {
         for (int i = 0; i < nbShootPreGenerate; i++) {
             entityManager.add(new Shoot());
         }
-        entityManager.add(new Player("Vaisseau", "file://test.jpg", 50, 50, 1, 0, 250, 5, 5));
+        entityManager.add(new Player("Vaisseau", "/Sprites/Spaceship.png", 70, 70, 1, 0, 250, 5, 5));
         entityManager.setUsedEntity("Vaisseau");
         /*entityManager.add(new Entity("Obstacle1","file://test.jpg", EType.Obstacle,35,5,500,500));
         entityManager.setUsedEntity("Obstacle1");*/
-        entityManager.add(new Entity("Ennemy1", "file://test.jpg", EType.Ennemy, 40, 40, 5, 650, 300));
+        entityManager.add(new Entity("Ennemy1", "/Sprites/Ennemie1.png", EType.Ennemy, 70, 70, 5, 650, 300));
         entityManager.setUsedEntity("Ennemy1");
     }
 
