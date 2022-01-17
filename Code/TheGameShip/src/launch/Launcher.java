@@ -7,13 +7,13 @@ package launch;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import model.util.settings.Settings;
 import view.ViewManager;
 
 public class Launcher extends Application {
+
     private static ViewManager viewManager;
     private static Stage stage;
-    private static Settings settings;
+
     public void start(Stage stage) throws Exception {
         this.stage = stage;
         viewManager = new ViewManager("res/FXML/","Menu");

@@ -3,6 +3,7 @@ package model.entity;
 import java.util.UUID;
 
 public interface IShoot {
+
     UUID getOwnerId();
 
     void setOwnerId(UUID ownerId);

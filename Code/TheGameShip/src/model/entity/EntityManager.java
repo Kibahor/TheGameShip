@@ -2,17 +2,16 @@ package model.entity;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableSet;
-
 import java.util.Collection;
 import java.util.HashSet;
 
 public class EntityManager implements IHasEntityCollection {
 
     private final ObservableSet<IEntity> unUsedEntities;
-        @Override public Collection<IEntity> getUnusedEntityCollection(){return unUsedEntities;}
+        @Override public Collection<IEntity> getUnusedEntityCollection() { return unUsedEntities; }
 
     private final ObservableSet<IEntity> usedEntities;
-        @Override public Collection<IEntity> getUsedEntityCollection(){return usedEntities;}
+        @Override public Collection<IEntity> getUsedEntityCollection() { return usedEntities; }
 
     public EntityManager() {
         this.unUsedEntities = FXCollections.observableSet(new HashSet<>());
@@ -22,20 +21,20 @@ public class EntityManager implements IHasEntityCollection {
     //TODO : fusionner les mêmes algo et ajouter un boolean isUsed pour trancher entre les 2 collections
     //TODO : Mauvais plan de faire deux listes, il faut en faire qu'une mais observable et la bind sur la vue
     //Used Entities
-    public void setUsedEntity(String name) throws Exception{
-        IEntity e= getUnUsedEntity(name);
+    public void setUsedEntity(String name) throws Exception {
+        IEntity e = getUnUsedEntity(name);
         e.setVisible(true);
         getUsedEntityCollection().add(e);
     }
 
-    public void setUsedEntity(IEntity e){
+    public void setUsedEntity(IEntity e) {
         e.setVisible(true);
         getUsedEntityCollection().add(e);
     }
 
     public IEntity getUsedEntity(String name) throws Exception {
-        for(IEntity e: getUsedEntityCollection()){
-            if(name.equals(e.getName())){
+        for (IEntity e: getUsedEntityCollection()) {
+            if (name.equals(e.getName())) {
                 return e;
             }
         }
@@ -43,8 +42,8 @@ public class EntityManager implements IHasEntityCollection {
     }
 
     public IEntity getUsedEntity(EType type) throws Exception {
-        for(IEntity e: getUsedEntityCollection()){
-            if(type.equals(e.getType())){
+        for (IEntity e: getUsedEntityCollection()) {
+            if (type.equals(e.getType())) {
                 return e;
             }
         }
@@ -52,12 +51,12 @@ public class EntityManager implements IHasEntityCollection {
     }
 
     //UnUsed Entities
-    public void add(IEntity e){
+    public void add(IEntity e) {
         e.setVisible(false); //Au cas où
         getUnusedEntityCollection().add(e);
     }
 
-    public void setUnUsedEntity(IEntity e){
+    public void setUnUsedEntity(IEntity e) {
         e.setVisible(false);
         getUsedEntityCollection().remove(e);
         e.reset(); //Il met tous les autres paramètres par défauts sauf visible
@@ -75,8 +74,8 @@ public class EntityManager implements IHasEntityCollection {
     }
 
     public IEntity getUnUsedEntity(String name) throws Exception {
-        for(IEntity e: getUnusedEntityCollection()){
-            if(name.equals(e.getName())){
+        for (IEntity e: getUnusedEntityCollection()) {
+            if (name.equals(e.getName())) {
                 return e;
             }
         }
@@ -107,5 +106,4 @@ public class EntityManager implements IHasEntityCollection {
     public Exception newException(EType type){
         return new Exception("Il n'y a pas d'entité de type : \""+ type.toString()+"\" disponible");
     }
-
 }
