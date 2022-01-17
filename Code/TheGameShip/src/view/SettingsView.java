@@ -25,7 +25,10 @@ public class SettingsView {
         volumeSlider.valueProperty().bindBidirectional(settings.volumeProperty());
     }
 
-    public void menu(ActionEvent actionEvent){ Launcher.getViewManager().setView("Menu"); }
+    public void menu(ActionEvent actionEvent){
+        Launcher.getViewManager().setView("Menu");
+    }
+
     public void reset(ActionEvent actionEvent) {
         difficultySlider.setValue(2);
         volumeSlider.setValue(50);
