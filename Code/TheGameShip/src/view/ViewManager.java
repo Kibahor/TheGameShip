@@ -59,6 +59,7 @@ public class ViewManager {
             return FXMLLoader.load(getClass().getClassLoader().getResource(view.get(name)));
         }
         catch (Exception err) {
+            err.printStackTrace();
             int fontsize = 20;
             Pane pane = new Pane();
             Text texte = new Text(0,fontsize,"Impossible de charger la vue : "+name);

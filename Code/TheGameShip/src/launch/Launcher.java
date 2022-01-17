@@ -7,11 +7,13 @@ package launch;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+import model.util.settings.Settings;
 import view.ViewManager;
 
 public class Launcher extends Application {
     private static ViewManager viewManager;
     private static Stage stage;
+    private static Settings settings;
     //todo :Faire une classe static DEBUG et set dans launcher si debug=true/false et remplacer toute les ligne de débug par la méthode
 
     public void start(Stage stage) throws Exception {

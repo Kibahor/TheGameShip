@@ -4,8 +4,9 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Slider;
 import launch.Launcher;
 import javafx.fxml.FXML;
+import model.util.settings.Settings;
 
-public class Settings {
+public class SettingsView {
 
     @FXML
     private Slider difficultySlider;
@@ -13,13 +14,16 @@ public class Settings {
     @FXML
     private Slider volumeSlider;
 
+    private Settings settings;
+
     public void initialize() {
         loadSliderVolume();
         loadSliderDifficulty();
-    }
 
-    public void difficulty(ActionEvent actionEvent) { System.out.println("Inopérant."); }     //TODO: garder ça en mémoire qq part
-    public void volume(ActionEvent actionEvent) { System.out.println("Inopérant."); }         //TODO: garder ça en mémoire qq part
+        settings = new Settings();
+        difficultySlider.valueProperty().bindBidirectional(settings.difficultyProperty());
+        volumeSlider.valueProperty().bindBidirectional(settings.volumeProperty());
+    }
 
     public void menu(ActionEvent actionEvent){ Launcher.getViewManager().setView("Menu"); }
     public void reset(ActionEvent actionEvent) {
@@ -33,8 +37,8 @@ public class Settings {
         difficultySlider.setMajorTickUnit(1);
         difficultySlider.setBlockIncrement(1);
         difficultySlider.setMinorTickCount(0);
-        volumeSlider.setSnapToTicks(true);
-        volumeSlider.setShowTickLabels(true);
+        difficultySlider.setSnapToTicks(true);
+        difficultySlider.setShowTickLabels(true);
     }
 
     public void loadSliderVolume() {
@@ -45,6 +49,5 @@ public class Settings {
         volumeSlider.setMinorTickCount(0);
         volumeSlider.setSnapToTicks(true);
         volumeSlider.setShowTickLabels(true);
-        volumeSlider.setValue(50);
     }
 }
