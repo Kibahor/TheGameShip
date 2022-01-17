@@ -13,7 +13,6 @@ public class SerializeSettings implements ISerialize {
         volume = settings.getVolume();
     }
 
-
     @Override
     public ISerialize serialize() {
         return this;
