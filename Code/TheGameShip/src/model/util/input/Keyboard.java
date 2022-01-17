@@ -37,7 +37,7 @@ public class Keyboard implements IInput, EventHandler<KeyEvent> {
         };
 
     public Keyboard() {
-        for(ECommand e : ECommand.values()) {
+        for (ECommand e : ECommand.values()) {
             keyPressed.put(e,false);
         }
     }

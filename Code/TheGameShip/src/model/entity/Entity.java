@@ -13,11 +13,11 @@ import java.util.UUID;
 
 //Ou faire une fabrique qui selon le type choisis les bon composant
 
-public class Entity implements IEntity, IHasLocation, IHasLife{
+public class Entity implements IEntity, IHasLocation, IHasLife {
 
     //IEntity
     private UUID id;
-        @Override public UUID getId(){return id;}
+        @Override public UUID getId(){ return id; }
 
     private String name;
         @Override public String getName() { return name; }
@@ -26,19 +26,19 @@ public class Entity implements IEntity, IHasLocation, IHasLife{
         @Override public EType getType() { return type;}
 
     private URI sprite;
-        @Override public URI getSprite() {return sprite;}
-        @Override public void setSprite(URI sprite) {this.sprite = sprite;}
+        @Override public URI getSprite() { return sprite; }
+        @Override public void setSprite(URI sprite) { this.sprite = sprite; }
 
-    private BooleanProperty visible=new SimpleBooleanProperty();
-        @Override public boolean getVisible(){return visible.get();}
-        @Override public void setVisible(boolean b){visible.set(b);}
-        @Override public BooleanProperty getVisibleBooleanProperty(){return visible;}
+    private BooleanProperty visible = new SimpleBooleanProperty();
+        @Override public boolean getVisible() { return visible.get(); }
+        @Override public void setVisible(boolean b) { visible.set(b); }
+        @Override public BooleanProperty getVisibleBooleanProperty() { return visible; }
 
     //IHasLocation
     private final DoubleProperty x = new SimpleDoubleProperty();
-        @Override public double getX() {return x.get();}
-        @Override public void setX(double x) {this.x.set(x);}
-        @Override public DoubleProperty xProperty(){return x;}
+        @Override public double getX() { return x.get(); }
+        @Override public void setX(double x) { this.x.set(x); }
+        @Override public DoubleProperty xProperty() { return x; }
 
     private final DoubleProperty y = new SimpleDoubleProperty();
         @Override public double getY() { return y.get(); }
@@ -60,7 +60,7 @@ public class Entity implements IEntity, IHasLocation, IHasLife{
         @Override public double getHp() { return hp.get(); }
         @Override public void setHp(double hp) {
             this.hp.set(hp);
-            if(getHp()<=0) {
+            if (getHp()<=0) {
                 setDead(true);
             }
         }
@@ -70,7 +70,7 @@ public class Entity implements IEntity, IHasLocation, IHasLife{
 
     private boolean isDead;
         @Override public boolean isDead(){return isDead;}
-        @Override public void setDead(boolean dead){isDead=dead;}
+        @Override public void setDead(boolean dead) { isDead=dead; }
 
     public Entity(String name, EType type, String sprite) {
         //IEntity
@@ -81,7 +81,12 @@ public class Entity implements IEntity, IHasLocation, IHasLife{
         setY(100);
         setHeight(10);
         setWidth(10);
-        try {this.sprite = new URI(sprite);}catch(URISyntaxException err){err.printStackTrace();}
+        try {
+            this.sprite = new URI(sprite);
+        }
+        catch (URISyntaxException err) {
+            err.printStackTrace();
+        }
         setVisible(false);
 
         //IHasLife
@@ -89,7 +94,7 @@ public class Entity implements IEntity, IHasLocation, IHasLife{
         setDead(false);
     }
 
-    public Entity(String name, String sprite, EType type, double height, double width, double hp){
+    public Entity(String name, String sprite, EType type, double height, double width, double hp) {
         this(name, type, sprite);
         setHeight(height);
         setWidth(width);

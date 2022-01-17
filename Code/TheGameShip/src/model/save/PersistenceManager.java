@@ -3,7 +3,7 @@ package model.save;
 import model.util.settings.Settings;
 import java.io.*;
 
-public class PersistanceManager {
+public class PersistenceManager {
 
     private static final File SettingsFile = new File(System.getProperty("user.dir") + "/res/Settings/settings.json");
 

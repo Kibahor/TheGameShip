@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Slider;
 import launch.Launcher;
 import javafx.fxml.FXML;
+import model.save.PersistenceManager;
 import model.util.settings.Settings;
 
 public class SettingsView {
@@ -25,8 +26,9 @@ public class SettingsView {
         volumeSlider.valueProperty().bindBidirectional(settings.volumeProperty());
     }
 
-    public void menu(ActionEvent actionEvent){
+    public void menu(ActionEvent actionEvent) {
         Launcher.getViewManager().setView("Menu");
+        PersistenceManager.saveSettings(settings);
     }
 
     public void reset(ActionEvent actionEvent) {

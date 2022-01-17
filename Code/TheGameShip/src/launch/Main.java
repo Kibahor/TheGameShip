@@ -36,4 +36,5 @@ public class Main {
         IEntity.printDecorationName();
         System.out.println(IEntity +"\n");
     }*/
-}}
+    }
+}

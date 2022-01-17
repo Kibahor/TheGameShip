@@ -2,12 +2,12 @@ package model.entity;
 
 import java.util.UUID;
 
-public class Shoot extends Entity implements IMovable, IShoot{
+public class Shoot extends Entity implements IMovable, IShoot {
 
-    private static int nbShoot=0;
+    private static int nbShoot = 0;
     private UUID ownerId;
-        @Override public UUID getOwnerId() {return ownerId;}
-        @Override public void setOwnerId(UUID ownerId) {this.ownerId=ownerId;}
+        @Override public UUID getOwnerId() { return ownerId; }
+        @Override public void setOwnerId(UUID ownerId) { this.ownerId = ownerId; }
 
     //IMovable
     private float speedX;
@@ -43,7 +43,7 @@ public class Shoot extends Entity implements IMovable, IShoot{
 
     @Override
     public void applyToEntity(IEntity e) throws Exception {
-        if(ownerId!=null){
+        if (ownerId != null) {
                 throw new Exception("Le tir appartient déjà a une entité qui a pour id : "+getOwnerId().toString());
         }
         setOwnerId(e.getId());
@@ -53,7 +53,7 @@ public class Shoot extends Entity implements IMovable, IShoot{
     }
 
     @Override
-    public void reset(){
+    public void reset() {
         super.reset();
         setOwnerId(null);
     }

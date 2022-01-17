@@ -67,10 +67,10 @@ public class Level1 implements ILevel, IObserver, IHasEntityCollection {
         try {
             for (IEntity e : getUsedEntityCollection()) {
                 if (e instanceof Player) { //Gestion mouvement du joueur
-                    for (ECommand key : input.getKeyPressed()){
+                    for (ECommand key : input.getKeyPressed()) {
                         move.move(e, collider, key);
-                        if(key.equals(ECommand.SHOOT)) {
-                            if(boucle.getTimer()>=1000){
+                        if (key.equals(ECommand.SHOOT)) {
+                            if (boucle.getTimer() >= 1000){
                                 IEntity s = entityManager.getUnUsedEntity(EType.Shoot); //Je récupère un tir qui n'est pas utilisé
                                 IShoot.cast(s).applyToEntity(entityManager.getUsedEntity(EType.Player)); //Je donne l'appartenance du tir au joueur
                                 entityManager.setUsedEntity(s); //Je l'ajoute à la collection des entitées visible
@@ -78,22 +78,25 @@ public class Level1 implements ILevel, IObserver, IHasEntityCollection {
                             }
                         }
                     }
-                } else if (e instanceof IShoot) { //Gestion des tirs
+                }
+                else if (e instanceof IShoot) { //Gestion des tirs
                     ColliderInfo ci=move.move(e, collider, ECommand.RIGHT);
                     if (ci.IsCollision()) {
                         entityManager.setUnUsedEntity(e);
-                        if(ci.getEntity() instanceof IHasLife){
+                        if (ci.getEntity() instanceof IHasLife) {
                             ((IHasLife) ci.getEntity()).decreaseHp();
                         }
                     }
-                } else if(e instanceof IHasLife){ //Gestion de la vie
+                }
+                else if(e instanceof IHasLife){ //Gestion de la vie
                     //Si l'entité a de la vie
-                    if(((IHasLife) e).isDead()){
+                    if (((IHasLife) e).isDead()) {
                         entityManager.setUnUsedEntity(e);
                     }
                 }
             }
-        } catch (Exception err) {
+        }
+        catch (Exception err) {
             err.printStackTrace();
         }
     }

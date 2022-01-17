@@ -9,7 +9,7 @@ import java.util.UUID;
 public class Collider implements ICollider { //http://sdz.tdct.org/sdz/eorie-des-collisions.html
     protected final ILevel level;
 
-    public Collider(ILevel level){
+    public Collider(ILevel level) {
         this.level = level;
     } //TODO: au lieu de passer le level il faudrait donner directement la collection
 
@@ -26,8 +26,8 @@ public class Collider implements ICollider { //http://sdz.tdct.org/sdz/eorie-des
         return ((nextY <= 0) || (nextX <= 0) || (nextY + height >= heightScene) || (nextX + width >= widthScene)); //trop haut || trop à gauche || trop bas || trop à droite
     }
 
-    protected IEntity isCollisionEntity(double nextX, double nextY, double height, double width, UUID id) throws Exception{
-        for(IEntity e2: level.getUsedEntityCollection()){
+    protected IEntity isCollisionEntity(double nextX, double nextY, double height, double width, UUID id) throws Exception {
+        for (IEntity e2: level.getUsedEntityCollection()) {
             //Empêche que le joueur soit bloquer par ces propre tir
             boolean isAtOriginOfShoot = false;
             if (e2 instanceof IShoot) {

@@ -1,7 +1,5 @@
 package model.entity;
 
-import model.entity.IEntity;
-
 import java.util.Collection;
 
 public interface IHasEntityCollection {

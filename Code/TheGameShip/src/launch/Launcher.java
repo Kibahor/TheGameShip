@@ -11,6 +11,7 @@ import model.util.settings.Settings;
 import view.ViewManager;
 
 public class Launcher extends Application {
+
     private static ViewManager viewManager;
     private static Stage stage;
     private static Settings settings;
