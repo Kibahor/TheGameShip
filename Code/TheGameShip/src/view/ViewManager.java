@@ -8,28 +8,30 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.util.Pair;
 import launch.Launcher;
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 
 public class ViewManager {
 
-    private Map<String, String> view = new HashMap<>();
-        private void addView(String name,String path){ view.put(name,path); }
-        private void removeView(String name){ view.remove(name); }
-        public void listView() {
-            for (String key: view.keySet()) {
-                System.out.println(key+" -> "+view.get(key));
-            }
-        }
+    private Map<String,View> views = new HashMap<>();
+
+    private void addView(String name,String path){
+        View view = new View(path);
+        views.put(name, view);
+    }
+    private void removeView(String name){ views.remove(name); }
 
     private final Scene main;
-    public double getSceneHeight() { return main.getHeight(); }
-    public double getSceneWidth(){ return main.getWidth(); }
+        public double getSceneHeight() { return main.getHeight(); }
+        public double getSceneWidth(){ return main.getWidth(); }
 
 
     public ViewManager(String pathView,String defaultView) throws Exception {
@@ -44,7 +46,8 @@ public class ViewManager {
         catch (Exception err) {
             throw new Exception("Aucune vue n'a été trouvé dans : "+pathView);
         }
-        main = new Scene(loadView(defaultView));
+        loadView(defaultView);
+        main = new Scene(views.get(defaultView).getParent());
         Launcher.getStage().setTitle("TheGameShip");
         Launcher.getStage().setMaxHeight(720);
         Launcher.getStage().setMaxHeight(1280);
@@ -54,21 +57,32 @@ public class ViewManager {
         Launcher.getStage().setScene(main);
     }
 
-    private Parent loadView(String name) {
-        try {
-            return FXMLLoader.load(getClass().getClassLoader().getResource(view.get(name)));
+    private void loadView(String name) {
+        View view = views.get(name);
+        Parent parent = null;
+        try{
+            parent = FXMLLoader.load(getClass().getClassLoader().getResource(view.getPath()));
+        }catch (IOException err) {
+            err.printStackTrace(); //DEBUG
         }
-        catch (Exception err) {
-            err.printStackTrace();
-            int fontsize = 20;
-            Pane pane = new Pane();
-            Text texte = new Text(0,fontsize,"Impossible de charger la vue : "+name);
-            texte.setFill(Color.RED);
-            texte.setFont(new Font(fontsize));
-            pane.getChildren().add(texte);
-            return pane;
-        }
+        views.get(name).setParent(parent);
     }
 
-    public void setView(String name){ main.setRoot(loadView(name)); }
+    public void setView(String name) {
+        View view=views.get(name);
+        if(!view.isInitialize()){
+            loadView(name);
+        }
+        main.setRoot(view.getParent());
+    }
+
+    //TODO : la refaire pour mettre toute les infos
+    @Override
+    public String toString() {
+        /*
+        for (String key: view.keySet()) {
+            System.out.println(key+" -> "+view.get(key));
+        }*/
+        return super.toString();
+    }
 }
