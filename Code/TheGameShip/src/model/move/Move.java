@@ -14,11 +14,11 @@ public class Move implements IMove {
 
     @Override
     public ColliderInfo move(IEntity e, ICollider c, ECommand key) throws Exception {
-        IMovable m=IMovable.cast(e);
-        double nextx =m.getX();
-        double nexty =m.getY();
+        IMovable m = IMovable.cast(e);
+        double nextx = m.getX();
+        double nexty = m.getY();
 
-        switch (key){
+        switch (key) {
             case LEFT -> nextx =m.getX() - m.getSpeedX();
             case RIGHT -> nextx = m.getX() + m.getSpeedX();
             case DOWN -> nexty = m.getY() + m.getSpeedY();
@@ -27,13 +27,13 @@ public class Move implements IMove {
 
         //Vérifie la collision
         UUID id = e.getId();
-        if(e.getType().equals(EType.Shoot)){
+        if (e.getType().equals(EType.Shoot)) {
             id = IShoot.cast(e).getOwnerId();
         }
-        ColliderInfo ci=c.isCollision(nextx, nexty, m.getHeight(), m.getWidth(),id);
 
-        //ET si c'est pas en collison sa déplace l'entité
-        if(!ci.IsCollision()){
+        //Et si ce n'est pas en collision, sa déplace l'entité
+        ColliderInfo ci = c.isCollision(nextx, nexty, m.getHeight(),  m.getWidth(), id);
+        if (!ci.IsCollision()) {
             m.setX(nextx);
             m.setY(nexty);
         }

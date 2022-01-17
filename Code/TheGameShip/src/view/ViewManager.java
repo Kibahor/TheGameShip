@@ -9,12 +9,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import launch.Launcher;
-
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 
 
@@ -36,13 +34,14 @@ public class ViewManager {
 
     public ViewManager(String pathView,String defaultView) throws Exception {
         //Liste et ajoute les vues dans la map
-        try{
-            for(File file : new File(pathView).listFiles(File::isFile)) {
+        try {
+            for (File file : new File(pathView).listFiles(File::isFile)) {
                 Path path = Paths.get(file.getPath()); // path = /a/b/c/truc.fxml
                 String name = file.getName().replace(".fxml", ""); // name = truc.fxml => truc
                 addView(name, path.subpath(1,path.getNameCount()).toString()); // path = /a/b/c/truc.fxml => c/truc.fxml
             }
-        }catch(Exception err){
+        }
+        catch (Exception err) {
             throw new Exception("Aucune vue n'a été trouvé dans : "+pathView);
         }
         main = new Scene(loadView(defaultView));
@@ -58,10 +57,11 @@ public class ViewManager {
     private Parent loadView(String name) {
         try {
             return FXMLLoader.load(getClass().getClassLoader().getResource(view.get(name)));
-        } catch(Exception err) {
-            int fontsize=20;
-            Pane pane=new Pane();
-            Text texte=new Text(0,fontsize,"Impossible de charger la vue : "+name);
+        }
+        catch (Exception err) {
+            int fontsize = 20;
+            Pane pane = new Pane();
+            Text texte = new Text(0,fontsize,"Impossible de charger la vue : "+name);
             texte.setFill(Color.RED);
             texte.setFont(new Font(fontsize));
             pane.getChildren().add(texte);

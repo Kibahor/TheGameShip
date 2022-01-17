@@ -21,17 +21,17 @@ public class Level1 implements ILevel, IObserver, IHasEntityCollection {
     private IInput input;
 
     private EntityManager entityManager;
-        @Override public Collection<IEntity> getUnusedEntityCollection(){return entityManager.getUnusedEntityCollection();}
-        @Override public Collection<IEntity> getUsedEntityCollection(){return entityManager.getUsedEntityCollection();}
+        @Override public Collection<IEntity> getUnusedEntityCollection(){ return entityManager.getUnusedEntityCollection(); }
+        @Override public Collection<IEntity> getUsedEntityCollection(){ return entityManager.getUsedEntityCollection(); }
 
     private IMove move;
 
     private ICollider collider;
 
-    public Level1(Boucle boucle, IInput input){
-        this.boucle=boucle;
-        this.input=input;
-        entityManager=new EntityManager();
+    public Level1(Boucle boucle, IInput input) {
+        this.boucle = boucle;
+        this.input = input;
+        entityManager = new EntityManager();
         move = new Move();
         collider = new Collider(this);
     }
@@ -40,7 +40,7 @@ public class Level1 implements ILevel, IObserver, IHasEntityCollection {
     public void init() throws Exception {
         //ENTITIES
         int nbShootPreGenerate=50;
-        for(int i=0; i < nbShootPreGenerate; i++){
+        for (int i=0; i < nbShootPreGenerate; i++) {
             entityManager.add(new Shoot());
         }
         entityManager.add(new Player("Vaisseau","file://test.jpg",50,50,1,0,250,5,5));

@@ -31,13 +31,13 @@ public class Keyboard implements IInput, EventHandler<KeyEvent> {
                 put(KeyCode.RIGHT, ECommand.RIGHT);
                 put(KeyCode.D, ECommand.RIGHT);
                 put(KeyCode.LEFT, ECommand.LEFT);
-                put(KeyCode.Q, ECommand.RIGHT);
+                put(KeyCode.Q, ECommand.LEFT);
                 put(KeyCode.SPACE, ECommand.SHOOT);
             }
         };
 
-    public Keyboard(){
-        for(ECommand e : ECommand.values()){
+    public Keyboard() {
+        for(ECommand e : ECommand.values()) {
             keyPressed.put(e,false);
         }
     }
@@ -46,13 +46,14 @@ public class Keyboard implements IInput, EventHandler<KeyEvent> {
     public void handle(KeyEvent event) {
         if (KeyEvent.KEY_PRESSED.equals(event.getEventType())) {
             KeyCode key = event.getCode();
-            if(matchKey.containsKey(key)){
-                keyPressed.replace(matchKey.get(key),true);
+            if (matchKey.containsKey(key)) {
+                keyPressed.replace(matchKey.get(key), true);
             }
-        }else if(KeyEvent.KEY_RELEASED.equals(event.getEventType())){
+        }
+        else if (KeyEvent.KEY_RELEASED.equals(event.getEventType())) {
             KeyCode key = event.getCode();
-            if(matchKey.containsKey(key)){
-                keyPressed.replace(matchKey.get(key),false);
+            if (matchKey.containsKey(key)) {
+                keyPressed.replace(matchKey.get(key), false);
             }
         }
     }
