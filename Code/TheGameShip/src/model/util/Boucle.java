@@ -11,7 +11,7 @@ public class Boucle extends Observable implements Runnable {
         public long getTimer() {
             return timer;
         }
-        public void resetTimer() { timer=0; }
+        public void resetTimer() { timer = 0; }
 
     public Boucle(long millis) {
         this.millis = millis;

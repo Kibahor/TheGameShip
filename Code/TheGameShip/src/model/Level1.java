@@ -1,6 +1,5 @@
 package model;
 
-import launch.Launcher;
 import model.util.input.ECommand;
 import model.util.input.IInput;
 import model.collider.Collider;
@@ -12,6 +11,7 @@ import model.util.Boucle;
 import model.util.IObserver;
 
 import java.util.Collection;
+import java.util.UUID;
 
 //TODO: A la place faire une fabrique, qui se basera sur un fichier xml/json qui spécifie toute les caractéristiques
 
@@ -62,12 +62,22 @@ public class Level1 implements ILevel, IObserver, IHasEntityCollection {
 
     @Override
     public void start() {
-        boucle.subscribe(this);
-    }
+                boucle.subscribe(this);
+            }
 
     @Override
     public void exit() {
         //TODO: Unscribe les événement ajouter aux boucle (créer une méthode destroy dans boucle)
+    }
+
+    public void updateShoot(IEntity e, ECommand key) throws Exception {
+        ColliderInfo ci = move.move(e, collider, key);
+        if (ci.IsCollision()) {
+            entityManager.setUnUsedEntity(e);
+            if (ci.getEntity() instanceof IHasLife) {
+                ((IHasLife) ci.getEntity()).decreaseHp();
+            }
+        }
     }
 
     //TODO: Au lieu de faire if/else, il faudrait trouver un autre
@@ -80,7 +90,7 @@ public class Level1 implements ILevel, IObserver, IHasEntityCollection {
                     for (ECommand key : input.getKeyPressed()) {
                         move.move(e, collider, key);
                         if (key.equals(ECommand.SHOOT)) {
-                            if (boucle.getTimer() >= 1000) {
+                            if (boucle.getTimer() >= 500) {
                                 IEntity s = entityManager.getUnUsedEntity(EType.Shoot);                     // Récupère un tir qui n'est pas utilisé
                                 IShoot.cast(s).applyToEntity(entityManager.getUsedEntity(EType.Player));    // Donne l'appartenance du tir au joueur
                                 entityManager.setUsedEntity(s);                                             // Ajoute à la collection des entitées visible
@@ -88,22 +98,23 @@ public class Level1 implements ILevel, IObserver, IHasEntityCollection {
                             }
                         }
                     }
-                } else if (e instanceof IShoot) {                                 //Gestion des tirs
-                    ColliderInfo ci = move.move(e, collider, ECommand.RIGHT);
-                    if (ci.IsCollision()) {
-                        entityManager.setUnUsedEntity(e);
-                        if (ci.getEntity() instanceof IHasLife) {
-                            ((IHasLife) ci.getEntity()).decreaseHp();
+                }
+                else if (e instanceof IShoot) {                 //Gestion des tirs
+                    UUID id = ((IShoot) e).getOwnerId();
+                    for (IEntity e2 : getUsedEntityCollection()) {
+                        if (e2.getId() == id) {
+                            if (e2.getType() == EType.Player) { updateShoot(e, ECommand.RIGHT); }
+                            else { updateShoot(e, ECommand.LEFT); }
                         }
                     }
-                } else if (e instanceof IHasLife) {             //Gestion de la vie
+                }
+                else if (e instanceof IHasLife) {             //Gestion de la vie
                     //Si l'entité a de la vie
-                    if (((IHasLife) e).isDead()) {
-                        entityManager.setUnUsedEntity(e);
-                    }
+                    if (((IHasLife) e).isDead()) { entityManager.setUnUsedEntity(e); }
                 }
             }
-        } catch (Exception err) {
+        }
+        catch (Exception err) {
             err.printStackTrace();
         }
     }

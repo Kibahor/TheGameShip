@@ -26,7 +26,7 @@ public class World implements IHasEntityCollection {
 
     public World() {
         //Boucle
-        boucle = new Boucle(25); //Temps d'attente entre chaque actualisation de sprite du joueur et déplacement joueur
+        boucle = new Boucle(20); //Temps d'attente entre chaque actualisation de sprite du joueur et déplacement joueur
         thread = new Thread(boucle);
 
         //Input
