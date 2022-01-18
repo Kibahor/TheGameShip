@@ -48,9 +48,9 @@ public class Shoot extends Entity implements IMovable, IShoot {
         }
         setOwnerId(e.getId());
 
-        setX(((IHasLocation)e).getX() + ((IHasLocation)e).getWidth() + 10);
-        //setY(((IHasLocation)e).getY() + ((IHasLocation) e).getHeight()/2);            // TODO: rendre ce recalcul automatique
-        setY(((IHasLocation)e).getY() + (((IHasLocation) e).getHeight() / 2) - 5);      // 5 = la moitié de la hauteur du projectile
+        if (e.getType() == EType.Player) { setX(((IHasLocation)e).getX() + ((IHasLocation)e).getWidth() + 5); }
+        else { setX(((IHasLocation)e).getX() + ((IHasLocation)e).getWidth() - 5); }
+        setY(((IHasLocation)e).getY() + (((IHasLocation) e).getHeight() / 2) - 5);      // TODO: rendre ce recalcul automatique     |   5 = la moitié de la hauteur du projectile
     }
 
     @Override
