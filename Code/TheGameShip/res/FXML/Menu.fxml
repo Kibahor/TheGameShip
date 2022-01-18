@@ -30,12 +30,12 @@
                <children>
                   <ImageView fitHeight="720.0" fitWidth="300.0" GridPane.rowSpan="6" >
                      <image>
-                        <Image url="@../Sprites/space2.png" />
+                        <Image url="@/Sprites/space2.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="150.0" fitWidth="300.0" >
                      <image>
-                        <Image url="@../Sprites/logo.png" />
+                        <Image url="@/Sprites/logo.png" />
                      </image>
                   </ImageView>
                   <Button onAction="#play" alignment="CENTER" prefHeight="1000.0" prefWidth="1000.0" text="Play" GridPane.halignment="CENTER" GridPane.rowIndex="1">
@@ -75,7 +75,7 @@
             <Pane prefHeight="720.0" prefWidth="980.0">
                <ImageView fitHeight="720.0" fitWidth="980.0">
                   <image>
-                     <Image url="@../Sprites/space.png" />
+                     <Image url="@/Sprites/space.png" />
                   </image>
                </ImageView>
             </Pane>
