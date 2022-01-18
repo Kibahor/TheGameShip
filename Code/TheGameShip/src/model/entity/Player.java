@@ -21,7 +21,7 @@ public class Player extends Entity implements IMovable {
 
     public Player(String name, String sprite, double height, double width) {
         super(name, sprite, EType.Player, height, width, 5, 50, 500);
-        setSpeedX(5);
+        setSpeedX(15);
         setSpeedY(10);
     }
 
@@ -38,7 +38,7 @@ public class Player extends Entity implements IMovable {
     public void reset() {
         super.reset();
         //IMovable (speedX,speedY)
-        setSpeedX(5);
+        setSpeedX(15);
         setSpeedY(10);
     }
 }

@@ -28,13 +28,13 @@ public class Shoot extends Entity implements IMovable, IShoot {
 
     public Shoot() {
         super("Shoot"+Integer.toString(nbShoot),"null", EType.Shoot,10,10,1);
-        setSpeedX(5);
-        setSpeedY(5);
+        setSpeedX(15);
+        setSpeedY(0);
         nbShoot++;
     }
 
-    public Shoot(String sprite, double height, double width, double hp, double x, double y,float speedX,float speedY,UUID ownerId) {
-        super(Integer.toString(nbShoot),sprite, EType.Shoot,height,width,hp,x,y);
+    public Shoot(String sprite, double height, double width, double hp, double x, double y, float speedX, float speedY, UUID ownerId) {
+        super(Integer.toString(nbShoot), sprite, EType.Shoot, height, width, hp, x, y);
         setOwnerId(ownerId);
         setSpeedX(speedX);
         setSpeedY(speedY);
@@ -49,7 +49,8 @@ public class Shoot extends Entity implements IMovable, IShoot {
         setOwnerId(e.getId());
 
         setX(((IHasLocation)e).getX() + ((IHasLocation)e).getWidth() + 10);
-        setY(((IHasLocation)e).getY() + ((IHasLocation) e).getHeight()/2);
+        //setY(((IHasLocation)e).getY() + ((IHasLocation) e).getHeight()/2);            // TODO: rendre ce recalcul automatique
+        setY(((IHasLocation)e).getY() + (((IHasLocation) e).getHeight() / 2) - 5);      // 5 = la moitié de la hauteur du projectile
     }
 
     @Override

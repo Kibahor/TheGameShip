@@ -19,7 +19,7 @@ public class Move implements IMove {
         double nexty = m.getY();
 
         switch (key) {
-            case LEFT -> nextx =m.getX() - m.getSpeedX();
+            case LEFT -> nextx = m.getX() - m.getSpeedX();
             case RIGHT -> nextx = m.getX() + m.getSpeedX();
             case DOWN -> nexty = m.getY() + m.getSpeedY();
             case UP -> nexty = m.getY() - m.getSpeedY();
