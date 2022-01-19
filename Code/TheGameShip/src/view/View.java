@@ -27,14 +27,9 @@ public class View {
 
     private String path;
         public String getPath() {return path;}
-        public void setPath(String path) {this.path = path;}
 
-    public View(Parent parent, String path) {
-        this.parent = parent;
-        this.path = path;
-        this.initialize=true;
-    }
     public View(String path) {
         this.path = path;
+        this.initialize=true;
     }
 }
