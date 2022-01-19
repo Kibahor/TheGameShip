@@ -1,21 +1,16 @@
 package model.entity;
 
-import javafx.beans.property.BooleanProperty;
-import java.net.URI;
+
 import java.util.UUID;
 
-public interface IEntity extends IReset {
+public interface IEntity extends IHasComponements{
 
     UUID getId();
     String getName();
-    EType getType();
+    EComponementType getType();
 
-    //TODO :  le mettre autre part
-    String getSprite();
-    void setSprite(String sprite);
+    EEntityType getEntityType();
 
-    boolean getVisible();
-    void setVisible(boolean b);
-    BooleanProperty getVisibleBooleanProperty();
+    boolean isTypeOf(EEntityType type);
 
 }

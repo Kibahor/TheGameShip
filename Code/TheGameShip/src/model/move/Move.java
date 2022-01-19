@@ -1,10 +1,10 @@
 package model.move;
 
-import model.entity2.*;
+import model.entity.*;
 import model.util.input.ECommand;
 import model.collider.ColliderInfo;
 import model.collider.ICollider;
-import model.entity2.IEntity;
+import model.entity.IEntity;
 
 import java.util.UUID;
 

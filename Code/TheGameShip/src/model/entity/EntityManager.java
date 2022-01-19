@@ -2,83 +2,40 @@ package model.entity;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableSet;
-import java.util.Collection;
+import model.IEntityCollection;
+
 import java.util.HashSet;
+import java.util.Iterator;
 
-public class EntityManager implements IHasEntityCollection {
+public class EntityManager implements IEntityCollection {
 
-    private final ObservableSet<IEntity> unUsedEntities;
-        @Override public Collection<IEntity> getEntityCollection() { return unUsedEntities; }
-
-    private final ObservableSet<IEntity> usedEntities;
-        @Override public Collection<IEntity> getUsedEntityCollection() { return usedEntities; }
+    private final ObservableSet<IEntity> entities;
+        @Override public ObservableSet<IEntity> getEntityCollection() { return entities; }
 
     public EntityManager() {
-        this.unUsedEntities = FXCollections.observableSet(new HashSet<>());
-        this.usedEntities = FXCollections.observableSet(new HashSet<>());
+        entities = FXCollections.observableSet(new HashSet<>());
     }
 
-    //TODO : fusionner les mêmes algo et ajouter un boolean isUsed pour trancher entre les 2 collections
     //TODO : Mauvais plan de faire deux listes, il faut en faire qu'une mais observable et la bind sur la vue
     //Used Entities
-    public void setUsedEntity(String name){
-        IEntity e = getUnUsedEntity(name);
-        e.setVisible(true);
-        getUsedEntityCollection().add(e);
+    public void addEntity(IEntity e){
+        Sprite.cast(e).setVisible(true);
+        entities.add(e);
     }
 
-    public void setUsedEntity(IEntity e) {
-        e.setVisible(true);
-        getUsedEntityCollection().add(e);
+    public void removeEntity(IEntity e){
+        Sprite.cast(e).setVisible(false);
+        entities.remove(e);
+    }
+    public void removeEntity(String name){
+        removeEntity(getEntityBy(name));
     }
 
-    public IEntity getUsedEntity(String name) {
-        for (IEntity e: getUsedEntityCollection()) {
-            if (name.equals(e.getName())) {
-                return e;
-            }
-        }
-        newError(name);
-        return null;
-    }
-
-    public IEntity getUsedEntity(EType type) {
-        for (IEntity e: getUsedEntityCollection()) {
-            if (type.equals(e.getType())) {
-                return e;
-            }
-        }
-        newError(type);
-        return null;
-    }
-
-    //UnUsed Entities
-    public void add(IEntity e) {
-        e.setVisible(false); //Au cas où
-        getEntityCollection().add(e);
-    }
-
-    public void setUnUsedEntity(IEntity e) {
-        e.setVisible(false);
-        getUsedEntityCollection().remove(e);
-        e.reset(); //Il met tous les autres paramètres par défauts sauf visible
-        getEntityCollection().add(e);
-    }
-
-    public IEntity getUnUsedEntity(EType type) {
-        for (IEntity e : getEntityCollection()) {
-            if (type.equals(e.getType())) {
-                getEntityCollection().remove(e);
-                return e;
-            }
-        }
-        newError(type);
-        return null;
-    }
-
-    public IEntity getUnUsedEntity(String name) {
-        for (IEntity e: getEntityCollection()) {
-            if (name.equals(e.getName())) {
+    private IEntity getEntityBy(String name){
+        Iterator it= entities.iterator();
+        while(it.hasNext()){
+            IEntity e = (IEntity) it.next();
+            if(e.getName().equals(name)){
                 return e;
             }
         }
@@ -95,18 +52,11 @@ public class EntityManager implements IHasEntityCollection {
         System.out.println("Used Entity :\n");
         for (IEntity e : getUsedEntityCollection()) {
             System.out.println(e);
-        }
-        System.out.println("Un-used Entity :\n");
-        for (IEntity e : getUnusedEntityCollection()) {
-            System.out.println(e);
         }*/
         return super.toString();
     }
 
     public void newError(String name){
         System.err.println("Il n'y a pas d'entité de nom : \""+ name+"\"");
-    }
-    public void newError(EType type){
-        System.err.println("Il n'y a pas d'entité de type : \""+ type.toString()+"\" disponible");
     }
 }

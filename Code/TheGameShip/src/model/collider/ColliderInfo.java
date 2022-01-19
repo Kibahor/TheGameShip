@@ -1,6 +1,6 @@
 package model.collider;
 
-import model.entity2.IEntity;
+import model.entity.IEntity;
 
 public class ColliderInfo {
 

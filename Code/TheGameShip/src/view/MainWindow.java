@@ -10,11 +10,10 @@ import javafx.scene.shape.Rectangle;
 
 import launch.Launcher;
 import model.World;
-import model.IEntityCollection;
-import model.entity2.EComponementType;
-import model.entity2.IEntity;
-import model.entity2.Location;
-import model.entity2.Sprite;
+import model.entity.EComponementType;
+import model.entity.IEntity;
+import model.entity.Location;
+import model.entity.Sprite;
 
 public class MainWindow {
 

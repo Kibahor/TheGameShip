@@ -4,7 +4,7 @@ import javafx.collections.ObservableSet;
 import model.collider.Collider;
 import model.collider.ColliderInfo;
 import model.collider.ICollider;
-import model.entity2.*;
+import model.entity.*;
 import model.move.IMove;
 import model.move.Move;
 import model.util.Boucle;
@@ -47,7 +47,7 @@ public class Level1 implements ILevel, IObserver {
         //ENTITIES
         entityManager.addEntity(entityFabric.createPlayer("Vaisseau", "/Sprites/Spaceship.png", 70, 70, 1, 0, 250, 10, 10));
         //entityManager.add(new Entity("Obstacle1","file://test.jpg", EType.Obstacle,35,5,500,500));
-        entityManager.addEntity(entityFabric.createEnnemie("Ennemy1", "/Sprites/Ennemie1.png",70, 70, 5, 650, 300));
+        entityManager.addEntity(entityFabric.createEnnemie("Ennemy1", null,70, 70, 5, 650, 300));
     }
 
     @Override
@@ -86,7 +86,7 @@ public class Level1 implements ILevel, IObserver {
                     for (ECommand key : input.getKeyPressed()) {
                         move.move(e, collider, key);
                         if (key.equals(ECommand.SHOOT)) {
-                             createShoot(e.getId(),Location.cast(e), ECommand.RIGHT);
+                            createShoot(e.getId(),Location.cast(e), ECommand.RIGHT);
                         }
                     }
                 }

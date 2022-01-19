@@ -2,7 +2,7 @@ package model.collider;
 
 import launch.Launcher;
 import model.ILevel;
-import model.entity2.*;
+import model.entity.*;
 
 import java.util.UUID;
 
