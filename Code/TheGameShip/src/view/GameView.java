@@ -10,12 +10,11 @@ import javafx.scene.shape.Rectangle;
 
 import launch.Launcher;
 import model.World;
-import model.entity.EComponementType;
 import model.entity.IEntity;
 import model.entity.Location;
 import model.entity.Sprite;
 
-public class MainWindow {
+public class GameView {
 
     @FXML
     private Pane pane;

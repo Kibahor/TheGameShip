@@ -3,7 +3,7 @@ package view;
 import javafx.event.ActionEvent;
 import launch.Launcher;
 
-public class EndGame {
+public class EndGameView {
 
     public void initialize() {}
 

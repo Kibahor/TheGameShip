@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.image.Image?>
 
-<Pane id="background" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Menu">
+<Pane id="background" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MenuView">
    <GridPane minHeight="-Infinity" minWidth="-Infinity">
       <columnConstraints>
          <ColumnConstraints prefWidth="300"/>

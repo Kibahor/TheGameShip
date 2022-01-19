@@ -3,7 +3,7 @@ package view;
 import javafx.event.ActionEvent;
 import launch.Launcher;
 
-public class HighScore {
+public class HighScoreView {
 
     public void initialize() {}
 
