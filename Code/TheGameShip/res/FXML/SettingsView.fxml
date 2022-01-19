@@ -12,14 +12,10 @@
 <?import javafx.scene.layout.VBox?>
 
 <Pane id="background" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.SettingsView">
-    <children>
         <HBox alignment="CENTER" prefHeight="720.0" prefWidth="1280.0">
-            <children>
                 <VBox prefHeight="720.0" prefWidth="700.0">
-                    <children>
                         <Pane prefHeight="110.0" prefWidth="200.0" />
                   <Pane prefHeight="500.0" prefWidth="200.0">
-                     <children>
                         <GridPane alignment="CENTER" prefHeight="500.0" prefWidth="700.0">
                            <columnConstraints>
                               <ColumnConstraints percentWidth="50" />
@@ -31,7 +27,6 @@
                               <RowConstraints percentHeight="50" />
                               <RowConstraints percentHeight="20" />
                            </rowConstraints>
-                           <children>
                               <Label id="label" text="DIFFICULTY:" GridPane.halignment="CENTER" />
                               <Label id="label" text="VOLUME:" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
                               <Button id="button2" onAction="#reset" text="Reset" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
@@ -60,32 +55,29 @@
                                   <RowConstraints percentHeight="33" />
                                   <RowConstraints percentHeight="34" />
                                 </rowConstraints>
-                                 <children>
-                                    <Label id="label" text="UP:" GridPane.halignment="CENTER" />
-                                    <Label id="label" text="LEFT:" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                                    <Label id="label" text="DOWN:" GridPane.columnIndex="3" GridPane.halignment="CENTER" />
-                                     <Label id="label" text="RIGHT:" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                                     <Label id="label" text="SHOOT:" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-                                    <Label id="label" fx:id="up" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
-                                    <Label id="label" fx:id="left" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                                     <Label id="label" fx:id="down" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                                    <Label id="label" fx:id="right" GridPane.columnIndex="4" GridPane.halignment="CENTER" />
-                                     <Label id="label" fx:id="shoot" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-                                    <Button onAction="#changeUp" text="Edit" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
-                                    <Button onAction="#changeLeft" text="Edit" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                                    <Button onAction="#changeDown" text="Edit" GridPane.columnIndex="5" GridPane.halignment="CENTER" />
-                                    <Button onAction="#changeRight" text="Edit" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                                    <Button onAction="#changeShoot" text="Edit" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-                                 </children>
+                                  <Label id="label" text="Up :" GridPane.halignment="RIGHT" />
+                                  <Label id="label" fx:id="up" GridPane.halignment="CENTER" GridPane.columnIndex="1" />
+                                  <Button onAction="#changeUp" text="Edit" GridPane.halignment="LEFT" GridPane.columnIndex="2" />
+
+                                  <Label id="label" text="Left :" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+                                  <Label id="label" fx:id="left" GridPane.halignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                  <Button onAction="#changeLeft" text="Edit" GridPane.halignment="LEFT" GridPane.columnIndex="2"  GridPane.rowIndex="1" />
+
+                                  <Label id="label" text="Down :" GridPane.halignment="RIGHT" GridPane.columnIndex="3" />
+                                  <Label id="label" fx:id="down" GridPane.halignment="CENTER" GridPane.columnIndex="4" />
+                                  <Button onAction="#changeDown" text="Edit" GridPane.halignment="LEFT" GridPane.columnIndex="5" />
+
+                                  <Label id="label" text="Right:" GridPane.halignment="RIGHT" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                  <Label id="label" fx:id="right" GridPane.halignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                  <Button onAction="#changeRight" text="Edit" GridPane.halignment="LEFT" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+
+                                  <Label id="label" text="Shoot :" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+                                  <Label id="label" fx:id="shoot" GridPane.halignment="CENTER" GridPane.columnIndex="1"  GridPane.rowIndex="2" />
+                                  <Button onAction="#changeShoot" text="Edit" GridPane.halignment="LEFT" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                               </GridPane>
-                           </children>
                         </GridPane>
-                     </children>
                   </Pane>
                         <Pane prefHeight="110.0" prefWidth="200.0" />
-                    </children>
                 </VBox>
-            </children>
         </HBox>
-    </children>
 </Pane>
