@@ -8,14 +8,16 @@ public interface IShoot {
 
     void setOwnerId(UUID ownerId);
 
-    void applyToEntity(IEntity e) throws Exception;
+    void applyToEntity(IEntity e);
 
-    static IShoot cast(IEntity e) throws Exception {
+    static IShoot cast(IEntity e) {
         if (!(e instanceof IShoot)) {
-            throw new Exception("L'Entité \"" + e.getName() + "\" n'implémente pas IShoot donc il ne peut être utiliser comme un tir !");
+            System.err.println("L'Entité \"" + e.getName() + "\" n'implémente pas IShoot donc il ne peut être utiliser comme un tir !");
+            return null;
         }
         return (IShoot) e;
     }
+
 }
 
 

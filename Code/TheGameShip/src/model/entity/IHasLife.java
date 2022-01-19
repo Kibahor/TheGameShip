@@ -5,7 +5,6 @@ import javafx.beans.property.DoubleProperty;
 public interface IHasLife {
 
     double getHp();
-    void incrementHp();
     void decreaseHp();
     void setHp(double hp);
     DoubleProperty hpProperty();
@@ -13,9 +12,10 @@ public interface IHasLife {
     boolean isDead();
     void setDead(boolean dead);
 
-    static IHasLife cast(IEntity e) throws Exception {
+    static IHasLife cast(IEntity e) {
         if (!(e instanceof IHasLife)) {
-            throw new Exception("L'Entité \""+e.getName()+"\" n'implémente pas IHasLife donc elle ne peut pas perdre de la vie !");
+            System.err.println("L'Entité \""+e.getName()+"\" n'implémente pas IHasLife donc elle ne peut pas perdre de la vie !");
+            return null;
         }
         return (IHasLife) e;
     }

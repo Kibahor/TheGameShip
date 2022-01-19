@@ -57,7 +57,6 @@ public class Entity implements IEntity, IHasLocation, IHasLife{
                 setDead(true);
             }
         }
-        @Override public void incrementHp() { setHp(getHp()+1); }
         @Override public void decreaseHp() { setHp(getHp()-1); }
         @Override public DoubleProperty hpProperty() { return hp; }
 

@@ -20,9 +20,10 @@ public interface IHasLocation {
     double getWidth();
     DoubleProperty widthProperty();
 
-    static IHasLocation cast(IEntity e) throws Exception {
+    static IHasLocation cast(IEntity e) {
         if (!(e instanceof IHasLocation)){
-            throw new Exception("L'Entité \""+e.getName()+"\" n'implémente pas IHasLocation donc il ne peut pas avoir de collisions !");
+            System.err.println("L'Entité \""+e.getName()+"\" n'implémente pas IHasLocation donc il ne peut pas avoir de collisions !");
+            return null;
         }
         return (IHasLocation) e;
     }

@@ -8,9 +8,10 @@ public interface IMovable extends IHasLocation {
     float getSpeedY();
     void setSpeedY(float speedY);
 
-    static IMovable cast(IEntity e) throws Exception {
+    static IMovable cast(IEntity e) {
         if (!(e instanceof IMovable)){
-            throw new Exception("L'Entité \""+e.getName()+"\" n'implémente pas IMovable !");
+            System.err.println("L'Entité \""+e.getName()+"\" n'implémente pas IMovable !");
+            return null;
         }
         return (IMovable) e;
     }

@@ -80,7 +80,7 @@ public class Level1 implements ILevel, IObserver, IHasEntityCollection {
         }
     }
 
-    //TODO: Au lieu de faire if/else, il faudrait trouver un autre
+    //TODO: Au lieu de faire if/else, il faudrait trouver un autre moyen
     // Le switch est compliqué
     @Override
     public void update() {

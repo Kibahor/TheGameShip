@@ -42,9 +42,9 @@ public class Shoot extends Entity implements IMovable, IShoot {
     }
 
     @Override
-    public void applyToEntity(IEntity e) throws Exception {
+    public void applyToEntity(IEntity e) {
         if (ownerId != null) {
-                throw new Exception("Le tir appartient déjà a une entité qui a pour id : "+getOwnerId().toString());
+                System.err.println("Le tir appartient déjà a une entité qui a pour id : "+getOwnerId().toString());
         }
         setOwnerId(e.getId());
 
