@@ -1,10 +1,10 @@
 package model.entity2;
 
 public class Componement {
-    private EType type;
-        public EType getType(){ return type; }
+    private EComponementType type;
+        public EComponementType getType(){ return type; }
 
-    public Componement(EType type){
+    public Componement(EComponementType type){
         this.type=type;
     }
 }

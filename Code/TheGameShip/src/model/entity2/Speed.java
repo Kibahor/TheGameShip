@@ -18,12 +18,12 @@ public class Speed extends Componement {
     }
 
     protected Speed(float speedX, float speedY){
-        super(EType.Speed);
+        super(EComponementType.Speed);
         setSpeedX(speedX);
         setSpeedY(speedY);
     }
 
     public static Speed cast(IHasComponements e){
-            return (Speed) e.getComponement(EType.Speed);
+            return (Speed) e.getComponement(EComponementType.Speed);
     }
 }

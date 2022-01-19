@@ -2,7 +2,6 @@ package model.collider;
 
 import launch.Launcher;
 import model.ILevel;
-import model.entity.IHasLocation;
 import model.entity2.*;
 
 import java.util.UUID;
@@ -31,7 +30,7 @@ public class Collider implements ICollider { //http://sdz.tdct.org/sdz/eorie-des
         for (IEntity e2: level.getEntityCollection()) {
             //Empêche que le joueur soit bloquer par ces propre tir
             boolean isAtOriginOfShoot = false;
-            if (e2.isTypeOf(EType.Shoot)) {
+            if (e2.isTypeOf(EComponementType.Shoot)) {
                 isAtOriginOfShoot = id.equals(Shoot.cast(e2).getOwnerId());
             }
             if (!id.equals(e2.getId()) && !isAtOriginOfShoot) {

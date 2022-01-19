@@ -6,7 +6,8 @@ import javafx.beans.property.SimpleDoubleProperty;
 public class Life extends Componement {
 
     private final DoubleProperty hp = new SimpleDoubleProperty();
-        public double getHp() { return hp.get(); }
+
+    public double getHp() { return hp.get(); }
         public void setHp(double hp) {
             this.hp.set(hp);
             if (getHp()<=0) {
@@ -21,9 +22,13 @@ public class Life extends Componement {
         public void setDead(boolean dead) { isDead=dead; }
 
     protected Life(double hp){
-        super(EType.Life);
+        super(EComponementType.Life);
         setHp(hp);
         setDead(false);
+    }
+
+    public static Life cast(IHasComponements e) {
+        return (Life) e.getComponement(EComponementType.Life);
     }
 
     /*

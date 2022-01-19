@@ -23,10 +23,12 @@ public class EntityManager implements IEntityCollection {
         entities.add(e);
     }
 
-    public void removeEntity(String name){
-        IEntity e = getEntityBy(name);
+    public void removeEntity(IEntity e){
         Sprite.cast(e).setVisible(false);
-        entities.remove(getEntityBy(name));
+        entities.remove(e);
+    }
+    public void removeEntity(String name){
+        removeEntity(getEntityBy(name));
     }
 
     private IEntity getEntityBy(String name){

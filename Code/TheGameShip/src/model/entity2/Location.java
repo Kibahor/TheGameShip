@@ -25,7 +25,7 @@ public class Location extends Componement {
         public DoubleProperty heightProperty() { return height; }
 
     public Location(double x, double y, double height, double width) {
-        super(EType.Location);
+        super(EComponementType.Location);
         setX(x);
         setY(y);
         setHeight(height);
@@ -33,6 +33,6 @@ public class Location extends Componement {
     }
 
     public static Location cast(IHasComponements e){
-            return (Location) e.getComponement(EType.Location);
+            return (Location) e.getComponement(EComponementType.Location);
     }
 }

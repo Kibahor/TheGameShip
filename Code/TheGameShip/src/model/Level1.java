@@ -1,9 +1,8 @@
 package model;
 
 import javafx.collections.ObservableSet;
-import model.entity2.EntityFabric;
-import model.entity2.EntityManager;
-import model.entity2.IEntity;
+import model.entity.EType;
+import model.entity2.*;
 import model.util.input.ECommand;
 import model.util.input.IInput;
 import model.collider.Collider;
@@ -66,44 +65,45 @@ public class Level1 implements ILevel, IObserver {
     public void updateShoot(IEntity e, ECommand key) {
         ColliderInfo ci = move.move(e, collider, key);
         if (ci.IsCollision()) {
-            entityManager.setUnUsedEntity(e);
-            if (ci.getEntity() instanceof IHasLife) {
-                ((IHasLife) ci.getEntity()).decreaseHp();
+            entityManager.removeEntity(e);
+            if (ci.getEntity().isTypeOf(EComponementType.Life)) {
+                Life.cast(ci.getEntity()).decreaseHp();
             }
         }
     }
 
+    public void createShoot(UUID id){
+        if (boucle.getTimer() >= 500) {
+            entityManager.addEntity(entityFabric.createShoot(e.getId()));
+            boucle.resetTimer();
+        }
+    }
     //TODO: Au lieu de faire if/else, il faudrait trouver un autre moyen
     // Le switch est compliqué
     @Override
     public void update() {
         try {
-            for (IEntity e : getUsedEntityCollection()) {
-                if (e instanceof Player) {                              //Gestion mouvement du joueur
+            for (IEntity e : getEntityCollection()) {
+                if (e.isTypeOf(EEntityType.Player)) {                              //Gestion mouvement du joueur
                     for (ECommand key : input.getKeyPressed()) {
                         move.move(e, collider, key);
                         if (key.equals(ECommand.SHOOT)) {
-                            if (boucle.getTimer() >= 500) {
-                                IEntity s = entityManager.getUnUsedEntity(EType.Shoot);                     // Récupère un tir qui n'est pas utilisé
-                                IShoot.cast(s).applyToEntity(entityManager.getUsedEntity(EType.Player));    // Donne l'appartenance du tir au joueur
-                                entityManager.setUsedEntity(s);                                             // Ajoute à la collection des entitées visible
-                                boucle.resetTimer();
-                            }
+                            createShoot(e.getId());
                         }
                     }
                 }
-                else if (e instanceof IShoot) {                 //Gestion des tirs
-                    UUID id = ((IShoot) e).getOwnerId();
-                    for (IEntity e2 : getUsedEntityCollection()) {
+                else if (e.isTypeOf(EEntityType.Shoot)) {                 //Gestion des tirs
+                    UUID id = Shoot.cast(e).getOwnerId();
+                    for (IEntity e2 : getEntityCollection()) {
                         if (e2.getId() == id) {
-                            if (e2.getType() == EType.Player) { updateShoot(e, ECommand.RIGHT); }
+                            if (e2.isTypeOf(EEntityType.Player)) { updateShoot(e, ECommand.RIGHT); }
                             else { updateShoot(e, ECommand.LEFT); }
                         }
                     }
                 }
-                else if (e instanceof IHasLife) {             //Gestion de la vie
+                else if (e.isTypeOf(EComponementType.Life)) {             //Gestion de la vie
                     //Si l'entité a de la vie
-                    if (((IHasLife) e).isDead()) { entityManager.setUnUsedEntity(e); }
+                    if (Life.cast(e).isDead()) { entityManager.removeEntity(e); }
                 }
             }
         }

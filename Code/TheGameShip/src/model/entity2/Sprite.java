@@ -14,15 +14,15 @@ public class Sprite extends  Componement{
         public BooleanProperty getVisibleBooleanProperty() { return visible; }
 
     public Sprite(String sprite){
-        super(EType.Sprite);
+        super(EComponementType.Sprite);
         setSprite(sprite);
     }
     public Sprite(){
-        super(EType.Sprite);
+        super(EComponementType.Sprite);
         setSprite(null);
     }
 
     public static Sprite cast(IHasComponements e){
-            return (Sprite) e.getComponement(EType.Sprite);
+            return (Sprite) e.getComponement(EComponementType.Sprite);
     }
 }

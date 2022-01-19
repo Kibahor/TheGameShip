@@ -26,7 +26,7 @@ public class Move implements IMove {
 
         //Vérifie la collision
         UUID id = e.getId();
-        if (e.isTypeOf(EType.Shoot)) {
+        if (e.isTypeOf(EComponementType.Shoot)) {
             id = Shoot.cast(e).getOwnerId();
         }
 

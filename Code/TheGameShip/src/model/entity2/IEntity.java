@@ -7,6 +7,7 @@ public interface IEntity extends IHasComponements{
 
     UUID getId();
     String getName();
-    EType getType();
+    EComponementType getType();
+    boolean isTypeOf(EEntityType type);
 
 }

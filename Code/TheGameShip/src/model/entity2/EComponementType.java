@@ -1,6 +1,6 @@
 package model.entity2;
 
-public enum EType {
+public enum EComponementType {
     Entity,
     Location,
     Speed,
