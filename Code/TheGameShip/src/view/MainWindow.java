@@ -80,5 +80,3 @@ public class MainWindow {
         }
     }
 }
-
-//Todo: Utiliser du css pour le style de la vue

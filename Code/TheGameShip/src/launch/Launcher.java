@@ -30,7 +30,7 @@ public class Launcher extends Application {
 // Réflexion :
 // - Au lieu d'adapter le model à la vue (double -> DoubleProperty), il faudrait faire l'inverse (même si en soit cela n'empêche pas de l'utiliser telle qu'elle)
 // - Changer fonctionnement des interfaces d'entité : Voir si il ne faut l'appliquer qu'aux interfaces (au lieu des entités)
-//      - Les interface deviendrait package private et seul les class créé plus tôt pourrait les implémenter
-//      Ensuite au lieu d'implémenter une interface dans l'entités on met une instance de l'objet
-//      - Ou faire une fabrique qui selon le type choisis les bon composant
+// - Les interface deviendrait package private et seul les class créé plus tôt pourrait les implémenter
+//  Ensuite au lieu d'implémenter une interface dans l'entités on met une instance de l'objet
+//  - Ou faire une fabrique qui selon le type choisis les bon composant
 // https://pixlwalkr.itch.io/space-shooter-pixel-art-pack

@@ -1,4 +1,4 @@
-#pane{
+#background{
     -fx-background-image: url("/Sprites/Background.jpg");
     -fx-background-size: stretch;
     -fx-background-position: center;
@@ -11,5 +11,11 @@
     -fx-padding: 5px;
     -fx-text-alignment: center;
     -fx-min-width: 250px;
+    -fx-alignment: center;
+}
+
+#button2{
+    -fx-font-size: 20px;
+    -fx-text-alignment: center;
     -fx-alignment: center;
 }

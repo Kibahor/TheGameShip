@@ -5,9 +5,7 @@ import java.util.UUID;
 public interface IShoot {
 
     UUID getOwnerId();
-
     void setOwnerId(UUID ownerId);
-
     void applyToEntity(IEntity e);
 
     static IShoot cast(IEntity e) {

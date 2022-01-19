@@ -10,42 +10,39 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.EndGame">
-    <ImageView fitHeight="1080.0" fitWidth="1920.0" pickOnBounds="true">
-        <image>
-            <Image url="@/Sprites/pinkspace.png" />
-        </image>
-    </ImageView>
-    <HBox alignment="CENTER" prefHeight="1080.0" prefWidth="1920.0">
-        <children>
-            <GridPane>
-                <columnConstraints>
-                    <ColumnConstraints prefWidth="300.0" />
-                    <ColumnConstraints prefWidth="300.0" />
-                </columnConstraints>
-                <rowConstraints>
-                    <RowConstraints percentHeight="20" />
-                    <RowConstraints percentHeight="40" />
-                    <RowConstraints percentHeight="30" />
-                    <RowConstraints percentHeight="10" />
-                </rowConstraints>
+<Pane id="background" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.EndGame">*
+    <children>
+        <HBox alignment="CENTER" prefHeight="1080.0" prefWidth="1920.0">
             <children>
-                <ImageView fitHeight="300.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true" GridPane.columnSpan="2" GridPane.rowIndex="1">
-                    <image>
-                        <Image url="@/Sprites/logo.png" />
-                    </image>
-                </ImageView>
-                <Button onAction="#Retry" text="Retry" GridPane.halignment="CENTER" GridPane.rowIndex="2">
-                  <font>
-                     <Font size="25.0" />
-                  </font></Button>
-               <Button onAction="#RageQuit" text="(Rage)Quit" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                  <font>
-                     <Font size="25.0" />
-                  </font>
-               </Button>
+                <GridPane>
+                    <columnConstraints>
+                        <ColumnConstraints prefWidth="300.0" />
+                        <ColumnConstraints prefWidth="300.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints percentHeight="20" />
+                        <RowConstraints percentHeight="40" />
+                        <RowConstraints percentHeight="30" />
+                        <RowConstraints percentHeight="10" />
+                    </rowConstraints>
+                    <children>
+                        <ImageView fitHeight="300.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                            <image>
+                                <Image url="@/Sprites/logo.png" />
+                            </image>
+                        </ImageView>
+                        <Button onAction="#Retry" text="Retry" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                            <font>
+                                <Font size="25.0" />
+                            </font></Button>
+                        <Button onAction="#RageQuit" text="(Rage)Quit" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                            <font>
+                                <Font size="25.0" />
+                            </font>
+                        </Button>
+                    </children>
+                </GridPane>
             </children>
-            </GridPane>
-        </children>
-    </HBox>
+        </HBox>
+    </children>=
 </Pane>
