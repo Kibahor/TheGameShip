@@ -22,14 +22,12 @@ public class View {
         }
         public void setParent(Parent parent) { this.parent = parent; }
 
-    private Boolean initialize = false;
-        public Boolean isInitialize() {return initialize;}
+        public boolean isInitialize() { return parent != null; }
 
     private String path;
         public String getPath() {return path;}
 
     public View(String path) {
         this.path = path;
-        this.initialize=true;
     }
 }

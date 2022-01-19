@@ -20,6 +20,7 @@ public class EntityFabric {
         e.addComponement(new Location(x, y, height, width));
         e.addComponement(new Life(hp));
         e.addComponement(new Speed(speedX, speedY));
+        e.addComponement(new Score());
         return e;
     }
 

@@ -16,11 +16,12 @@ public class World implements IEntityCollection {
     private Thread thread;
 
     private IInput input;
-    public IInput getInput() { return input; }
+        public IInput getInput() { return input; }
 
     //TODO: Faire une List de Monde et récupérer celui qui va être choisis
     ILevel currentLevel;
-    @Override public ObservableSet<IEntity> getEntityCollection() { return currentLevel.getEntityCollection(); }
+        public int getScore() { return ((Level)currentLevel).getScore(); }
+        @Override public ObservableSet<IEntity> getEntityCollection() { return currentLevel.getEntityCollection(); }
 
     public World() {
         //Loop

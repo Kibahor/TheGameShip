@@ -34,6 +34,11 @@ public class Level implements ILevel, IObserver {
 
     private ICollider collider;
 
+    public int getScore() {
+        Score score = (Score) entityManager.getPlayer().getComponement(EComponementType.Score);
+        return score.getScore();
+    }
+
     public Level(Loop loop, IInput input) {
         this.loop = loop;
         this.input = input;
@@ -90,6 +95,7 @@ public class Level implements ILevel, IObserver {
                             createShoot(e.getId(),Location.cast(e), ECommand.RIGHT);
                         }
                     }
+                   //Life.cast(e).setDead(true); //DEBUG : Pour tester l'écran de game over
                 }
                 else if (e.isTypeOf(EEntityType.Shoot)) {                 //Gestion des tirs
                     UUID ownerId = Shoot.cast(e).getOwnerId();

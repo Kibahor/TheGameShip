@@ -31,9 +31,9 @@
                             </image>
                         </ImageView>
                         <Label id="label" text="You have lost !" GridPane.halignment="CENTER" GridPane.valignment="CENTER" GridPane.columnSpan="2" GridPane.rowIndex="2" />
-                        <Label id="label" text="Your Score :" GridPane.valignment="CENTER" GridPane.halignment="CENTER" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+                        <Label id="label" fx:id="scoreLabel" text="Your Score :" GridPane.valignment="CENTER" GridPane.halignment="CENTER" GridPane.columnSpan="2" GridPane.rowIndex="3" />
                         <Button id="button" onAction="#GoToMenu" text="Go to Menu" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
-                        <Button id="button" onAction="#RageQuit" text="(Rage)Quit" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+                        <Button id="button" onAction="#Retry" text="Retry" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
                 </GridPane>
         </HBox>
 </Pane>

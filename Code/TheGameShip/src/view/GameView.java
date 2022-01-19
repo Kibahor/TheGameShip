@@ -1,5 +1,7 @@
 package view;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.SetChangeListener;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
@@ -9,10 +11,14 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 import launch.Launcher;
+import model.entity.Componement.Life;
+import model.entity.EEntityType;
 import model.game.World;
 import model.entity.IEntity;
 import model.entity.Componement.Location;
 import model.entity.Componement.Sprite;
+
+import javax.swing.text.StyledEditorKit;
 
 public class GameView {
 
@@ -84,6 +90,17 @@ public class GameView {
             r.yProperty().bind(l.yProperty());
             r.visibleProperty().bind(s.getVisibleBooleanProperty());
             pane.getChildren().add(r);
+        }
+
+        if(e.getEntityType().equals(EEntityType.Player)){
+            Life life=Life.cast(e);
+            life.isDeadProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) ->{
+                if(newValue){
+                    Launcher.getStage().setUserData(world.getScore());
+                    Launcher.getViewManager().closeView("GameView");
+                    Launcher.getViewManager().setView("EndGameView");
+                }
+            });
         }
     }
 }

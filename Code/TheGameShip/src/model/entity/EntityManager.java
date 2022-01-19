@@ -11,7 +11,8 @@ import java.util.Iterator;
 public class EntityManager implements IEntityCollection {
 
     private final ObservableSet<IEntity> entities;
-        @Override public ObservableSet<IEntity> getEntityCollection() { return entities; }
+
+    @Override public ObservableSet<IEntity> getEntityCollection() { return entities; }
 
     public EntityManager() {
         entities = FXCollections.observableSet(new HashSet<>());
@@ -44,6 +45,18 @@ public class EntityManager implements IEntityCollection {
         return null;
     }
 
+    public IEntity getPlayer(){
+        Iterator it= entities.iterator();
+        while(it.hasNext()){
+            IEntity e = (IEntity) it.next();
+            if(e.getEntityType().equals(EEntityType.Player)){
+                return e;
+            }
+        }
+        newError(EEntityType.Player);
+        return null;
+    }
+
     //General
     //TODO : la refaire pour mettre toute les infos
 
@@ -58,6 +71,9 @@ public class EntityManager implements IEntityCollection {
     }
 
     public void newError(String name){
-        System.err.println("Il n'y a pas d'entité de nom : \""+ name+"\"");
+        System.err.println("Il n'y a pas d'entité de nom : \""+ name +"\"");
+    }
+    public void newError(EEntityType type){
+        System.err.println("Il n'y a pas d'entité de type : \""+ type +"\"");
     }
 }

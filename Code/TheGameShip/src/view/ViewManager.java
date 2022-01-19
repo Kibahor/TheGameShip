@@ -69,7 +69,7 @@ public class ViewManager {
         try {
             parent = FXMLLoader.load(getClass().getClassLoader().getResource(view.getPath()));
         }catch (IOException err) {
-            System.err.println("La vue \""+name+"\" n'exite pas ! (ou a eu un problème lors de son chargement)"); //DEBUG
+            System.err.println("La vue \""+name+"\" n'existe pas ! (ou a eu un problème lors de son chargement)"); //DEBUG
             err.printStackTrace(); //DEBUG
         }
         views.get(name).setParent(parent);
@@ -81,6 +81,11 @@ public class ViewManager {
             loadView(name);
         }
         main.setRoot(view.getParent());
+    }
+
+    public void closeView(String name) {
+        View view = views.get(name);
+        view.setParent(null);
     }
 
     //TODO : la refaire pour mettre toute les infos
