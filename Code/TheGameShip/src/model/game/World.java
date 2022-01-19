@@ -3,7 +3,6 @@ package model.game;
 import javafx.collections.ObservableSet;
 import javafx.scene.input.KeyEvent;
 import launch.Launcher;
-import model.IEntityCollection;
 import model.entity.IEntity;
 import model.util.input.IInput;
 import model.util.input.Keyboard;

@@ -5,6 +5,7 @@ import model.collider.Collider;
 import model.collider.ColliderInfo;
 import model.collider.ICollider;
 import model.entity.*;
+import model.entity.Componement.*;
 import model.move.IMove;
 import model.move.Move;
 import model.util.loop.Loop;

@@ -1,9 +1,12 @@
 package model.entity;
 
 
+import model.entity.Componement.EComponementType;
+import model.entity.Componement.IHasComponements;
+
 import java.util.UUID;
 
-public interface IEntity extends IHasComponements{
+public interface IEntity extends IHasComponements {
 
     UUID getId();
     String getName();

@@ -1,4 +1,4 @@
-package model.entity;
+package model.entity.Componement;
 
 public class Speed extends Componement {
     private float speedX;

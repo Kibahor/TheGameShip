@@ -11,8 +11,8 @@ import javafx.scene.shape.Rectangle;
 import launch.Launcher;
 import model.game.World;
 import model.entity.IEntity;
-import model.entity.Location;
-import model.entity.Sprite;
+import model.entity.Componement.Location;
+import model.entity.Componement.Sprite;
 
 public class GameView {
 

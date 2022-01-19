@@ -1,5 +1,8 @@
 package model.entity;
 
+import model.entity.Componement.Componement;
+import model.entity.Componement.EComponementType;
+
 import java.util.*;
 
 public class Entity extends Componement implements IEntity {
@@ -21,13 +24,13 @@ public class Entity extends Componement implements IEntity {
         }
 
     private EEntityType type;
-        protected void setEntityType(EEntityType type){ this.type = type; }
+        public void setEntityType(EEntityType type){ this.type = type; }
         @Override public EEntityType getEntityType(){ return type; }
         @Override public boolean isTypeOf(EEntityType type){
             return this.type.equals(type);
         }
 
-    protected Entity(String name, EEntityType type) {
+    public Entity(String name, EEntityType type) {
         super(EComponementType.Entity);
         this.type=type;
         this.id = UUID.randomUUID();
