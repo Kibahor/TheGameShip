@@ -6,27 +6,29 @@ import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
 import java.io.*;
 
-public class PersistenceManager {
+public final class PersistenceManager {
 
     private static final File SettingsFile = new File("./res/Settings/settings.xml");
 
     public static void saveSettings(Settings settings) {
         try {
             XMLEncoder encoder = new XMLEncoder(new BufferedOutputStream(new FileOutputStream(SettingsFile)));
-            encoder.writeObject(new SerializeSettings(settings));
-            encoder.flush();
+            SerializeSettings data = new SerializeSettings(settings);
+            encoder.writeObject(data);
+            encoder.close();
         }
-        catch (IOException e) {
+        catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
 
     public static void loadSettings(Settings settings) {
         if (SettingsFile.length() == 0) { return; }
+        SerializeSettings data = null;
 
         try {
             XMLDecoder decoder = new XMLDecoder(new BufferedInputStream(new FileInputStream(SettingsFile)));
-            SerializeSettings data = (SerializeSettings) decoder.readObject();
+            data = (SerializeSettings) decoder.readObject();
 
             settings.setDifficulty(data.getDifficulty());
             settings.setVolume(data.getVolume());

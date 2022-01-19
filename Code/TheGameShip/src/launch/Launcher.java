@@ -21,7 +21,7 @@ public class Launcher extends Application {
         this.stage = stage;
         viewManager = new ViewManager("res/FXML/","Menu", "view/CSS/style.css");
         settings = new Settings();
-        //PersistenceManager.loadSettings(settings);
+        PersistenceManager.loadSettings(settings);
         stage.show();
     }
 

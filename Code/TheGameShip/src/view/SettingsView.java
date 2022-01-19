@@ -19,14 +19,13 @@ public class SettingsView {
         loadSliderVolume();
         loadSliderDifficulty();
 
-        //PersistenceManager.loadSettings(Launcher.getSettings());
         difficultySlider.valueProperty().bindBidirectional(Launcher.getSettings().difficultyProperty());
         volumeSlider.valueProperty().bindBidirectional(Launcher.getSettings().volumeProperty());
     }
 
     public void menu(ActionEvent actionEvent) {
         Launcher.getViewManager().setView("Menu");
-        //PersistenceManager.saveSettings(Launcher.getSettings());
+        PersistenceManager.saveSettings(Launcher.getSettings());
     }
 
     public void reset(ActionEvent actionEvent) {

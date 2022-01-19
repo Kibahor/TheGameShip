@@ -7,8 +7,12 @@ public class SerializeSettings implements ISerialize {
     private double difficulty;
     private double volume;
 
-    public SerializeSettings(Settings settings) {
+    public SerializeSettings() {
+        difficulty = 2;
+        volume = 50;
+    }
 
+    public SerializeSettings(Settings settings) {
         difficulty = settings.getDifficulty();
         volume = settings.getVolume();
     }

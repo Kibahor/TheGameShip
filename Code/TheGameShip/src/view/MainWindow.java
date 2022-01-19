@@ -36,14 +36,14 @@ public class MainWindow {
     }
 
     private void loadEntity(Collection<IEntity> c) throws Exception {
-        for(IEntity e : c){
+        for (IEntity e : c) {
             addEntity(e);
         }
     }
 
     public void addEntity(IEntity e) throws Exception {
         if (!(e instanceof IHasLocation)) { return; }
-        IHasLocation h=IHasLocation.cast(e);
+        IHasLocation h = IHasLocation.cast(e);
 
         if (!e.getSprite().equals("null")) {
             ImageView imgview = new ImageView();
