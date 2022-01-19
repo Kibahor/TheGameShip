@@ -20,21 +20,33 @@ public class EntityFabric {
         return e;
     }
 
-    //TODO :  a corriger
-    public IEntity createShoot(UUID ownerId, ECommand direction){
-        //Pour la direction du tir
-        //        if (e.getType() == EType.Player) { setX(((IHasLocation)e).getX() + ((IHasLocation)e).getWidth() + 5); }
-        //        else { setX(((IHasLocation)e).getX() + ((IHasLocation)e).getWidth() - 5); }
-        //        setY(((IHasLocation)e).getY() + (((IHasLocation) e).getHeight() / 2) - 5);
+    public Entity createEnnemie(String name, String sprite, double height, double width, double hp, double x, double y){
+        Entity e = createPlayer(name,sprite,height,width,hp,x,y,5,7);
+        e.setEntityType(EEntityType.Ennemy);
+        return e;
+    }
 
-        //String sprite, double height, double width, double hp, double x, double y, float speedX, float speedY,
-        Entity e=new Entity("Shoot"+getShootNumber()+"_"+ownerId.toString(), EEntityType.Shoot);
+    public IEntity createShoot(UUID ownerId, Location l, ECommand direction){
+        //Pour la direction du tir
+        double heightShoot = 10;
+        double widthShoot = 30;
+        double xShoot = l.getX();
+        double yShoot = l.getY() + l.getHeight()/2 - heightShoot/2;
+        switch (direction){
+            case RIGHT -> xShoot += l.getWidth() + 5;
+            case LEFT -> xShoot -= l.getWidth() - 5;
+        }
+
+        String name = "Shoot" + getShootNumber() + "_" + ownerId.toString();
+        Entity e=new Entity(name, EEntityType.Shoot);
         e.addComponement(new Sprite(null));
-        e.addComponement(new Location(100,300,10,30));
+        e.addComponement(new Location(xShoot,yShoot,heightShoot,widthShoot));
         e.addComponement(new Life(1));
         e.addComponement(new Speed(15,15));
         e.addComponement(new Shoot(ownerId));
 
         return e;
     }
+
+
 }

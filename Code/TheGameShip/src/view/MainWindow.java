@@ -31,7 +31,7 @@ public class MainWindow {
             if(e.wasAdded()){
                 addEntity(e.getElementAdded());
             }else if(e.wasRemoved()){
-                System.out.println("REMOVE VIEW A FAIRE !");
+                pane.getChildren().remove(e.getElementRemoved());
             }
         });
 

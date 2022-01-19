@@ -46,10 +46,8 @@ public class Level1 implements ILevel, IObserver {
     public void init() {
         //ENTITIES
         entityManager.addEntity(entityFabric.createPlayer("Vaisseau", "/Sprites/Spaceship.png", 70, 70, 1, 0, 250, 10, 10));
-        /*entityManager.add(new Entity("Obstacle1","file://test.jpg", EType.Obstacle,35,5,500,500));
-        entityManager.setUsedEntity("Obstacle1");
-        entityManager.add(new Entity("Ennemy1", "/Sprites/Ennemie1.png", EType.Ennemy, 70, 70, 5, 650, 300));
-        entityManager.setUsedEntity("Ennemy1");*/
+        //entityManager.add(new Entity("Obstacle1","file://test.jpg", EType.Obstacle,35,5,500,500));
+        entityManager.addEntity(entityFabric.createEnnemie("Ennemy1", "/Sprites/Ennemie1.png",70, 70, 5, 650, 300));
     }
 
     @Override
@@ -66,16 +64,15 @@ public class Level1 implements ILevel, IObserver {
         ColliderInfo ci = move.move(e, collider, key);
         if (ci.IsCollision()) {
             entityManager.removeEntity(e);
-            /*
             if (ci.getEntity().isTypeOf(EComponementType.Life)) {
                 Life.cast(ci.getEntity()).decreaseHp();
-            }*/
+            }
         }
     }
 
-    public void createShoot(UUID id, ECommand key){
+    public void createShoot(UUID id, Location l, ECommand key){
         if (boucle.getTimer() >= 500) {
-            entityManager.addEntity(entityFabric.createShoot(id,key));
+            entityManager.addEntity(entityFabric.createShoot(id, l, key));
             boucle.resetTimer();
         }
     }
@@ -89,7 +86,7 @@ public class Level1 implements ILevel, IObserver {
                     for (ECommand key : input.getKeyPressed()) {
                         move.move(e, collider, key);
                         if (key.equals(ECommand.SHOOT)) {
-                             createShoot(e.getId(),ECommand.RIGHT);
+                             createShoot(e.getId(),Location.cast(e), ECommand.RIGHT);
                         }
                     }
                 }

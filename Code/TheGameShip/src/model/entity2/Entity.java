@@ -10,7 +10,6 @@ public class Entity extends Componement implements IEntity {
         @Override public String getName() { return name; }
 
     private final Map<EComponementType,Componement> componements = new HashMap<>();
-        //public Set<EType> getTypes() { return types;}
         @Override public void addComponement(Componement c){
             componements.put(c.getType(),c);
         }
@@ -22,6 +21,7 @@ public class Entity extends Componement implements IEntity {
         }
 
     private EEntityType type;
+        protected void setEntityType(EEntityType type){ this.type = type; }
         @Override public EEntityType getEntityType(){ return type; }
         @Override public boolean isTypeOf(EEntityType type){
             return this.type.equals(type);
