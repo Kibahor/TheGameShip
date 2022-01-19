@@ -50,7 +50,7 @@ public class ViewManager {
         Launcher.getStage().setWidth(1280);
 
         Launcher.getStage().setResizable(false);
-        Launcher.getStage().getIcons().add(new Image("/Sprites/logo.png"));
+        Launcher.getStage().getIcons().add(new Image("/Sprites/icone.png"));
         Launcher.getStage().setScene(main);
     }
     public ViewManager(String pathView, String defaultView, String cssPath) throws Exception {
