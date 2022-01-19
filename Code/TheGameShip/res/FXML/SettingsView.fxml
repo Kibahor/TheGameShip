@@ -68,8 +68,8 @@
                                      <Label id="label" text="SHOOT:" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
                                     <Label id="label" fx:id="up" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
                                     <Label id="label" fx:id="left" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                                    <Label id="label" fx:id="down" GridPane.columnIndex="4" GridPane.halignment="CENTER" />
-                                     <Label id="label" fx:id="right" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                                     <Label id="label" fx:id="down" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                                    <Label id="label" fx:id="right" GridPane.columnIndex="4" GridPane.halignment="CENTER" />
                                      <Label id="label" fx:id="shoot" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
                                     <Button onAction="#changeUp" text="Edit" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
                                     <Button onAction="#changeLeft" text="Edit" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
