@@ -15,8 +15,6 @@ public class Menu {
     public void highScore(ActionEvent actionEvent) {
         Launcher.getViewManager().setView("HighScore");
     }
-    public void settings(ActionEvent actionEvent) {
-        Launcher.getViewManager().setView("Settings");
-    }
+    public void settings(ActionEvent actionEvent) { Launcher.getViewManager().setView("SettingsView"); }
     public void exit(ActionEvent actionEvent) { Launcher.getStage().close(); }
 }

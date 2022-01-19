@@ -2,18 +2,20 @@ package model.save;
 
 import model.util.settings.Settings;
 
+import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
 import java.io.*;
 
-public class PersistenceManager {
+public final class PersistenceManager {
 
     private static final File SettingsFile = new File("./res/Settings/settings.xml");
 
     public static void saveSettings(Settings settings) {
         try {
             XMLEncoder encoder = new XMLEncoder(new BufferedOutputStream(new FileOutputStream(SettingsFile)));
-            encoder.writeObject(new SerializeSettings(settings));
-            encoder.flush();
+            SerializeSettings data = new SerializeSettings(settings);
+            encoder.writeObject(data);
+            encoder.close();
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -22,16 +24,22 @@ public class PersistenceManager {
 
     public static void loadSettings(Settings settings) {
         if (SettingsFile.length() == 0) { return; }
+        SerializeSettings data = null;
 
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(SettingsFile))) {
-            SerializeSettings serializeSettings = (SerializeSettings) ois.readObject();
+        try {
+            XMLDecoder decoder = new XMLDecoder(new BufferedInputStream(new FileInputStream(SettingsFile)));
+            data = (SerializeSettings) decoder.readObject();
 
-            //TODO: set les valeurs dans Settings
-            //settings.setDifficulty(SerializeSettings.getDifficulty());
-            //settings.setVolume(SerializeSettings.getVolume());
+            settings.setDifficulty(data.getDifficulty());
+            settings.setVolume(data.getVolume());
 
+            settings.setUp(data.getUp());
+            settings.setLeft(data.getLeft());
+            settings.setDown(data.getDown());
+            settings.setRight(data.getRight());
+            settings.setShoot(data.getShoot());
         }
-        catch (ClassNotFoundException | IOException e) {
+        catch (IOException e) {
             e.printStackTrace();
         }
     }

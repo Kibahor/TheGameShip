@@ -1,40 +1,24 @@
 package view;
 
 import javafx.event.ActionEvent;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import launch.Launcher;
 import javafx.fxml.FXML;
 import model.save.PersistenceManager;
-import model.util.settings.Settings;
 
 public class SettingsView {
 
-    @FXML
-    private Slider difficultySlider;
+    @FXML private Slider difficultySlider;
+    @FXML private Slider volumeSlider;
 
-    @FXML
-    private Slider volumeSlider;
+    @FXML private Label up;
+    @FXML private Label left;
+    @FXML private Label down;
+    @FXML private Label right;
+    @FXML private Label shoot;
 
-    private Settings settings;
-
-    public void initialize() {
-        loadSliderVolume();
-        loadSliderDifficulty();
-
-        settings = new Settings();
-        difficultySlider.valueProperty().bindBidirectional(settings.difficultyProperty());
-        volumeSlider.valueProperty().bindBidirectional(settings.volumeProperty());
-    }
-
-    public void menu(ActionEvent actionEvent) {
-        Launcher.getViewManager().setView("Menu");
-        PersistenceManager.saveSettings(settings);
-    }
-
-    public void reset(ActionEvent actionEvent) {
-        difficultySlider.setValue(2);
-        volumeSlider.setValue(50);
-    }
 
     public void loadSliderDifficulty() {
         difficultySlider.setMin(1);
@@ -55,4 +39,39 @@ public class SettingsView {
         volumeSlider.setSnapToTicks(true);
         volumeSlider.setShowTickLabels(true);
     }
+
+    public void initialize() {
+        loadSliderVolume();
+        loadSliderDifficulty();
+
+        difficultySlider.valueProperty().bindBidirectional(Launcher.getSettings().difficultyProperty());
+        volumeSlider.valueProperty().bindBidirectional(Launcher.getSettings().volumeProperty());
+
+        up.textProperty().bindBidirectional(Launcher.getSettings().upProperty());
+        left.textProperty().bindBidirectional(Launcher.getSettings().leftProperty());
+        down.textProperty().bindBidirectional(Launcher.getSettings().downProperty());
+        right.textProperty().bindBidirectional(Launcher.getSettings().rightProperty());
+        shoot.textProperty().bindBidirectional(Launcher.getSettings().shootProperty());
+    }
+
+    public void menu(ActionEvent actionEvent) {
+        Launcher.getViewManager().setView("Menu");
+        PersistenceManager.saveSettings(Launcher.getSettings());
+    }
+
+    public void reset(ActionEvent actionEvent) {
+        difficultySlider.setValue(2);
+        volumeSlider.setValue(50);
+        up.setText("UP");
+        left.setText("LEFT");
+        down.setText("RIGHT");
+        right.setText("DOWN");
+        shoot.setText("SPACE");
+    }
+
+    public void changeUp(ActionEvent actionEvent) { System.out.println("up"); }
+    public void changeLeft(ActionEvent actionEvent) { System.out.println("left"); }
+    public void changeDown(ActionEvent actionEvent) { System.out.println("down"); }
+    public void changeRight(ActionEvent actionEvent) { System.out.println("right"); }
+    public void changeShoot(ActionEvent actionEvent) { System.out.println("shoot"); }
 }

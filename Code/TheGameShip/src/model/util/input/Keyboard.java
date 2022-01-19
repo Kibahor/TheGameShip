@@ -3,6 +3,7 @@ package model.util.input;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import launch.Launcher;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,19 +27,23 @@ public class Keyboard implements IInput, EventHandler<KeyEvent> {
             {
                 put(KeyCode.UP, ECommand.UP);
                 put(KeyCode.Z, ECommand.UP);
+
                 put(KeyCode.DOWN, ECommand.DOWN);
                 put(KeyCode.S, ECommand.DOWN);
+
                 put(KeyCode.RIGHT, ECommand.RIGHT);
                 put(KeyCode.D, ECommand.RIGHT);
+
                 put(KeyCode.LEFT, ECommand.LEFT);
                 put(KeyCode.Q, ECommand.LEFT);
+
                 put(KeyCode.SPACE, ECommand.SHOOT);
             }
         };
 
     public Keyboard() {
         for (ECommand e : ECommand.values()) {
-            keyPressed.put(e,false);
+            keyPressed.put(e, false);
         }
     }
 
