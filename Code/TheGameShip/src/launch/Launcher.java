@@ -19,7 +19,7 @@ public class Launcher extends Application {
 
     public void start(Stage stage) throws Exception {
         this.stage = stage;
-        viewManager = new ViewManager("res/FXML/","MenuView", "view/CSS/style.css");
+        viewManager = new ViewManager("TheGameShip",720,1280,"res/FXML/","MenuView", "/Sprites/icone.png", "view/CSS/style.css");
         settings = new Settings();
         PersistenceManager.loadSettings(settings);
         stage.show();
