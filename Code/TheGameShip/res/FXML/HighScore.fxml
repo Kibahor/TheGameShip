@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane id="anchorpane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.HighScore">
+<AnchorPane id="background" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.HighScore">
     <children>
         <FlowPane prefHeight="720.0" prefWidth="1280.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="50.0">
             <GridPane prefHeight="620.0" prefWidth="680.0">
@@ -23,16 +23,8 @@
                     <RowConstraints percentHeight="70" />
                     <RowConstraints percentHeight="20" />
                 </rowConstraints>
-                <Button mnemonicParsing="false" onAction="#clear" text="Clear" GridPane.halignment="CENTER" GridPane.rowIndex="2">
-                    <font>
-                        <Font size="20.0" />
-                    </font>
-                </Button>
-                <Button mnemonicParsing="false" onAction="#menu" text="Leave" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
-                    <font>
-                        <Font size="20.0" />
-                    </font>
-                </Button>
+                <Button id="button2" onAction="#clear" text="Clear" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                <Button id="button2" onAction="#menu" text="Leave" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
                 <Label text="High Score" GridPane.columnSpan="2" GridPane.halignment="CENTER">
                     <font>
                         <Font name="System Bold" size="25.0" />
