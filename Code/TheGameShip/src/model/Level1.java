@@ -47,7 +47,7 @@ public class Level1 implements ILevel, IObserver {
         //ENTITIES
         entityManager.addEntity(entityFabric.createPlayer("Vaisseau", "/Sprites/Spaceship.png", 70, 70, 1, 0, 250, 10, 10));
         //entityManager.add(new Entity("Obstacle1","file://test.jpg", EType.Obstacle,35,5,500,500));
-        entityManager.addEntity(entityFabric.createEnnemie("Ennemy1", null,70, 70, 5, 650, 300));
+        entityManager.addEntity(entityFabric.createEnnemie("Ennemy1", "/Sprites/Enemy.png",70, 70, 5, 650, 300));
     }
 
     @Override
