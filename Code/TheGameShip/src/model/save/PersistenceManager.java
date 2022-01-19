@@ -2,6 +2,7 @@ package model.save;
 
 import model.util.settings.Settings;
 
+import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
 import java.io.*;
 
@@ -23,15 +24,14 @@ public class PersistenceManager {
     public static void loadSettings(Settings settings) {
         if (SettingsFile.length() == 0) { return; }
 
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(SettingsFile))) {
-            SerializeSettings serializeSettings = (SerializeSettings) ois.readObject();
+        try {
+            XMLDecoder decoder = new XMLDecoder(new BufferedInputStream(new FileInputStream(SettingsFile)));
+            SerializeSettings data = (SerializeSettings) decoder.readObject();
 
-            //TODO: set les valeurs dans Settings
-            //settings.setDifficulty(SerializeSettings.getDifficulty());
-            //settings.setVolume(SerializeSettings.getVolume());
-
+            settings.setDifficulty(data.getDifficulty());
+            settings.setVolume(data.getVolume());
         }
-        catch (ClassNotFoundException | IOException e) {
+        catch (IOException e) {
             e.printStackTrace();
         }
     }

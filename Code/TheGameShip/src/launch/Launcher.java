@@ -7,21 +7,27 @@ package launch;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+import model.save.PersistenceManager;
+import model.util.settings.Settings;
 import view.ViewManager;
 
 public class Launcher extends Application {
 
     private static ViewManager viewManager;
     private static Stage stage;
+    private static Settings settings;
 
     public void start(Stage stage) throws Exception {
         this.stage = stage;
         viewManager = new ViewManager("res/FXML/","Menu", "view/CSS/style.css");
+        settings = new Settings();
+        //PersistenceManager.loadSettings(settings);
         stage.show();
     }
 
     public static ViewManager getViewManager() { return viewManager; }
     public static Stage getStage() { return stage; }
+    public static Settings getSettings() { return settings; }
 }
 
 // TODO: Code + Docs + Video (une demo vidéo d'1 min max) + Preuve de compétence (avec la feuille de compétence en expliquant)

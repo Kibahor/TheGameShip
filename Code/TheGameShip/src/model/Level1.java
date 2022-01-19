@@ -1,6 +1,5 @@
 package model;
 
-import javafx.stage.Stage;
 import model.util.input.ECommand;
 import model.util.input.IInput;
 import model.collider.Collider;
@@ -63,8 +62,12 @@ public class Level1 implements ILevel, IObserver, IHasEntityCollection {
 
         /*entityManager.add(new Entity("Obstacle1","file://test.jpg", EType.Obstacle,35,5,500,500));
         entityManager.setUsedEntity("Obstacle1");*/
-        entityManager.add(new Ennemi("Ennemy1", "/Sprites/Ennemie1.png", 70, 70));
+
+        entityManager.add(new Ennemy("Ennemy1", "/Sprites/Ennemie1.png", 70, 70));
         entityManager.setUsedEntity("Ennemy1");
+
+        entityManager.add(new Ennemy("Ennemy2", "/Sprites/Ennemie1.png", 70, 70, 3, 1000, 50, 5, 5 ));
+        entityManager.setUsedEntity("Ennemy2");
     }
 
     @Override

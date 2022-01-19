@@ -15,20 +15,18 @@ public class SettingsView {
     @FXML
     private Slider volumeSlider;
 
-    private Settings settings;
-
     public void initialize() {
         loadSliderVolume();
         loadSliderDifficulty();
 
-        settings = new Settings();
-        difficultySlider.valueProperty().bindBidirectional(settings.difficultyProperty());
-        volumeSlider.valueProperty().bindBidirectional(settings.volumeProperty());
+        //PersistenceManager.loadSettings(Launcher.getSettings());
+        difficultySlider.valueProperty().bindBidirectional(Launcher.getSettings().difficultyProperty());
+        volumeSlider.valueProperty().bindBidirectional(Launcher.getSettings().volumeProperty());
     }
 
     public void menu(ActionEvent actionEvent) {
         Launcher.getViewManager().setView("Menu");
-        PersistenceManager.saveSettings(settings);
+        //PersistenceManager.saveSettings(Launcher.getSettings());
     }
 
     public void reset(ActionEvent actionEvent) {
