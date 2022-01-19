@@ -19,3 +19,15 @@
     -fx-text-alignment: center;
     -fx-alignment: center;
 }
+
+#label{
+    -fx-font-size: 20px;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}
+
+#field{
+    -fx-font-size: 20px;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}

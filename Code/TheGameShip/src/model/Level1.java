@@ -129,7 +129,7 @@ public class Level1 implements ILevel, IObserver, IHasEntityCollection {
 
                         Random random = new Random();
                         int n = random.nextInt(10);
-                        System.out.println(n);
+                        //System.out.println(n);
 
                         if (n == 0 && botShoot.getTimer() >= 1000) {
                             IEntity s = entityManager.getUnUsedEntity(EType.Shoot);

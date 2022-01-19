@@ -17,7 +17,7 @@ public final class PersistenceManager {
             encoder.writeObject(data);
             encoder.close();
         }
-        catch (FileNotFoundException e) {
+        catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -32,6 +32,12 @@ public final class PersistenceManager {
 
             settings.setDifficulty(data.getDifficulty());
             settings.setVolume(data.getVolume());
+
+            settings.setUp(data.getUp());
+            settings.setLeft(data.getLeft());
+            settings.setDown(data.getDown());
+            settings.setRight(data.getRight());
+            settings.setShoot(data.getShoot());
         }
         catch (IOException e) {
             e.printStackTrace();
