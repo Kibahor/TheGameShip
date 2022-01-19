@@ -2,8 +2,6 @@ package model.entity2;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
-import model.entity.IEntity;
-import model.entity.IHasLocation;
 
 public class Location extends Componement {
     private final DoubleProperty x = new SimpleDoubleProperty();
@@ -27,10 +25,14 @@ public class Location extends Componement {
         public DoubleProperty heightProperty() { return height; }
 
     public Location(double x, double y, double height, double width) {
-            super(EType.Location);
+        super(EType.Location);
         setX(x);
         setY(y);
         setHeight(height);
         setWidth(width);
+    }
+
+    public static Location cast(IHasComponements e){
+            return (Location) e.getComponement(EType.Location);
     }
 }

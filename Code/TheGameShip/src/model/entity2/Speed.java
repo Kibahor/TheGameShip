@@ -22,4 +22,8 @@ public class Speed extends Componement {
         setSpeedX(speedX);
         setSpeedY(speedY);
     }
+
+    public static Speed cast(IHasComponements e){
+            return (Speed) e.getComponement(EType.Speed);
+    }
 }

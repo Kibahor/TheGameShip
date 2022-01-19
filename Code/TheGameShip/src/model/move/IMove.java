@@ -1,9 +1,9 @@
 package model.move;
 
+import model.entity2.IEntity;
 import model.util.input.ECommand;
 import model.collider.ColliderInfo;
 import model.collider.ICollider;
-import model.entity.IEntity;
 
 public interface IMove {
     ColliderInfo move(IEntity e, ICollider c, ECommand key) ;

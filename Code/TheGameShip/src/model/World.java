@@ -21,7 +21,7 @@ public class World implements IHasEntityCollection {
 
     //TODO: Faire une List de Monde et récupérer celui qui va être choisis
     ILevel currentLevel;
-        @Override public Collection<IEntity> getUnusedEntityCollection() { return currentLevel.getUnusedEntityCollection(); }
+        @Override public Collection<IEntity> getEntityCollection() { return currentLevel.getEntityCollection(); }
         @Override public Collection<IEntity> getUsedEntityCollection() { return currentLevel.getUsedEntityCollection(); }
 
     public World() {

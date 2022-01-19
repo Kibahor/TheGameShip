@@ -21,4 +21,8 @@ public class Sprite extends  Componement{
         super(EType.Sprite);
         setSprite(null);
     }
+
+    public static Sprite cast(IHasComponements e){
+            return (Sprite) e.getComponement(EType.Sprite);
+    }
 }

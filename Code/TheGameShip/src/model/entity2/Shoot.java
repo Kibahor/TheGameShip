@@ -1,15 +1,19 @@
 package model.entity2;
 
-import model.entity2.EType;
-import model.util.input.ECommand;
-
 import java.util.UUID;
 
-public class Shoot {
+public class Shoot extends Componement {
     private UUID ownerId;
         public UUID getOwnerId() { return ownerId; }
         public void setOwnerId(UUID ownerId) { this.ownerId = ownerId; }
 
+    public Shoot(){
+            super(EType.Shoot);
+    }
+
+    public static Shoot cast(IHasComponements e){
+            return (Shoot) e.getComponement(EType.Shoot);
+    }
     /*
     public void applyToEntity(Entity e, ECommand direction) {
         if (ownerId != null) {

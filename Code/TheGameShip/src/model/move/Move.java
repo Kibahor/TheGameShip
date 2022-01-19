@@ -1,12 +1,10 @@
 package model.move;
 
+import model.entity2.*;
 import model.util.input.ECommand;
 import model.collider.ColliderInfo;
 import model.collider.ICollider;
-import model.entity.EType;
-import model.entity.IEntity;
-import model.entity.IMovable;
-import model.entity.IShoot;
+import model.entity2.IEntity;
 
 import java.util.UUID;
 
@@ -14,28 +12,29 @@ public class Move implements IMove {
 
     @Override
     public ColliderInfo move(IEntity e, ICollider c, ECommand key) {
-        IMovable m = IMovable.cast(e);
-        double nextx = m.getX();
-        double nexty = m.getY();
+        Location l = Location.cast(e);
+        double nextx = l.getX();
+        double nexty = l.getY();
 
+        Speed s = Speed.cast(e);
         switch (key) {
-            case LEFT -> nextx = m.getX() - m.getSpeedX();
-            case RIGHT -> nextx = m.getX() + m.getSpeedX();
-            case DOWN -> nexty = m.getY() + m.getSpeedY();
-            case UP -> nexty = m.getY() - m.getSpeedY();
+            case LEFT -> nextx -= s.getSpeedX();
+            case RIGHT -> nextx += s.getSpeedX();
+            case DOWN -> nexty += s.getSpeedY();
+            case UP -> nexty -= s.getSpeedY();
         }
 
         //Vérifie la collision
         UUID id = e.getId();
-        if (e.getType().equals(EType.Shoot)) {
-            id = IShoot.cast(e).getOwnerId();
+        if (e.isTypeOf(EType.Shoot)) {
+            id = Shoot.cast(e).getOwnerId();
         }
 
         //Et si ce n'est pas en collision, sa déplace l'entité
-        ColliderInfo ci = c.isCollision(nextx, nexty, m.getHeight(),  m.getWidth(), id);
+        ColliderInfo ci = c.isCollision(nextx, nexty, l.getHeight(),  l.getWidth(), id);
         if (!ci.IsCollision()) {
-            m.setX(nextx);
-            m.setY(nexty);
+            l.setX(nextx);
+            l.setY(nexty);
         }
         return ci;
     }

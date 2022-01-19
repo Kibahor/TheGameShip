@@ -8,7 +8,7 @@ import java.util.HashSet;
 public class EntityManager implements IHasEntityCollection {
 
     private final ObservableSet<IEntity> unUsedEntities;
-        @Override public Collection<IEntity> getUnusedEntityCollection() { return unUsedEntities; }
+        @Override public Collection<IEntity> getEntityCollection() { return unUsedEntities; }
 
     private final ObservableSet<IEntity> usedEntities;
         @Override public Collection<IEntity> getUsedEntityCollection() { return usedEntities; }
@@ -55,20 +55,20 @@ public class EntityManager implements IHasEntityCollection {
     //UnUsed Entities
     public void add(IEntity e) {
         e.setVisible(false); //Au cas où
-        getUnusedEntityCollection().add(e);
+        getEntityCollection().add(e);
     }
 
     public void setUnUsedEntity(IEntity e) {
         e.setVisible(false);
         getUsedEntityCollection().remove(e);
         e.reset(); //Il met tous les autres paramètres par défauts sauf visible
-        getUnusedEntityCollection().add(e);
+        getEntityCollection().add(e);
     }
 
     public IEntity getUnUsedEntity(EType type) {
-        for (IEntity e : getUnusedEntityCollection()) {
+        for (IEntity e : getEntityCollection()) {
             if (type.equals(e.getType())) {
-                getUnusedEntityCollection().remove(e);
+                getEntityCollection().remove(e);
                 return e;
             }
         }
@@ -77,7 +77,7 @@ public class EntityManager implements IHasEntityCollection {
     }
 
     public IEntity getUnUsedEntity(String name) {
-        for (IEntity e: getUnusedEntityCollection()) {
+        for (IEntity e: getEntityCollection()) {
             if (name.equals(e.getName())) {
                 return e;
             }

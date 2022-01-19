@@ -2,12 +2,12 @@ package model.entity2;
 
 import java.util.*;
 
-public class Entity extends Componement implements IHasComponements  {
+public class Entity extends Componement implements IEntity {
     private UUID id;
-        public UUID getId(){ return id; }
+        @Override public UUID getId(){ return id; }
 
     private String name;
-        public String getName() { return name; }
+        @Override public String getName() { return name; }
 
     private final Map<EType,Componement> componements = new HashMap<>();
         //public Set<EType> getTypes() { return types;}

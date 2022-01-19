@@ -27,7 +27,7 @@ public class MainWindow {
         gameManager = new World();
 
         gameManager.init();
-        loadEntity(((IHasEntityCollection)gameManager).getUnusedEntityCollection());
+        loadEntity(((IHasEntityCollection)gameManager).getEntityCollection());
         loadEntity(((IHasEntityCollection)gameManager).getUsedEntityCollection());
 
         gameManager.start();
