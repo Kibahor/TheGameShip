@@ -3,6 +3,7 @@ package model.entity2;
 import java.util.UUID;
 
 public class Shoot extends Componement {
+
     private UUID ownerId;
         public UUID getOwnerId() { return ownerId; }
         public void setOwnerId(UUID ownerId) { this.ownerId = ownerId; }

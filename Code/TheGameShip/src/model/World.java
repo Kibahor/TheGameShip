@@ -4,14 +4,13 @@ import javafx.collections.ObservableSet;
 import javafx.scene.input.KeyEvent;
 import launch.Launcher;
 import model.entity2.IEntity;
-import model.entity.IHasEntityCollection;
+import model.IEntityCollection;
 import model.util.input.IInput;
 import model.util.input.Keyboard;
 import model.util.Boucle;
 
-import java.util.Collection;
 
-public class World implements IHasEntityCollection {
+public class World implements IEntityCollection {
 
     private Boucle boucle;
 

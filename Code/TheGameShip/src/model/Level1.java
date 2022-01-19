@@ -1,16 +1,16 @@
 package model;
 
 import javafx.collections.ObservableSet;
-import model.entity.EType;
-import model.entity2.*;
-import model.util.input.ECommand;
-import model.util.input.IInput;
 import model.collider.Collider;
 import model.collider.ColliderInfo;
 import model.collider.ICollider;
-import model.move.*;
+import model.entity2.*;
+import model.move.IMove;
+import model.move.Move;
 import model.util.Boucle;
 import model.util.IObserver;
+import model.util.input.ECommand;
+import model.util.input.IInput;
 
 import java.util.UUID;
 
@@ -62,7 +62,7 @@ public class Level1 implements ILevel, IObserver {
         //TODO: Unscribe les événement ajouter aux boucle (créer une méthode destroy dans boucle)
     }
 
-    public void updateShoot(IEntity e, ECommand key) {
+    public void updateShoot(IEntity e, ECommand key) { //Ne vas pas, un tir a de la vie comme tout le monde
         ColliderInfo ci = move.move(e, collider, key);
         if (ci.IsCollision()) {
             entityManager.removeEntity(e);
@@ -72,9 +72,9 @@ public class Level1 implements ILevel, IObserver {
         }
     }
 
-    public void createShoot(UUID id){
+    public void createShoot(UUID id, ECommand key){
         if (boucle.getTimer() >= 500) {
-            entityManager.addEntity(entityFabric.createShoot(e.getId()));
+            entityManager.addEntity(entityFabric.createShoot(id,key));
             boucle.resetTimer();
         }
     }
@@ -88,7 +88,7 @@ public class Level1 implements ILevel, IObserver {
                     for (ECommand key : input.getKeyPressed()) {
                         move.move(e, collider, key);
                         if (key.equals(ECommand.SHOOT)) {
-                            createShoot(e.getId());
+                            createShoot(e.getId(),ECommand.RIGHT);
                         }
                     }
                 }

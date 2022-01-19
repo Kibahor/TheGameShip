@@ -28,7 +28,9 @@ public class Entity extends Componement implements IEntity {
 
     protected Entity(String name) {
         super(EComponementType.Entity);
+        this.type=EEntityType.Entity;
         this.id = UUID.randomUUID();
         this.name = name;
     }
+
 }

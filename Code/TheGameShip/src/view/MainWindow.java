@@ -9,34 +9,29 @@ import javafx.scene.shape.Rectangle;
 
 import launch.Launcher;
 import model.World;
-import model.entity.IHasEntityCollection;
-import model.entity.IEntity;
-import model.entity.IHasLocation;
-
-import java.util.Collection;
+import model.IEntityCollection;
 
 public class MainWindow {
 
     @FXML
     private Pane pane;
 
-    private World gameManager;
+    private World world;
 
-    public void initialize() throws Exception {
+    public void initialize() {
 
-        gameManager = new World();
+        world = new World();
 
-        gameManager.init();
-        loadEntity(((IHasEntityCollection)gameManager).getEntityCollection());
-        loadEntity(((IHasEntityCollection)gameManager).getUsedEntityCollection());
+        world.init();
+        //loadEntity(((IEntityCollection) world).getEntityCollection()); //Le bind sur la vue
 
-        gameManager.start();
+        world.start();
 
         Launcher.getStage().setOnCloseRequest(e -> {
-            gameManager.exit();
+            world.exit();
         });
     }
-
+    /*
     private void loadEntity(Collection<IEntity> c) throws Exception {
         for(IEntity e : c){
             addEntity(e);
@@ -78,5 +73,5 @@ public class MainWindow {
             r.visibleProperty().bind(e.getVisibleBooleanProperty());
             pane.getChildren().add(r);
         }
-    }
+    }*/
 }
