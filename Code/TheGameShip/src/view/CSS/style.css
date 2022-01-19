@@ -1,4 +1,15 @@
-#level{
+#pane{
     -fx-background-image: url("/Sprites/Background.jpg");
+    -fx-background-size: stretch;
     -fx-background-position: center;
+    -fx-pref-width: 1280;
+    -fx-pref-height: 720;
+}
+
+#button{
+    -fx-font-size: 30px;
+    -fx-padding: 5px;
+    -fx-text-alignment: center;
+    -fx-min-width: 250px;
+    -fx-alignment: center;
 }

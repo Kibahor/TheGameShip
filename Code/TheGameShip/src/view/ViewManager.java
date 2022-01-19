@@ -43,8 +43,12 @@ public class ViewManager {
         loadView(defaultView);
         main = new Scene(views.get(defaultView).getParent());
         Launcher.getStage().setTitle("TheGameShip");
-        Launcher.getStage().setMaxHeight(720);
-        Launcher.getStage().setMaxHeight(1280);
+        Launcher.getStage().setMinHeight(720);
+        Launcher.getStage().setMinWidth(1280);
+
+        Launcher.getStage().setHeight(720);
+        Launcher.getStage().setWidth(1280);
+
         Launcher.getStage().setResizable(false);
         Launcher.getStage().getIcons().add(new Image("/Sprites/logo.png"));
         Launcher.getStage().setScene(main);
