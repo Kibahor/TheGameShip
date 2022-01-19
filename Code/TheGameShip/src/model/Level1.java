@@ -1,5 +1,6 @@
 package model;
 
+import javafx.stage.Stage;
 import model.util.input.ECommand;
 import model.util.input.IInput;
 import model.collider.Collider;
@@ -9,18 +10,20 @@ import model.entity.*;
 import model.move.*;
 import model.util.Boucle;
 import model.util.IObserver;
-
 import java.util.Collection;
+import java.util.Random;
 import java.util.UUID;
+
+import static launch.Launcher.getStage;
 
 //TODO: A la place faire une fabrique, qui se basera sur un fichier xml/json qui spécifie toute les caractéristiques
 
 public class Level1 implements ILevel, IObserver, IHasEntityCollection {
 
     private Boucle boucle;
+    private Boucle botShoot;
 
     private IInput input;
-
     private EntityManager entityManager;
 
     @Override
@@ -37,8 +40,9 @@ public class Level1 implements ILevel, IObserver, IHasEntityCollection {
 
     private ICollider collider;
 
-    public Level1(Boucle boucle, IInput input) {
+    public Level1(Boucle boucle, Boucle botShoot, IInput input) {
         this.boucle = boucle;
+        this.botShoot = botShoot;
         this.input = input;
         entityManager = new EntityManager();
         move = new Move();
@@ -52,17 +56,21 @@ public class Level1 implements ILevel, IObserver, IHasEntityCollection {
         for (int i = 0; i < nbShootPreGenerate; i++) {
             entityManager.add(new Shoot());
         }
-        entityManager.add(new Player("Vaisseau", "/Sprites/Spaceship.png", 70, 70, 1, 0, 250, 10, 10));
+        int spaceShipSide = 70;
+        entityManager.add(new Player("Vaisseau", "/Sprites/Spaceship.png", spaceShipSide, spaceShipSide, 3, 0, (getStage().getHeight()/2 - spaceShipSide/2), 10, 10));
         entityManager.setUsedEntity("Vaisseau");
+
+
         /*entityManager.add(new Entity("Obstacle1","file://test.jpg", EType.Obstacle,35,5,500,500));
         entityManager.setUsedEntity("Obstacle1");*/
-        entityManager.add(new Entity("Ennemy1", "/Sprites/Ennemie1.png", EType.Ennemy, 70, 70, 5, 650, 300));
+        entityManager.add(new Ennemi("Ennemy1", "/Sprites/Ennemie1.png", 70, 70));
         entityManager.setUsedEntity("Ennemy1");
     }
 
     @Override
     public void start() {
         boucle.subscribe(this);
+        botShoot.subscribe(this);
     }
 
     @Override
@@ -111,6 +119,20 @@ public class Level1 implements ILevel, IObserver, IHasEntityCollection {
                 else if (e instanceof IHasLife) {             //Gestion de la vie
                     //Si l'entité a de la vie
                     if (((IHasLife) e).isDead()) { entityManager.setUnUsedEntity(e); }
+                    else {
+                        move.move(e, collider, ECommand.LEFT);
+
+                        Random random = new Random();
+                        int n = random.nextInt(10);
+                        System.out.println(n);
+
+                        if (n == 0 && botShoot.getTimer() >= 1000) {
+                            IEntity s = entityManager.getUnUsedEntity(EType.Shoot);
+                            IShoot.cast(s).applyToEntity(entityManager.getUsedEntity(EType.Ennemy));
+                            entityManager.setUsedEntity(s);
+                            botShoot.resetTimer();
+                        }
+                    }
                 }
             }
         }

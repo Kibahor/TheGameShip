@@ -13,6 +13,7 @@ import java.util.Collection;
 public class World implements IHasEntityCollection {
 
     private Boucle boucle;
+    private Boucle botShoot;
 
     private Thread thread;
 
@@ -29,12 +30,15 @@ public class World implements IHasEntityCollection {
         boucle = new Boucle(20); //Temps d'attente entre chaque actualisation de sprite du joueur et déplacement joueur
         thread = new Thread(boucle);
 
+        botShoot = new Boucle(20);
+        thread = new Thread(botShoot);
+
         //Input
         input = new Keyboard(); //Mettre une autre classe si on veut contrôler le personnage autrement qu'avec le clavier
         Launcher.getStage().addEventFilter(KeyEvent.ANY, (Keyboard)input); //Spécifique au événement de JavaFX
 
         //Level
-        currentLevel = new Level1(boucle, input); //Mettre le bon monde
+        currentLevel = new Level1(boucle, botShoot, input); //Mettre le bon monde
     }
 
     //TODO: init,start,exit doit être des méthode qui notifie tout ces abonnés (par rapport a stage)

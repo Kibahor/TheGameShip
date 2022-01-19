@@ -6,13 +6,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-
 import launch.Launcher;
 import model.World;
 import model.entity.IHasEntityCollection;
 import model.entity.IEntity;
 import model.entity.IHasLocation;
-
 import java.util.Collection;
 
 public class MainWindow {
@@ -44,11 +42,11 @@ public class MainWindow {
     }
 
     public void addEntity(IEntity e) throws Exception {
-        if(!(e instanceof IHasLocation)) { return; }
+        if (!(e instanceof IHasLocation)) { return; }
         IHasLocation h=IHasLocation.cast(e);
 
-        if(!e.getSprite().equals("null")){
-            ImageView imgview=new ImageView();
+        if (!e.getSprite().equals("null")) {
+            ImageView imgview = new ImageView();
             imgview.setImage(new Image(String.valueOf(getClass().getResource(e.getSprite()).toURI().toURL())));
             imgview.setSmooth(true);
             imgview.xProperty().bind(((IHasLocation) e).xProperty());
