@@ -1,6 +1,6 @@
 package model.entity;
 
-public class Ennemy extends Entity implements IMovable {
+public class Enemy extends Entity implements IMovable {
 
     //IMovable
     private float speedX;
@@ -19,13 +19,13 @@ public class Ennemy extends Entity implements IMovable {
         this.speedY = speedY;
     }
 
-    public Ennemy(String name, String sprite, double height, double width) {
+    public Enemy(String name, String sprite, double height, double width) {
         super(name, sprite, EType.Ennemy, height, width, 5, 1000, 300);
         setSpeedX(5);
         setSpeedY(5);
     }
 
-    public Ennemy(String name, String sprite, double height, double width, double hp, double x, double y, float speedX, float speedY) {
+    public Enemy(String name, String sprite, double height, double width, double hp, double x, double y, float speedX, float speedY) {
         this(name, sprite, height, width);
         setHp(hp);
         setX(x);
@@ -38,7 +38,7 @@ public class Ennemy extends Entity implements IMovable {
     public void reset() {
         super.reset();
         //IMovable (speedX,speedY)
-        setSpeedX(15);
-        setSpeedY(10);
+        setSpeedX(5);
+        setSpeedY(5);
     }
 }

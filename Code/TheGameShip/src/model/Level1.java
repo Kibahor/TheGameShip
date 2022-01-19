@@ -36,7 +36,6 @@ public class Level1 implements ILevel, IObserver, IHasEntityCollection {
     }
 
     private IMove move;
-
     private ICollider collider;
 
     public Level1(Boucle boucle, Boucle botShoot, IInput input) {
@@ -46,6 +45,14 @@ public class Level1 implements ILevel, IObserver, IHasEntityCollection {
         entityManager = new EntityManager();
         move = new Move();
         collider = new Collider(this);
+    }
+
+    public void generatorOfEnemies(EntityManager entityManager) {
+        entityManager.add(new Enemy("Enemy1", "/Sprites/Ennemi1.png", 70, 70));
+        entityManager.setUsedEntity("Enemy1");
+
+        entityManager.add(new Enemy("Enemy2", "/Sprites/Ennemi1.png", 70, 70, 3, 1000, 50, 5, 5 ));
+        entityManager.setUsedEntity("Enemy2");
     }
 
     @Override
@@ -59,15 +66,10 @@ public class Level1 implements ILevel, IObserver, IHasEntityCollection {
         entityManager.add(new Player("Vaisseau", "/Sprites/Spaceship.png", spaceShipSide, spaceShipSide, 3, 0, (getStage().getHeight()/2 - spaceShipSide/2), 10, 10));
         entityManager.setUsedEntity("Vaisseau");
 
-
         /*entityManager.add(new Entity("Obstacle1","file://test.jpg", EType.Obstacle,35,5,500,500));
         entityManager.setUsedEntity("Obstacle1");*/
 
-        entityManager.add(new Ennemy("Ennemy1", "/Sprites/Ennemie1.png", 70, 70));
-        entityManager.setUsedEntity("Ennemy1");
-
-        entityManager.add(new Ennemy("Ennemy2", "/Sprites/Ennemie1.png", 70, 70, 3, 1000, 50, 5, 5 ));
-        entityManager.setUsedEntity("Ennemy2");
+        generatorOfEnemies(entityManager);
     }
 
     @Override
