@@ -1,7 +1,7 @@
 package model;
 
 //TODO: Voir si pas donner un autre nom
-public interface ILevel {
+public interface ILevel extends IEntityCollection {
 
    void init();
    void start();

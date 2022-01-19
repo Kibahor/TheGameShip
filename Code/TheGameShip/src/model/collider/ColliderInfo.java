@@ -1,17 +1,16 @@
 package model.collider;
 
-import model.entity.IEntity;
-import model.entity2.Entity;
+import model.entity2.IEntity;
 
 public class ColliderInfo {
 
     private boolean isCollison;
         public boolean IsCollision() { return isCollison; }
 
-    private Entity e;
-        public Entity getEntity() { return e; }
+    private IEntity e;
+        public IEntity getEntity() { return e; }
 
-    public ColliderInfo(boolean isCollison, Entity e) {
+    public ColliderInfo(boolean isCollison, IEntity e) {
         this.e = e;
         this.isCollison = e != null || isCollison;  //Si e est attribué alors c'est en collision
     }

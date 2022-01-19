@@ -2,14 +2,15 @@ package model.entity2;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableSet;
+import model.IEntityCollection;
 
 import java.util.HashSet;
 import java.util.Iterator;
 
-public class EntityManager {
+public class EntityManager implements IEntityCollection {
 
     private final ObservableSet<IEntity> entities;
-        public ObservableSet<IEntity> getEntityCollection() { return entities; }
+        @Override public ObservableSet<IEntity> getEntityCollection() { return entities; }
 
     public EntityManager() {
         entities = FXCollections.observableSet(new HashSet<>());

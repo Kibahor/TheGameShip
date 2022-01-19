@@ -3,10 +3,7 @@ package model.collider;
 import launch.Launcher;
 import model.ILevel;
 import model.entity.IHasLocation;
-import model.entity2.EType;
-import model.entity2.Entity;
-import model.entity2.Location;
-import model.entity2.Shoot;
+import model.entity2.*;
 
 import java.util.UUID;
 
@@ -20,7 +17,7 @@ public class Collider implements ICollider { //http://sdz.tdct.org/sdz/eorie-des
     @Override
     public ColliderInfo isCollision(double nextX, double nextY, double height, double width, UUID id) {
         boolean scene = isCollisionScene(nextX, nextY, height, width);
-        Entity e = isCollisionEntity(nextX, nextY, height, width, id);
+        IEntity e = isCollisionEntity(nextX, nextY, height, width, id);
         return new ColliderInfo(scene, e);
     }
 
@@ -30,8 +27,8 @@ public class Collider implements ICollider { //http://sdz.tdct.org/sdz/eorie-des
         return ((nextY <= 0) || (nextX <= 0) || (nextY + height >= heightScene) || (nextX + width >= widthScene)); //trop haut || trop à gauche || trop bas || trop à droite
     }
 
-    protected Entity isCollisionEntity(double nextX, double nextY, double height, double width, UUID id) {
-        for (Entity e2: level.getEntityCollection()) {
+    protected IEntity isCollisionEntity(double nextX, double nextY, double height, double width, UUID id) {
+        for (IEntity e2: level.getEntityCollection()) {
             //Empêche que le joueur soit bloquer par ces propre tir
             boolean isAtOriginOfShoot = false;
             if (e2.isTypeOf(EType.Shoot)) {

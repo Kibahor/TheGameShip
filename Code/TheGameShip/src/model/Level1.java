@@ -24,9 +24,9 @@ public class Level1 implements ILevel, IObserver {
     private IInput input;
 
     private EntityManager entityManager;
-    private EntityFabric entityFabric;
+    private final EntityFabric entityFabric;
 
-    public ObservableSet<IEntity> getEntityCollection() {
+    @Override public ObservableSet<IEntity> getEntityCollection() {
         return entityManager.getEntityCollection();
     }
 
@@ -38,6 +38,7 @@ public class Level1 implements ILevel, IObserver {
         this.boucle = boucle;
         this.input = input;
         entityManager = new EntityManager();
+        entityFabric = new EntityFabric();
         move = new Move();
         collider = new Collider(this);
     }

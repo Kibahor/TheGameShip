@@ -1,8 +1,9 @@
 package model;
 
+import javafx.collections.ObservableSet;
 import javafx.scene.input.KeyEvent;
 import launch.Launcher;
-import model.entity.IEntity;
+import model.entity2.IEntity;
 import model.entity.IHasEntityCollection;
 import model.util.input.IInput;
 import model.util.input.Keyboard;
@@ -21,8 +22,7 @@ public class World implements IHasEntityCollection {
 
     //TODO: Faire une List de Monde et récupérer celui qui va être choisis
     ILevel currentLevel;
-        @Override public Collection<IEntity> getEntityCollection() { return currentLevel.getEntityCollection(); }
-        @Override public Collection<IEntity> getUsedEntityCollection() { return currentLevel.getUsedEntityCollection(); }
+        @Override public ObservableSet<IEntity> getEntityCollection() { return currentLevel.getEntityCollection(); }
 
     public World() {
         //Boucle
