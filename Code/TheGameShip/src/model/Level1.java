@@ -66,9 +66,10 @@ public class Level1 implements ILevel, IObserver {
         ColliderInfo ci = move.move(e, collider, key);
         if (ci.IsCollision()) {
             entityManager.removeEntity(e);
+            /*
             if (ci.getEntity().isTypeOf(EComponementType.Life)) {
                 Life.cast(ci.getEntity()).decreaseHp();
-            }
+            }*/
         }
     }
 
@@ -88,14 +89,14 @@ public class Level1 implements ILevel, IObserver {
                     for (ECommand key : input.getKeyPressed()) {
                         move.move(e, collider, key);
                         if (key.equals(ECommand.SHOOT)) {
-                            createShoot(e.getId(),ECommand.RIGHT);
+                             createShoot(e.getId(),ECommand.RIGHT);
                         }
                     }
                 }
                 else if (e.isTypeOf(EEntityType.Shoot)) {                 //Gestion des tirs
-                    UUID id = Shoot.cast(e).getOwnerId();
+                    UUID ownerId = Shoot.cast(e).getOwnerId();
                     for (IEntity e2 : getEntityCollection()) {
-                        if (e2.getId() == id) {
+                        if (e2.getId().equals(ownerId)) {
                             if (e2.isTypeOf(EEntityType.Player)) { updateShoot(e, ECommand.RIGHT); }
                             else { updateShoot(e, ECommand.LEFT); }
                         }

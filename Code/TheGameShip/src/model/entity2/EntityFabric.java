@@ -12,7 +12,7 @@ public class EntityFabric {
         }
 
     public Entity createPlayer(String name, String sprite, double height, double width, double hp, double x, double y, float speedX, float speedY){
-        Entity e=new Entity(name);
+        Entity e=new Entity(name, EEntityType.Player);
         e.addComponement(new Sprite(sprite));
         e.addComponement(new Location(x, y, height, width));
         e.addComponement(new Life(hp));
@@ -28,9 +28,9 @@ public class EntityFabric {
         //        setY(((IHasLocation)e).getY() + (((IHasLocation) e).getHeight() / 2) - 5);
 
         //String sprite, double height, double width, double hp, double x, double y, float speedX, float speedY,
-        Entity e=new Entity("Shoot"+getShootNumber()+"_"+ownerId.toString());
+        Entity e=new Entity("Shoot"+getShootNumber()+"_"+ownerId.toString(), EEntityType.Shoot);
         e.addComponement(new Sprite(null));
-        e.addComponement(new Location(10,10,10,30));
+        e.addComponement(new Location(100,300,10,30));
         e.addComponement(new Life(1));
         e.addComponement(new Speed(15,15));
         e.addComponement(new Shoot(ownerId));

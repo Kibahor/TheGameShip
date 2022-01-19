@@ -52,7 +52,7 @@ public class MainWindow {
         Location l=Location.cast(e);
         Sprite s= Sprite.cast(e);
 
-        if(!s.getSprite().equals("null")){
+        if(s.getSprite() != null){
             try {
                 ImageView imgview = new ImageView();
                 imgview.setImage(new Image(String.valueOf(getClass().getResource(s.getSprite()).toURI().toURL())));
