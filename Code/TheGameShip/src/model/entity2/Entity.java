@@ -22,6 +22,7 @@ public class Entity extends Componement implements IEntity {
         }
 
     private EEntityType type;
+        @Override public EEntityType getEntityType(){ return type; }
         @Override public boolean isTypeOf(EEntityType type){
             return this.type.equals(type);
         }

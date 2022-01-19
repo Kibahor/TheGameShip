@@ -1,5 +1,6 @@
 package view;
 
+import javafx.collections.SetChangeListener;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -10,6 +11,10 @@ import javafx.scene.shape.Rectangle;
 import launch.Launcher;
 import model.World;
 import model.IEntityCollection;
+import model.entity2.EComponementType;
+import model.entity2.IEntity;
+import model.entity2.Location;
+import model.entity2.Sprite;
 
 public class MainWindow {
 
@@ -22,8 +27,15 @@ public class MainWindow {
 
         world = new World();
 
+        world.getEntityCollection().addListener((SetChangeListener<IEntity>) e ->{
+            if(e.wasAdded()){
+                addEntity(e.getElementAdded());
+            }else if(e.wasRemoved()){
+                System.out.println("REMOVE VIEW A FAIRE !");
+            }
+        });
+
         world.init();
-        //loadEntity(((IEntityCollection) world).getEntityCollection()); //Le bind sur la vue
 
         world.start();
 
@@ -31,32 +43,34 @@ public class MainWindow {
             world.exit();
         });
     }
-    /*
-    private void loadEntity(Collection<IEntity> c) throws Exception {
-        for(IEntity e : c){
-            addEntity(e);
-        }
-    }
 
-    public void addEntity(IEntity e) throws Exception {
-        if(!(e instanceof IHasLocation)) { return; }
-        IHasLocation h=IHasLocation.cast(e);
+    public void addEntity(IEntity e) {
+        /* TODO : ajouter ce genre de message dans les méthodes de casts
+        if(!e.isTypeOf(EComponementType.Life)){
+            System.err.println("Impossible d'ajouter l'entité : \""+e.getName()+"\" car elle n'implémente pas Location");
+        }*/
+        Location l=Location.cast(e);
+        Sprite s= Sprite.cast(e);
 
-        if(!e.getSprite().equals("null")){
-            ImageView imgview=new ImageView();
-            imgview.setImage(new Image(String.valueOf(getClass().getResource(e.getSprite()).toURI().toURL())));
-            imgview.setSmooth(true);
-            imgview.xProperty().bind(((IHasLocation) e).xProperty());
-            imgview.yProperty().bind(((IHasLocation) e).yProperty());
-            imgview.fitHeightProperty().bind(((IHasLocation) e).heightProperty());
-            imgview.fitWidthProperty().bind(((IHasLocation) e).widthProperty());
-            imgview.visibleProperty().bind(e.getVisibleBooleanProperty());
-            pane.getChildren().add(imgview);
+        if(!s.getSprite().equals("null")){
+            try {
+                ImageView imgview = new ImageView();
+                imgview.setImage(new Image(String.valueOf(getClass().getResource(s.getSprite()).toURI().toURL())));
+                imgview.setSmooth(true);
+                imgview.xProperty().bind(l.xProperty());
+                imgview.yProperty().bind(l.yProperty());
+                imgview.fitHeightProperty().bind(l.heightProperty());
+                imgview.fitWidthProperty().bind(l.widthProperty());
+                imgview.visibleProperty().bind(s.getVisibleBooleanProperty());
+                pane.getChildren().add(imgview);
+            } catch(Exception err) {
+                err.printStackTrace();
+            }
 
         } else {
             //Si pas de sprite
             Color color;
-            switch (e.getType()) {
+            switch (e.getEntityType()) {
                 case Ennemy -> color = Color.RED;
                 case Shoot -> color = Color.YELLOW;
                 case Obstacle -> color = Color.GRAY;
@@ -66,12 +80,12 @@ public class MainWindow {
 
             Rectangle r = new Rectangle();
             r.setFill(color);
-            r.heightProperty().bind(h.heightProperty());
-            r.widthProperty().bind(h.widthProperty());
-            r.xProperty().bind(h.xProperty());
-            r.yProperty().bind(h.yProperty());
-            r.visibleProperty().bind(e.getVisibleBooleanProperty());
+            r.heightProperty().bind(l.heightProperty());
+            r.widthProperty().bind(l.widthProperty());
+            r.xProperty().bind(l.xProperty());
+            r.yProperty().bind(l.yProperty());
+            r.visibleProperty().bind(s.getVisibleBooleanProperty());
             pane.getChildren().add(r);
         }
-    }*/
+    }
 }
