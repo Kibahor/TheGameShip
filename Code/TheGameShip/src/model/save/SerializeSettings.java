@@ -2,7 +2,7 @@ package model.save;
 
 import model.util.settings.Settings;
 
-public class SerializeSettings implements ISerialize {
+public class SerializeSettings {
 
     private double difficulty;
     private double volume;
@@ -20,8 +20,14 @@ public class SerializeSettings implements ISerialize {
     public double getDifficulty() { return difficulty; }
     public double getVolume() { return volume; }
 
+    public void setDifficulty(double difficulty) { this.difficulty = difficulty; }
+    public void setVolume(double volume) { this.volume = volume; }
+
     @Override
-    public ISerialize serialize() {
-        return this;
+    public String toString() {
+        return "SerializeSettings{" +
+                "difficulty=" + difficulty +
+                ", volume=" + volume +
+                '}';
     }
 }
