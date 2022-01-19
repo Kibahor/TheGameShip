@@ -1,7 +1,6 @@
 package view;
 
 import javafx.event.ActionEvent;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import launch.Launcher;
@@ -69,7 +68,7 @@ public class SettingsView {
         shoot.setText("SPACE");
     }
 
-    public void changeUp(ActionEvent actionEvent) { System.out.println("up"); }
+    public void changeUp(ActionEvent actionEvent) { System.out.println("up"); }         //TODO: Faire apparaitre une petite fenêtre où sera inscrit appuyez sur une touche. La touche sera ensuite assigné à la commande correspondante.
     public void changeLeft(ActionEvent actionEvent) { System.out.println("left"); }
     public void changeDown(ActionEvent actionEvent) { System.out.println("down"); }
     public void changeRight(ActionEvent actionEvent) { System.out.println("right"); }

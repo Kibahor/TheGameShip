@@ -3,23 +3,23 @@ package model.util.input;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import launch.Launcher;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Keyboard implements IInput, EventHandler<KeyEvent> {
+
     private Map<ECommand, Boolean> keyPressed = new HashMap<>();
-        @Override public ArrayList<ECommand> getKeyPressed() {
-            ArrayList<ECommand> list = new ArrayList<>();
-            for (Map.Entry m: keyPressed.entrySet()) {
-                if ((Boolean)m.getValue()) {
-                    list.add((ECommand) m.getKey());
-                }
+
+    @Override public ArrayList<ECommand> getKeyPressed() {
+        ArrayList<ECommand> list = new ArrayList<>();
+        for (Map.Entry m: keyPressed.entrySet()) {
+            if ((Boolean)m.getValue()) {
+                list.add((ECommand) m.getKey());
             }
-            return list;
         }
+        return list;
+    }
 
         //Correspondance entre les commandes disponible et les touche du clavier
     private Map<KeyCode,ECommand> matchKey = new HashMap<>()
