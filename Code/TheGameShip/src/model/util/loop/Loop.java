@@ -1,10 +1,10 @@
-package model.util;
+package model.util.loop;
 
 import javafx.application.Platform;
 
 import static java.lang.Thread.sleep;
 
-public class Boucle extends Observable implements Runnable {
+public class Loop extends Observable implements Runnable {
 
     private final long millis;
     private boolean isRunning = true;
@@ -15,7 +15,7 @@ public class Boucle extends Observable implements Runnable {
         }
         public void resetTimer() { timer = 0; }
 
-    public Boucle(long millis) {
+    public Loop(long millis) {
         this.millis = millis;
     }
 

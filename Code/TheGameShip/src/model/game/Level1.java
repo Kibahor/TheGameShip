@@ -1,4 +1,4 @@
-package model;
+package model.game;
 
 import javafx.collections.ObservableSet;
 import model.collider.Collider;
@@ -7,8 +7,8 @@ import model.collider.ICollider;
 import model.entity.*;
 import model.move.IMove;
 import model.move.Move;
-import model.util.Boucle;
-import model.util.IObserver;
+import model.util.loop.Loop;
+import model.util.loop.IObserver;
 import model.util.input.ECommand;
 import model.util.input.IInput;
 
@@ -18,7 +18,7 @@ import java.util.UUID;
 
 public class Level1 implements ILevel, IObserver {
 
-    private Boucle boucle;
+    private Loop loop;
 
     private IInput input;
 
@@ -33,8 +33,8 @@ public class Level1 implements ILevel, IObserver {
 
     private ICollider collider;
 
-    public Level1(Boucle boucle, IInput input) {
-        this.boucle = boucle;
+    public Level1(Loop loop, IInput input) {
+        this.loop = loop;
         this.input = input;
         entityManager = new EntityManager();
         entityFabric = new EntityFabric();
@@ -52,7 +52,7 @@ public class Level1 implements ILevel, IObserver {
 
     @Override
     public void start() {
-        boucle.subscribe(this);
+        loop.subscribe(this);
     }
 
     @Override
@@ -71,9 +71,9 @@ public class Level1 implements ILevel, IObserver {
     }
 
     public void createShoot(UUID id, Location l, ECommand key){
-        if (boucle.getTimer() >= 500) {
+        if (loop.getTimer() >= 500) {
             entityManager.addEntity(entityFabric.createShoot(id, l, key));
-            boucle.resetTimer();
+            loop.resetTimer();
         }
     }
     //TODO: Au lieu de faire if/else, il faudrait trouver un autre moyen

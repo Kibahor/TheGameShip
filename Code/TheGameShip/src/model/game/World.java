@@ -1,17 +1,18 @@
-package model;
+package model.game;
 
 import javafx.collections.ObservableSet;
 import javafx.scene.input.KeyEvent;
 import launch.Launcher;
+import model.IEntityCollection;
 import model.entity.IEntity;
 import model.util.input.IInput;
 import model.util.input.Keyboard;
-import model.util.Boucle;
+import model.util.loop.Loop;
 
 
 public class World implements IEntityCollection {
 
-    private Boucle boucle;
+    private Loop loop;
 
     private Thread thread;
 
@@ -24,15 +25,15 @@ public class World implements IEntityCollection {
 
     public World() {
         //Boucle
-        boucle = new Boucle(20); //Temps d'attente entre chaque actualisation de sprite du joueur et déplacement joueur
-        thread = new Thread(boucle);
+        loop = new Loop(20); //Temps d'attente entre chaque actualisation de sprite du joueur et déplacement joueur
+        thread = new Thread(loop);
 
         //Input
         input = new Keyboard(); //Mettre une autre classe si on veut contrôler le personnage autrement qu'avec le clavier
         Launcher.getStage().addEventFilter(KeyEvent.ANY, (Keyboard)input); //Spécifique au événement de JavaFX
 
         //Level
-        currentLevel = new Level1(boucle, input); //Mettre le bon monde
+        currentLevel = new Level1(loop, input); //Mettre le bon monde
     }
 
     //TODO: init,start,exit doit être des méthode qui notifie tout ces abonnés (par rapport a stage)
@@ -48,7 +49,7 @@ public class World implements IEntityCollection {
 
     public void exit() {
         currentLevel.exit();
-        boucle.StopBoucle();
+        loop.StopBoucle();
         thread.stop();//TODO: Voir si il n'y a pas un autre moyen car deprecated
     }
 }

@@ -1,4 +1,4 @@
-package model.util;
+package model.util.loop;
 
 import java.util.LinkedList;
 

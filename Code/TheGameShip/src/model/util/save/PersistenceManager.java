@@ -1,4 +1,4 @@
-package model.save;
+package model.util.save;
 
 import model.util.settings.Settings;
 

@@ -9,7 +9,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 import launch.Launcher;
-import model.World;
+import model.game.World;
 import model.entity.IEntity;
 import model.entity.Location;
 import model.entity.Sprite;

@@ -7,7 +7,7 @@ package launch;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import model.save.PersistenceManager;
+import model.util.save.PersistenceManager;
 import model.util.settings.Settings;
 import view.ViewManager;
 

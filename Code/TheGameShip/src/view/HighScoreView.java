@@ -8,7 +8,7 @@ public class HighScoreView {
     public void initialize() {}
 
     public void menu(ActionEvent actionEvent){
-        Launcher.getViewManager().setView("Menu");
+        Launcher.getViewManager().setView("MenuView");
     }
 
     public void clear(ActionEvent actionEvent) {

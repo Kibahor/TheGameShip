@@ -5,7 +5,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import launch.Launcher;
 import javafx.fxml.FXML;
-import model.save.PersistenceManager;
+import model.util.save.PersistenceManager;
 
 public class SettingsView {
 
@@ -54,7 +54,7 @@ public class SettingsView {
     }
 
     public void menu(ActionEvent actionEvent) {
-        Launcher.getViewManager().setView("Menu");
+        Launcher.getViewManager().setView("MenuView");
         PersistenceManager.saveSettings(Launcher.getSettings());
     }
 
