@@ -17,7 +17,7 @@ import java.util.UUID;
 
 //TODO: A la place faire une fabrique, qui se basera sur un fichier xml/json qui spécifie toute les caractéristiques
 
-public class Level1 implements ILevel, IObserver {
+public class Level implements ILevel, IObserver {
 
     private Loop loop;
 
@@ -34,7 +34,7 @@ public class Level1 implements ILevel, IObserver {
 
     private ICollider collider;
 
-    public Level1(Loop loop, IInput input) {
+    public Level(Loop loop, IInput input) {
         this.loop = loop;
         this.input = input;
         entityManager = new EntityManager();

@@ -23,19 +23,18 @@ public class World implements IEntityCollection {
     @Override public ObservableSet<IEntity> getEntityCollection() { return currentLevel.getEntityCollection(); }
 
     public World() {
-        //Boucle
+        //Loop
         loop = new Loop(20); //Temps d'attente entre chaque actualisation de sprite du joueur et déplacement joueur
         thread = new Thread(loop);
 
-        //Input
+        //Input (Clavier ou autre)
         input = new Keyboard(); //Mettre une autre classe si on veut contrôler le personnage autrement qu'avec le clavier
-        Launcher.getStage().addEventFilter(KeyEvent.ANY, (Keyboard)input); //Spécifique au événement de JavaFX
+        Launcher.getStage().addEventFilter(KeyEvent.ANY, (Keyboard)input); //Spécifique aux événements de JavaFX
 
         //Level
-        currentLevel = new Level1(loop, input); //Mettre le bon monde
+        currentLevel = new Level(loop, input); //Mettre le bon monde
     }
 
-    //TODO: init,start,exit doit être des méthode qui notifie tout ces abonnés (par rapport a stage)
     //Init, instancie les entité ou tout autre chose
     public void init() {
         currentLevel.init();
