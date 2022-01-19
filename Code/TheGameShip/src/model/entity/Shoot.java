@@ -27,7 +27,7 @@ public class Shoot extends Entity implements IMovable, IShoot {
     }
 
     public Shoot() {
-        super("Shoot"+Integer.toString(nbShoot),"null", EType.Shoot,10,10,1);
+        super("Shoot"+Integer.toString(nbShoot),"null", EType.Shoot,10,30,1);
         setSpeedX(15);
         setSpeedY(0);
         nbShoot++;

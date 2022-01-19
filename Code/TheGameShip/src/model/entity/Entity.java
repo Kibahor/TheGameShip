@@ -105,8 +105,6 @@ public class Entity implements IEntity, IHasLocation, IHasLife{
         //IHasLocation (x,y,height,width)
         setX(0);
         setY(0);
-        setWidth(10);
-        setHeight(10);
 
         //IHasLife (hp,dead)
         setHp(10);

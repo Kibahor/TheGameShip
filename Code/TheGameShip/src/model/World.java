@@ -39,16 +39,16 @@ public class World implements IHasEntityCollection {
 
     //TODO: init,start,exit doit être des méthode qui notifie tout ces abonnés (par rapport a stage)
     //Init, instancie les entité ou tout autre chose
-    public void init() throws Exception {
+    public void init() {
         currentLevel.init();
     }
 
-    public void start() throws Exception {
+    public void start() {
         thread.start();
         currentLevel.start();
     }
 
-    public void exit() throws Exception {
+    public void exit() {
         currentLevel.exit();
         boucle.StopBoucle();
         thread.stop();//TODO: Voir si il n'y a pas un autre moyen car deprecated

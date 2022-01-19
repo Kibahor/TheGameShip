@@ -46,7 +46,7 @@ public class Level1 implements ILevel, IObserver, IHasEntityCollection {
     }
 
     @Override
-    public void init() throws Exception {
+    public void init(){
         //ENTITIES
         int nbShootPreGenerate = 50;
         for (int i = 0; i < nbShootPreGenerate; i++) {

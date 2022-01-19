@@ -21,7 +21,7 @@ public class EntityManager implements IHasEntityCollection {
     //TODO : fusionner les mêmes algo et ajouter un boolean isUsed pour trancher entre les 2 collections
     //TODO : Mauvais plan de faire deux listes, il faut en faire qu'une mais observable et la bind sur la vue
     //Used Entities
-    public void setUsedEntity(String name) throws Exception {
+    public void setUsedEntity(String name){
         IEntity e = getUnUsedEntity(name);
         e.setVisible(true);
         getUsedEntityCollection().add(e);
@@ -32,22 +32,24 @@ public class EntityManager implements IHasEntityCollection {
         getUsedEntityCollection().add(e);
     }
 
-    public IEntity getUsedEntity(String name) throws Exception {
+    public IEntity getUsedEntity(String name) {
         for (IEntity e: getUsedEntityCollection()) {
             if (name.equals(e.getName())) {
                 return e;
             }
         }
-        throw newException(name);
+        newError(name);
+        return null;
     }
 
-    public IEntity getUsedEntity(EType type) throws Exception {
+    public IEntity getUsedEntity(EType type) {
         for (IEntity e: getUsedEntityCollection()) {
             if (type.equals(e.getType())) {
                 return e;
             }
         }
-        throw newException(type);
+        newError(type);
+        return null;
     }
 
     //UnUsed Entities
@@ -63,23 +65,25 @@ public class EntityManager implements IHasEntityCollection {
         getUnusedEntityCollection().add(e);
     }
 
-    public IEntity getUnUsedEntity(EType type) throws Exception {
+    public IEntity getUnUsedEntity(EType type) {
         for (IEntity e : getUnusedEntityCollection()) {
             if (type.equals(e.getType())) {
                 getUnusedEntityCollection().remove(e);
                 return e;
             }
         }
-        throw newException(type);
+        newError(type);
+        return null;
     }
 
-    public IEntity getUnUsedEntity(String name) throws Exception {
+    public IEntity getUnUsedEntity(String name) {
         for (IEntity e: getUnusedEntityCollection()) {
             if (name.equals(e.getName())) {
                 return e;
             }
         }
-        throw newException(name);
+        newError(name);
+        return null;
     }
 
     //General
@@ -99,11 +103,10 @@ public class EntityManager implements IHasEntityCollection {
         return super.toString();
     }
 
-    //Todo: Trouver un autre moyen que throw une exception ?
-    public Exception newException(String name){
-        return new Exception("Il n'y a pas d'entité de nom : \""+ name+"\"");
+    public void newError(String name){
+        System.err.println("Il n'y a pas d'entité de nom : \""+ name+"\"");
     }
-    public Exception newException(EType type){
-        return new Exception("Il n'y a pas d'entité de type : \""+ type.toString()+"\" disponible");
+    public void newError(EType type){
+        System.err.println("Il n'y a pas d'entité de type : \""+ type.toString()+"\" disponible");
     }
 }

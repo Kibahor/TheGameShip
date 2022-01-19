@@ -33,11 +33,7 @@ public class MainWindow {
         gameManager.start();
 
         Launcher.getStage().setOnCloseRequest(e -> {
-            try {
-                gameManager.exit();
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
+            gameManager.exit();
         });
     }
 
@@ -48,7 +44,7 @@ public class MainWindow {
     }
 
     public void addEntity(IEntity e) throws Exception {
-        if(!(e instanceof IHasLocation)){return;}
+        if(!(e instanceof IHasLocation)) { return; }
         IHasLocation h=IHasLocation.cast(e);
 
         if(!e.getSprite().equals("null")){
@@ -62,11 +58,12 @@ public class MainWindow {
             imgview.visibleProperty().bind(e.getVisibleBooleanProperty());
             pane.getChildren().add(imgview);
 
-        }else {
+        } else {
             //Si pas de sprite
             Color color;
             switch (e.getType()) {
                 case Ennemy -> color = Color.RED;
+                case Shoot -> color = Color.YELLOW;
                 case Obstacle -> color = Color.GRAY;
                 case Player -> color = Color.BLACK;
                 default -> color = Color.GREY;
