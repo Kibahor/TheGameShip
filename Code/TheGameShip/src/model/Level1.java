@@ -70,7 +70,7 @@ public class Level1 implements ILevel, IObserver, IHasEntityCollection {
         //TODO: Unscribe les événement ajouter aux boucle (créer une méthode destroy dans boucle)
     }
 
-    public void updateShoot(IEntity e, ECommand key) throws Exception {
+    public void updateShoot(IEntity e, ECommand key) {
         ColliderInfo ci = move.move(e, collider, key);
         if (ci.IsCollision()) {
             entityManager.setUnUsedEntity(e);

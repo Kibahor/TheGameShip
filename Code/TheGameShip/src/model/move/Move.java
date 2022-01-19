@@ -13,7 +13,7 @@ import java.util.UUID;
 public class Move implements IMove {
 
     @Override
-    public ColliderInfo move(IEntity e, ICollider c, ECommand key) throws Exception {
+    public ColliderInfo move(IEntity e, ICollider c, ECommand key) {
         IMovable m = IMovable.cast(e);
         double nextx = m.getX();
         double nexty = m.getY();

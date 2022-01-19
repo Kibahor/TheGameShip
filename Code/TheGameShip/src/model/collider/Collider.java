@@ -14,7 +14,7 @@ public class Collider implements ICollider { //http://sdz.tdct.org/sdz/eorie-des
     } //TODO: au lieu de passer le level il faudrait donner directement la collection
 
     @Override
-    public ColliderInfo isCollision(double nextX, double nextY, double height, double width, UUID id) throws Exception {
+    public ColliderInfo isCollision(double nextX, double nextY, double height, double width, UUID id) {
         boolean scene = isCollisionScene(nextX, nextY, height, width);
         IEntity e = isCollisionEntity(nextX, nextY, height, width, id);
         return new ColliderInfo(scene, e);
@@ -26,11 +26,11 @@ public class Collider implements ICollider { //http://sdz.tdct.org/sdz/eorie-des
         return ((nextY <= 0) || (nextX <= 0) || (nextY + height >= heightScene) || (nextX + width >= widthScene)); //trop haut || trop à gauche || trop bas || trop à droite
     }
 
-    protected IEntity isCollisionEntity(double nextX, double nextY, double height, double width, UUID id) throws Exception {
+    protected IEntity isCollisionEntity(double nextX, double nextY, double height, double width, UUID id) {
         for (IEntity e2: level.getUsedEntityCollection()) {
             //Empêche que le joueur soit bloquer par ces propre tir
             boolean isAtOriginOfShoot = false;
-            if (e2 instanceof IShoot) {
+            if (e2.getType().equals(EType.Shoot)) {
                 isAtOriginOfShoot = id.equals(((IShoot) e2).getOwnerId());
             }
             if (!id.equals(e2.getId()) && !isAtOriginOfShoot) {
