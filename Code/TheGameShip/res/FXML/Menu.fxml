@@ -9,34 +9,34 @@
 <?import javafx.scene.image.Image?>
 
 <Pane id="pane" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Menu">
-            <GridPane minHeight="-Infinity" minWidth="-Infinity">
-               <columnConstraints>
-                  <ColumnConstraints prefWidth="300"/>
-                  <ColumnConstraints prefWidth="600"/>
-                  <ColumnConstraints prefWidth="300"/>
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints prefHeight="200"/>
-                  <RowConstraints/>
-                  <RowConstraints/>
-                  <RowConstraints/>
-                  <RowConstraints prefHeight="8"/>
-                  <RowConstraints/>
-                  <RowConstraints prefHeight="8"/>
-                  <RowConstraints/>
-                  <RowConstraints prefHeight="8"/>
-                  <RowConstraints/>
-                  <RowConstraints prefHeight="8"/>
-               </rowConstraints>
-                  <ImageView fitHeight="150" fitWidth="300" GridPane.halignment="CENTER" GridPane.rowSpan="2" GridPane.columnIndex="1">
-                     <image>
-                        <Image url="@/Sprites/logo.png" />
-                     </image>
-                  </ImageView>
-                  <Button id="button" visible="false" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
-                  <Button id="button" onAction="#play" text="Play" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
-                  <Button id="button" onAction="#highScore" text="High Score" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
-                  <Button id="button" onAction="#settings" text="Settings" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.columnIndex="1"/>
-                  <Button id="button" onAction="#exit" text="Quit" GridPane.halignment="CENTER" GridPane.rowIndex="11" GridPane.columnIndex="1"/>
-            </GridPane>
+   <GridPane minHeight="-Infinity" minWidth="-Infinity">
+      <columnConstraints>
+         <ColumnConstraints prefWidth="300"/>
+         <ColumnConstraints prefWidth="600"/>
+         <ColumnConstraints prefWidth="300"/>
+      </columnConstraints>
+      <rowConstraints>
+         <RowConstraints prefHeight="200"/>
+         <RowConstraints/>
+         <RowConstraints/>
+         <RowConstraints/>
+         <RowConstraints prefHeight="8"/>
+         <RowConstraints/>
+         <RowConstraints prefHeight="8"/>
+         <RowConstraints/>
+         <RowConstraints prefHeight="8"/>
+         <RowConstraints/>
+         <RowConstraints prefHeight="8"/>
+      </rowConstraints>
+      <ImageView fitHeight="150" fitWidth="300" GridPane.halignment="CENTER" GridPane.rowSpan="2" GridPane.columnIndex="1">
+         <image>
+            <Image url="@/Sprites/logo.png" />
+         </image>
+      </ImageView>
+      <Button id="button" visible="false" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+      <Button id="button" onAction="#play" text="Play" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+      <Button id="button" onAction="#highScore" text="High Score" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+      <Button id="button" onAction="#settings" text="Settings" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.columnIndex="1"/>
+      <Button id="button" onAction="#exit" text="Quit" GridPane.halignment="CENTER" GridPane.rowIndex="11" GridPane.columnIndex="1"/>
+   </GridPane>
 </Pane>

@@ -46,7 +46,7 @@ public class Level1 implements ILevel, IObserver, IHasEntityCollection {
     }
 
     @Override
-    public void init(){
+    public void init() {
         //ENTITIES
         int nbShootPreGenerate = 50;
         for (int i = 0; i < nbShootPreGenerate; i++) {
@@ -62,8 +62,8 @@ public class Level1 implements ILevel, IObserver, IHasEntityCollection {
 
     @Override
     public void start() {
-                boucle.subscribe(this);
-            }
+        boucle.subscribe(this);
+    }
 
     @Override
     public void exit() {
