@@ -1,7 +1,6 @@
 package model.entity;
 
 import model.entity.componement.IHasComponements;
-
 import java.util.UUID;
 
 public interface IEntity extends IHasComponements {

@@ -20,7 +20,6 @@ public class World implements IEntityCollection, ILifeCycle {
     public int getScore() {
         return currentLevel.getScore();
     }
-
     public Level getCurrentLevel() {
         return currentLevel;
     }

@@ -23,7 +23,7 @@ public class SettingsPersistance implements IPersistance {
         if (file.length() == 0) { return new Settings(); }
         XMLDecoder decoder = new XMLDecoder(new BufferedInputStream(new FileInputStream(file)));
         SerializeSettings data = (SerializeSettings) decoder.readObject();
-        if(data == null){
+        if (data == null){
             data = new SerializeSettings();
         }
         return data;

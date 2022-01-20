@@ -4,7 +4,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableSet;
 import model.entity.componement.Sprite;
 import model.game.IEntityCollection;
-
 import java.util.HashSet;
 import java.util.Iterator;
 
