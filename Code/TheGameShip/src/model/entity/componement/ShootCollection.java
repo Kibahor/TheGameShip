@@ -1,25 +1,27 @@
 package model.entity.componement;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableSet;
 import model.entity.IEntity;
 
 import java.util.HashSet;
-import java.util.Set;
 
 public class ShootCollection extends Componement {
 
-    private Set<IEntity> shootList = new HashSet<>();
+    private final ObservableSet<IEntity> shootList;
     public void addShoot(IEntity s){
         shootList.add(s);
     }
-    public void removeShoot(IEntity s){
-        shootList.remove(s);
+    public void removeAllShoot(){
+        shootList.removeAll(shootList);
     }
-    public Set<IEntity> getShootList(){
+    public ObservableSet<IEntity> getShootList(){
         return shootList;
     }
 
     public ShootCollection() {
         super(EComponementType.ShootCollection);
+        shootList=FXCollections.observableSet(new HashSet<>());
     }
 
     public static ShootCollection cast(IHasComponements e){

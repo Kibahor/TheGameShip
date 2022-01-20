@@ -78,11 +78,8 @@ public class Level implements IEntityCollection, ILifeCycle, IObserver {
     private void updateShoot(IEntity e) {
         for (IEntity e2 : ShootCollection.cast(e).getShootList()) {
             ColliderInfo ci = move.move(e2, collider, Shoot.cast(e2).getDirection(), Location.cast(e2), Speed.cast(e2));
-            if (ci.IsCollision()) {
-                Life.cast(e).setDead(true);
-                if (ci.getEntity() != null) {
-                    Life.cast(ci.getEntity()).decreaseHp();
-                }
+            if (ci.IsCollision() && ci.getEntity() != null) {
+                Life.cast(ci.getEntity()).decreaseHp();
             }
         }
     }
