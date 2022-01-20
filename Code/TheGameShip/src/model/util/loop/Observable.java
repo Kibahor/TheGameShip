@@ -15,6 +15,10 @@ public class Observable {
         observers.remove(listener);
     }
 
+    public void unsubscribeAll() {
+        observers.removeAll(observers);
+    }
+
     public void notifier() {
         for (var observateur : observers) {
             observateur.update();

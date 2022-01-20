@@ -137,6 +137,7 @@ public class Level implements ILevel, IObserver {
 
     @Override
     public void exit() {
+        loop.unsubscribeAll();
         //TODO: Unscribe les événement ajouter aux boucle (créer une méthode destroy dans boucle)
     }
 }
