@@ -5,6 +5,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.ObservableSet;
 import launch.Launcher;
 import model.collider.Collider;
+import model.collider.ColliderEnemy;
 import model.collider.ColliderInfo;
 import model.collider.ICollider;
 import model.entity.EEntityType;
@@ -51,6 +52,7 @@ public class Level implements IEntityCollection, ILifeCycle, IObserver {
     private final IMove moveEnemy = new MoveEnemy();
 
     private final ICollider collider = new Collider(getEntityCollection());
+    private final ICollider colliderEnemy = new ColliderEnemy(getEntityCollection());
 
     private final IntegerProperty score = new SimpleIntegerProperty();
 
@@ -80,8 +82,8 @@ public class Level implements IEntityCollection, ILifeCycle, IObserver {
         //ENTITIES
         player = (entityFabric.createPlayer("Vaisseau", "/Sprites/Spaceship.png", 70, 70, 6 - Launcher.getPersistenceManager().getSettings().getDifficulty(), 0, 250, 10, 10));
         entityManager.addEntity(player);
+        createNewWave(1,2,0);
         //entityManager.add(new Entity("Obstacle1","file://test.jpg", EType.Obstacle,35,5,500,500));
-        entityManager.addEntity(entityFabric.createEnemy("Enemy1", "/Sprites/Enemy.png", 70, 70, 5, 1000, 350));
     }
 
     private void updateShoot(IEntity e) {
@@ -90,7 +92,7 @@ public class Level implements IEntityCollection, ILifeCycle, IObserver {
             if (e2.getId().equals(ownerId)) {
                 ColliderInfo ci = move.move(e, collider, Shoot.cast(e).getDirection(), Location.cast(e), Speed.cast(e));
                 if (ci.IsCollision()) {
-                    entityManager.removeEntity(e);
+                    Life.cast(e).setDead(true);
                     if (ci.getEntity() != null) {
                         Life.cast(ci.getEntity()).decreaseHp();
                     }
@@ -115,10 +117,13 @@ public class Level implements IEntityCollection, ILifeCycle, IObserver {
         if (getPlayer() != null) {
             l = Location.cast(player);
         }
-        moveEnemy.move(e, collider, ECommand.LEFT, l, Speed.cast(e));
+        ColliderInfo ci = moveEnemy.move(e, colliderEnemy, ECommand.LEFT, l, Speed.cast(e));
         if (timer2.getTimer() >= timer) {
             createShoot(e.getId(), Location.cast(e), ECommand.LEFT, timer);
             timer2.resetTimer();
+        }
+        if( ci.IsCollision() && ci.getEntity() == null){
+            Life.cast(e).setDead(true);
         }
     }
 
@@ -138,7 +143,9 @@ public class Level implements IEntityCollection, ILifeCycle, IObserver {
             double sceneWidth = Launcher.getStage().getWidth();
 
             for (int i = 0; i < nbEnemy; i++) {
-                entityManager.addEntity(entityFabric.createEnemy((sceneWidth - width - 40), ((ydiff * i) - height), height, width));
+                double x = (sceneWidth + width - 20);
+                double y = ((ydiff * i) - height);
+                entityManager.addEntity(entityFabric.createEnemy(x, y, height, width));
             }
             timer3.resetTimer();
         }

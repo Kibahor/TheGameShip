@@ -9,7 +9,7 @@ import model.entity.componement.Shoot;
 
 import java.util.UUID;
 
-public class Collider implements ICollider { //http://sdz.tdct.org/sdz/eorie-des-collisions.html
+public class Collider implements ICollider { // Document : http://sdz.tdct.org/sdz/eorie-des-collisions.html
 
     private final ObservableSet<IEntity> entities;
 
