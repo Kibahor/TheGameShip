@@ -94,6 +94,7 @@ public class GameView {
             life.isDeadProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) ->{
                 if(newValue){
                     Launcher.getStage().setUserData(world.getScore());
+                    //TODO : s'assurer d'avoir tout bien arrêter
                     Launcher.getViewManager().closeView("GameView");
                     Launcher.getViewManager().setView("EndGameView");
                 }

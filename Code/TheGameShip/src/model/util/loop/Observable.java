@@ -16,12 +16,8 @@ public class Observable {
     }
 
     public void notifier() {
-        for (var observateur : observers) { //TODO : trouver pourquoi Concurrent Access
-            try{
-                observateur.update();
-            } catch (ConcurrentModificationException err) {
-                //err.printStackTrace();
-            }
+        for (var observateur : observers) {
+            observateur.update();
         }
     }
 }

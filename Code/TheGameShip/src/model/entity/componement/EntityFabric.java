@@ -47,7 +47,7 @@ public class EntityFabric {
         e.addComponement(new Location(xShoot,yShoot,heightShoot,widthShoot));
         e.addComponement(new Life(1));
         e.addComponement(new Speed(15,15));
-        e.addComponement(new Shoot(ownerId));
+        e.addComponement(new Shoot(ownerId, direction));
 
         return e;
     }
