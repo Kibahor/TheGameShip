@@ -7,19 +7,16 @@ public class SerializeHighScore {
 
     private ArrayList<String> listHighScore =  new ArrayList<>();
 
+    public ArrayList<String> getListHighScore() { return listHighScore; }
     public SerializeHighScore() {
         listHighScore.add("No Score Yet");
     }
-
     public SerializeHighScore(HighScore highScore) {
         /*if(highScore.getListScore().isEmpty()){
              listHighScore.add("No Score Yet");
         }*/
         listHighScore.addAll(highScore.getListScore());
     }
-
-    public ArrayList<String> getListHighScore() { return listHighScore; }
-
 
     @Override
     public String toString() {

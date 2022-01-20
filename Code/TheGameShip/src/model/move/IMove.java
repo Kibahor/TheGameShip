@@ -8,5 +8,6 @@ import model.collider.ColliderInfo;
 import model.collider.ICollider;
 
 public interface IMove {
+
     ColliderInfo move(IEntity e, ICollider c, ECommand key, Location l, Speed s) ;
 }

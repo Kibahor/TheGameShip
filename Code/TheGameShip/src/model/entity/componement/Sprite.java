@@ -4,6 +4,7 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 
 public class Sprite extends  Componement{
+
     private String sprite;
         public String getSprite() { return sprite; }
         public void setSprite(String sprite) { this.sprite = sprite; }
@@ -17,6 +18,7 @@ public class Sprite extends  Componement{
         super(EComponementType.Sprite);
         setSprite(sprite);
     }
+
     public Sprite(){
         super(EComponementType.Sprite);
         setSprite(null);

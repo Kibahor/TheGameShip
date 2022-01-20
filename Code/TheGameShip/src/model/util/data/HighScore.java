@@ -2,7 +2,6 @@ package model.util.data;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -16,7 +15,7 @@ public class HighScore {
 
     public void addHighScore(int score) {
         highScore.add(String.valueOf(score) + " : " + new Date());
-        if(highScore.contains("No Score Yet")){
+        if (highScore.contains("No Score Yet")){
             highScore.remove("No Score Yet");
         }
     }

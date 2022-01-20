@@ -2,22 +2,19 @@ package model.util.save;
 
 import model.util.data.HighScore;
 import model.util.data.Settings;
-
-import java.beans.XMLDecoder;
-import java.beans.XMLEncoder;
 import java.io.*;
 
 public class PersistenceManager {
 
     IPersistance ph = new HighScorePersistance();
+    private final File highScoreFile = new File("./res/Settings/highscore.xml");
     private HighScore highScore;
-    public HighScore getHighScore(){
-        if(highScore == null){
+    public HighScore getHighScore() {
+        if (highScore == null){
             loadHighScore();
         }
         return highScore;
     }
-    private final File highScoreFile = new File("./res/Settings/highscore.xml");
 
     IPersistance ps =new SettingsPersistance();
     private final File settingsFile = new File("./res/Settings/settings.xml");
@@ -29,11 +26,11 @@ public class PersistenceManager {
         return settings;
     }
 
-    private void loadSettings(){
-        SerializeSettings ss=new SerializeSettings();
-        try{
-            ss= (SerializeSettings) ps.load(settingsFile);
-        } catch(Exception err) {
+    private void loadSettings() {
+        SerializeSettings ss = new SerializeSettings();
+        try {
+            ss = (SerializeSettings) ps.load(settingsFile);
+        } catch (Exception err) {
             err.printStackTrace();
         }
         Settings settings = new Settings();
@@ -60,7 +57,7 @@ public class PersistenceManager {
     public void saveHighScore(HighScore highScore1) {
         try {
             ph.save(highScore1, highScoreFile);
-        } catch(Exception err) {
+        } catch (Exception err) {
             err.printStackTrace();
         }
     }
@@ -68,7 +65,7 @@ public class PersistenceManager {
     public void saveSettings(Settings settings1) {
         try {
             ps.save(settings1, settingsFile);
-        } catch(Exception err) {
+        } catch (Exception err) {
             err.printStackTrace();
         }
     }

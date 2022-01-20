@@ -12,7 +12,6 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
-
 public class ViewManager {
 
     private Map<String, View> views = new HashMap<>();
@@ -37,15 +36,12 @@ public class ViewManager {
 
         //Stage
         Launcher.getStage().setTitle(title); //Title
-
         Launcher.getStage().setMinHeight(height); //Windows Size
         Launcher.getStage().setMinWidth(width);
         Launcher.getStage().setHeight(height);
         Launcher.getStage().setWidth(width);
-
         Launcher.getStage().setResizable(false); //isResizable ?
         Launcher.getStage().getIcons().add(new Image(pathIcon)); //Application Icon
-
         Launcher.getStage().setScene(main); //Set Scene to Stage
     }
 
@@ -67,7 +63,7 @@ public class ViewManager {
         Parent parent = null;
         try {
             parent = FXMLLoader.load(getClass().getClassLoader().getResource(view.getPath()));
-        }catch (IOException err) {
+        } catch (IOException err) {
             System.err.println("La vue \""+name+"\" n'existe pas ! (ou a eu un problème lors de son chargement)"); //DEBUG
             err.printStackTrace(); //DEBUG
         }

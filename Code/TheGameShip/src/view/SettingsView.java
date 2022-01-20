@@ -6,7 +6,6 @@ import javafx.scene.control.Slider;
 import launch.Launcher;
 import javafx.fxml.FXML;
 import model.util.data.Settings;
-import model.util.save.PersistenceManager;
 
 public class SettingsView {
 
@@ -21,7 +20,7 @@ public class SettingsView {
 
     private Settings settings;
 
-    //TODO : Mettre dans le FXML
+    //TODO : Mettre dans le FXML (pas gênant mais ça ferait de la place)
     public void loadSliderDifficulty() {
         difficultySlider.setMin(1);
         difficultySlider.setMax(3);
@@ -47,7 +46,6 @@ public class SettingsView {
 
         loadSliderVolume();
         loadSliderDifficulty();
-
         difficultySlider.valueProperty().bindBidirectional(settings.difficultyProperty());
         volumeSlider.valueProperty().bindBidirectional(settings.volumeProperty());
 

@@ -5,11 +5,10 @@ import launch.Launcher;
 import model.entity.componement.EComponementType;
 import model.entity.componement.Location;
 import model.entity.componement.Shoot;
-import model.game.ILifeCycle;
 import model.entity.*;
 import java.util.UUID;
 
-public class Collider implements ICollider { //http://sdz.tdct.org/sdz/eorie-des-collisions.html
+public class Collider implements ICollider {
 
     private ObservableSet<IEntity> entities;
 

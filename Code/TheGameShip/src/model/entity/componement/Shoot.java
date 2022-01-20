@@ -1,7 +1,6 @@
 package model.entity.componement;
 
 import model.util.input.ECommand;
-
 import java.util.UUID;
 
 public class Shoot extends Componement {
@@ -16,11 +15,10 @@ public class Shoot extends Componement {
     public Shoot(UUID ownerId, ECommand direction){
         super(EComponementType.Shoot);
         setOwnerId(ownerId);
-        this.direction=direction;
+        this.direction = direction;
     }
 
     public static Shoot cast(IHasComponements e){
             return (Shoot) e.getComponement(EComponementType.Shoot);
     }
-
 }

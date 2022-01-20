@@ -18,7 +18,7 @@ public class HighScoreView {
     }
 
     public void menu(ActionEvent actionEvent) {
-        //Launcher.getPersistenceManager().saveHighScore(highScore);
+        Launcher.getPersistenceManager().saveHighScore(highScore);
         Launcher.getViewManager().setView("MenuView");
     }
     public void clear(ActionEvent actionEvent) {

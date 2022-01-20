@@ -8,7 +8,6 @@ import model.util.input.ECommand;
 import model.collider.ColliderInfo;
 import model.collider.ICollider;
 import model.entity.IEntity;
-
 import java.util.UUID;
 
 public class Move implements IMove {

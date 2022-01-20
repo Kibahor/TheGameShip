@@ -4,6 +4,7 @@ import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 
 public class Location extends Componement {
+
     private final DoubleProperty x = new SimpleDoubleProperty();
         public double getX() { return x.get(); }
         public void setX(double x) { this.x.set(x); }

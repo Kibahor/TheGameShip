@@ -12,15 +12,11 @@ import model.entity.componement.*;
 import model.move.IMove;
 import model.move.Move;
 import model.move.MoveEnemy;
-import model.util.data.HighScore;
-import model.util.data.Settings;
 import model.util.loop.Loop;
 import model.util.loop.IObserver;
 import model.util.input.ECommand;
 import model.util.input.IInput;
 import model.util.loop.Timer;
-import model.util.save.PersistenceManager;
-
 import java.util.ConcurrentModificationException;
 import java.lang.Math;
 import java.util.UUID;
@@ -103,7 +99,7 @@ public class Level implements IEntityCollection, ILifeCycle, IObserver {
         if(getPlayer() != null){
             l = Location.cast(player);
         }
-        moveEnemy.move(e, collider, ECommand.LEFT, l , Speed.cast(e));
+        moveEnemy.move(e, collider, ECommand.LEFT, l, Speed.cast(e));
         if(timer2.getTimer() >= timer){
             createShoot(e.getId(), Location.cast(e), ECommand.LEFT, timer);
             timer2.resetTimer();

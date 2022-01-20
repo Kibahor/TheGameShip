@@ -2,10 +2,10 @@ package model.entity;
 
 import model.entity.componement.Componement;
 import model.entity.componement.EComponementType;
-
 import java.util.*;
 
 public class Entity extends Componement implements IEntity {
+
     private UUID id;
         @Override public UUID getId(){ return id; }
 
@@ -32,7 +32,7 @@ public class Entity extends Componement implements IEntity {
 
     public Entity(String name, EEntityType type) {
         super(EComponementType.Entity);
-        this.type=type;
+        this.type = type;
         this.id = UUID.randomUUID();
         this.name = name;
     }

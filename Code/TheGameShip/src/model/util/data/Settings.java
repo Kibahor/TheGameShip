@@ -17,7 +17,6 @@ public class Settings {
         public void setVolume(double volume) { this.volume.set(volume); }
         public DoubleProperty volumeProperty() { return volume; }
 
-
     private final StringProperty up = new SimpleStringProperty();
         public String getUp() { return up.get(); }
         public void setUp(String up) { this.up.set(up); }

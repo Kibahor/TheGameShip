@@ -2,17 +2,13 @@ package model.move;
 
 import model.collider.ColliderInfo;
 import model.collider.ICollider;
-import model.entity.EEntityType;
-import model.entity.componement.EComponementType;
 import model.entity.componement.Location;
-import model.entity.componement.Shoot;
 import model.entity.componement.Speed;
 import model.entity.IEntity;
 import model.util.input.ECommand;
 
-import java.util.UUID;
-
 public class MoveEnemy implements IMove {
+
     @Override
     public ColliderInfo move(IEntity e, ICollider c, ECommand key, Location lPlayer, Speed senemy) { //Ici la Location est celle du joueur
         Location lenemy = Location.cast(e);

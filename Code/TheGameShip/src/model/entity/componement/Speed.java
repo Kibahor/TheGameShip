@@ -1,6 +1,7 @@
 package model.entity.componement;
 
 public class Speed extends Componement {
+
     private float speedX;
         public float getSpeedX() {
         return speedX;

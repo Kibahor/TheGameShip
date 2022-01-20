@@ -7,6 +7,7 @@ public class Loop extends Observable implements Runnable {
 
     private final long millis;
         public long getMillis(){ return millis; }
+
     private boolean isRunning = true;
 
     public Loop(long millis) {
