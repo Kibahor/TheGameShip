@@ -6,11 +6,11 @@ import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
 import java.io.*;
 
-public class HighScorePersistance implements IPersistance{
+public class HighScorePersistance implements IPersistance {
 
     @Override
     public void save(Object obj, File file) throws Exception {
-        if(!(obj instanceof HighScore)){
+        if (!(obj instanceof HighScore)) {
             throw new Exception("L'objet donné n'est pas un HighScore");
         }
         XMLEncoder encoder = new XMLEncoder(new BufferedOutputStream(new FileOutputStream(file)));
@@ -21,10 +21,12 @@ public class HighScorePersistance implements IPersistance{
 
     @Override
     public Object load(File file) throws Exception {
-        if (file.length() == 0) { return new SerializeHighScore(); }
+        if (file.length() == 0) {
+            return new SerializeHighScore();
+        }
         XMLDecoder decoder = new XMLDecoder(new BufferedInputStream(new FileInputStream(file)));
         SerializeHighScore data = (SerializeHighScore) decoder.readObject();
-        if(data == null){
+        if (data == null) {
             data = new SerializeHighScore();
         }
         return data;

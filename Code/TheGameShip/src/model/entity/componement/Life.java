@@ -8,24 +8,43 @@ import javafx.beans.property.SimpleDoubleProperty;
 public class Life extends Componement {
 
     private final DoubleProperty hp = new SimpleDoubleProperty();
-        public double getHp() { return hp.get(); }
-        private void setHp(double hp) {
-            this.hp.set(hp);
-            if (getHp()<=0) {
-                setDead(true);
-            }
+
+    public double getHp() {
+        return hp.get();
+    }
+
+    private void setHp(double hp) {
+        this.hp.set(hp);
+        if (getHp() <= 0) {
+            setDead(true);
         }
-        public void decreaseHp() { setHp(getHp()-1); }
-        public DoubleProperty hpProperty() { return hp; }
+    }
+
+    public void decreaseHp() {
+        setHp(getHp() - 1);
+    }
+
+    public DoubleProperty hpProperty() {
+        return hp;
+    }
 
 
     private final BooleanProperty isDead = new SimpleBooleanProperty();
-        public boolean isDead(){return isDead.getValue();}
-        public void setDead(boolean dead) { isDead.set(dead); }
-        public BooleanProperty isDeadProperty() { return isDead; }
+
+    public boolean isDead() {
+        return isDead.getValue();
+    }
+
+    public void setDead(boolean dead) {
+        isDead.set(dead);
+    }
+
+    public BooleanProperty isDeadProperty() {
+        return isDead;
+    }
 
 
-    public Life(double hp){
+    public Life(double hp) {
         super(EComponementType.Life);
         setHp(hp);
         setDead(false);

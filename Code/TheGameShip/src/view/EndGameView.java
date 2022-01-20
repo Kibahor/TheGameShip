@@ -7,7 +7,8 @@ import launch.Launcher;
 
 public class EndGameView {
 
-    @FXML Label scoreLabel;
+    @FXML
+    Label scoreLabel;
 
     private int Score;
 
@@ -17,9 +18,14 @@ public class EndGameView {
             System.err.println("Il y a une erreur dans la matrice ! (référence très subtile a un film cinématographique très connu de la pop culture)");
             return;
         }
-        scoreLabel.setText("Your Score : "+ ((Integer)obj));
+        scoreLabel.setText("Your Score : " + obj);
     }
 
-    public void GoToMenu(ActionEvent actionEvent) { Launcher.getViewManager().setView("MenuView"); }
-    public void Retry(ActionEvent actionEvent) { Launcher.getViewManager().setView("GameView"); }
+    public void GoToMenu(ActionEvent actionEvent) {
+        Launcher.getViewManager().setView("MenuView");
+    }
+
+    public void Retry(ActionEvent actionEvent) {
+        Launcher.getViewManager().setView("GameView");
+    }
 }

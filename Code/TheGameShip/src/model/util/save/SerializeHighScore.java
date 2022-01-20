@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class SerializeHighScore {
 
-    private final ArrayList<String> listHighScore =  new ArrayList<>();
+    private final ArrayList<String> listHighScore = new ArrayList<>();
 
     public SerializeHighScore() {
         listHighScore.add("No Score Yet");
@@ -19,7 +19,9 @@ public class SerializeHighScore {
         listHighScore.addAll(highScore.getListScore());
     }
 
-    public ArrayList<String> getListHighScore() { return listHighScore; }
+    public ArrayList<String> getListHighScore() {
+        return listHighScore;
+    }
 
 
     @Override

@@ -22,16 +22,16 @@ public class MoveEnemy implements IMove {
 
         // Y
         double nexty = lenemy.getY();
-        if((lenemy.getY() - lPlayer.getY()) != 0){ //Si c'est égale alors pas besoin de bouger
-            if((lenemy.getY() - lPlayer.getY()) < 0) { //Si le joueur est plus bas que l'ennemie c'est négatif et inversement
-                nexty +=  senemy.getSpeedY() ;
+        if ((lenemy.getY() - lPlayer.getY()) != 0) { //Si c'est égale alors pas besoin de bouger
+            if ((lenemy.getY() - lPlayer.getY()) < 0) { //Si le joueur est plus bas que l'ennemie c'est négatif et inversement
+                nexty += senemy.getSpeedY();
             } else {
-                nexty -=  senemy.getSpeedY() ;
+                nexty -= senemy.getSpeedY();
             }
         }
 
         //Et si ce n'est pas en collision, sa déplace l'entité
-        ColliderInfo ci = c.isCollision(nextx, nexty, lenemy.getHeight(),  lenemy.getWidth(), e.getId());
+        ColliderInfo ci = c.isCollision(nextx, nexty, lenemy.getHeight(), lenemy.getWidth(), e.getId());
         if (!ci.IsCollision()) {
             lenemy.setX(nextx);
             lenemy.setY(nexty);

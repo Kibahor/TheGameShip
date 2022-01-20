@@ -9,14 +9,21 @@ import model.util.data.Settings;
 
 public class SettingsView {
 
-    @FXML private Slider difficultySlider;
-    @FXML private Slider volumeSlider;
+    @FXML
+    private Slider difficultySlider;
+    @FXML
+    private Slider volumeSlider;
 
-    @FXML private Label up;
-    @FXML private Label left;
-    @FXML private Label down;
-    @FXML private Label right;
-    @FXML private Label shoot;
+    @FXML
+    private Label up;
+    @FXML
+    private Label left;
+    @FXML
+    private Label down;
+    @FXML
+    private Label right;
+    @FXML
+    private Label shoot;
 
     private Settings settings;
 
@@ -72,9 +79,23 @@ public class SettingsView {
         shoot.setText("SPACE");
     }
 
-    public void changeUp(ActionEvent actionEvent) { System.out.println("up"); }         //TODO: Faire apparaitre une petite fenêtre où sera inscrit appuyez sur une touche. La touche sera ensuite assigné à la commande correspondante.
-    public void changeLeft(ActionEvent actionEvent) { System.out.println("left"); }
-    public void changeDown(ActionEvent actionEvent) { System.out.println("down"); }
-    public void changeRight(ActionEvent actionEvent) { System.out.println("right"); }
-    public void changeShoot(ActionEvent actionEvent) { System.out.println("shoot"); }
+    public void changeUp(ActionEvent actionEvent) {
+        System.out.println("up");
+    }         //TODO: Faire apparaitre une petite fenêtre où sera inscrit appuyez sur une touche. La touche sera ensuite assigné à la commande correspondante.
+
+    public void changeLeft(ActionEvent actionEvent) {
+        System.out.println("left");
+    }
+
+    public void changeDown(ActionEvent actionEvent) {
+        System.out.println("down");
+    }
+
+    public void changeRight(ActionEvent actionEvent) {
+        System.out.println("right");
+    }
+
+    public void changeShoot(ActionEvent actionEvent) {
+        System.out.println("shoot");
+    }
 }

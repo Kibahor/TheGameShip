@@ -12,35 +12,35 @@ public class Keyboard implements IInput, EventHandler<KeyEvent> {
 
     private final Map<ECommand, Boolean> keyPressed = new HashMap<>();
 
-    @Override public ArrayList<ECommand> getKeyPressed() {
+    @Override
+    public ArrayList<ECommand> getKeyPressed() {
         ArrayList<ECommand> list = new ArrayList<>();
-        for (Map.Entry m: keyPressed.entrySet()) {
-            if ((Boolean)m.getValue()) {
+        for (Map.Entry m : keyPressed.entrySet()) {
+            if ((Boolean) m.getValue()) {
                 list.add((ECommand) m.getKey());
             }
         }
         return list;
     }
 
-        //Correspondance entre les commandes disponible et les touche du clavier
-    private final Map<KeyCode, ECommand> matchKey = new HashMap<>()
+    //Correspondance entre les commandes disponible et les touche du clavier
+    private final Map<KeyCode, ECommand> matchKey = new HashMap<>() {
         {
-            {
-                put(KeyCode.UP, ECommand.UP);
-                put(KeyCode.Z, ECommand.UP);
+            put(KeyCode.UP, ECommand.UP);
+            put(KeyCode.Z, ECommand.UP);
 
-                put(KeyCode.DOWN, ECommand.DOWN);
-                put(KeyCode.S, ECommand.DOWN);
+            put(KeyCode.DOWN, ECommand.DOWN);
+            put(KeyCode.S, ECommand.DOWN);
 
-                put(KeyCode.RIGHT, ECommand.RIGHT);
-                put(KeyCode.D, ECommand.RIGHT);
+            put(KeyCode.RIGHT, ECommand.RIGHT);
+            put(KeyCode.D, ECommand.RIGHT);
 
-                put(KeyCode.LEFT, ECommand.LEFT);
-                put(KeyCode.Q, ECommand.LEFT);
+            put(KeyCode.LEFT, ECommand.LEFT);
+            put(KeyCode.Q, ECommand.LEFT);
 
-                put(KeyCode.SPACE, ECommand.SHOOT);
-            }
-        };
+            put(KeyCode.SPACE, ECommand.SHOOT);
+        }
+    };
 
     public Keyboard() {
         for (ECommand e : ECommand.values()) {
@@ -55,8 +55,7 @@ public class Keyboard implements IInput, EventHandler<KeyEvent> {
             if (matchKey.containsKey(key)) {
                 keyPressed.replace(matchKey.get(key), true);
             }
-        }
-        else if (KeyEvent.KEY_RELEASED.equals(event.getEventType())) {
+        } else if (KeyEvent.KEY_RELEASED.equals(event.getEventType())) {
             KeyCode key = event.getCode();
             if (matchKey.containsKey(key)) {
                 keyPressed.replace(matchKey.get(key), false);

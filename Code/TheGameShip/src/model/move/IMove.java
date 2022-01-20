@@ -8,5 +8,5 @@ import model.entity.componement.Speed;
 import model.util.input.ECommand;
 
 public interface IMove {
-    ColliderInfo move(IEntity e, ICollider c, ECommand key, Location l, Speed s) ;
+    ColliderInfo move(IEntity e, ICollider c, ECommand key, Location l, Speed s);
 }

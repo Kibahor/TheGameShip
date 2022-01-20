@@ -31,7 +31,7 @@ public class Collider implements ICollider { //http://sdz.tdct.org/sdz/eorie-des
     }
 
     protected IEntity isCollisionEntity(double nextX, double nextY, double height, double width, UUID id) {
-        for (IEntity e2: entities) {
+        for (IEntity e2 : entities) {
             //Empêche que le joueur soit bloquer par ces propre tir
             boolean isAtOriginOfShoot = false;
             if (e2.isTypeOf(EComponementType.Shoot)) {

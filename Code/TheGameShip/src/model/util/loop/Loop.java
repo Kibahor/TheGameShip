@@ -7,7 +7,11 @@ import static java.lang.Thread.sleep;
 public class Loop extends Observable implements Runnable {
 
     private final long millis;
-        public long getMillis(){ return millis; }
+
+    public long getMillis() {
+        return millis;
+    }
+
     private boolean isRunning = true;
 
     public Loop(long millis) {
@@ -20,16 +24,20 @@ public class Loop extends Observable implements Runnable {
             try {
                 sleep(millis);
                 Platform.runLater(() -> notifier());
-            }
-            catch (InterruptedException e) {
+            } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
     }
-    public void StopLoop(){ isRunning = false; }
-    public void RestartLoop(){
+
+    public void StopLoop() {
+        isRunning = false;
+    }
+
+    public void RestartLoop() {
         isRunning = true;
     }
+
     public void destroyLoop() {
         unsubscribeAll();
     }

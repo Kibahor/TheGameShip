@@ -6,11 +6,11 @@ public class Observable {
 
     private final LinkedList<IObserver> observers = new LinkedList<>();
 
-    public void subscribe(IObserver listener){
+    public void subscribe(IObserver listener) {
         observers.add(listener);
     }
 
-    public void unsubscribe(IObserver listener){
+    public void unsubscribe(IObserver listener) {
         observers.remove(listener);
     }
 

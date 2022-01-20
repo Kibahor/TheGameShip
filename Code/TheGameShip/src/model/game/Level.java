@@ -27,9 +27,9 @@ import java.util.UUID;
 public class Level implements IEntityCollection, ILifeCycle, IObserver {
 
     private final Loop loop;
-    private Timer timer1 ;
-    private Timer timer2 ;
-    private Timer timer3 ;
+    private Timer timer1;
+    private Timer timer2;
+    private Timer timer3;
 
     private final IInput input;
 
@@ -37,9 +37,13 @@ public class Level implements IEntityCollection, ILifeCycle, IObserver {
     private final EntityFabric entityFabric = new EntityFabric();
 
     private IEntity player;
-        public IEntity getPlayer() { return player; }
 
-    @Override public ObservableSet<IEntity> getEntityCollection() {
+    public IEntity getPlayer() {
+        return player;
+    }
+
+    @Override
+    public ObservableSet<IEntity> getEntityCollection() {
         return entityManager.getEntityCollection();
     }
 
@@ -49,9 +53,18 @@ public class Level implements IEntityCollection, ILifeCycle, IObserver {
     private final ICollider collider = new Collider(getEntityCollection());
 
     private final IntegerProperty score = new SimpleIntegerProperty();
-        public int getScore() { return score.get(); }
-        public void setScore(int score) { this.score.set(score); }
-        public IntegerProperty scoreProperty() { return score; }
+
+    public int getScore() {
+        return score.get();
+    }
+
+    public void setScore(int score) {
+        this.score.set(score);
+    }
+
+    public IntegerProperty scoreProperty() {
+        return score;
+    }
 
     public Level(Loop loop, IInput input) {
         this.loop = loop;
@@ -68,14 +81,14 @@ public class Level implements IEntityCollection, ILifeCycle, IObserver {
         player = (entityFabric.createPlayer("Vaisseau", "/Sprites/Spaceship.png", 70, 70, 6 - Launcher.getPersistenceManager().getSettings().getDifficulty(), 0, 250, 10, 10));
         entityManager.addEntity(player);
         //entityManager.add(new Entity("Obstacle1","file://test.jpg", EType.Obstacle,35,5,500,500));
-        entityManager.addEntity(entityFabric.createEnemy("Enemy1", "/Sprites/Enemy.png",70, 70, 5, 1000, 350));
+        entityManager.addEntity(entityFabric.createEnemy("Enemy1", "/Sprites/Enemy.png", 70, 70, 5, 1000, 350));
     }
 
     private void updateShoot(IEntity e) {
         UUID ownerId = Shoot.cast(e).getOwnerId();
         for (IEntity e2 : getEntityCollection()) {
             if (e2.getId().equals(ownerId)) {
-                ColliderInfo ci = move.move(e, collider, Shoot.cast(e).getDirection(), Location.cast(e), Speed.cast(e) );
+                ColliderInfo ci = move.move(e, collider, Shoot.cast(e).getDirection(), Location.cast(e), Speed.cast(e));
                 if (ci.IsCollision()) {
                     entityManager.removeEntity(e);
                     if (ci.getEntity() != null) {
@@ -91,7 +104,7 @@ public class Level implements IEntityCollection, ILifeCycle, IObserver {
         for (ECommand key : input.getKeyPressed()) {
             move.move(e, collider, key, Location.cast(e), Speed.cast(e));
             if (key.equals(ECommand.SHOOT)) {
-                createShoot(e.getId(),Location.cast(e), ECommand.RIGHT, 500);
+                createShoot(e.getId(), Location.cast(e), ECommand.RIGHT, 500);
             }
         }
     }
@@ -99,11 +112,11 @@ public class Level implements IEntityCollection, ILifeCycle, IObserver {
     private void updateEnemy(IEntity e, long timer) {
         IEntity player = getPlayer();
         Location l = Location.cast(e);
-        if(getPlayer() != null){
+        if (getPlayer() != null) {
             l = Location.cast(player);
         }
-        moveEnemy.move(e, collider, ECommand.LEFT, l , Speed.cast(e));
-        if(timer2.getTimer() >= timer){
+        moveEnemy.move(e, collider, ECommand.LEFT, l, Speed.cast(e));
+        if (timer2.getTimer() >= timer) {
             createShoot(e.getId(), Location.cast(e), ECommand.LEFT, timer);
             timer2.resetTimer();
         }
@@ -145,19 +158,17 @@ public class Level implements IEntityCollection, ILifeCycle, IObserver {
                     //Si l'entité a de la vie
                     if (Life.cast(e).isDead()) {
                         entityManager.removeEntity(e);
-                        if (e.getEntityType().equals(EEntityType.Enemy)){
+                        if (e.getEntityType().equals(EEntityType.Enemy)) {
                             setScore(getScore() + (int) Launcher.getPersistenceManager().getSettings().getDifficulty());
                         }
                     }
                 }
             }
 
-           createNewWave(1,2,10000);
-        }
-        catch (ConcurrentModificationException err) { //TODO : trouver pourquoi Concurrent Access
+            createNewWave(1, 2, 10000);
+        } catch (ConcurrentModificationException err) { //TODO : trouver pourquoi Concurrent Access
             //err.printStackTrace();
-        }
-        catch (Exception err) {
+        } catch (Exception err) {
             err.printStackTrace();
         }
     }
