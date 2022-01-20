@@ -2,8 +2,8 @@ package model.entity;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableSet;
-import model.game.IEntityCollection;
 import model.entity.componement.Sprite;
+import model.game.IEntityCollection;
 
 import java.util.HashSet;
 import java.util.Iterator;
@@ -12,7 +12,10 @@ public class EntityManager implements IEntityCollection {
 
     private final ObservableSet<IEntity> entities;
 
-    @Override public ObservableSet<IEntity> getEntityCollection() { return entities; }
+    @Override
+    public ObservableSet<IEntity> getEntityCollection() {
+        return entities;
+    }
 
     public EntityManager() {
         entities = FXCollections.observableSet(new HashSet<>());
@@ -29,15 +32,15 @@ public class EntityManager implements IEntityCollection {
         entities.remove(e);
     }
 
-    public void removeEntity(String name){
+    public void removeEntity(String name) {
         removeEntity(getEntityBy(name));
     }
 
     private IEntity getEntityBy(String name) {
         Iterator it = entities.iterator();
-        while (it.hasNext()){
+        while (it.hasNext()) {
             IEntity e = (IEntity) it.next();
-            if (e.getName().equals(name)){
+            if (e.getName().equals(name)) {
                 return e;
             }
         }
@@ -56,10 +59,11 @@ public class EntityManager implements IEntityCollection {
         return super.toString();
     }
 
-    private void newError(String name){
-        System.err.println("Il n'y a pas d'entité de nom : \""+ name +"\"");
+    private void newError(String name) {
+        System.err.println("Il n'y a pas d'entité de nom : \"" + name + "\"");
     }
-    private void newError(EEntityType type){
-        System.err.println("Il n'y a pas d'entité de type : \""+ type +"\"");
+
+    private void newError(EEntityType type) {
+        System.err.println("Il n'y a pas d'entité de type : \"" + type + "\"");
     }
 }

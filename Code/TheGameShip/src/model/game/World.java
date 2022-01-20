@@ -10,17 +10,29 @@ import model.util.loop.Loop;
 
 public class World implements IEntityCollection, ILifeCycle {
 
-    private Loop loop;
-    private Thread thread;
+    private final Loop loop;
+    private final Thread thread;
 
-    private IInput input;
+    private final IInput input;
 
     Level currentLevel;
-        public int getScore() { return ((Level)currentLevel).getScore(); }
-        public Level getCurrentLevel() { return currentLevel; }
-        @Override public ObservableSet<IEntity> getEntityCollection() { return currentLevel.getEntityCollection(); }
 
-    public IEntity getPlayer() { return currentLevel.getPlayer(); }
+    public int getScore() {
+        return currentLevel.getScore();
+    }
+
+    public Level getCurrentLevel() {
+        return currentLevel;
+    }
+
+    @Override
+    public ObservableSet<IEntity> getEntityCollection() {
+        return currentLevel.getEntityCollection();
+    }
+
+    public IEntity getPlayer() {
+        return currentLevel.getPlayer();
+    }
 
     public World() {
         //Loop
@@ -29,7 +41,7 @@ public class World implements IEntityCollection, ILifeCycle {
 
         //Input (Clavier ou autre)
         input = new Keyboard(); //Mettre une autre classe si on veut contrôler le personnage autrement qu'avec le clavier
-        Launcher.getStage().addEventFilter(KeyEvent.ANY, (Keyboard)input); //Spécifique aux événements de JavaFX
+        Launcher.getStage().addEventFilter(KeyEvent.ANY, (Keyboard) input); //Spécifique aux événements de JavaFX
 
         //Level
         currentLevel = new Level(loop, input); //Mettre le bon monde

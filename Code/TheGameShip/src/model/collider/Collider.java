@@ -2,15 +2,15 @@ package model.collider;
 
 import javafx.collections.ObservableSet;
 import launch.Launcher;
+import model.entity.IEntity;
 import model.entity.componement.EComponementType;
 import model.entity.componement.Location;
 import model.entity.componement.Shoot;
-import model.entity.*;
 import java.util.UUID;
 
 public class Collider implements ICollider {
 
-    private ObservableSet<IEntity> entities;
+    private final ObservableSet<IEntity> entities;
 
     public Collider(ObservableSet<IEntity> entities) {
         this.entities = entities;
@@ -30,7 +30,7 @@ public class Collider implements ICollider {
     }
 
     protected IEntity isCollisionEntity(double nextX, double nextY, double height, double width, UUID id) {
-        for (IEntity e2: entities) {
+        for (IEntity e2 : entities) {
             //Empêche que le joueur soit bloquer par ces propre tir
             boolean isAtOriginOfShoot = false;
             if (e2.isTypeOf(EComponementType.Shoot)) {

@@ -16,15 +16,23 @@ public class Launcher extends Application {
     private static PersistenceManager persistenceManager;
 
     public void start(Stage stage) throws Exception {
-        this.stage = stage;
-        viewManager = new ViewManager("TheGameShip",720,1280,"res/FXML/","MenuView", "/Sprites/icone.png", "view/CSS/style.css");
+        Launcher.stage = stage;
+        viewManager = new ViewManager("TheGameShip", 720, 1280, "res/FXML/", "MenuView", "/Sprites/icone.png", "view/CSS/style.css");
         persistenceManager = new PersistenceManager();
         stage.show();
     }
 
-    public static ViewManager getViewManager() { return viewManager; }
-    public static Stage getStage() { return stage; }
-    public static PersistenceManager getPersistenceManager() { return persistenceManager; }
+    public static ViewManager getViewManager() {
+        return viewManager;
+    }
+
+    public static Stage getStage() {
+        return stage;
+    }
+
+    public static PersistenceManager getPersistenceManager() {
+        return persistenceManager;
+    }
 }
 
 // TODO: Code + Docs + Video (une demo vidéo d'1 min max) + Preuve de compétence (avec la feuille de compétence en expliquant)

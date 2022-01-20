@@ -2,13 +2,14 @@ package view;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import launch.Launcher;
 import javafx.scene.control.ListView;
+import launch.Launcher;
 import model.util.data.HighScore;
 
 public class HighScoreView {
 
-    @FXML private ListView<String> highScoreList;
+    @FXML
+    private ListView<String> highScoreList;
 
     private HighScore highScore;
 
@@ -21,6 +22,7 @@ public class HighScoreView {
         Launcher.getPersistenceManager().saveHighScore(highScore);
         Launcher.getViewManager().setView("MenuView");
     }
+
     public void clear(ActionEvent actionEvent) {
         Launcher.getPersistenceManager().getHighScore().resetHighScore();
     }

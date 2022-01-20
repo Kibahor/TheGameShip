@@ -20,10 +20,12 @@ public class HighScorePersistance implements IPersistance {
 
     @Override
     public Object load(File file) throws Exception {
-        if (file.length() == 0) { return new SerializeHighScore(); }
+        if (file.length() == 0) {
+            return new SerializeHighScore();
+        }
         XMLDecoder decoder = new XMLDecoder(new BufferedInputStream(new FileInputStream(file)));
         SerializeHighScore data = (SerializeHighScore) decoder.readObject();
-        if(data == null){
+        if (data == null) {
             data = new SerializeHighScore();
         }
         return data;

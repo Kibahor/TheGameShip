@@ -4,11 +4,17 @@ import model.entity.IEntity;
 
 public class ColliderInfo {
 
-    private boolean isCollision;
-    public boolean IsCollision() { return isCollision; }
+    private final boolean isCollision;
 
-    private IEntity e;
-    public IEntity getEntity() { return e; }
+    public boolean IsCollision() {
+        return isCollision;
+    }
+
+    private final IEntity e;
+
+    public IEntity getEntity() {
+        return e;
+    }
 
     public ColliderInfo(boolean isCollison, IEntity e) {
         this.e = e;
@@ -18,6 +24,6 @@ public class ColliderInfo {
     @Override
     public String toString() {
         String entityName = (e != null) ? "null" : e.getName();
-        return "isCollison : "+isCollision+"\nAvec l'entité : "+entityName+"\n";
+        return "isCollison : " + isCollision + "\nAvec l'entité : " + entityName + "\n";
     }
 }
