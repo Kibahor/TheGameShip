@@ -11,26 +11,26 @@
 
 
 <AnchorPane id="background" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.HighScoreView">
-        <FlowPane prefHeight="720.0" prefWidth="1280.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="50.0">
-            <GridPane prefHeight="620.0" prefWidth="680.0">
-                <columnConstraints>
-                    <ColumnConstraints percentWidth="50" />
-                    <ColumnConstraints percentWidth="50" />
-                </columnConstraints>
-                <rowConstraints>
-                    <RowConstraints percentHeight="10" />
-                    <RowConstraints percentHeight="70" />
-                    <RowConstraints percentHeight="20" />
-                </rowConstraints>
+    <FlowPane prefHeight="720.0" prefWidth="1280.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="50.0">
+        <GridPane prefHeight="620.0" prefWidth="680.0">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="50" />
+                <ColumnConstraints percentWidth="50" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints percentHeight="10" />
+                <RowConstraints percentHeight="70" />
+                <RowConstraints percentHeight="20" />
+            </rowConstraints>
 
-                <Button id="button" onAction="#menu" text="Leave"  GridPane.halignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                <Button id="button" onAction="#clear" text="Clear" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-                <Label text="High Score" GridPane.columnSpan="2" GridPane.halignment="CENTER" textFill="white">
-                    <font>
-                        <Font name="System Bold" size="35" />
-                    </font>
-                </Label>
-            </GridPane>
-        </FlowPane>
+            <Button id="button" onAction="#menu" text="Leave"  GridPane.halignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button id="button" onAction="#clear" text="Clear" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+            <Label text="High Score" GridPane.columnSpan="2" GridPane.halignment="CENTER" textFill="white">
+                <font>
+                    <Font name="System Bold" size="35" />
+                </font>
+            </Label>
+        </GridPane>
+    </FlowPane>
 </AnchorPane>
 
