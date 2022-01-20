@@ -12,11 +12,14 @@ import model.entity.componement.*;
 import model.move.IMove;
 import model.move.Move;
 import model.move.MoveEnemy;
+import model.util.data.HighScore;
+import model.util.data.Settings;
 import model.util.loop.Loop;
 import model.util.loop.IObserver;
 import model.util.input.ECommand;
 import model.util.input.IInput;
 import model.util.loop.Timer;
+import model.util.save.PersistenceManager;
 
 import java.util.ConcurrentModificationException;
 import java.lang.Math;
@@ -35,6 +38,8 @@ public class Level implements ILifeCycle, IObserver {
 
     private final EntityManager entityManager = new EntityManager();
     private final EntityFabric entityFabric = new EntityFabric();
+
+    private static Settings settings;
 
     private IEntity player;
     public IEntity getPlayer() { return player; }
@@ -63,8 +68,12 @@ public class Level implements ILifeCycle, IObserver {
         timer1 = new Timer(loop);
         timer2 = new Timer(loop);
         timer3 = new Timer(loop);
+
+        settings = new Settings();
+        PersistenceManager.loadSettings(settings);
+
         //ENTITIES
-        player = (entityFabric.createPlayer("Vaisseau", "/Sprites/Spaceship.png", 70, 70, 6 - Launcher.getSettings().getDifficulty(), 0, 250, 10, 10));
+        player = (entityFabric.createPlayer("Vaisseau", "/Sprites/Spaceship.png", 70, 70, 6 - settings.getDifficulty(), 0, 250, 10, 10));
         entityManager.addEntity(player);
         //entityManager.add(new Entity("Obstacle1","file://test.jpg", EType.Obstacle,35,5,500,500));
         entityManager.addEntity(entityFabric.createEnemy("Enemy1", "/Sprites/Enemy.png",70, 70, 5, 1000, 350));
@@ -145,7 +154,7 @@ public class Level implements ILifeCycle, IObserver {
                     if (Life.cast(e).isDead()) {
                         entityManager.removeEntity(e);
                         if (e.getEntityType().equals(EEntityType.Enemy)){
-                            setScore(getScore() + (int) Launcher.getSettings().getDifficulty());
+                            setScore(getScore() + (int) settings.getDifficulty());
                         }
                     }
                 }

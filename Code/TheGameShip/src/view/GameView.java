@@ -24,19 +24,23 @@ public class GameView {
     @FXML private Label life;
     @FXML private Label score;
 
+    private HighScore highscore;
     private World world;
 
     public void initialize() {
 
         world = new World();
 
-        world.getEntityCollection().addListener((SetChangeListener<IEntity>) e ->{
-            if(e.wasAdded()){
+        world.getEntityCollection().addListener((SetChangeListener<IEntity>) e -> {
+            if (e.wasAdded()){
                 addEntity(e.getElementAdded());
-            }else if(e.wasRemoved()){
+            } else if(e.wasRemoved()){
                 pane.getChildren().remove(e.getElementRemoved());
             }
         });
+
+        highscore = new HighScore();
+        //PersistenceManager.loadHighScore(highscore);
 
         world.init();
         world.start();
@@ -68,7 +72,7 @@ public class GameView {
                 imgview.fitWidthProperty().bind(l.widthProperty());
                 imgview.visibleProperty().bind(s.getVisibleBooleanProperty());
                 pane.getChildren().add(imgview);
-            } catch(Exception err) {
+            } catch (Exception err) {
                 err.printStackTrace();
             }
 
@@ -98,8 +102,8 @@ public class GameView {
             life.isDeadProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) ->{
                 if(newValue){
                     Launcher.getStage().setUserData(world.getScore());
-                    Launcher.getHighscore().addScore(world.getScore());
-                    System.out.println(Launcher.getHighscore().toString());
+                    highscore.addHighScore(world.getScore());
+                    System.out.println(highscore.toString());     //DEBUG
                     world.exit();
                     Launcher.getViewManager().closeView("GameView");
                     Launcher.getViewManager().setView("EndGameView");
