@@ -111,8 +111,8 @@ public class Level implements IEntityCollection, ILifeCycle, IObserver {
             createShoot(e.getId(), Location.cast(e), ECommand.LEFT, timer);
             timer2.resetTimer();
         }
-        if( ci.IsCollision() && ci.getEntity() == null){
-            Life.cast(e).setDead(true);
+        if(ci.IsCollision() && ci.getEntity() == null){
+            entityManager.removeEntity(e);
         }
     }
 
