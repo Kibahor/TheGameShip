@@ -7,6 +7,5 @@ public enum EComponementType {
     Speed,
     Life,
     Sprite,
-    Shoot,
-    ShootCollection
+    Shoot
 }
