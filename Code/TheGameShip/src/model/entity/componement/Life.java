@@ -9,7 +9,7 @@ public class Life extends Componement {
 
     private final DoubleProperty hp = new SimpleDoubleProperty();
         public double getHp() { return hp.get(); }
-        public void setHp(double hp) {
+        private void setHp(double hp) {
             this.hp.set(hp);
             if (getHp()<=0) {
                 setDead(true);
