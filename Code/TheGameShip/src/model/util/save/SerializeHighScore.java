@@ -16,7 +16,7 @@ public class SerializeHighScore {
     }
 
     public ArrayList<String> getListHighScore() { return listHighScore; }
-    public void setListHighScore(ArrayList<String> listHighScore) { this.listHighScore = listHighScore; }
+        public void setListHighScore(ArrayList<String> listHighScore) { this.listHighScore = listHighScore; }
 
 
     @Override

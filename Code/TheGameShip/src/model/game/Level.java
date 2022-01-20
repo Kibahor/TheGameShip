@@ -66,7 +66,7 @@ public class Level implements IEntityCollection, ILifeCycle, IObserver {
         timer3 = new Timer(loop);
 
         //ENTITIES
-        player = (entityFabric.createPlayer("Vaisseau", "/Sprites/Spaceship.png", 70, 70, 6 - Launcher.getSettings().getDifficulty(), 0, 250, 10, 10));
+        player = (entityFabric.createPlayer("Vaisseau", "/Sprites/Spaceship.png", 70, 70, 6 - Launcher.getPersistenceManager().getSettings().getDifficulty(), 0, 250, 10, 10));
         entityManager.addEntity(player);
         //entityManager.add(new Entity("Obstacle1","file://test.jpg", EType.Obstacle,35,5,500,500));
         entityManager.addEntity(entityFabric.createEnemy("Enemy1", "/Sprites/Enemy.png",70, 70, 5, 1000, 350));
@@ -147,7 +147,7 @@ public class Level implements IEntityCollection, ILifeCycle, IObserver {
                     if (Life.cast(e).isDead()) {
                         entityManager.removeEntity(e);
                         if (e.getEntityType().equals(EEntityType.Enemy)){
-                            setScore(getScore() + (int) Launcher.getSettings().getDifficulty());
+                            setScore(getScore() + (int) Launcher.getPersistenceManager().getSettings().getDifficulty());
                         }
                     }
                 }

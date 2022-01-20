@@ -7,69 +7,79 @@ import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
 import java.io.*;
 
-public final class PersistenceManager {
+public class PersistenceManager {
 
-    private static final File settingsFile = new File("./res/Settings/settings.xml");
-    private static final File highScoreFile = new File("./res/Settings/highscore.xml");
-
-    public static void saveSettings(Settings settings) {
-        try {
-            XMLEncoder encoder = new XMLEncoder(new BufferedOutputStream(new FileOutputStream(settingsFile)));
-            SerializeSettings data = new SerializeSettings(settings);
-            encoder.writeObject(data);
-            encoder.close();
+    IPersistance ph = new HighScorePersistance();
+    private HighScore highScore;
+    public HighScore getHighScore(){
+        if(highScore == null){
+            loadHighScore();
         }
-        catch (IOException e) {
-            e.printStackTrace();
+        return highScore;
+    }
+    private final File highScoreFile = new File("./res/Settings/highscore.xml");
+
+    IPersistance ps =new SettingsPersistance();
+    private final File settingsFile = new File("./res/Settings/settings.xml");
+    private Settings settings;
+    public Settings getSettings(){
+        if(settings == null){
+            loadSettings();
+        }
+        return settings;
+    }
+
+    private void loadSettings(){
+        SerializeSettings ss=new SerializeSettings();
+        try{
+            ss= (SerializeSettings) ps.load(settingsFile);
+        } catch(Exception err) {
+            err.printStackTrace();
+        }
+        Settings settings = new Settings();
+        settings.setDifficulty(ss.getDifficulty());
+        settings.setVolume(ss.getVolume());
+        settings.setUp(ss.getUp());
+        settings.setLeft(ss.getLeft());
+        settings.setDown(ss.getDown());
+        settings.setRight(ss.getRight());
+        settings.setShoot(ss.getShoot());
+        this.settings = settings;
+    }
+
+    private void loadHighScore() {
+        SerializeHighScore sh = new SerializeHighScore();
+        try {
+            sh = (SerializeHighScore) ph.load(highScoreFile);
+        } catch (Exception err) {
+            err.printStackTrace();
+        }
+        HighScore highScore = new HighScore();
+
+        /*
+        settings.setDifficulty(ss.getDifficulty());
+        settings.setVolume(ss.getVolume());
+        settings.setUp(ss.getUp());
+        settings.setLeft(ss.getLeft());
+        settings.setDown(ss.getDown());
+        settings.setRight(ss.getRight());
+        settings.setShoot(ss.getShoot());*/
+        this.highScore = highScore;
+    }
+
+    public void saveHighScore(HighScore highScore1) {
+        try {
+            ph.save(highScore1, highScoreFile);
+        } catch(Exception err) {
+            err.printStackTrace();
         }
     }
 
-    public static void loadSettings(Settings settings) {
-        if (settingsFile.length() == 0) { return; }
-        SerializeSettings data = null;
-
+    public void saveSettings(Settings settings1) {
         try {
-            XMLDecoder decoder = new XMLDecoder(new BufferedInputStream(new FileInputStream(settingsFile)));
-            data = (SerializeSettings) decoder.readObject();
-
-            settings.setDifficulty(data.getDifficulty());
-            settings.setVolume(data.getVolume());
-
-            settings.setUp(data.getUp());
-            settings.setLeft(data.getLeft());
-            settings.setDown(data.getDown());
-            settings.setRight(data.getRight());
-            settings.setShoot(data.getShoot());
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void saveHighScore(HighScore highScore) {
-        try {
-            XMLEncoder encoder = new XMLEncoder(new BufferedOutputStream(new FileOutputStream(highScoreFile)));
-            SerializeHighScore data = new SerializeHighScore(highScore);
-            encoder.writeObject(data);
-            encoder.close();
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void loadHighScore(HighScore highScore) {
-        if (highScoreFile.length() == 0) { return; }
-        SerializeHighScore data = null;
-
-        try {
-            XMLDecoder decoder = new XMLDecoder(new BufferedInputStream(new FileInputStream(highScoreFile)));
-            data = (SerializeHighScore) decoder.readObject();
-
-            highScore.loadListe(data.getListHighScore());
-        }
-        catch (IOException e) {
-            e.printStackTrace();
+            ps.save(settings1, settingsFile);
+        } catch(Exception err) {
+            err.printStackTrace();
         }
     }
 }

@@ -43,8 +43,8 @@ public class SettingsView {
     }
 
     public void initialize() {
-        settings = new Settings();
-        PersistenceManager.loadSettings(settings);
+        settings = Launcher.getPersistenceManager().getSettings();
+
         loadSliderVolume();
         loadSliderDifficulty();
 
@@ -60,7 +60,7 @@ public class SettingsView {
 
     public void menu(ActionEvent actionEvent) {
         Launcher.getViewManager().setView("MenuView");
-        PersistenceManager.saveSettings(settings);
+        Launcher.getPersistenceManager().saveSettings(settings);
     }
 
     public void reset(ActionEvent actionEvent) {

@@ -15,15 +15,15 @@ public class HighScoreView {
 
     public void initialize() {
         highScore = new HighScore();
-        PersistenceManager.loadHighScore(highScore);
-        highScoreList.setItems(Launcher.getHighScore().getListScore());
+        HighScore highScore= Launcher.getPersistenceManager().getHighScore();
+        highScoreList.setItems(highScore.getListScore());
     }
 
     public void menu(ActionEvent actionEvent) {
-        PersistenceManager.saveHighScore(highScore);
+        //Launcher.getPersistenceManager().saveHighScore(highScore);
         Launcher.getViewManager().setView("MenuView");
     }
     public void clear(ActionEvent actionEvent) {
-        Launcher.getHighScore().resetHighScore();
+        Launcher.getPersistenceManager().getHighScore().resetHighScore();
     }
 }

@@ -1,0 +1,29 @@
+package model.util.save;
+
+import model.util.data.HighScore;
+
+import java.beans.XMLDecoder;
+import java.beans.XMLEncoder;
+import java.io.*;
+
+public class HighScorePersistance implements IPersistance{
+
+    @Override
+    public void save(Object obj, File file) throws Exception {
+        if(!(obj instanceof HighScore)){
+            throw new Exception("L'objet donné n'est pas un HighScore");
+        }
+        XMLEncoder encoder = new XMLEncoder(new BufferedOutputStream(new FileOutputStream(file)));
+        SerializeHighScore data = new SerializeHighScore((HighScore) obj);
+        encoder.writeObject(data);
+        encoder.close();
+    }
+
+    @Override
+    public Object load(File file) throws Exception {
+        if (file.length() == 0) { return new HighScore(); }
+        SerializeHighScore data = null;
+        XMLDecoder decoder = new XMLDecoder(new BufferedInputStream(new FileInputStream(file)));
+        return decoder.readObject();
+    }
+}

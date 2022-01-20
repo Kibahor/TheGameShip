@@ -13,26 +13,20 @@ import model.util.save.PersistenceManager;
 import view.ViewManager;
 
 public class Launcher extends Application {
-
-    private static ViewManager viewManager;
     private static Stage stage;
-    private static Settings settings;
-    private static HighScore highScore;
+    private static ViewManager viewManager;
+    private static PersistenceManager persistenceManager;
 
     public void start(Stage stage) throws Exception {
         this.stage = stage;
         viewManager = new ViewManager("TheGameShip",720,1280,"res/FXML/","MenuView", "/Sprites/icone.png", "view/CSS/style.css");
-        settings = new Settings();
-        PersistenceManager.loadSettings(settings);
-        highScore = new HighScore();
-        //PersistenceManager.loadHighScore(highScore);
+        persistenceManager = new PersistenceManager();
         stage.show();
     }
 
     public static ViewManager getViewManager() { return viewManager; }
     public static Stage getStage() { return stage; }
-    public static Settings getSettings() { return settings; }
-    public static HighScore getHighScore() { return highScore; }
+    public static PersistenceManager getPersistenceManager() { return persistenceManager; }
 }
 
 // TODO: Code + Docs + Video (une demo vidéo d'1 min max) + Preuve de compétence (avec la feuille de compétence en expliquant)

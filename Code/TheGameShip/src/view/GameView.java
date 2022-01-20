@@ -94,7 +94,9 @@ public class GameView {
             life.isDeadProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) ->{
                 if (newValue) {
                     Launcher.getStage().setUserData(world.getScore());
-                    Launcher.getHighScore().addHighScore(world.getScore());
+                    HighScore highScore = Launcher.getPersistenceManager().getHighScore();
+                    highScore.addHighScore(world.getScore());
+                    Launcher.getPersistenceManager().saveHighScore(highScore);
                     //System.out.println(Launcher.getHighScore().toString());   //DEBUG
                     world.exit();
                     Launcher.getViewManager().closeView("GameView");
