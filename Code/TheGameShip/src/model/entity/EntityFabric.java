@@ -1,8 +1,5 @@
 package model.entity;
 
-import model.entity.EEntityType;
-import model.entity.Entity;
-import model.entity.IEntity;
 import model.entity.componement.*;
 import model.util.input.ECommand;
 
@@ -34,7 +31,7 @@ public class EntityFabric {
 
     public Entity createEnemy(String name, String sprite, double height, double width, double hp, double x, double y){
         Entity e = createPlayer(name,sprite,height,width,hp,x,y,3,3);
-        e.setEntityType(EEntityType.Ennemy);
+        e.setEntityType(EEntityType.Enemy);
         return e;
     }
 

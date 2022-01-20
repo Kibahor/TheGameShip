@@ -1,8 +1,5 @@
 package view;
 
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.SetChangeListener;
 import javafx.fxml.FXML;
@@ -78,7 +75,7 @@ public class GameView {
             //Si pas de sprite
             Color color;
             switch (e.getEntityType()) {
-                case Ennemy -> color = Color.RED;
+                case Enemy -> color = Color.RED;
                 case Shoot -> color = Color.YELLOW;
                 case Obstacle -> color = Color.GRAY;
                 case Player -> color = Color.BLACK;

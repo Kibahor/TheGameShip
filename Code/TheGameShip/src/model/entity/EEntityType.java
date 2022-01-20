@@ -6,7 +6,7 @@ public enum EEntityType {
     // - Soit on se base l'enumération, e.getType().equals(EType.TYPE) -> mais il se peut ne pas implémenter les interfaces
     Entity,
     Player,
-    Ennemy,
+    Enemy,
     Shoot,
     Obstacle
 }

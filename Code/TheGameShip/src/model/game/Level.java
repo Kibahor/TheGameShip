@@ -137,14 +137,14 @@ public class Level implements ILifeCycle, IObserver {
                 switch (e.getEntityType()) {
                     case Player -> updatePlayer();
                     case Shoot -> updateShoot(e);
-                    case Ennemy -> updateEnemy(e, 800);
+                    case Enemy -> updateEnemy(e, 800);
                 }
 
                 if (e.isTypeOf(EComponementType.Life)) {             //Gestion de la vie
                     //Si l'entité a de la vie
                     if (Life.cast(e).isDead()) {
                         entityManager.removeEntity(e);
-                        if (e.getEntityType().equals(EEntityType.Ennemy)){
+                        if (e.getEntityType().equals(EEntityType.Enemy)){
                             setScore(getScore() + (int) Launcher.getSettings().getDifficulty());
                         }
                     }
