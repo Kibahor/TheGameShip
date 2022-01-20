@@ -66,13 +66,13 @@ public class Level implements ILifeCycle, IObserver {
         timer2 = new Timer(loop);
         timer3 = new Timer(loop);
         //ENTITIES
-        player = (entityFabric.createPlayer("Vaisseau", "/Sprites/Spaceship.png", 70, 70, 5, 0, 250, 10, 10));
+        player = (entityFabric.createPlayer("Vaisseau", "/Sprites/Spaceship.png", 70, 70, 6 - Launcher.getSettings().getDifficulty(), 0, 250, 10, 10));
         entityManager.addEntity(player);
         //entityManager.add(new Entity("Obstacle1","file://test.jpg", EType.Obstacle,35,5,500,500));
         entityManager.addEntity(entityFabric.createEnemy("Enemy1", "/Sprites/Enemy.png",70, 70, 5, 1000, 350));
     }
 
-    public void updateShoot(IEntity e){
+    public void updateShoot(IEntity e) {
         UUID ownerId = Shoot.cast(e).getOwnerId();
         for (IEntity e2 : getEntityCollection()) {
             if (e2.getId().equals(ownerId)) {
@@ -87,7 +87,7 @@ public class Level implements ILifeCycle, IObserver {
         }
     }
 
-    public void updatePlayer(){
+    public void updatePlayer() {
         IEntity e = getPlayer();
         for (ECommand key : input.getKeyPressed()) {
             move.move(e, collider, key, Location.cast(e), Speed.cast(e));
@@ -97,11 +97,11 @@ public class Level implements ILifeCycle, IObserver {
         }
     }
 
-    public void updateEnemy(IEntity e, long timer){
+    public void updateEnemy(IEntity e, long timer) {
         IEntity player = getPlayer();
         Location l = Location.cast(e);
-        if(getPlayer()!=null){
-            l=Location.cast(player);
+        if(getPlayer() != null){
+            l = Location.cast(player);
         }
         moveEnemy.move(e, collider, ECommand.LEFT, l , Speed.cast(e));
         if(timer2.getTimer() >= timer){
@@ -110,7 +110,7 @@ public class Level implements ILifeCycle, IObserver {
         }
     }
 
-    public void createShoot(UUID id, Location l, ECommand key, long timer){
+    public void createShoot(UUID id, Location l, ECommand key, long timer) {
         if (timer1.getTimer() >= timer) {
             entityManager.addEntity(entityFabric.createShoot(id, l, key));
             timer1.resetTimer();
@@ -146,8 +146,8 @@ public class Level implements ILifeCycle, IObserver {
                     //Si l'entité a de la vie
                     if (Life.cast(e).isDead()) {
                         entityManager.removeEntity(e);
-                        if(e.getEntityType().equals(EEntityType.Ennemy)){
-                            setScore(getScore()+1);
+                        if (e.getEntityType().equals(EEntityType.Ennemy)){
+                            setScore(getScore() + (int) Launcher.getSettings().getDifficulty());
                         }
                     }
                 }

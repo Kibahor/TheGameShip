@@ -6,5 +6,4 @@ public interface ILifeCycle extends IEntityCollection {
    void init();
    void start();
    void exit();
-
 }

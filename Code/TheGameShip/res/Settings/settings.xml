@@ -2,7 +2,7 @@
 <java version="16.0.2" class="java.beans.XMLDecoder">
  <object class="model.util.save.SerializeSettings">
   <void property="difficulty">
-   <double>1.0</double>
+   <double>3.0</double>
   </void>
   <void property="down">
    <string>RIGHT</string>
