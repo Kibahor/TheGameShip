@@ -8,10 +8,10 @@ import java.util.Map;
 import java.util.UUID;
 
 public class Entity extends Componement implements IEntity {
-    private UUID id;
+    private final UUID id;
         @Override public UUID getId(){ return id; }
 
-    private String name;
+    private final String name;
         @Override public String getName() { return name; }
 
     private final Map<EComponementType, Componement> componements = new HashMap<>();
@@ -22,7 +22,7 @@ public class Entity extends Componement implements IEntity {
             return componements.get(type);
         }
         @Override public boolean isTypeOf(EComponementType type) {
-            return componements.keySet().contains(type);
+            return componements.containsKey(type);
         }
 
     private EEntityType type;

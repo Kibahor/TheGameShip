@@ -17,7 +17,7 @@ public class EndGameView {
             System.err.println("Il y a une erreur dans la matrice ! (référence très subtile a un film cinématographique très connu de la pop culture)");
             return;
         }
-        scoreLabel.setText("Your Score : "+((Integer)obj).toString());
+        scoreLabel.setText("Your Score : "+ ((Integer)obj));
     }
 
     public void GoToMenu(ActionEvent actionEvent) { Launcher.getViewManager().setView("MenuView"); }

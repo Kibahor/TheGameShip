@@ -26,12 +26,12 @@ import java.util.UUID;
 
 public class Level implements IEntityCollection, ILifeCycle, IObserver {
 
-    private Loop loop;
+    private final Loop loop;
     private Timer timer1 ;
     private Timer timer2 ;
     private Timer timer3 ;
 
-    private IInput input;
+    private final IInput input;
 
     private final EntityManager entityManager = new EntityManager();
     private final EntityFabric entityFabric = new EntityFabric();
@@ -43,10 +43,10 @@ public class Level implements IEntityCollection, ILifeCycle, IObserver {
         return entityManager.getEntityCollection();
     }
 
-    private IMove move = new Move();
-    private IMove moveEnemy = new MoveEnemy();
+    private final IMove move = new Move();
+    private final IMove moveEnemy = new MoveEnemy();
 
-    private ICollider collider = new Collider(getEntityCollection());
+    private final ICollider collider = new Collider(getEntityCollection());
 
     private final IntegerProperty score = new SimpleIntegerProperty();
         public int getScore() { return score.get(); }

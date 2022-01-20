@@ -2,7 +2,7 @@ package model.util.loop;
 
 public class Timer implements IObserver {
 
-    private long millis;
+    private final long millis;
     private long timer = 0;
         public long getTimer() {
         return timer;

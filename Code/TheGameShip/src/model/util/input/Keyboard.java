@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class Keyboard implements IInput, EventHandler<KeyEvent> {
 
-    private Map<ECommand, Boolean> keyPressed = new HashMap<>();
+    private final Map<ECommand, Boolean> keyPressed = new HashMap<>();
 
     @Override public ArrayList<ECommand> getKeyPressed() {
         ArrayList<ECommand> list = new ArrayList<>();
@@ -23,7 +23,7 @@ public class Keyboard implements IInput, EventHandler<KeyEvent> {
     }
 
         //Correspondance entre les commandes disponible et les touche du clavier
-    private Map<KeyCode, ECommand> matchKey = new HashMap<>()
+    private final Map<KeyCode, ECommand> matchKey = new HashMap<>()
         {
             {
                 put(KeyCode.UP, ECommand.UP);

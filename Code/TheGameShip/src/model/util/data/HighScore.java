@@ -15,10 +15,8 @@ public class HighScore {
     public HighScore(ArrayList<String> list) { highScore = FXCollections.observableArrayList(list); }
 
     public void addHighScore(int score) {
-        highScore.add(String.valueOf(score) + " : " + new Date());
-        if(highScore.contains("No Score Yet")){
-            highScore.remove("No Score Yet");
-        }
+        highScore.add(score + " : " + new Date());
+        highScore.remove("No Score Yet");
     }
     public ObservableList<String> getListScore() {
         /*

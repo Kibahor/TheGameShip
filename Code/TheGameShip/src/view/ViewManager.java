@@ -16,7 +16,7 @@ import java.util.Map;
 
 public class ViewManager {
 
-    private Map<String, View> views = new HashMap<>();
+    private final Map<String, View> views = new HashMap<>();
 
     private void addView(String name, String path) {
         View view = new View(path);

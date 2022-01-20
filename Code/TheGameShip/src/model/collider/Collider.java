@@ -11,7 +11,7 @@ import java.util.UUID;
 
 public class Collider implements ICollider { //http://sdz.tdct.org/sdz/eorie-des-collisions.html
 
-    private ObservableSet<IEntity> entities;
+    private final ObservableSet<IEntity> entities;
 
     public Collider(ObservableSet<IEntity> entities) {
         this.entities = entities;

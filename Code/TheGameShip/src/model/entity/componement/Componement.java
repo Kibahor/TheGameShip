@@ -1,7 +1,7 @@
 package model.entity.componement;
 
 public abstract class Componement {
-    private EComponementType type;
+    private final EComponementType type;
         public EComponementType getType(){ return type; }
 
     public Componement(EComponementType type){

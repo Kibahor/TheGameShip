@@ -16,7 +16,7 @@ public class Launcher extends Application {
     private static PersistenceManager persistenceManager;
 
     public void start(Stage stage) throws Exception {
-        this.stage = stage;
+        Launcher.stage = stage;
         viewManager = new ViewManager("TheGameShip",720,1280,"res/FXML/","MenuView", "/Sprites/icone.png", "view/CSS/style.css");
         persistenceManager = new PersistenceManager();
         stage.show();

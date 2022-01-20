@@ -3,8 +3,6 @@ package view;
 import javafx.event.ActionEvent;
 import launch.Launcher;
 
-;
-
 public class MenuView {
 
     public void initialize() {}

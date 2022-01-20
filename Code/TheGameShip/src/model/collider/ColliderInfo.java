@@ -4,10 +4,10 @@ import model.entity.IEntity;
 
 public class ColliderInfo {
 
-    private boolean isCollision;
+    private final boolean isCollision;
     public boolean IsCollision() { return isCollision; }
 
-    private IEntity e;
+    private final IEntity e;
     public IEntity getEntity() { return e; }
 
     public ColliderInfo(boolean isCollison, IEntity e) {

@@ -26,7 +26,7 @@ public class View {
 
     public boolean isInitialize() { return parent != null; }
 
-    private String path;
+    private final String path;
         public String getPath() { return path; }
 
     public View(String path) {

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class SerializeHighScore {
 
-    private ArrayList<String> listHighScore =  new ArrayList<>();
+    private final ArrayList<String> listHighScore =  new ArrayList<>();
 
     public SerializeHighScore() {
         listHighScore.add("No Score Yet");

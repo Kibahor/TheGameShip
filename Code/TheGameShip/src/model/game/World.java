@@ -10,13 +10,13 @@ import model.util.loop.Loop;
 
 public class World implements IEntityCollection, ILifeCycle {
 
-    private Loop loop;
-    private Thread thread;
+    private final Loop loop;
+    private final Thread thread;
 
-    private IInput input;
+    private final IInput input;
 
     Level currentLevel;
-        public int getScore() { return ((Level)currentLevel).getScore(); }
+        public int getScore() { return currentLevel.getScore(); }
         public Level getCurrentLevel() { return currentLevel; }
         @Override public ObservableSet<IEntity> getEntityCollection() { return currentLevel.getEntityCollection(); }
 
