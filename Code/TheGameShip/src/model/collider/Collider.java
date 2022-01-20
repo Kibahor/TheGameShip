@@ -1,5 +1,6 @@
 package model.collider;
 
+import javafx.collections.ObservableSet;
 import launch.Launcher;
 import model.entity.componement.EComponementType;
 import model.entity.componement.Location;
@@ -10,11 +11,11 @@ import java.util.UUID;
 
 public class Collider implements ICollider { //http://sdz.tdct.org/sdz/eorie-des-collisions.html
 
-    protected final ILifeCycle level;
+    private ObservableSet<IEntity> entities;
 
-    public Collider(ILifeCycle level) {
-        this.level = level;
-    } //TODO: au lieu de passer le level il faudrait donner directement la collection
+    public Collider(ObservableSet<IEntity> entities) {
+        this.entities = entities;
+    }
 
     @Override
     public ColliderInfo isCollision(double nextX, double nextY, double height, double width, UUID id) {
@@ -30,7 +31,7 @@ public class Collider implements ICollider { //http://sdz.tdct.org/sdz/eorie-des
     }
 
     protected IEntity isCollisionEntity(double nextX, double nextY, double height, double width, UUID id) {
-        for (IEntity e2: level.getEntityCollection()) {
+        for (IEntity e2: entities) {
             //Empêche que le joueur soit bloquer par ces propre tir
             boolean isAtOriginOfShoot = false;
             if (e2.isTypeOf(EComponementType.Shoot)) {
