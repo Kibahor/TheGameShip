@@ -2,8 +2,6 @@ package model.entity;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableSet;
-import model.entity.componement.EComponementType;
-import model.entity.componement.ShootCollection;
 import model.entity.componement.Sprite;
 import model.game.IEntityCollection;
 import java.util.HashSet;
@@ -28,9 +26,6 @@ public class EntityManager implements IEntityCollection {
 
     public void removeEntity(IEntity e) {
         Sprite.cast(e).setVisible(false);
-        if(e.isTypeOf(EComponementType.ShootCollection)){
-            ShootCollection.cast(e).removeAllShoot();
-        }
         entities.remove(e);
     }
 

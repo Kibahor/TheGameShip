@@ -40,7 +40,7 @@ public class Level implements IEntityCollection, ILifeCycle, IObserver {
     private final EntityFabric entityFabric = new EntityFabric();
 
     private IEntity player;
-        public IEntity getPlayer() { return player; }
+    public IEntity getPlayer() { return player; }
 
     @Override public ObservableSet<IEntity> getEntityCollection() {
         return entityManager.getEntityCollection();
@@ -53,9 +53,9 @@ public class Level implements IEntityCollection, ILifeCycle, IObserver {
     private final ICollider colliderEnemy = new ColliderEnemy(getEntityCollection());
 
     private final IntegerProperty score = new SimpleIntegerProperty();
-        public int getScore() { return score.get(); }
-        public void setScore(int score) { this.score.set(score); }
-        public IntegerProperty scoreProperty() { return score; }
+    public int getScore() { return score.get(); }
+    public void setScore(int score) { this.score.set(score); }
+    public IntegerProperty scoreProperty() { return score; }
 
     public Level(Loop loop, IInput input) {
         this.loop = loop;
@@ -76,10 +76,16 @@ public class Level implements IEntityCollection, ILifeCycle, IObserver {
     }
 
     private void updateShoot(IEntity e) {
-        for (IEntity e2 : ShootCollection.cast(e).getShootList()) {
-            ColliderInfo ci = move.move(e2, collider, Shoot.cast(e2).getDirection(), Location.cast(e2), Speed.cast(e2));
-            if (ci.IsCollision() && ci.getEntity() != null) {
-                Life.cast(ci.getEntity()).decreaseHp();
+        UUID ownerId = Shoot.cast(e).getOwnerId();
+        for (IEntity e2 : getEntityCollection()) {
+            if (e2.getId().equals(ownerId)) {
+                ColliderInfo ci = move.move(e, collider, Shoot.cast(e).getDirection(), Location.cast(e), Speed.cast(e));
+                if (ci.IsCollision()) {
+                    Life.cast(e).setDead(true);
+                    if (ci.getEntity() != null) {
+                        Life.cast(ci.getEntity()).decreaseHp();
+                    }
+                }
             }
         }
     }
@@ -89,10 +95,9 @@ public class Level implements IEntityCollection, ILifeCycle, IObserver {
         for (ECommand key : input.getKeyPressed()) {
             move.move(e, collider, key, Location.cast(e), Speed.cast(e));
             if (key.equals(ECommand.SHOOT)) {
-                createShoot(e,Location.cast(e), ECommand.RIGHT, 500);
+                createShoot(e.getId(),Location.cast(e), ECommand.RIGHT, 500);
             }
         }
-        updateShoot(e);
     }
 
     private void updateEnemy(IEntity e, long timer) {
@@ -103,18 +108,17 @@ public class Level implements IEntityCollection, ILifeCycle, IObserver {
         }
         ColliderInfo ci = moveEnemy.move(e, colliderEnemy, ECommand.LEFT, l, Speed.cast(e));
         if (timer2.getTimer() >= timer) {
-            createShoot(e, Location.cast(e), ECommand.LEFT, timer);
+            createShoot(e.getId(), Location.cast(e), ECommand.LEFT, timer);
             timer2.resetTimer();
         }
         if(ci.IsCollision() && ci.getEntity() == null){
             entityManager.removeEntity(e);
         }
-        updateShoot(e);
     }
 
-    private void createShoot(IEntity e, Location l, ECommand key, long timer) {
+    private void createShoot(UUID id, Location l, ECommand key, long timer) {
         if (timer1.getTimer() >= timer) {
-            entityFabric.createShoot(e, l, key);
+            entityManager.addEntity(entityFabric.createShoot(id, l, key));
             timer1.resetTimer();
         }
     }
@@ -144,6 +148,7 @@ public class Level implements IEntityCollection, ILifeCycle, IObserver {
             for (IEntity e : new ArrayList<>(getEntityCollection())) {
                 switch (e.getEntityType()) {
                     case Player -> updatePlayer();
+                    case Shoot -> updateShoot(e);
                     case Enemy -> updateEnemy(e, 800);
                 }
 

@@ -16,7 +16,7 @@ public class PersistenceManager {
         return highScore;
     }
 
-    IPersistence ps = new SettingsPersistence();
+    IPersistence ps =new SettingsPersistence();
     private final File settingsFile = new File("./res/Settings/settings.xml");
     private Settings settings;
     public Settings getSettings(){

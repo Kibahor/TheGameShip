@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <java version="16.0.2" class="java.beans.XMLDecoder">
- <object class="model.util.save.SerializeHighScore"/>
+ <object class="model.util.save.SerializeHighScore" id="SerializeHighScore0">
+  <void property="listHighScore">
+   <void index="0">
+    <string>0 : Thu Jan 20 23:53:44 CET 2022</string>
+   </void>
+  </void>
+ </object>
 </java>
