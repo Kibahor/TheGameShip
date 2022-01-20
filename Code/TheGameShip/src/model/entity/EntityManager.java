@@ -35,9 +35,9 @@ public class EntityManager implements IEntityCollection {
 
     private IEntity getEntityBy(String name) {
         Iterator it = entities.iterator();
-        while(it.hasNext()){
+        while (it.hasNext()){
             IEntity e = (IEntity) it.next();
-            if(e.getName().equals(name)){
+            if (e.getName().equals(name)){
                 return e;
             }
         }
