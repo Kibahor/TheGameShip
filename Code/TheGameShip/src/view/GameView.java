@@ -99,7 +99,7 @@ public class GameView {
                 if (newValue) {
                     Launcher.getStage().setUserData(world.getScore());
                     Launcher.getHighScore().addHighScore(world.getScore());
-                    System.out.println(Launcher.getHighScore().toString());
+                    //System.out.println(Launcher.getHighScore().toString());   //DEBUG
                     world.exit();
                     Launcher.getViewManager().closeView("GameView");
                     Launcher.getViewManager().setView("EndGameView");

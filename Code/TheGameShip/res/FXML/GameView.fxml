@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<Pane id="background" fx:id="pane" prefHeight="720" prefWidth="1280" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.GameView">
+<Pane id="background" fx:id="pane" prefHeight="720" prefWidth="1280" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.GameView">
    <children>
       <GridPane prefHeight="70.0" prefWidth="200.0" layoutY="610" >
         <columnConstraints>

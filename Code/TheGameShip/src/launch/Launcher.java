@@ -25,7 +25,7 @@ public class Launcher extends Application {
         settings = new Settings();
         PersistenceManager.loadSettings(settings);
         highScore = new HighScore();
-        //Persistencemanager.loadHighScore(highscore);
+        //PersistenceManager.loadHighScore(highScore);
         stage.show();
     }
 
