@@ -11,8 +11,7 @@ public class Shoot extends Componement {
         public void setOwnerId(UUID ownerId) { this.ownerId = ownerId; }
 
     private final ECommand direction;
-
-    public ECommand getDirection() { return direction; }
+        public ECommand getDirection() { return direction; }
 
     public Shoot(UUID ownerId, ECommand direction){
         super(EComponementType.Shoot);

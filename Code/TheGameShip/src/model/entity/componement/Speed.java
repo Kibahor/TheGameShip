@@ -17,7 +17,7 @@ public class Speed extends Componement {
         this.speedY = speedY;
     }
 
-    protected Speed(float speedX, float speedY){
+    public Speed(float speedX, float speedY){
         super(EComponementType.Speed);
         setSpeedX(speedX);
         setSpeedY(speedY);

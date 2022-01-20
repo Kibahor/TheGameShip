@@ -8,7 +8,7 @@ public class Sprite extends  Componement{
         public String getSprite() { return sprite; }
         public void setSprite(String sprite) { this.sprite = sprite; }
 
-    protected BooleanProperty visible = new SimpleBooleanProperty();
+    private final BooleanProperty visible = new SimpleBooleanProperty();
         public boolean getVisible() { return visible.get(); }
         public void setVisible(boolean b) { visible.set(b); }
         public BooleanProperty getVisibleBooleanProperty() { return visible; }

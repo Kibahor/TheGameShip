@@ -25,7 +25,7 @@ public class Life extends Componement {
         public BooleanProperty isDeadProperty() { return isDead; }
 
 
-    protected Life(double hp){
+    public Life(double hp){
         super(EComponementType.Life);
         setHp(hp);
         setDead(false);

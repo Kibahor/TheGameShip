@@ -1,8 +1,9 @@
-package model.entity.componement;
+package model.entity;
 
 import model.entity.EEntityType;
 import model.entity.Entity;
 import model.entity.IEntity;
+import model.entity.componement.*;
 import model.util.input.ECommand;
 
 import java.util.UUID;

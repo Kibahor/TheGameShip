@@ -1,6 +1,6 @@
 package model.entity.componement;
 
-public class Componement {
+public abstract class Componement {
     private EComponementType type;
         public EComponementType getType(){ return type; }
 
