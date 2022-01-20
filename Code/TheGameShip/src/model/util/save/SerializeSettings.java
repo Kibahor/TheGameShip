@@ -33,61 +33,21 @@ public class SerializeSettings {
         shoot = settings.getShoot();
     }
 
-    public double getDifficulty() {
-        return difficulty;
-    }
+    public double getDifficulty() { return difficulty; }
+    public double getVolume() { return volume; }
+    public String getUp() { return up; }
+    public String getLeft() { return left; }
+    public String getDown() { return down; }
+    public String getRight() { return right; }
+    public String getShoot() { return shoot; }
 
-    public double getVolume() {
-        return volume;
-    }
-
-    public String getUp() {
-        return up;
-    }
-
-    public String getLeft() {
-        return left;
-    }
-
-    public String getDown() {
-        return down;
-    }
-
-    public String getRight() {
-        return right;
-    }
-
-    public String getShoot() {
-        return shoot;
-    }
-
-    public void setDifficulty(double difficulty) {
-        this.difficulty = difficulty;
-    }
-
-    public void setVolume(double volume) {
-        this.volume = volume;
-    }
-
-    public void setUp(String up) {
-        this.up = up;
-    }
-
-    public void setLeft(String left) {
-        this.left = left;
-    }
-
-    public void setDown(String down) {
-        this.down = down;
-    }
-
-    public void setRight(String right) {
-        this.right = right;
-    }
-
-    public void setShoot(String shoot) {
-        this.shoot = shoot;
-    }
+    public void setDifficulty(double difficulty) { this.difficulty = difficulty; }
+    public void setVolume(double volume) { this.volume = volume; }
+    public void setUp(String up) { this.up = up; }
+    public void setLeft(String left) { this.left = left; }
+    public void setDown(String down) { this.down = down; }
+    public void setRight(String right) { this.right = right; }
+    public void setShoot(String shoot) { this.shoot = shoot; }
 
     @Override
     public String toString() {

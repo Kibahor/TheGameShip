@@ -3,9 +3,6 @@ package model.collider;
 import javafx.collections.ObservableSet;
 import launch.Launcher;
 import model.entity.IEntity;
-import model.entity.componement.EComponementType;
-import model.entity.componement.Location;
-import model.entity.componement.Shoot;
 
 import java.util.UUID;
 
