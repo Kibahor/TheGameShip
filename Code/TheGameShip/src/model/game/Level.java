@@ -32,7 +32,7 @@ public class Level implements ILifeCycle, IObserver {
     private IInput input;
 
     private final EntityManager entityManager = new EntityManager();
-    private final EntityFabric entityFabric = new EntityFabric();;
+    private final EntityFabric entityFabric = new EntityFabric();
 
     @Override public ObservableSet<IEntity> getEntityCollection() {
         return entityManager.getEntityCollection();
@@ -134,11 +134,16 @@ public class Level implements ILifeCycle, IObserver {
 
                 if (e.isTypeOf(EComponementType.Life)) {             //Gestion de la vie
                     //Si l'entité a de la vie
-                    if (Life.cast(e).isDead()) { entityManager.removeEntity(e); }
+                    if (Life.cast(e).isDead()) {
+                        entityManager.removeEntity(e);
+                        if(e.getEntityType().equals(EEntityType.Ennemy)){
+                            score++;
+                        }
+                    }
                 }
             }
 
-            createNewWave(1,4,10000);
+           createNewWave(1,2,10000);
         }
         catch (ConcurrentModificationException err) { //TODO : trouver pourquoi Concurrent Access
             err.printStackTrace();
