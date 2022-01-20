@@ -1,7 +1,7 @@
 package model.game;
 
 //TODO: Voir si pas donner un autre nom
-public interface ILifeCycle extends IEntityCollection {
+public interface ILifeCycle{
 
    void init();
    void start();

@@ -27,7 +27,7 @@ import java.util.UUID;
 
 //TODO: A la place faire une fabrique, qui se basera sur un fichier xml/json qui spécifie toute les caractéristiques
 
-public class Level implements ILifeCycle, IObserver {
+public class Level implements IEntityCollection, ILifeCycle, IObserver {
 
     private Loop loop;
     private Timer timer1 ;
@@ -42,7 +42,7 @@ public class Level implements ILifeCycle, IObserver {
     private static Settings settings;
 
     private IEntity player;
-    public IEntity getPlayer() { return player; }
+        public IEntity getPlayer() { return player; }
 
     @Override public ObservableSet<IEntity> getEntityCollection() {
         return entityManager.getEntityCollection();
@@ -79,7 +79,7 @@ public class Level implements ILifeCycle, IObserver {
         entityManager.addEntity(entityFabric.createEnemy("Enemy1", "/Sprites/Enemy.png",70, 70, 5, 1000, 350));
     }
 
-    public void updateShoot(IEntity e) {
+    private void updateShoot(IEntity e) {
         UUID ownerId = Shoot.cast(e).getOwnerId();
         for (IEntity e2 : getEntityCollection()) {
             if (e2.getId().equals(ownerId)) {
@@ -94,7 +94,7 @@ public class Level implements ILifeCycle, IObserver {
         }
     }
 
-    public void updatePlayer() {
+    private void updatePlayer() {
         IEntity e = getPlayer();
         for (ECommand key : input.getKeyPressed()) {
             move.move(e, collider, key, Location.cast(e), Speed.cast(e));
@@ -104,7 +104,7 @@ public class Level implements ILifeCycle, IObserver {
         }
     }
 
-    public void updateEnemy(IEntity e, long timer) {
+    private void updateEnemy(IEntity e, long timer) {
         IEntity player = getPlayer();
         Location l = Location.cast(e);
         if(getPlayer() != null){
@@ -117,14 +117,14 @@ public class Level implements ILifeCycle, IObserver {
         }
     }
 
-    public void createShoot(UUID id, Location l, ECommand key, long timer) {
+    private void createShoot(UUID id, Location l, ECommand key, long timer) {
         if (timer1.getTimer() >= timer) {
             entityManager.addEntity(entityFabric.createShoot(id, l, key));
             timer1.resetTimer();
         }
     }
 
-    public void createNewWave(int min, int max, long timer) {
+    private void createNewWave(int min, int max, long timer) {
         double height = 70;
         double width = height;
         if (timer3.getTimer() >= timer) {

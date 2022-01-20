@@ -8,20 +8,17 @@ import model.util.input.IInput;
 import model.util.input.Keyboard;
 import model.util.loop.Loop;
 
-public class World implements IEntityCollection {
+public class World implements IEntityCollection, ILifeCycle {
 
     private Loop loop;
-
     private Thread thread;
 
     private IInput input;
-    public IInput getInput() { return input; }
 
-    //TODO: Faire une List de Monde et récupérer celui qui va être choisis
     Level currentLevel;
-    public int getScore() { return ((Level)currentLevel).getScore(); }
-    public Level getCurrentLevel() { return currentLevel; }
-    @Override public ObservableSet<IEntity> getEntityCollection() { return currentLevel.getEntityCollection(); }
+        public int getScore() { return ((Level)currentLevel).getScore(); }
+        public Level getCurrentLevel() { return currentLevel; }
+        @Override public ObservableSet<IEntity> getEntityCollection() { return currentLevel.getEntityCollection(); }
 
     public IEntity getPlayer() { return currentLevel.getPlayer(); }
 
@@ -39,15 +36,18 @@ public class World implements IEntityCollection {
     }
 
     //Init, instancie les entité ou tout autre chose
+    @Override
     public void init() {
         currentLevel.init();
     }
 
+    @Override
     public void start() {
         thread.start();
         currentLevel.start();
     }
 
+    @Override
     public void exit() {
         currentLevel.exit();
         loop.StopLoop();
