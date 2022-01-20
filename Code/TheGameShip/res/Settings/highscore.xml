@@ -2,7 +2,9 @@
 <java version="16.0.2" class="java.beans.XMLDecoder">
  <object class="model.util.save.SerializeHighScore" id="SerializeHighScore0">
   <void property="listHighScore">
-   <void method="clear"/>
+   <void index="0">
+    <string>0 : Fri Jan 21 00:00:30 CET 2022</string>
+   </void>
   </void>
  </object>
 </java>

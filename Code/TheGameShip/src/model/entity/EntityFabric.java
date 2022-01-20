@@ -3,6 +3,8 @@ package model.entity;
 import model.entity.componement.*;
 import model.util.input.ECommand;
 
+import java.util.UUID;
+
 public class EntityFabric {
 
     private long numberShoot = 0;
