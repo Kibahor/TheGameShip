@@ -3,29 +3,25 @@ package model.util.data;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 
 public class HighScore {
 
-    private final ObservableList<Integer> highScore;
+    private final ObservableList<String> highScore;
 
-    public HighScore() { highScore = FXCollections.observableArrayList(); }
+    public HighScore() { highScore = FXCollections.observableArrayList(new ArrayList<>()); }
 
-    public void addHighScore(int score) { highScore.add(score); }
-    public void removeHighScore(int score) { highScore.remove(score); }
-    public ObservableList<Integer> getScore() { return highScore; }
-    public void resetHighScore() {
-        if (!highScore.isEmpty()) {
-            for (Integer s : highScore) {
-                removeHighScore(s);
-            }
-        }
-    }
+    public void addHighScore(int score) { highScore.add(String.valueOf(score) + " : " + new Date()); }      // TODO: Trier la liste ou changer pour une map
+    public ObservableList<String> getListScore() { return highScore; }
+    public void resetHighScore() { highScore.removeAll(highScore); }
 
     @Override
     public String toString() {
         String str = "Scores :\n";
-        for (Integer e : highScore) {
-            str = str + e + "\n";
+        for (String s : highScore) {
+            str = str + s + "\n";
         }
         return str;
     }

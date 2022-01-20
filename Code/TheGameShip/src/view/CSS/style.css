@@ -28,3 +28,10 @@
     -fx-text-alignment: center;
     -fx-alignment: center;
 }
+
+#label2{
+    -fx-text-fill: White;
+    -fx-font-size: 30px;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}
