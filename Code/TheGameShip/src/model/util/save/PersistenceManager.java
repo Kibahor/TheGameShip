@@ -1,6 +1,6 @@
 package model.util.save;
 
-import model.util.settings.Settings;
+import model.util.data.Settings;
 
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;

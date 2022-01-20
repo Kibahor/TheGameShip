@@ -1,4 +1,4 @@
-package model.util.settings;
+package model.util.data;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;

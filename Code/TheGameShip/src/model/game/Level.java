@@ -156,7 +156,7 @@ public class Level implements ILifeCycle, IObserver {
            createNewWave(1,2,10000);
         }
         catch (ConcurrentModificationException err) { //TODO : trouver pourquoi Concurrent Access
-            err.printStackTrace();
+            //err.printStackTrace();
         }
         catch (Exception err) {
             err.printStackTrace();
