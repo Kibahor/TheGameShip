@@ -68,8 +68,8 @@ public class SettingsView {
         volumeSlider.setValue(50);
         up.setText("UP");
         left.setText("LEFT");
-        down.setText("RIGHT");
-        right.setText("DOWN");
+        down.setText("DOWN");
+        right.setText("RIGHT");
         shoot.setText("SPACE");
     }
 

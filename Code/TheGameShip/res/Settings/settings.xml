@@ -4,14 +4,8 @@
   <void property="difficulty">
    <double>3.0</double>
   </void>
-  <void property="down">
-   <string>RIGHT</string>
-  </void>
-  <void property="right">
-   <string>DOWN</string>
-  </void>
   <void property="volume">
-   <double>0.0</double>
+   <double>100.0</double>
   </void>
  </object>
 </java>
