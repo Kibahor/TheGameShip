@@ -20,12 +20,12 @@ public class EntityManager implements IEntityCollection {
 
     //TODO : Mauvais plan de faire deux listes, il faut en faire qu'une mais observable et la bind sur la vue
     //Used Entities
-    public void addEntity(IEntity e){
+    public void addEntity(IEntity e) {
         Sprite.cast(e).setVisible(true);
         entities.add(e);
     }
 
-    public void removeEntity(IEntity e){
+    public void removeEntity(IEntity e) {
         Sprite.cast(e).setVisible(false);
         entities.remove(e);
     }
@@ -33,8 +33,8 @@ public class EntityManager implements IEntityCollection {
         removeEntity(getEntityBy(name));
     }
 
-    private IEntity getEntityBy(String name){
-        Iterator it= entities.iterator();
+    private IEntity getEntityBy(String name) {
+        Iterator it = entities.iterator();
         while(it.hasNext()){
             IEntity e = (IEntity) it.next();
             if(e.getName().equals(name)){
@@ -45,8 +45,8 @@ public class EntityManager implements IEntityCollection {
         return null;
     }
 
-    public IEntity getPlayer(){
-        Iterator it= entities.iterator();
+    public IEntity getPlayer() {
+        Iterator it = entities.iterator();
         while(it.hasNext()){
             IEntity e = (IEntity) it.next();
             if(e.getEntityType().equals(EEntityType.Player)){

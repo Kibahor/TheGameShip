@@ -22,7 +22,7 @@ public class Keyboard implements IInput, EventHandler<KeyEvent> {
     }
 
         //Correspondance entre les commandes disponible et les touche du clavier
-    private Map<KeyCode,ECommand> matchKey = new HashMap<>()
+    private Map<KeyCode, ECommand> matchKey = new HashMap<>()
         {
             {
                 put(KeyCode.UP, ECommand.UP);

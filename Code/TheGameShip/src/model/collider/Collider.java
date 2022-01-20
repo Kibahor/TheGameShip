@@ -6,10 +6,10 @@ import model.entity.componement.Location;
 import model.entity.componement.Shoot;
 import model.game.ILevel;
 import model.entity.*;
-
 import java.util.UUID;
 
 public class Collider implements ICollider { //http://sdz.tdct.org/sdz/eorie-des-collisions.html
+
     protected final ILevel level;
 
     public Collider(ILevel level) {

@@ -1,7 +1,6 @@
 package model.util.loop;
 
 import javafx.application.Platform;
-
 import static java.lang.Thread.sleep;
 
 public class Loop extends Observable implements Runnable {
@@ -32,8 +31,8 @@ public class Loop extends Observable implements Runnable {
             }
         }
     }
-    public void StopBoucle(){ isRunning = false; }
-    public void StartBoucle(){
+    public void StopLoop(){ isRunning = false; }
+    public void StartLoop(){
         isRunning = true;
     }
 }

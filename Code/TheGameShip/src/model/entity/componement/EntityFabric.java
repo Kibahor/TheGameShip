@@ -8,6 +8,7 @@ import model.util.input.ECommand;
 import java.util.UUID;
 
 public class EntityFabric {
+
     private long number = 0;
         private long getShootNumber(){
             number++;
@@ -24,7 +25,7 @@ public class EntityFabric {
         return e;
     }
 
-    public Entity createEnnemy(String name, String sprite, double height, double width, double hp, double x, double y){
+    public Entity createEnemy(String name, String sprite, double height, double width, double hp, double x, double y){
         Entity e = createPlayer(name,sprite,height,width,hp,x,y,5,7);
         e.setEntityType(EEntityType.Ennemy);
         return e;

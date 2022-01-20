@@ -15,9 +15,9 @@ import java.util.Map;
 
 public class ViewManager {
 
-    private Map<String,View> views = new HashMap<>();
+    private Map<String, View> views = new HashMap<>();
 
-    private void addView(String name, String path){
+    private void addView(String name, String path) {
         View view = new View(path);
         views.put(name, view);
     }
@@ -29,7 +29,6 @@ public class ViewManager {
 
 
     public ViewManager(String title, int height, int width, String pathView, String nameStartView, String pathIcon, String cssPath) throws Exception {
-
         //Scene
         loadAllViews(pathView);
         loadView(nameStartView);

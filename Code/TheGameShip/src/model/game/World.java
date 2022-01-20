@@ -8,7 +8,6 @@ import model.util.input.IInput;
 import model.util.input.Keyboard;
 import model.util.loop.Loop;
 
-
 public class World implements IEntityCollection {
 
     private Loop loop;
@@ -16,12 +15,12 @@ public class World implements IEntityCollection {
     private Thread thread;
 
     private IInput input;
-        public IInput getInput() { return input; }
+    public IInput getInput() { return input; }
 
     //TODO: Faire une List de Monde et récupérer celui qui va être choisis
     ILevel currentLevel;
-        public int getScore() { return ((Level)currentLevel).getScore(); }
-        @Override public ObservableSet<IEntity> getEntityCollection() { return currentLevel.getEntityCollection(); }
+    public int getScore() { return ((Level)currentLevel).getScore(); }
+    @Override public ObservableSet<IEntity> getEntityCollection() { return currentLevel.getEntityCollection(); }
 
     public World() {
         //Loop
@@ -48,7 +47,7 @@ public class World implements IEntityCollection {
 
     public void exit() {
         currentLevel.exit();
-        loop.StopBoucle();
+        loop.StopLoop();
         thread.stop();//TODO: Voir si il n'y a pas un autre moyen car deprecated
     }
 }
