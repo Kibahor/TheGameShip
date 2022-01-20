@@ -7,22 +7,21 @@ import launch.Launcher;
 import model.collider.Collider;
 import model.collider.ColliderInfo;
 import model.collider.ICollider;
-import model.entity.*;
+import model.entity.EEntityType;
+import model.entity.EntityFabric;
+import model.entity.EntityManager;
+import model.entity.IEntity;
 import model.entity.componement.*;
 import model.move.IMove;
 import model.move.Move;
 import model.move.MoveEnemy;
-import model.util.data.HighScore;
-import model.util.data.Settings;
-import model.util.loop.Loop;
-import model.util.loop.IObserver;
 import model.util.input.ECommand;
 import model.util.input.IInput;
+import model.util.loop.IObserver;
+import model.util.loop.Loop;
 import model.util.loop.Timer;
-import model.util.save.PersistenceManager;
 
 import java.util.ConcurrentModificationException;
-import java.lang.Math;
 import java.util.UUID;
 
 public class Level implements IEntityCollection, ILifeCycle, IObserver {

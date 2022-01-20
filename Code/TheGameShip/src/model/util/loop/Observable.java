@@ -1,6 +1,5 @@
 package model.util.loop;
 
-import java.util.ConcurrentModificationException;
 import java.util.LinkedList;
 
 public class Observable {

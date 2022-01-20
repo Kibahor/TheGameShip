@@ -7,8 +7,6 @@ package launch;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import model.util.data.HighScore;
-import model.util.data.Settings;
 import model.util.save.PersistenceManager;
 import view.ViewManager;
 

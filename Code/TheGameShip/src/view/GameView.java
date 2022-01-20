@@ -10,12 +10,12 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import launch.Launcher;
-import model.entity.componement.Life;
 import model.entity.EEntityType;
-import model.game.World;
 import model.entity.IEntity;
+import model.entity.componement.Life;
 import model.entity.componement.Location;
 import model.entity.componement.Sprite;
+import model.game.World;
 import model.util.data.HighScore;
 
 public class GameView {

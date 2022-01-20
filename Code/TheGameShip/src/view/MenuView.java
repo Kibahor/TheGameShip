@@ -1,7 +1,9 @@
 package view;
 
-import javafx.event.ActionEvent;;
+import javafx.event.ActionEvent;
 import launch.Launcher;
+
+;
 
 public class MenuView {
 

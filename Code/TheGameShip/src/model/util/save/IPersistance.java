@@ -1,7 +1,5 @@
 package model.util.save;
 
-import model.util.data.Settings;
-
 import java.io.File;
 
 public interface IPersistance {

@@ -1,6 +1,7 @@
 package model.util.save;
 
 import model.util.data.HighScore;
+
 import java.util.ArrayList;
 
 public class SerializeHighScore {

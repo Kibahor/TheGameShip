@@ -1,12 +1,11 @@
 package view;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import launch.Launcher;
-import javafx.fxml.FXML;
 import model.util.data.Settings;
-import model.util.save.PersistenceManager;
 
 public class SettingsView {
 

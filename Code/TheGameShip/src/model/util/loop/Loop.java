@@ -1,6 +1,7 @@
 package model.util.loop;
 
 import javafx.application.Platform;
+
 import static java.lang.Thread.sleep;
 
 public class Loop extends Observable implements Runnable {

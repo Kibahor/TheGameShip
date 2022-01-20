@@ -5,6 +5,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import launch.Launcher;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;

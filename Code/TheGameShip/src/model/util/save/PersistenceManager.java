@@ -3,9 +3,7 @@ package model.util.save;
 import model.util.data.HighScore;
 import model.util.data.Settings;
 
-import java.beans.XMLDecoder;
-import java.beans.XMLEncoder;
-import java.io.*;
+import java.io.File;
 
 public class PersistenceManager {
 

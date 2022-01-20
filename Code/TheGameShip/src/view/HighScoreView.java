@@ -2,8 +2,8 @@ package view;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import launch.Launcher;
 import javafx.scene.control.ListView;
+import launch.Launcher;
 import model.util.data.HighScore;
 
 public class HighScoreView {
