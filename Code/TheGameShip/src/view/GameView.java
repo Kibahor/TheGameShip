@@ -24,7 +24,6 @@ public class GameView {
     @FXML private Label life;
     @FXML private Label score;
 
-    private HighScore highscore;
     private World world;
 
     public void initialize() {
@@ -38,9 +37,6 @@ public class GameView {
                 pane.getChildren().remove(e.getElementRemoved());
             }
         });
-
-        highscore = new HighScore();
-        //PersistenceManager.loadHighScore(highscore);
 
         world.init();
         world.start();
@@ -100,10 +96,10 @@ public class GameView {
         if (e.getEntityType().equals(EEntityType.Player)) {
             Life life = Life.cast(e);
             life.isDeadProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) ->{
-                if(newValue){
+                if (newValue) {
                     Launcher.getStage().setUserData(world.getScore());
-                    highscore.addHighScore(world.getScore());
-                    System.out.println(highscore.toString());     //DEBUG
+                    Launcher.getHighScore().addHighScore(world.getScore());
+                    System.out.println(Launcher.getHighScore().toString());
                     world.exit();
                     Launcher.getViewManager().closeView("GameView");
                     Launcher.getViewManager().setView("EndGameView");
