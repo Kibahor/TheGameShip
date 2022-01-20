@@ -18,9 +18,12 @@ public class World implements IEntityCollection {
     public IInput getInput() { return input; }
 
     //TODO: Faire une List de Monde et récupérer celui qui va être choisis
-    ILifeCycle currentLevel;
+    Level currentLevel;
     public int getScore() { return ((Level)currentLevel).getScore(); }
+    public Level getCurrentLevel() { return currentLevel; }
     @Override public ObservableSet<IEntity> getEntityCollection() { return currentLevel.getEntityCollection(); }
+
+    public IEntity getPlayer() { return currentLevel.getPlayer(); }
 
     public World() {
         //Loop

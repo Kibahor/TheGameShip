@@ -1,14 +1,17 @@
 package view;
 
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.SetChangeListener;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-
 import launch.Launcher;
 import model.entity.componement.Life;
 import model.entity.EEntityType;
@@ -19,8 +22,9 @@ import model.entity.componement.Sprite;
 
 public class GameView {
 
-    @FXML
-    private Pane pane;
+    @FXML private Pane pane;
+    @FXML private Label life;
+    @FXML private Label score;
 
     private World world;
 
@@ -37,8 +41,10 @@ public class GameView {
         });
 
         world.init();
-
         world.start();
+
+        life.textProperty().bind(Life.cast(world.getPlayer()).hpProperty().asString());
+        score.textProperty().bind(world.getCurrentLevel().scoreProperty().asString());
 
         Launcher.getStage().setOnCloseRequest(e -> {
             world.exit();
@@ -50,10 +56,10 @@ public class GameView {
         if(!e.isTypeOf(EComponementType.Life)){
             System.err.println("Impossible d'ajouter l'entité : \""+e.getName()+"\" car elle n'implémente pas Location");
         }*/
-        Location l=Location.cast(e);
-        Sprite s= Sprite.cast(e);
+        Location l = Location.cast(e);
+        Sprite s = Sprite.cast(e);
 
-        if(s.getSprite() != null){
+        if (s.getSprite() != null) {
             try {
                 ImageView imgview = new ImageView();
                 imgview.setImage(new Image(String.valueOf(getClass().getResource(s.getSprite()).toURI().toURL())));
@@ -89,8 +95,8 @@ public class GameView {
             pane.getChildren().add(r);
         }
 
-        if(e.getEntityType().equals(EEntityType.Player)){
-            Life life=Life.cast(e);
+        if (e.getEntityType().equals(EEntityType.Player)) {
+            Life life = Life.cast(e);
             life.isDeadProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) ->{
                 if(newValue){
                     Launcher.getStage().setUserData(world.getScore());

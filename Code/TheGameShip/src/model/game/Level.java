@@ -1,5 +1,9 @@
 package model.game;
 
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.ObservableSet;
 import launch.Launcher;
 import model.collider.Collider;
@@ -34,6 +38,9 @@ public class Level implements ILifeCycle, IObserver {
     private final EntityManager entityManager = new EntityManager();
     private final EntityFabric entityFabric = new EntityFabric();
 
+    private IEntity player;
+    public IEntity getPlayer() { return player; }
+
     @Override public ObservableSet<IEntity> getEntityCollection() {
         return entityManager.getEntityCollection();
     }
@@ -43,8 +50,10 @@ public class Level implements ILifeCycle, IObserver {
 
     private ICollider collider = new Collider(this);
 
-    private int score = 0;
-        public int getScore() { return score; }
+    private final IntegerProperty score = new SimpleIntegerProperty();
+        public int getScore() { return score.get(); }
+        public void setScore(int score) { this.score.set(score); }
+        public IntegerProperty scoreProperty() { return score; }
 
     public Level(Loop loop, IInput input) {
         this.loop = loop;
@@ -57,7 +66,8 @@ public class Level implements ILifeCycle, IObserver {
         timer2 = new Timer(loop);
         timer3 = new Timer(loop);
         //ENTITIES
-        entityManager.addEntity(entityFabric.createPlayer("Vaisseau", "/Sprites/Spaceship.png", 70, 70, 5, 0, 250, 10, 10));
+        player = (entityFabric.createPlayer("Vaisseau", "/Sprites/Spaceship.png", 70, 70, 5, 0, 250, 10, 10));
+        entityManager.addEntity(player);
         //entityManager.add(new Entity("Obstacle1","file://test.jpg", EType.Obstacle,35,5,500,500));
         entityManager.addEntity(entityFabric.createEnemy("Enemy1", "/Sprites/Enemy.png",70, 70, 5, 1000, 350));
     }
@@ -78,7 +88,7 @@ public class Level implements ILifeCycle, IObserver {
     }
 
     public void updatePlayer(){
-        IEntity e = entityManager.getPlayer();
+        IEntity e = getPlayer();
         for (ECommand key : input.getKeyPressed()) {
             move.move(e, collider, key, Location.cast(e), Speed.cast(e));
             if (key.equals(ECommand.SHOOT)) {
@@ -88,9 +98,9 @@ public class Level implements ILifeCycle, IObserver {
     }
 
     public void updateEnemy(IEntity e, long timer){
-        IEntity player = entityManager.getPlayer();
+        IEntity player = getPlayer();
         Location l = Location.cast(e);
-        if(entityManager.getPlayer()!=null){
+        if(getPlayer()!=null){
             l=Location.cast(player);
         }
         moveEnemy.move(e, collider, ECommand.LEFT, l , Speed.cast(e));
@@ -137,7 +147,7 @@ public class Level implements ILifeCycle, IObserver {
                     if (Life.cast(e).isDead()) {
                         entityManager.removeEntity(e);
                         if(e.getEntityType().equals(EEntityType.Ennemy)){
-                            score++;
+                            setScore(getScore()+1);
                         }
                     }
                 }
