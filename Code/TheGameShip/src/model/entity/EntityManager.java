@@ -18,7 +18,6 @@ public class EntityManager implements IEntityCollection {
         entities = FXCollections.observableSet(new HashSet<>());
     }
 
-    //TODO : Mauvais plan de faire deux listes, il faut en faire qu'une mais observable et la bind sur la vue
     //Used Entities
     public void addEntity(IEntity e) {
         Sprite.cast(e).setVisible(true);

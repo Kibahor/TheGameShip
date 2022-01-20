@@ -33,6 +33,9 @@ public class Location extends Componement {
     }
 
     public static Location cast(IHasComponements e){
-            return (Location) e.getComponement(EComponementType.Location);
+        /*if(!e.isTypeOf(EComponementType.Life)){
+            System.err.println("Impossible d'ajouter l'entité : \""+e.getName()+"\" car elle n'implémente pas Location");
+        }*/
+        return (Location) e.getComponement(EComponementType.Location);
     }
 }

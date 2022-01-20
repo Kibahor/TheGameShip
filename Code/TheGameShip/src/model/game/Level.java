@@ -25,8 +25,6 @@ import java.util.ConcurrentModificationException;
 import java.lang.Math;
 import java.util.UUID;
 
-//TODO: A la place faire une fabrique, qui se basera sur un fichier xml/json qui spécifie toute les caractéristiques
-
 public class Level implements IEntityCollection, ILifeCycle, IObserver {
 
     private Loop loop;
@@ -176,6 +174,5 @@ public class Level implements IEntityCollection, ILifeCycle, IObserver {
     @Override
     public void exit() {
         loop.unsubscribeAll();
-        //TODO: Unscribe les événement ajouter aux boucle (créer une méthode destroy dans boucle)
     }
 }

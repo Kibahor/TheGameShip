@@ -13,7 +13,7 @@ public class HighScore {
 
     public HighScore() { highScore = FXCollections.observableArrayList(new ArrayList<>()); }
 
-    public void addHighScore(int score) { highScore.add(String.valueOf(score) + " : " + new Date()); }      // TODO: Trier la liste ou changer pour une map
+    public void addHighScore(int score) { highScore.add(String.valueOf(score) + " : " + new Date()); }      //TODO: Trier la liste ou changer pour une map
     public ObservableList<String> getListScore() { return highScore; }
     public void resetHighScore() { highScore.removeAll(highScore); }
 
