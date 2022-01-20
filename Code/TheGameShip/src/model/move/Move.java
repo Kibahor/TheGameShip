@@ -1,9 +1,9 @@
 package model.move;
 
-import model.entity.Componement.EComponementType;
-import model.entity.Componement.Location;
-import model.entity.Componement.Shoot;
-import model.entity.Componement.Speed;
+import model.entity.componement.EComponementType;
+import model.entity.componement.Location;
+import model.entity.componement.Shoot;
+import model.entity.componement.Speed;
 import model.util.input.ECommand;
 import model.collider.ColliderInfo;
 import model.collider.ICollider;

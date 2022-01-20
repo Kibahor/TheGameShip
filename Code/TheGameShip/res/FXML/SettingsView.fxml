@@ -64,11 +64,11 @@
                                   <Button onAction="#changeLeft" text="Edit" GridPane.halignment="LEFT" GridPane.columnIndex="2"  GridPane.rowIndex="1" />
 
                                   <Label id="label" text="Down :" GridPane.halignment="RIGHT" GridPane.columnIndex="3" />
-                                  <Label id="label" fx:id="down" GridPane.halignment="CENTER" GridPane.columnIndex="4" />
+                                  <Label id="label" fx:id="down" GridPane.halignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="1"/>
                                   <Button onAction="#changeDown" text="Edit" GridPane.halignment="LEFT" GridPane.columnIndex="5" />
 
                                   <Label id="label" text="Right:" GridPane.halignment="RIGHT" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                                  <Label id="label" fx:id="right" GridPane.halignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                  <Label id="label" fx:id="right" GridPane.halignment="CENTER" GridPane.columnIndex="4" />
                                   <Button onAction="#changeRight" text="Edit" GridPane.halignment="LEFT" GridPane.columnIndex="5" GridPane.rowIndex="1" />
 
                                   <Label id="label" text="Shoot :" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />

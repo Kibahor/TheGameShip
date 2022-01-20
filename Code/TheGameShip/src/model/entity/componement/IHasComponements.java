@@ -1,4 +1,4 @@
-package model.entity.Componement;
+package model.entity.componement;
 
 public interface IHasComponements {
     void addComponement(Componement c);

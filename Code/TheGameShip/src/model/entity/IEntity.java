@@ -1,8 +1,8 @@
 package model.entity;
 
 
-import model.entity.Componement.EComponementType;
-import model.entity.Componement.IHasComponements;
+import model.entity.componement.EComponementType;
+import model.entity.componement.IHasComponements;
 
 import java.util.UUID;
 

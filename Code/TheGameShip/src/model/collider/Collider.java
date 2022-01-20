@@ -1,9 +1,9 @@
 package model.collider;
 
 import launch.Launcher;
-import model.entity.Componement.EComponementType;
-import model.entity.Componement.Location;
-import model.entity.Componement.Shoot;
+import model.entity.componement.EComponementType;
+import model.entity.componement.Location;
+import model.entity.componement.Shoot;
 import model.game.ILevel;
 import model.entity.*;
 

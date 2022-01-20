@@ -23,8 +23,8 @@
                     <RowConstraints percentHeight="20" />
                 </rowConstraints>
 
-                <Button id="button" onAction="#menu" text="Leave"  GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-                <Button id="button" onAction="#clear" text="Clear" GridPane.halignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <Button id="button" onAction="#menu" text="Leave"  GridPane.halignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <Button id="button" onAction="#clear" text="Clear" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
                 <Label text="High Score" GridPane.columnSpan="2" GridPane.halignment="CENTER" textFill="white">
                     <font>
                         <Font name="System Bold" size="35" />

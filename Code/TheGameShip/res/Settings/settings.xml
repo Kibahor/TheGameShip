@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <java version="16.0.2" class="java.beans.XMLDecoder">
  <object class="model.util.save.SerializeSettings">
+  <void property="difficulty">
+   <double>1.0</double>
+  </void>
   <void property="down">
    <string>RIGHT</string>
   </void>
   <void property="right">
    <string>DOWN</string>
+  </void>
+  <void property="volume">
+   <double>80.0</double>
   </void>
  </object>
 </java>

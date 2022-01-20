@@ -1,9 +1,9 @@
 package launch;
 
-import model.entity.Componement.EComponementType;
+import model.entity.componement.EComponementType;
 import model.entity.Entity;
-import model.entity.Componement.EntityFabric;
-import model.entity.Componement.Location;
+import model.entity.componement.EntityFabric;
+import model.entity.componement.Location;
 
 public class Main {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package model.entity.Componement;
+package model.entity.componement;
 
 import model.entity.EEntityType;
 import model.entity.Entity;

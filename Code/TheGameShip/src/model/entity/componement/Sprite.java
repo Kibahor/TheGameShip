@@ -1,4 +1,4 @@
-package model.entity.Componement;
+package model.entity.componement;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;

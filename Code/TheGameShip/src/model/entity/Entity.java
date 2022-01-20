@@ -1,7 +1,7 @@
 package model.entity;
 
-import model.entity.Componement.Componement;
-import model.entity.Componement.EComponementType;
+import model.entity.componement.Componement;
+import model.entity.componement.EComponementType;
 
 import java.util.*;
 

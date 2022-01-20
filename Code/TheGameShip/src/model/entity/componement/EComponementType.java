@@ -1,4 +1,4 @@
-package model.entity.Componement;
+package model.entity.componement;
 
 public enum EComponementType {
     Entity,

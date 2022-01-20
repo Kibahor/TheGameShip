@@ -1,6 +1,5 @@
 package view;
 
-import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.SetChangeListener;
 import javafx.fxml.FXML;
@@ -11,14 +10,12 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 import launch.Launcher;
-import model.entity.Componement.Life;
+import model.entity.componement.Life;
 import model.entity.EEntityType;
 import model.game.World;
 import model.entity.IEntity;
-import model.entity.Componement.Location;
-import model.entity.Componement.Sprite;
-
-import javax.swing.text.StyledEditorKit;
+import model.entity.componement.Location;
+import model.entity.componement.Sprite;
 
 public class GameView {
 

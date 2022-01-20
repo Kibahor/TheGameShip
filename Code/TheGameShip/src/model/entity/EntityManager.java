@@ -3,7 +3,7 @@ package model.entity;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableSet;
 import model.game.IEntityCollection;
-import model.entity.Componement.Sprite;
+import model.entity.componement.Sprite;
 
 import java.util.HashSet;
 import java.util.Iterator;
