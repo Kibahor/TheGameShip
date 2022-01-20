@@ -26,7 +26,7 @@ public class Loop extends Observable implements Runnable {
             }
         }
     }
-    public void StopLoop(){ isRunning = false; }
+    public void StopLoop() { isRunning = false; }
     public void RestartLoop(){
         isRunning = true;
     }
