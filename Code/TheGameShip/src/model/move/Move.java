@@ -36,6 +36,10 @@ public class Move implements IMove {
             l.setX(nextx);
             l.setY(nexty);
         }
+        if(e.isTypeOf(EComponementType.Shoot)){
+            l.setX(nextx);
+            l.setY(nexty);
+        }
         return ci;
     }
 }

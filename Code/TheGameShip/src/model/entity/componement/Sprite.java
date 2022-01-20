@@ -19,8 +19,9 @@ public class Sprite extends  Componement{
         setSprite(sprite);
     }
 
-    public Sprite(){
+    public Sprite(boolean visible){
         super(EComponementType.Sprite);
+        setVisible(true);
         setSprite(null);
     }
 

@@ -12,9 +12,7 @@ import javafx.scene.shape.Rectangle;
 import launch.Launcher;
 import model.entity.EEntityType;
 import model.entity.IEntity;
-import model.entity.componement.Life;
-import model.entity.componement.Location;
-import model.entity.componement.Sprite;
+import model.entity.componement.*;
 import model.game.World;
 import model.util.data.HighScore;
 
@@ -28,16 +26,18 @@ public class GameView {
     private Label score;
 
     private World world;
+    private SetChangeListener<IEntity> listener;
 
     public void initialize() {
         world = new World();
-        world.getEntityCollection().addListener((SetChangeListener<IEntity>) e -> {
-            if (e.wasAdded()) {
-                addEntity(e.getElementAdded());
-            } else if (e.wasRemoved()) {
-                pane.getChildren().remove(e.getElementRemoved());
+        listener = change -> {
+            if (change.wasAdded()) {
+                addEntity(change.getElementAdded());
+            } else if (change.wasRemoved()) {
+                pane.getChildren().remove(change.getElementRemoved());
             }
-        });
+        };
+        world.getEntityCollection().addListener(listener);
         world.init();
         world.start();
 
@@ -49,7 +49,14 @@ public class GameView {
         });
     }
 
-    public void addEntity(IEntity e) {
+    public void addEntity(IEntity e){
+        addOneEntity(e);
+        if(e.isTypeOf(EComponementType.ShootCollection)){
+            ShootCollection.cast(e).getShootList().addListener(listener);
+        }
+    }
+
+    public void addOneEntity(IEntity e) {
         Location l = Location.cast(e);
         Sprite s = Sprite.cast(e);
 
@@ -68,8 +75,7 @@ public class GameView {
                 err.printStackTrace();
             }
 
-        } else {
-            //Si pas de sprite
+        } else { //Si pas de sprite
             Color color;
             switch (e.getEntityType()) {
                 case Enemy -> color = Color.RED;
@@ -88,9 +94,9 @@ public class GameView {
             pane.getChildren().add(r);
         }
 
+        // Si c'est le joueur on vérifie si il est mort et on affiche l'écran de gameover
         if (e.getEntityType().equals(EEntityType.Player)) {
-            Life life = Life.cast(e);
-            life.isDeadProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) -> {
+            Life.cast(e).isDeadProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) -> {
                 if (newValue) {
                     Launcher.getStage().setUserData(world.getScore());
                     HighScore highScore = Launcher.getPersistenceManager().getHighScore();

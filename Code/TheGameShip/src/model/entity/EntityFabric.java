@@ -26,6 +26,7 @@ public class EntityFabric {
         e.addComponement(new Location(x, y, height, width));
         e.addComponement(new Life(hp));
         e.addComponement(new Speed(speedX, speedY));
+        e.addComponement(new ShootCollection());
         return e;
     }
 
@@ -40,7 +41,7 @@ public class EntityFabric {
         return createEnemy(name, "/Sprites/Enemy.png", height, width, 5, x, y);
     }
 
-    public IEntity createShoot(UUID ownerId, Location l, ECommand direction) {
+    public void createShoot(IEntity e, Location l, ECommand direction) {
         //Pour la direction du tir
         double heightShoot = 10;
         double widthShoot = 30;
@@ -51,14 +52,13 @@ public class EntityFabric {
             case LEFT -> xShoot -= l.getWidth() - 5;
         }
 
-        String name = "Shoot" + getShootNumber() + "_" + ownerId.toString();
-        Entity e = new Entity(name, EEntityType.Shoot);
-        e.addComponement(new Sprite(null));
-        e.addComponement(new Location(xShoot, yShoot, heightShoot, widthShoot));
-        e.addComponement(new Life(1));
-        e.addComponement(new Speed(15, 15));
-        e.addComponement(new Shoot(ownerId, direction));
-
-        return e;
+        String name = "Shoot" + getShootNumber() + "_" + e.getId().toString();
+        Entity e1 = new Entity(name, EEntityType.Shoot);
+        e1.addComponement(new Sprite(true));
+        e1.addComponement(new Location(xShoot, yShoot, heightShoot, widthShoot));
+        e1.addComponement(new Life(1));
+        e1.addComponement(new Speed(15, 15));
+        e1.addComponement(new Shoot(e.getId(), direction));
+        ShootCollection.cast(e).addShoot(e1);
     }
 }
