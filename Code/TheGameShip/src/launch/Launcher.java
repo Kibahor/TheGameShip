@@ -7,32 +7,21 @@ package launch;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import model.util.data.HighScore;
-import model.util.save.PersistenceManager;
-import model.util.data.Settings;
 import view.ViewManager;
 
 public class Launcher extends Application {
 
     private static ViewManager viewManager;
     private static Stage stage;
-    private static Settings settings;
-    private static HighScore highscore;
 
     public void start(Stage stage) throws Exception {
         this.stage = stage;
         viewManager = new ViewManager("TheGameShip",720,1280,"res/FXML/","MenuView", "/Sprites/icone.png", "view/CSS/style.css");
-        settings = new Settings();
-        PersistenceManager.loadSettings(settings);
-        highscore = new HighScore();
-        //PersistenceManager.loadHighScore(highscore);
         stage.show();
     }
 
     public static ViewManager getViewManager() { return viewManager; }
     public static Stage getStage() { return stage; }
-    public static Settings getSettings() { return settings; }
-    public static HighScore getHighscore() { return highscore; }
 }
 
 // TODO: Code + Docs + Video (une demo vidéo d'1 min max) + Preuve de compétence (avec la feuille de compétence en expliquant)

@@ -16,6 +16,7 @@ import model.game.World;
 import model.entity.IEntity;
 import model.entity.componement.Location;
 import model.entity.componement.Sprite;
+import model.util.data.HighScore;
 
 public class GameView {
 

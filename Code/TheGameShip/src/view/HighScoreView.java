@@ -2,10 +2,14 @@ package view;
 
 import javafx.event.ActionEvent;
 import launch.Launcher;
+import model.util.data.HighScore;
 
 public class HighScoreView {
-
-    public void initialize() {}
+    private static HighScore highscore;
+    public void initialize() {
+        highscore = new HighScore();
+        //PersistenceManager.loadHighScore(highscore);
+    }
 
     public void menu(ActionEvent actionEvent){
         Launcher.getViewManager().setView("MenuView");

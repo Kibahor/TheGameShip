@@ -5,6 +5,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import launch.Launcher;
 import javafx.fxml.FXML;
+import model.util.data.Settings;
 import model.util.save.PersistenceManager;
 
 public class SettingsView {
@@ -18,7 +19,9 @@ public class SettingsView {
     @FXML private Label right;
     @FXML private Label shoot;
 
+    private Settings settings;
 
+    //TODO : Mettre dans CSS
     public void loadSliderDifficulty() {
         difficultySlider.setMin(1);
         difficultySlider.setMax(3);
@@ -40,22 +43,24 @@ public class SettingsView {
     }
 
     public void initialize() {
+        settings = new Settings();
+        PersistenceManager.loadSettings(settings);
         loadSliderVolume();
         loadSliderDifficulty();
 
-        difficultySlider.valueProperty().bindBidirectional(Launcher.getSettings().difficultyProperty());
-        volumeSlider.valueProperty().bindBidirectional(Launcher.getSettings().volumeProperty());
+        difficultySlider.valueProperty().bindBidirectional(settings.difficultyProperty());
+        volumeSlider.valueProperty().bindBidirectional(settings.volumeProperty());
 
-        up.textProperty().bindBidirectional(Launcher.getSettings().upProperty());
-        left.textProperty().bindBidirectional(Launcher.getSettings().leftProperty());
-        down.textProperty().bindBidirectional(Launcher.getSettings().downProperty());
-        right.textProperty().bindBidirectional(Launcher.getSettings().rightProperty());
-        shoot.textProperty().bindBidirectional(Launcher.getSettings().shootProperty());
+        up.textProperty().bindBidirectional(settings.upProperty());
+        left.textProperty().bindBidirectional(settings.leftProperty());
+        down.textProperty().bindBidirectional(settings.downProperty());
+        right.textProperty().bindBidirectional(settings.rightProperty());
+        shoot.textProperty().bindBidirectional(settings.shootProperty());
     }
 
     public void menu(ActionEvent actionEvent) {
         Launcher.getViewManager().setView("MenuView");
-        PersistenceManager.saveSettings(Launcher.getSettings());
+        PersistenceManager.saveSettings(settings);
     }
 
     public void reset(ActionEvent actionEvent) {
