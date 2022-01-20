@@ -14,7 +14,7 @@ public class View {
         if (parent == null) {
             int fontsize = 20;
             Pane pane = new Pane();
-            Text texte = new Text(0, fontsize, "Impossible de charger la vue : " + path);
+            Text texte = new Text(0,fontsize,"Impossible de charger la vue : " + path);
             texte.setFill(Color.RED);
             texte.setFont(new Font(fontsize));
             pane.getChildren().add(texte);
@@ -23,19 +23,11 @@ public class View {
         return parent;
     }
 
-    public void setParent(Parent parent) {
-        this.parent = parent;
-    }
+    public void setParent(Parent parent) { this.parent = parent; }
+    public boolean isInitialize() { return parent != null; }
 
-    public boolean isInitialize() {
-        return parent != null;
-    }
-
-    private final String path;
-
-    public String getPath() {
-        return path;
-    }
+    private String path;
+        public String getPath() { return path; }
 
     public View(String path) {
         this.path = path;

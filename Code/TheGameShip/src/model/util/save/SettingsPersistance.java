@@ -1,13 +1,11 @@
 package model.util.save;
 
 import model.util.data.Settings;
-
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
 import java.io.*;
 
 public class SettingsPersistance implements IPersistance {
-
 
     @Override
     public void save(Object obj, File file) throws Exception {
@@ -22,12 +20,10 @@ public class SettingsPersistance implements IPersistance {
 
     @Override
     public Object load(File file) throws Exception {
-        if (file.length() == 0) {
-            return new Settings();
-        }
+        if (file.length() == 0) { return new Settings(); }
         XMLDecoder decoder = new XMLDecoder(new BufferedInputStream(new FileInputStream(file)));
         SerializeSettings data = (SerializeSettings) decoder.readObject();
-        if (data == null) {
+        if (data == null){
             data = new SerializeSettings();
         }
         return data;

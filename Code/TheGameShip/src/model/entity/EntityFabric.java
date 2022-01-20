@@ -2,7 +2,6 @@ package model.entity;
 
 import model.entity.componement.*;
 import model.util.input.ECommand;
-
 import java.util.UUID;
 
 public class EntityFabric {
@@ -20,7 +19,6 @@ public class EntityFabric {
         numberEnemy++;
         return numberEnemy;
     }
-
 
     public Entity createPlayer(String name, String sprite, double height, double width, double hp, double x, double y, float speedX, float speedY) {
         Entity e = new Entity(name, EEntityType.Player);
@@ -63,6 +61,4 @@ public class EntityFabric {
 
         return e;
     }
-
-
 }

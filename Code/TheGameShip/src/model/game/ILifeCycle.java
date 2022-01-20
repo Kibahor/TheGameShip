@@ -1,9 +1,8 @@
 package model.game;
 
-public interface ILifeCycle {
-    void init();
+public interface ILifeCycle{
 
-    void start();
-
-    void exit();
+   void init();
+   void start();
+   void exit();
 }

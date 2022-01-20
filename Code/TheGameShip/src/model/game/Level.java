@@ -38,35 +38,22 @@ public class Level implements IEntityCollection, ILifeCycle, IObserver {
     private final EntityFabric entityFabric = new EntityFabric();
 
     private IEntity player;
+        public IEntity getPlayer() { return player; }
 
-    public IEntity getPlayer() {
-        return player;
-    }
-
-    @Override
-    public ObservableSet<IEntity> getEntityCollection() {
+    @Override public ObservableSet<IEntity> getEntityCollection() {
         return entityManager.getEntityCollection();
     }
 
-    private final IMove move = new Move();
-    private final IMove moveEnemy = new MoveEnemy();
+    private IMove move = new Move();
+    private IMove moveEnemy = new MoveEnemy();
 
     private final ICollider collider = new Collider(getEntityCollection());
     private final ICollider colliderEnemy = new ColliderEnemy(getEntityCollection());
 
     private final IntegerProperty score = new SimpleIntegerProperty();
-
-    public int getScore() {
-        return score.get();
-    }
-
-    public void setScore(int score) {
-        this.score.set(score);
-    }
-
-    public IntegerProperty scoreProperty() {
-        return score;
-    }
+        public int getScore() { return score.get(); }
+        public void setScore(int score) { this.score.set(score); }
+        public IntegerProperty scoreProperty() { return score; }
 
     public Level(Loop loop, IInput input) {
         this.loop = loop;
@@ -106,7 +93,7 @@ public class Level implements IEntityCollection, ILifeCycle, IObserver {
         for (ECommand key : input.getKeyPressed()) {
             move.move(e, collider, key, Location.cast(e), Speed.cast(e));
             if (key.equals(ECommand.SHOOT)) {
-                createShoot(e.getId(), Location.cast(e), ECommand.RIGHT, 500);
+                createShoot(e.getId(),Location.cast(e), ECommand.RIGHT, 500);
             }
         }
     }
@@ -114,7 +101,7 @@ public class Level implements IEntityCollection, ILifeCycle, IObserver {
     private void updateEnemy(IEntity e, long timer) {
         IEntity player = getPlayer();
         Location l = Location.cast(e);
-        if (getPlayer() != null) {
+        if(getPlayer() != null){
             l = Location.cast(player);
         }
         ColliderInfo ci = moveEnemy.move(e, colliderEnemy, ECommand.LEFT, l, Speed.cast(e));

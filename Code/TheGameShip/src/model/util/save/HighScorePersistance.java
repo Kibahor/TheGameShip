@@ -1,7 +1,6 @@
 package model.util.save;
 
 import model.util.data.HighScore;
-
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
 import java.io.*;

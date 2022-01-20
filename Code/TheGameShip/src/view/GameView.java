@@ -30,9 +30,7 @@ public class GameView {
     private World world;
 
     public void initialize() {
-
         world = new World();
-
         world.getEntityCollection().addListener((SetChangeListener<IEntity>) e -> {
             if (e.wasAdded()) {
                 addEntity(e.getElementAdded());
@@ -40,7 +38,6 @@ public class GameView {
                 pane.getChildren().remove(e.getElementRemoved());
             }
         });
-
         world.init();
         world.start();
 
@@ -81,7 +78,6 @@ public class GameView {
                 case Player -> color = Color.BLACK;
                 default -> color = Color.GREY;
             }
-
             Rectangle r = new Rectangle();
             r.setFill(color);
             r.heightProperty().bind(l.heightProperty());

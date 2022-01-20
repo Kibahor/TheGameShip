@@ -20,7 +20,6 @@ public class MoveEnemy implements IMove {
             default -> nextx -= senemy.getSpeedX(); //Par défaut c'est vers la gauche
         }
 
-
         // Y
         double nexty = lenemy.getY();
         /* Code qui permet faire à l'ennemie suivre le joueur

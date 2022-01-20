@@ -12,7 +12,6 @@ public class Life extends Componement {
     public double getHp() {
         return hp.get();
     }
-
     private void setHp(double hp) {
         this.hp.set(hp);
         if (getHp() <= 0) {
@@ -23,26 +22,20 @@ public class Life extends Componement {
     public void decreaseHp() {
         setHp(getHp() - 1);
     }
-
     public DoubleProperty hpProperty() {
         return hp;
     }
 
-
     private final BooleanProperty isDead = new SimpleBooleanProperty();
-
     public boolean isDead() {
         return isDead.getValue();
     }
-
     public void setDead(boolean dead) {
         isDead.set(dead);
     }
-
     public BooleanProperty isDeadProperty() {
         return isDead;
     }
-
 
     public Life(double hp) {
         super(EComponementType.Life);

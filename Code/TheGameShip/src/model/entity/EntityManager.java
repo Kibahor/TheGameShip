@@ -4,7 +4,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableSet;
 import model.entity.componement.Sprite;
 import model.game.IEntityCollection;
-
 import java.util.HashSet;
 import java.util.Iterator;
 
@@ -48,21 +47,7 @@ public class EntityManager implements IEntityCollection {
         return null;
     }
 
-    /*public IEntity getPlayer() {
-        Iterator it = entities.iterator();
-        while(it.hasNext()){
-            IEntity e = (IEntity) it.next();
-            if(e.getEntityType().equals(EEntityType.Player)){
-                return e;
-            }
-        }
-        newError(EEntityType.Player);
-        return null;
-    }*/
-
-    //General
     //TODO : la refaire pour mettre toute les infos
-
     @Override
     public String toString() {
             /*

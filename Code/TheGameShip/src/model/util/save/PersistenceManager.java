@@ -2,29 +2,25 @@ package model.util.save;
 
 import model.util.data.HighScore;
 import model.util.data.Settings;
-
-import java.io.File;
+import java.io.*;
 
 public class PersistenceManager {
 
     IPersistance ph = new HighScorePersistance();
+    private final File highScoreFile = new File("./res/Settings/highscore.xml");
     private HighScore highScore;
-
     public HighScore getHighScore() {
-        if (highScore == null) {
+        if (highScore == null){
             loadHighScore();
         }
         return highScore;
     }
 
-    private final File highScoreFile = new File("./res/Settings/highscore.xml");
-
-    IPersistance ps = new SettingsPersistance();
+    IPersistance ps =new SettingsPersistance();
     private final File settingsFile = new File("./res/Settings/settings.xml");
     private Settings settings;
-
-    public Settings getSettings() {
-        if (settings == null) {
+    public Settings getSettings(){
+        if(settings == null){
             loadSettings();
         }
         return settings;
