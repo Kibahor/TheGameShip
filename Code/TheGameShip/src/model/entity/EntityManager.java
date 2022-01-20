@@ -29,6 +29,7 @@ public class EntityManager implements IEntityCollection {
         Sprite.cast(e).setVisible(false);
         entities.remove(e);
     }
+
     public void removeEntity(String name){
         removeEntity(getEntityBy(name));
     }
@@ -70,10 +71,10 @@ public class EntityManager implements IEntityCollection {
         return super.toString();
     }
 
-    public void newError(String name){
+    private void newError(String name){
         System.err.println("Il n'y a pas d'entité de nom : \""+ name +"\"");
     }
-    public void newError(EEntityType type){
+    private void newError(EEntityType type){
         System.err.println("Il n'y a pas d'entité de type : \""+ type +"\"");
     }
 }
