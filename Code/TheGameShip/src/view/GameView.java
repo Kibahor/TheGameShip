@@ -50,10 +50,6 @@ public class GameView {
     }
 
     public void addEntity(IEntity e) {
-        /* TODO : ajouter ce genre de message dans les méthodes de casts
-        if(!e.isTypeOf(EComponementType.Life)){
-            System.err.println("Impossible d'ajouter l'entité : \""+e.getName()+"\" car elle n'implémente pas Location");
-        }*/
         Location l = Location.cast(e);
         Sprite s = Sprite.cast(e);
 
