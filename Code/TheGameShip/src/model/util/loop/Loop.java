@@ -6,13 +6,8 @@ import static java.lang.Thread.sleep;
 public class Loop extends Observable implements Runnable {
 
     private final long millis;
+        public long getMillis(){ return millis; }
     private boolean isRunning = true;
-
-    private long timer = 0;
-        public long getTimer() {
-            return timer;
-        }
-        public void resetTimer() { timer = 0; }
 
     public Loop(long millis) {
         this.millis = millis;
@@ -23,7 +18,6 @@ public class Loop extends Observable implements Runnable {
         while (isRunning) {
             try {
                 sleep(millis);
-                timer += millis;
                 Platform.runLater(() -> notifier());
             }
             catch (InterruptedException e) {

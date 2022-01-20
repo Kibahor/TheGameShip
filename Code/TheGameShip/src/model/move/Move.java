@@ -14,12 +14,10 @@ import java.util.UUID;
 public class Move implements IMove {
 
     @Override
-    public ColliderInfo move(IEntity e, ICollider c, ECommand key) {
-        Location l = Location.cast(e);
+    public ColliderInfo move(IEntity e, ICollider c, ECommand key, Location l, Speed s) {
         double nextx = l.getX();
         double nexty = l.getY();
 
-        Speed s = Speed.cast(e);
         switch (key) {
             case LEFT -> nextx -= s.getSpeedX();
             case RIGHT -> nextx += s.getSpeedX();

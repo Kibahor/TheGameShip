@@ -21,12 +21,11 @@ public class EntityFabric {
         e.addComponement(new Location(x, y, height, width));
         e.addComponement(new Life(hp));
         e.addComponement(new Speed(speedX, speedY));
-        e.addComponement(new Score());
         return e;
     }
 
     public Entity createEnemy(String name, String sprite, double height, double width, double hp, double x, double y){
-        Entity e = createPlayer(name,sprite,height,width,hp,x,y,5,7);
+        Entity e = createPlayer(name,sprite,height,width,hp,x,y,3,3);
         e.setEntityType(EEntityType.Ennemy);
         return e;
     }

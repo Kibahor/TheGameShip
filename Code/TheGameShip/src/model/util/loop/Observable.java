@@ -1,5 +1,6 @@
 package model.util.loop;
 
+import java.util.ConcurrentModificationException;
 import java.util.LinkedList;
 
 public class Observable {
@@ -15,8 +16,12 @@ public class Observable {
     }
 
     public void notifier() {
-        for (var observateur : observers) {
-            observateur.update();
+        for (var observateur : observers) { //TODO : trouver pourquoi Concurrent Access
+            try{
+                observateur.update();
+            } catch (ConcurrentModificationException err) {
+                //err.printStackTrace();
+            }
         }
     }
 }
