@@ -1,18 +1,25 @@
 package model.util.data;
 
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableSet;
+import javafx.collections.ObservableList;
 
-import java.util.HashSet;
 
 public class HighScore {
 
-    private final ObservableSet<Integer> highScore;
+    private final ObservableList<Integer> highScore;
 
-    public HighScore() { highScore = FXCollections.observableSet(new HashSet<>());}
+    public HighScore() { highScore = FXCollections.observableArrayList(); }
 
-    public void addScore(int score) { highScore.add(score); }
-    public void removeScore(int score) { highScore.remove(score); }
+    public void addHighScore(int score) { highScore.add(score); }
+    public void removeHighScore(int score) { highScore.remove(score); }
+    public ObservableList<Integer> getScore() { return highScore; }
+    public void resetHighScore() {
+        if (!highScore.isEmpty()) {
+            for (Integer s : highScore) {
+                removeHighScore(s);
+            }
+        }
+    }
 
     @Override
     public String toString() {

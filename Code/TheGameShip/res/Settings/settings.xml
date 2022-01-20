@@ -11,7 +11,7 @@
    <string>DOWN</string>
   </void>
   <void property="volume">
-   <double>80.0</double>
+   <double>70.0</double>
   </void>
  </object>
 </java>
