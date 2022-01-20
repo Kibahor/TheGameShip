@@ -21,7 +21,7 @@ public class SettingsView {
 
     private Settings settings;
 
-    //TODO : Mettre dans CSS
+    //TODO : Mettre dans le FXML
     public void loadSliderDifficulty() {
         difficultySlider.setMin(1);
         difficultySlider.setMax(3);
