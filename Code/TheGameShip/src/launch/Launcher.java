@@ -25,11 +25,9 @@ public class Launcher extends Application {
     public static ViewManager getViewManager() {
         return viewManager;
     }
-
     public static Stage getStage() {
         return stage;
     }
-
     public static PersistenceManager getPersistenceManager() {
         return persistenceManager;
     }
