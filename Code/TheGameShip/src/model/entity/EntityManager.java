@@ -16,9 +16,7 @@ public class EntityManager implements IEntityCollection {
         return entities;
     }
 
-    public EntityManager() {
-        entities = FXCollections.observableSet(new HashSet<>());
-    }
+    public EntityManager() { entities = FXCollections.observableSet(new HashSet<>()); }
 
     //Used Entities
     public void addEntity(IEntity e) {

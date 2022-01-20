@@ -22,7 +22,9 @@ import model.util.loop.IObserver;
 import model.util.loop.Loop;
 import model.util.loop.Timer;
 
+import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
+import java.util.List;
 import java.util.UUID;
 
 public class Level implements IEntityCollection, ILifeCycle, IObserver {
@@ -141,27 +143,31 @@ public class Level implements IEntityCollection, ILifeCycle, IObserver {
     @Override
     public void update() {
         try {
-            for (IEntity e : getEntityCollection()) {
+            List<IEntity> listToBurn = new ArrayList<>();       // Création d'une liste temporaire pour stocker les entitées à supprimer
+
+            for (IEntity e : new ArrayList<>(getEntityCollection())) {
                 switch (e.getEntityType()) {
                     case Player -> updatePlayer();
                     case Shoot -> updateShoot(e);
                     case Enemy -> updateEnemy(e, 800);
                 }
 
-                if (e.isTypeOf(EComponementType.Life)) {             //Gestion de la vie
-                    //Si l'entité a de la vie
-                    if (Life.cast(e).isDead()) {
-                        entityManager.removeEntity(e);
+                if (e.isTypeOf(EComponementType.Life)) {    //Gestion de la vie
+                    if (Life.cast(e).isDead()) {            //Si l'entité a de la vie
+                        listToBurn.add(e);
                         if (e.getEntityType().equals(EEntityType.Enemy)) {
                             setScore(getScore() + (int) Launcher.getPersistenceManager().getSettings().getDifficulty());
                         }
                     }
                 }
             }
+            for (final var e : listToBurn) {
+                entityManager.removeEntity(e);
+            }
 
             createNewWave(1, 2, 10000);
         } catch (ConcurrentModificationException err) { //TODO : trouver pourquoi Concurrent Access
-            //err.printStackTrace();
+            err.printStackTrace();
         } catch (Exception err) {
             err.printStackTrace();
         }

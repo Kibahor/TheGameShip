@@ -5,13 +5,11 @@ import model.entity.IEntity;
 public class ColliderInfo {
 
     private final boolean isCollision;
-
     public boolean IsCollision() {
         return isCollision;
     }
 
     private final IEntity e;
-
     public IEntity getEntity() {
         return e;
     }
