@@ -21,8 +21,8 @@ public class HighScorePersistance implements IPersistance{
 
     @Override
     public Object load(File file) throws Exception {
-        if (file.length() == 0) { return new HighScore(); }
-        SerializeHighScore data = null;
+        if (file.length() == 0) { return new SerializeHighScore(); }
+        SerializeHighScore data = new SerializeHighScore();
         XMLDecoder decoder = new XMLDecoder(new BufferedInputStream(new FileInputStream(file)));
         return decoder.readObject();
     }

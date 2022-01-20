@@ -12,9 +12,20 @@ public class HighScore {
     private final ObservableList<String> highScore;
 
     public HighScore() { highScore = FXCollections.observableArrayList(new ArrayList<>()); }
+    public HighScore(ArrayList<String> list) { highScore = FXCollections.observableArrayList(list); }
 
-    public void addHighScore(int score) { highScore.add(String.valueOf(score) + " : " + new Date()); }      //TODO: Trier la liste ou changer pour une map
-    public ObservableList<String> getListScore() { return highScore; }
+    public void addHighScore(int score) {
+        highScore.add(String.valueOf(score) + " : " + new Date());
+        if(highScore.contains("No Score Yet")){
+            highScore.remove("No Score Yet");
+        }
+    }
+    public ObservableList<String> getListScore() {
+        if(highScore.isEmpty()){
+            highScore.add("No Score Yet");
+        }
+        return highScore;
+    }
     public void resetHighScore() { highScore.removeAll(highScore); }
     public void loadListe(ArrayList l) {
         resetHighScore();

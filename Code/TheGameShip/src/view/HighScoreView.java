@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import launch.Launcher;
 import javafx.scene.control.ListView;
 import model.util.data.HighScore;
-import model.util.save.PersistenceManager;
 
 public class HighScoreView {
 
@@ -14,8 +13,7 @@ public class HighScoreView {
     private HighScore highScore;
 
     public void initialize() {
-        highScore = new HighScore();
-        HighScore highScore= Launcher.getPersistenceManager().getHighScore();
+        highScore = Launcher.getPersistenceManager().getHighScore();
         highScoreList.setItems(highScore.getListScore());
     }
 
