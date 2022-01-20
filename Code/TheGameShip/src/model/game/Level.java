@@ -49,7 +49,7 @@ public class Level implements ILifeCycle, IObserver {
     private IMove move = new Move();
     private IMove moveEnemy = new MoveEnemy();
 
-    private ICollider collider = new Collider(this);
+    private ICollider collider = new Collider(getEntityCollection());
 
     private final IntegerProperty score = new SimpleIntegerProperty();
         public int getScore() { return score.get(); }
