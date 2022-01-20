@@ -16,6 +16,7 @@ import model.game.World;
 import model.entity.IEntity;
 import model.entity.componement.Location;
 import model.entity.componement.Sprite;
+import model.util.data.HighScore;
 
 public class GameView {
 
@@ -96,7 +97,6 @@ public class GameView {
                     HighScore highScore = Launcher.getPersistenceManager().getHighScore();
                     highScore.addHighScore(world.getScore());
                     Launcher.getPersistenceManager().saveHighScore(highScore);
-                    //System.out.println(Launcher.getHighScore().toString());   //DEBUG
                     world.exit();
                     Launcher.getViewManager().closeView("GameView");
                     Launcher.getViewManager().setView("EndGameView");

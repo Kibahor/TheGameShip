@@ -21,9 +21,10 @@ public class HighScore {
         }
     }
     public ObservableList<String> getListScore() {
+        /*
         if(highScore.isEmpty()){
             highScore.add("No Score Yet");
-        }
+        }*/
         return highScore;
     }
     public void resetHighScore() { highScore.removeAll(highScore); }

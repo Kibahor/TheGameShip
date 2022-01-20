@@ -12,9 +12,9 @@ public class SerializeHighScore {
     }
 
     public SerializeHighScore(HighScore highScore) {
-        if(highScore.getListScore().isEmpty()){
+        /*if(highScore.getListScore().isEmpty()){
              listHighScore.add("No Score Yet");
-        }
+        }*/
         listHighScore.addAll(highScore.getListScore());
     }
 
