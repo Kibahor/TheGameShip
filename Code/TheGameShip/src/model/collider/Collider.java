@@ -4,15 +4,15 @@ import launch.Launcher;
 import model.entity.componement.EComponementType;
 import model.entity.componement.Location;
 import model.entity.componement.Shoot;
-import model.game.ILevel;
+import model.game.ILifeCycle;
 import model.entity.*;
 import java.util.UUID;
 
 public class Collider implements ICollider { //http://sdz.tdct.org/sdz/eorie-des-collisions.html
 
-    protected final ILevel level;
+    protected final ILifeCycle level;
 
-    public Collider(ILevel level) {
+    public Collider(ILifeCycle level) {
         this.level = level;
     } //TODO: au lieu de passer le level il faudrait donner directement la collection
 

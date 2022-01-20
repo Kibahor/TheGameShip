@@ -9,11 +9,18 @@ import java.util.UUID;
 
 public class EntityFabric {
 
-    private long number = 0;
+    private long numberShoot = 0;
         private long getShootNumber(){
-            number++;
-            return number;
+            numberShoot++;
+            return numberShoot;
         }
+
+    private long numberEnemy = 0;
+        private long getEnemyNumber(){
+            numberEnemy++;
+            return numberEnemy;
+        }
+
 
     public Entity createPlayer(String name, String sprite, double height, double width, double hp, double x, double y, float speedX, float speedY){
         Entity e=new Entity(name, EEntityType.Player);
@@ -28,6 +35,11 @@ public class EntityFabric {
         Entity e = createPlayer(name,sprite,height,width,hp,x,y,3,3);
         e.setEntityType(EEntityType.Ennemy);
         return e;
+    }
+
+    public Entity createEnemy(double x, double y, double height, double width){
+        String name = "Shoot" + getEnemyNumber();
+        return createEnemy(name, "/Sprites/Enemy.png",height, width, 5, x, y );
     }
 
     public IEntity createShoot(UUID ownerId, Location l, ECommand direction){

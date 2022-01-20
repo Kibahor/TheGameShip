@@ -2,6 +2,7 @@ package model.move;
 
 import model.collider.ColliderInfo;
 import model.collider.ICollider;
+import model.entity.EEntityType;
 import model.entity.componement.EComponementType;
 import model.entity.componement.Location;
 import model.entity.componement.Shoot;
@@ -26,7 +27,6 @@ public class MoveEnemy implements IMove {
 
         // Y
         double nexty = lenemy.getY();
-        //Todo : prendre en compte la largeur et la hauteur
         if((lenemy.getY() - lPlayer.getY()) != 0){ //Si c'est égale alors pas besoin de bouger
             if((lenemy.getY() - lPlayer.getY()) < 0) { //Si le joueur est plus bas que l'ennemie c'est négatif et inversement
                 nexty +=  senemy.getSpeedY() ;
