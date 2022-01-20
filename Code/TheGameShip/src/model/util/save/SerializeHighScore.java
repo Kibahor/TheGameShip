@@ -5,18 +5,20 @@ import java.util.ArrayList;
 
 public class SerializeHighScore {
 
-    private ArrayList<String> listHighScore;
+    private ArrayList<String> listHighScore =  new ArrayList<>();
 
     public SerializeHighScore() {
         listHighScore.add("No Score Yet");
     }
 
     public SerializeHighScore(HighScore highScore) {
+        if(highScore.getListScore().isEmpty()){
+             listHighScore.add("No Score Yet");
+        }
         listHighScore.addAll(highScore.getListScore());
     }
 
     public ArrayList<String> getListHighScore() { return listHighScore; }
-        public void setListHighScore(ArrayList<String> listHighScore) { this.listHighScore = listHighScore; }
 
 
     @Override

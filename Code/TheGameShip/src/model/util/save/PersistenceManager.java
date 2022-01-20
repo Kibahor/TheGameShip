@@ -54,17 +54,7 @@ public class PersistenceManager {
         } catch (Exception err) {
             err.printStackTrace();
         }
-        HighScore highScore = new HighScore();
-
-        /*
-        settings.setDifficulty(ss.getDifficulty());
-        settings.setVolume(ss.getVolume());
-        settings.setUp(ss.getUp());
-        settings.setLeft(ss.getLeft());
-        settings.setDown(ss.getDown());
-        settings.setRight(ss.getRight());
-        settings.setShoot(ss.getShoot());*/
-        this.highScore = highScore;
+        this.highScore = new HighScore(sh.getListHighScore());
     }
 
     public void saveHighScore(HighScore highScore1) {

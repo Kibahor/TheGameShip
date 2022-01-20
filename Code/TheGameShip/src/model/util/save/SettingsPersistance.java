@@ -25,7 +25,7 @@ public class SettingsPersistance implements IPersistance{
     @Override
     public Object load(File file) throws Exception{
         if (file.length() == 0) { return new Settings(); }
-        SerializeSettings data = null;
+        SerializeSettings data = new SerializeSettings();
         XMLDecoder decoder = new XMLDecoder(new BufferedInputStream(new FileInputStream(file)));
         return decoder.readObject();
     }
