@@ -17,14 +17,19 @@
 - **Java : 16**
 - **JavaFX : 16**
 
-> Options VM:
+> VM Options:
 > --module-path ${PATH_TO_JFX} --add-modules=javafx.controls,javafx.fxml
+
+## Known issues:
+
+- Only one entity can fire at once
+- HighScore are in deed LastScore
 
 ## Upgrades possibles:
 
-- Add sound system
-- Pause option
-- Edit keyboard input
+- Add a sound system
+- Pause option (ECHAP)
+- Edit keyboard controls
 - Controler compatibility
 - File for gameplay comfiguration
 - Other optimisations and tweaks
