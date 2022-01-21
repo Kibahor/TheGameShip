@@ -64,8 +64,8 @@ public class ViewManager {
         try {
             parent = FXMLLoader.load(getClass().getClassLoader().getResource(view.getPath()));
         } catch (IOException err) {
-            System.err.println("La vue \""+name+"\" n'existe pas ! (ou a eu un problème lors de son chargement)"); //DEBUG
-            err.printStackTrace(); //DEBUG
+            System.err.println("La vue \""+name+"\" n'existe pas ! (ou a eu un problème lors de son chargement)");
+            err.printStackTrace();
         }
         views.get(name).setParent(parent);
     }
