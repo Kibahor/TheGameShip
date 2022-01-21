@@ -45,17 +45,6 @@ public class EntityManager implements IEntityCollection {
         return null;
     }
 
-    //TODO : la refaire pour mettre toute les infos
-    @Override
-    public String toString() {
-            /*
-        System.out.println("Used Entity :\n");
-        for (IEntity e : getUsedEntityCollection()) {
-            System.out.println(e);
-        }*/
-        return super.toString();
-    }
-
     private void newError(String name) {
         System.err.println("Il n'y a pas d'entité de nom : \"" + name + "\"");
     }

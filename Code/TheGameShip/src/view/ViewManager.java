@@ -82,14 +82,4 @@ public class ViewManager {
         View view = views.get(name);
         view.setParent(null);
     }
-
-    //TODO : la refaire pour mettre toute les infos
-    @Override
-    public String toString() {
-        /*
-        for (String key: view.keySet()) {
-            System.out.println(key+" -> "+view.get(key));
-        }*/
-        return super.toString();
-    }
 }

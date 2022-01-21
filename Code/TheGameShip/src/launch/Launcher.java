@@ -33,13 +33,22 @@ public class Launcher extends Application {
     }
 }
 
-// TODO: Code + Docs + Video (une demo vidéo d'1 min max) + Preuve de compétence (avec la feuille de compétence en expliquant)
 // TODO : Faire une classe static DEBUG et set dans launcher si debug=true/false et remplacer toute les ligne de débug par la méthode
 
-// Réflexion :
-// - Au lieu d'adapter le model à la vue (double -> DoubleProperty), il faudrait faire l'inverse (même si en soit cela n'empêche pas de l'utiliser telle qu'elle)
-// - Changer fonctionnement des interfaces d'entité : Voir si il ne faut l'appliquer qu'aux interfaces (au lieu des entités)
-// - Les interface deviendrait package private et seul les class créé plus tôt pourrait les implémenter
-//  Ensuite au lieu d'implémenter une interface dans l'entités on met une instance de l'objet
-//  - Ou faire une fabrique qui selon le type choisis les bon composant
+// il reste :
+//- Résoudre le problème de tir
+//- Faire la doc :
+//   - Diagramme de cas d'utilisation (Valentin)
+//   - Preuve de connaissance (grâce à la fiche de compétence) (Lukas & Valentin) + Marquer les différent patron de conception utilisés
+//   - Commenter le code + Générer javadoc (Lukas & Valentin)
+//
+//  Optionnel :
+//  -Ecrire le readme
+//  - Modifier contrôle dans les settings
+//  - Ajouter un bouton pause et retour vers le menu
+//  - Ajouter du son
+//  - Ajout des power - up
+//  - Ajouter contrôle avec la manette
+//  - Faire des fichiers de config, pour générer les niveaux
+//  - Implémenter poids mouche si on a le temps
 // https://pixlwalkr.itch.io/space-shooter-pixel-art-pack
